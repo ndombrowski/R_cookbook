@@ -1,0 +1,108 @@
+---
+execute:
+    eval: true
+
+engine: knitr
+---
+
+# Introduction into R
+
+R is a statistical programming languate and environment and free, open source and in active development. This tutorial will introduce into the basic concepts of R.
+
+This tutorial will work with example data for:
+
+**(A) Growth data**
+
+We have two data files that work with a similar experimental setup:
+
+1. **Growth_Data.txt**
+
+We are doing plant growth experiments and treat our plants with different microbes wondering if any affects plant growth in a positive way.
+
+This file contains measurements of root length and shoot fresh weight for plants grown under control treatments (MgCL) or when treating with 4 different bacteria. For simplicity only 1 biological experiment with 7-10 individual measurements per treatment is included.
+
+2. **Timecourse.txt** 
+
+We found positive effects for some of the strains tested above and now we want to know how long it takes for this effect to appear.
+
+So this data has root length measurements for plants under control conditions and treated with one microbe (350) at 5 different timepoints. Something unique with this dataframe is that we have empty cells (NAs) and we need to deal with them as some R functions od not like empty cells.
+
+
+## The example data
+
+Let's have a look at the data first:
+
+```{r}
+#| echo: false
+
+#set wdir    
+#setwd("~/Desktop/WorkingDir/Github_Workflows/R_tutorial")
+
+#load libs
+library(knitr)
+library(kableExtra)
+
+#read in data
+growth_data <- read.table("../data/Growth_Data.txt", sep="\t", header=T,  quote = "", stringsAsFactors=TRUE)
+
+#check the structure of our data
+kable(growth_data) %>%
+  kable_styling() %>%
+  scroll_box(width = "700px", height = "400px")
+```
+
+The timecourse data looks similar, we just have an extra column for the different timepoints and we only have measurements for the root length.
+
+**(B) Annotation data**
+
+This file is specific to the output of the Spang_team annotation pipeline but this workflow can be used for any type of categorical data one wants to summarize
+
+- **UAP2_Annotation_table_u.txt** includes annotations for a set of 46 DPANN genomes. This includes annotations across several databases (arCOG, KO, PFAM, ...) for each individual protein found across all these 46 genomes. 
+
+Specifically, we want to learn how to:
+
+- Make a count table for each genome
+- make  a count table for clusters of interest 
+- make a heatmap for genes of interest
+- merge our results with some pre-sorted tables
+
+For this to work we have some additional files to make our job easier:
+
+- **mapping.txt** =  a list that defines to what cluster (i.e. grouping based on a phylogenetic tree) or bins belong to
+- **Genes_of_interest** = a list of genes we are interested in and that we want to plot in a heatmap
+- **ar14_arCOGdef19.txt** = metadata for the arCOG annotations
+- **Metabolism_Table_KO_Apr2020.txt** = metadata for KOs and sorted by pathways
+
+The annotation table looks like this:
+
+```{r}
+#read in data
+annotation_data <- read.table("../data/UAP2_Annotation_table_u.txt", sep="\t", header=T,  quote = "")
+
+#check the structure of our data
+kable(head(annotation_data), format='markdown')
+```
+
+**Since R is in active development = write down what version you are using for your manuscripts and ideal provide the session info as a readme**
+
+Throughout this text Comments in R are preceded by a **#**. 
+Whenever this key is encountered, everything printed after it will be ignored. 
+Therefore, this is a good way for us to comment code.
+
+
+
+## RStudio (everything in one place):
+
+R is command-line only while RStudio is a GUI ((graphical user interface)) version of R. 
+
+RStudio includes the following:
+
+* Script separate from command-line (left-hand screen)
+* Lists your variables (upper, right-hand corner)
+* Manual and an extensive help function
+* Easy install of new packages
+* Plots are shown within RStudio
+
+<img src="/Users/ninadombrowski/Desktop/WorkingDir/Notebooks/Code_snippets/R/images/RStudio.png" alt="A drawing of an elephant.">
+
+

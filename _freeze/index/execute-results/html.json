@@ -1,0 +1,14 @@
+{
+  "hash": "a0b6a46581fea49db4536e703c5ad7b5",
+  "result": {
+    "markdown": "# Preface {.unnumbered}\n\nThis is a cook book for key R commands.\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

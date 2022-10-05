@@ -1,0 +1,8 @@
+# Miscellaneous
+
+## Search and replace in markdown
+
+If we want to search for the end of the line to, for example, add two spaces (and thus create a linebreak), we can:
+
+- find ```(.)$`` with Regex selected
+- and replace with ```\1your_string```

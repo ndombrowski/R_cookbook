@@ -1,0 +1,16 @@
+.Rproj.user
+.Rhistory
+.RData
+*.rds
+.Ruserdata
+*_files
+*_cache
+*.pdf
+.DS_Store
+_book
+_bookdown_files
+_rmd4sci.rds
+notes
+*.log
+.nojekyll
+/.quarto/
