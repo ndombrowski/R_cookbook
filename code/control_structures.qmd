@@ -1,0 +1,167 @@
+---
+execute:
+    eval: true
+
+df-print: paged
+---
+
+# Control Structures
+
+Control structures in R allow you to control the flow of execution of a series of R expressions. Basically, control structures allow you to put some 'logic' into your R code, rather than just always executing the same R code every time.
+
+```{r}
+#| echo: false
+#| warning: false
+ 
+#load libs
+library(knitr)
+library(kableExtra)
+
+#read in data
+timecourse <- read.table("../data/Timecourse.txt", sep="\t", header=T,  quote = "")
+growth_data <- read.table("../data/Growth_Data.txt", sep="\t", header=T,  quote = "")
+
+#remove NAs
+timecourse_noNA <- timecourse[!is.na(timecourse$Rootlength), ]
+```
+
+
+## Loops
+
+Sometimes it is necessary to repeat a calculation multiple times, e.g. calculate the sum of each row of a matrix. You can use for loops to do this.
+
+Lets assume a simple matrix with 5 rows and 3 columns. How would we generate the sum of each row?  
+We could do so, by calculating the sum step-by-step:
+
+```{r}
+#build a dataframe
+m <- matrix(1:15, 5)
+m
+```
+
+```{r}
+#sum rows without a loop --> sum row 1
+sum(m[1, ])
+```
+
+```{r}
+#sum rows without a loop --> sum row 2, ...
+sum(m[2, ])
+```
+
+However, you will quickly see that this becomes quite tedious. So lets do this via a loop, in which we:
+
+- define that we want to loop through rows 1 to 5 (1:5)
+- `for (i in 1:5)`  --> we say that we want to run a for loop, in which we name our variable i
+- `{}` --> defines the operation we want to loop through 
+- in our case we want to sum a specific row (rows 1 through 5)
+- so in i we store the numbers 1,2,3,4 and 5 and then run through the sum functions 5x
+
+
+```{r}
+#run a loop to get the sum for all five rows
+for (i in 1:5) {
+print(sum(m[i, ]))
+}
+```
+
+How would we store our results in a new dataframe and do not just print them to the screen? To do this, we:
+
+- define a variable (named `results`) in which we store an empty vector with `c()`. We need this empty vector to have something to store our results in while running the loop.
+- start the for loop and define i as before
+- run the sum as before but now store the results for each iteration in `results`
+
+
+```{r}
+#store the results, Note that here, the variable results had to be created before as an empty vector.
+results <- c()
+for (i in 1:5) {
+results[i] <- sum(m[i, ])
+}
+
+results
+```
+
+Very often, there are some R packages or functions that are faster than loops.  
+The ``apply()`` function is such an example.
+``apply()`` applies a function, i.e. sum, across a matrix. 
+
+However, since loops are also a very useful feature in bash or python it is useful to understand their general concept.
+
+```{r}
+#way to do the same using the apply function (faster than loops)
+results2 <- apply(m, 1, sum)
+results2
+```
+
+Apply takes the following arguments:
+
+1. Our input, the matrix, 
+2. The dimension of the matrix  on which the function should be applied ((1 means rows and 2 means columns))
+    - apply(data, 1, mean) = apply mean on each row
+    - apply(data, 2, mean) = apply mean on each column
+3. The function we want to use. Here, the function sum is applied to each row of m. 
+
+Actually, there is a family of apply functions, depending on the object you pass as an input, and/or the object you want as output. You can read a brief tutorial under this [link](http://datascienceplus.com/using-the-apply-family-of-functions-in-r/).
+
+Two other examples are sapply and lapply, which work on lists.
+
+
+## if-else
+
+One can also create a decision making structure in R. A decision making structure has at least one condition to be evaluated together with a statement or statements to be evaluated if the condition is TRUE, and optionally, other statements to be executed if the condition is FALSE, as we can see in the figure.
+
+The test_expression has to be logical, i.e., it has to be a expression that, when evaluated, is either TRUE or FALSE. The logical operators listed above can be used to construct them. For example, we can use an if-else statement to check if a number is positive or negative,
+
+```{r}
+#store a random number
+x <- -5
+
+#write a loop and ask if our number is positive or negative
+if (x > 0) {
+print("Positive number")
+} else if (x == 0) {
+print("Number is zero")
+} else {
+print("Negative number")
+}
+```
+
+Note that in the example there was an else if. In that way we can check more than 2 conditions.
+
+This of course is a very simplistic example. But if-else statements can be useful if we want to deal with larger dataframes, i.e. our growth data.
+
+Specifically, we want to:
+
+- Create a new column, with the name `category`
+- If a value in our Root length column is equal to or smaller than 10, we want to say this category is small.
+- If that is not the case, we want to say it is large
+
+
+```{r}
+#apply ifelse
+growth_data$category <- ifelse(growth_data$Rootlength<=10.0, "small", "large")
+
+#check the structure of our data
+kable(growth_data) %>%
+  kable_styling() %>%
+  scroll_box(width = "700px", height = "400px")
+```
+
+So the function works like this:
+
+**ifelse(our_test, value_to_return_if_test_is_true, value_to_return_if_test_is_false)**
+
+We can also combine different statements with the & (AND) or | (OR) symbol. 
+I.e. we only send things in the big category if the roots are longer than 10cm AND the shoot weight is larger than 15mg
+
+```{r}
+#apply ifelse
+growth_data$category <- ifelse(growth_data$Rootlength>10 & growth_data$FW_shoot_mg>15, "large", "small")
+
+#check the structure of our data
+kable(growth_data) %>%
+  kable_styling() %>%
+  scroll_box(width = "700px", height = "400px")
+```
+

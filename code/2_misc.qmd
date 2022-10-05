@@ -6,3 +6,26 @@ If we want to search for the end of the line to, for example, add two spaces (an
 
 - find ```(.)$`` with Regex selected
 - and replace with ```\1your_string```
+
+
+## Print the session info:
+
+This prints our session info (used R version, packages, etc) and is very important to store to reproduce our code for others
+
+```{r,eval=T}
+#|eval: false
+sessionInfo()
+```
+
+
+
+
+### Clean-up the working environment
+
+Notice: At the moment, we do not want to clean up the working directory, therefore, in our documentation we put a ``#`` in front of it. If you want to run the code just remove the ``#``
+
+```{r}
+#rm(list = ls()) 
+```
+
+

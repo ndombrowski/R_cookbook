@@ -1,0 +1,542 @@
+---
+execute:
+    eval: true
+
+df-print: paged
+---
+
+
+# Statistics in R
+
+
+A lot of helpful information that that was used here was inspired by a more detailed site that can be found [here](http://www.learnbymarketing.com/tutorials/linear-regression-in-r/)
+
+And please take note, that the writer of this tutorial is no statistician and if you spot issues feel free to let me know!
+
+
+```{r}
+#| echo: false
+#| warning: false
+ 
+#load libs
+library(knitr)
+library(kableExtra)
+
+#read in data
+timecourse <- read.table("../data/Timecourse.txt", sep="\t", header=T,  quote = "")
+growth_data <- read.table("../data/Growth_Data.txt", sep="\t", header=T,  quote = "")
+
+#remove NAs
+timecourse_noNA <- timecourse[!is.na(timecourse$Rootlength), ]
+```
+
+
+
+## Summary stats
+
+To do some basic stats we use the nutrient growth data set, which you find in the R_exercises folder. 
+
+- ``means()`` = print the mean of a certain column
+- ``summary()``= print the mean, median, max, min, ... of a certain column.
+
+```{r}
+#get the menas of our root length
+mean(growth_data$Rootlength)
+```
+
+```{r}
+#return summary stats for the root length
+summary(growth_data$Rootlength)
+```
+
+We can also summarize data of several columns
+
+```{r}
+#return summary stats for the root length
+summary(growth_data[,c("Rootlength", "FW_shoot_mg")])
+```
+
+
+We can also run ``summary()`` on our complete dataframe.
+
+```{r}
+#run summary on all our data
+summary(growth_data)
+```
+
+This way we do not only get summary stats for our values, but also we get some counts on how many measurements we have for different conditions.
+
+
+## The table command
+
+The function table builds a contingency table of the counts at each factor level, or combinations of factor levels. This is quite useful to count the number of data points with certain metadata associated. So for example for our genome data we can ask how many measurements we made for each condition.
+
+```{r}
+#summarize how many measurements we have for each treatment
+table(growth_data$SampleID)
+```
+
+Here, we see that we have a slightly different number of measurements for each condition and timepoint. 
+For this tutorial we can ignore them, but this might be relevant if we have huge differences for some statistical analyses.
+This approach allows you to for larger datasets to easily check for samples that might be outliers in terms of measurements per sample.
+
+
+## The ddply command
+
+The table command can get rather slow and there are some useful packages to speed up things and run more complicated mathematical operations. One example is the ``ddply()`` function of the plyr package. A useful feature of ddply is that this tool stores the output as a dataframe instead of a table.
+
+Below we see examples were we summarize the data for the root length across different nutrient conditions. 
+I.e. we do not want to have the mean for all root lengths but we want to see if roots have different lengths under low and high P conditions.
+
+```{r}
+#load our package
+library(plyr)
+
+#calculate the mean root length across our Sample IDs
+growth_data_summarized <- ddply(growth_data, .(Nutrient), summarize, Mean_RootLength = mean(Rootlength))
+
+#view data
+head(growth_data_summarized)
+```
+
+The structure of the command is as follows:
+
+**ddply(Input_Data, .(Colum_we_want_to_sum_arcoss), summarize, New_Column_name = mean(Column_we_want_to_calc_the_mean_for))**
+
+We can also summarize the data combining different conditions (i.e. nutrient and condition).
+
+```{r}
+#Summarize our data across Nutrients and Conditions
+growth_data_summarized <- ddply(growth_data, .(Nutrient, Condition), summarize, Mean_RootLength = mean(Rootlength))
+
+#view data
+head(growth_data_summarized)
+```
+
+We can also calculate the mean, sd and se in one line of code
+
+```{r}
+#and we can use even fancier functions (i.e. get the se and sd), check the plyr package for more details
+growth_data_summarized <- ddply(growth_data, .(Nutrient, Condition), summarize, RootLength = mean(Rootlength), sd = sd (Rootlength), se = sd(Rootlength) / sqrt((length(Rootlength))))
+
+#view data
+head(growth_data_summarized)
+```
+
+
+## tidyr
+
+Tydir is another package to summarize data but also to transform data. 
+For now we will just discuss the basics to summarize data but we will try to add an extended section on this package later.
+
+You notice here that the syntax is a bit unusual and we use the `` %>%`` symbol (a so-called forward pipe operator).
+This symbol is commonly used in the **dplyr** and **tidyr** packages.
+This function passes the left hand side of the operator to the first argument of the right hand side of the operator. 
+
+In the following example, the a subset of the growth_data data (only 3 columns, not the whole dataframe) gets passed to ``count()``
+
+New functions:
+
+- ``count()`` = A function of the dplyr package. Here, we count the unique protein IDs grouped by BinID and gene (i.e. roughly equivalent to the columns we want to keep)
+- ``summarize()`` creates new data frame into one (or more) rows for each combination of grouping variables; if there are no grouping variables, the output will have a single row summarising all observations in the input. It will contain one column for each grouping variable and one column for each of the summary statistics that you have specified.
+- ``mean()`` = calculate the  arithmetic mean.
+
+```{r}
+#| warning: false
+#| error: false
+    
+#read in package
+library(tidyverse)
+```
+
+```{r}
+#count how many measurements we have per conditions
+growth_data %>% count(Condition, sort = FALSE)
+```
+
+```{r}
+#count how many measurements we have per nutrient and conditions
+growth_data %>% count(Nutrient, Condition, sort = FALSE)
+```
+
+```{r}
+#get more comprehensive data stats and summarize for the whole dataset
+growth_data %>% summarise(
+          count = n(),
+          mean_root = mean(Rootlength, na.rm = TRUE))
+```
+
+Good things about tydir are:
+
+- it is extremely fast, so is important for dealing with larger datasets
+- we can combine several compands by using the pipe
+
+I.e. below we can see that we first group the input data and then summarized the group data.
+
+```{r}
+#get more comprehensive data stats and summarize and grouping for the different conditions
+growth_data %>% 
+    group_by(Nutrient, Condition) %>%  
+    summarise(
+          count = n(),
+          mean_root = mean(Rootlength, na.rm = TRUE) ,.groups = 'drop')
+```
+
+We can also do other stats than just calculating the mean: 
+
+```{r}
+#get more comprehensive data stats and summarize and grouping for the different conditions
+growth_data %>% 
+    group_by(Nutrient, Condition) %>%  
+    summarise(
+          count = n(),
+          mean_root = mean(Rootlength, na.rm = TRUE),
+          sd_root = sd(Rootlength),.groups = 'drop')
+```
+
+Other useful summary functions:
+
+- `mean(x)`: sum of x divided by the length
+- `median(x)`: 50% of x is above and 50% is below
+
+- `sd(x)`: standard deviation
+- `IQR(x)`: interquartile range (robust equivalent of sd when outliers are present in the data)
+- `mad(x)`: median absolute deviation (robust equivalent of sd when outliers are present in the data)
+
+- `min(x)`: minimum value of x
+- `max(x)`: maximum value of x
+- `quantile(x, 0.25)`: 25% of x is below this value
+
+- `first(x)`: equivalent to x[1]
+- `nth(x, 2)`: equivalent to n<-2; x[n]
+- `last(x)`: equivalent to x[length(x)]
+
+- `n(x)`: the number of elements in x
+- `sum(!is.na(x))`: count non-missing values
+- `n_distinct(x)`: count the number of unique value
+
+- `sum(x > 10)`: count the number of elements where x > 10
+- `mean(y == 0)`: proportion of elements where y = 0
+
+
+
+## More stats: tapply
+
+Tapply is a base R function and allows to apply a function to each cell of a ragged array, that is to each (non-empty) group of values given by a unique combination of the levels of certain factors. It can be used as an alternative to ddply.
+
+Suppose now we want to estimate the mean root length for each growth condition. Notice, how we can vary the index?
+
+```{r}
+#index = factors we want to select
+tapply(X = growth_data$Rootlength, INDEX = growth_data$Nutrient, FUN = mean,na.rm = TRUE)
+```
+
+```{r}
+#same but for two-way tables (this is not so useful here, but might be handy when you have different conditions for the same organism or a timecourse)
+tapply(growth_data$Rootlength, INDEX = list(growth_data$Nutrient, growth_data$Condition),FUN = mean, na.rm = TRUE)
+```
+
+
+## Linear models 
+
+### Basics
+
+It is very simple to investigate linear relationships among variables in R. We want to estimate how a quantitative dependent variable changes according to the levels of one or more categorical independent variables. In the command below, the linear relationship between Rootlength (the **dependent** variable, i.e. the one we’re trying to predict) and FW_shoot_mg (the **independent** variable or the predictor) is calculated.
+
+We need to use the function summary to see the results of that command; coef extracts the best-fit coefficients, anova performs an analysis of variance; there are many other extractor functions.
+
+In this case lets work with the data were we do not have to deal with the different time points to simplify things.
+
+```{r}
+#read in data were we have several measurements
+growth_data <- read.table("../data/Growth_Data.txt", sep="\t", header=T, fill=TRUE, quote = "")
+
+#is there a correlation between freshweight and root length?
+linearmodel <- lm(Rootlength ~ FW_shoot_mg, data = growth_data)
+linearmodel
+```
+
+```{r}
+#let's extract the entire t-table
+summary(linearmodel) 
+```
+
+Here one of the values is the model p-Value (bottom last line) and the p-Value of individual predictor variables (extreme right column under ‘Coefficients’). The p-Values are very important because, we can consider a linear model to be statistically significant only when both these p-Values are less that the pre-determined statistical significance level, which is ideally 0.05. This is visually interpreted by the significance stars at the end of the row. The more the stars beside the variable’s p-Value, the more significant the variable.
+
+* Residuals: The section summarizes the residuals, the error between the prediction of the model and the actual results.  Smaller residuals are better.
+* Coefficients: For each variable and the intercept, a weight is produced and that weight has other attributes like the standard error, a t-test value and significance.
+* Estimate: This is the weight given to the variable.  In the simple regression case (one variable plus the intercept), for every increase in root length, the model predicts an increase of 0.24.
+* Std. Error: Tells you how precisely was the estimate measured.  It’s really only useful for calculating the t-value.
+* t-value and Pr(>[t]): The t-value is calculated by taking the coefficient divided by the Std. Error.  It is then used to test whether or not the coefficient is significantly different from zero.  If it isn’t significant, then the coefficient really isn’t adding anything to the model and could be dropped or investigated further.  Pr(>|t|) is the significance level.
+
+Performance Measures: 
+
+Three sets of measurements are provided.
+
+* Residual Standard Error: This is the standard deviation of the residuals.  Smaller is better.
+* Multiple / Adjusted R-Square: For one variable, the distinction doesn’t really matter.  R-squared shows the amount of variance explained by the model.  Adjusted R-Square takes into account the number of variables and is most useful for multiple-regression.
+* F-Statistic: The F-test checks if at least one variable’s weight is significantly different than zero.  This is a global test to help asses a model.  If the p-value is not significant (e.g. greater than 0.05) than your model is essentially not doing anything.
+
+We also can just print parts of the data:
+
+```{r}
+#print only the coefficients 
+coef(summary(linearmodel))
+```
+
+```{r}
+#print only the anova stats
+anova(linearmodel)
+```
+
+```{r}
+#plot add the best line to a plot
+with(growth_data, plot(Rootlength ~ FW_shoot_mg, col = 2))
+abline(linearmodel)
+```
+
+If we look at the stats and the p value we see a nice correlation but also that we have two distinct clusters as well as more spread in the cluster that is more to the right. These clusters likely are the two different nutrient conditions and sometimes it might make sense to separate data to get a clearer picture. Something else to consider is to ask whether the data is normally distributed and based on that what statistical test to choose.
+
+
+### Analysing residuals
+
+Anyone can fit a linear model in R. The real test is analyzing the residuals (the error or the difference between actual and predicted results).
+
+There are four things we are looking for when analyzing residuals.
+
+- The mean of the errors is zero (and the sum of the errors is zero)
+- The distribution of the errors are normal.
+- All of the errors are independent.
+- Variance of errors is constant (Homoscedastic)
+
+In R, you pull out the residuals by referencing the model and then the resid variable inside the model.  Using the simple linear regression model (simple.fit) we’ll plot a few graphs to help illustrate any problems with the model.
+
+Below some examples:
+
+```{r}
+simple.fit <- linearmodel
+
+layout(matrix(c(1,1,2,3),2,2,byrow=T))
+
+#Rootlength x Residuals Plot
+plot(simple.fit$resid~growth_data$Rootlength[order(growth_data$Rootlength)],
+ main="Rootlength x Residuals\nfor Simple Regression",
+ xlab="Marketing Rootlength", ylab="Residuals")
+abline(h=0,lty=2)
+
+#Histogram of Residuals
+hist(simple.fit$resid, main="Histogram of Residuals",
+ ylab="Residuals")
+
+#Q-Q Plot
+qqnorm(simple.fit$resid)
+qqline(simple.fit$resid)
+```
+
+
+The histogram and QQ-plot are the ways to visually evaluate if the residual fit a normal distribution.
+
+- If the histogram looks like a bell-curve it might be normally distributed.
+- If the QQ-plot has the vast majority of points on or very near the line, the residuals may be normally distributed.
+
+
+## Normal distribution
+
+
+### Visualize our data via density plots
+
+There are different ways to visualize this, one example is ggdensity of the ggpubr package.
+
+```{r}
+library("ggpubr")
+
+#is the data for my different variables normally distributed
+ggdensity(growth_data$Rootlength)
+```
+
+We see nicely that we have two tails that likely represent the two nutrient conditions. To test this, we can simply subset the data as we have done before.
+
+```{r}
+ggdensity(growth_data, x = "Rootlength",
+   add = "mean", rug = TRUE,
+   color = "Nutrient", palette = c("#00AFBB", "#E7B800"))
+```
+
+No we see that indeed the tool tails we see are seem to be due to our two nutrient conditions.
+
+
+### Visualize our data via Q-Q plots
+
+Another way to represent data is in  a Q-Q plot: Q-Q plot (or quantile-quantile plot) draws the correlation between a given sample and the normal distribution. A 45-degree reference line is also plotted.
+
+```{r}
+#plot all data
+ggqqplot(growth_data$Rootlength)
+```
+
+
+```{r}
+#plot by group
+ggqqplot(growth_data, x = "Rootlength",
+         color = "Nutrient",  palette = c("#00AFBB", "#E7B800"))
+```
+
+Again, here we see that our data for the indivdual growth conditions fit quite nicely into normal distribution.
+
+
+### Test for normality
+
+```{r}
+#for all data
+shapiro.test(growth_data$Rootlength)
+```
+
+
+```{r}
+#separate nutrient conditions
+noP_data <- growth_data[growth_data$Nutrient == "noP", ]
+
+#test for noP only
+shapiro.test(noP_data$Rootlength)
+```
+
+We can use ddplyr and the dlookr package for doing a group-wise comparison
+
+
+```{r}
+library(dplyr)
+library(dlookr)
+
+growth_data %>%
+  group_by(Nutrient) %>%
+  normality()
+```
+
+
+The shapiro.test tests the NULL hypothesis that the samples came from a Normal distribution. This means that if your p-value <= 0.05, then you would reject the NULL hypothesis that the samples came from a normal distribution.
+
+From the output, the p-value < 0.05 for our complete dataset implies that the distribution of the data is significantly different from normal distribution. In other words, we can not assume the normality. However, we expect quite some differences dependent on the growth pattern and once we only look at our low P data we see that our indeed is normally distributed.
+
+Notice: Shapiro works only for sample sizes between 3-5000 numbers since when you feed it more data, the chances of the null hypothesis being rejected becomes larger. An alternative is the Anderson-Darling test that however has a similar problem with the Shapiro Wilk test. For large samples, you are most likely to reject the null hypothesis, so be aware of this.
+
+```{r}
+library(nortest)
+ad.test(noP_data$Rootlength)
+```
+
+
+
+
+## ANOVA
+
+When we visualize the data, we see that there is a difference between the nutrient conditions but we want to know whether it is significant and more importantly, whether there is also a difference based on our treatments with different strains of microbes.
+
+```{r}
+#lets visually compare our data with ggpubr again
+library("ggpubr")
+
+ggboxplot(growth_data, x = "Condition", y = "Rootlength", color = "Nutrient",
+          palette = c("#00AFBB", "#E7B800"))
+```
+
+```{r}
+# We want to know whether root length depends on nutrient treatment
+aov <- aov(Rootlength ~ Nutrient, data = growth_data)
+summary(aov)
+```
+
+Here, we see that there are significant differences based on our nutrient treatments. Now lets see how we can look at both the nutrient treatment and growth conditions.
+
+```{r}
+# We want to know if root length depends on condition and nutrient
+aov <- aov(Rootlength ~ Nutrient + Condition, data = growth_data)
+summary(aov)
+```
+
+From the ANOVA table we can conclude that both nutrient condition and treatment are statistically significant. Nutrient treatment is the most significant factor variable. 
+
+Not the above fitted model is called additive model. It makes an assumption that the two factor variables are independent. If you think that these two variables might interact to create an synergistic effect, replace the plus symbol (+) by an asterisk (*), as follows.
+
+
+```{r}
+# Two-way ANOVA with interaction effect
+
+# These two calls are equivalent
+aov <- aov(Rootlength ~ Nutrient * Condition, data = growth_data)
+aov <- aov(Rootlength ~ Nutrient + Condition + Nutrient:Condition, data = growth_data)
+
+#summarize the aov
+summary(aov)
+```
+
+It can be seen that the two main effects (Nutrient and Condition) are statistically significant, as well as their interaction.
+
+**Note that, in the situation where the interaction is not significant you should use the additive model.**
+
+
+
+## TUKEY
+
+In ANOVA test, a significant p-value indicates that some of the group means are different, but we don’t know which pairs of groups are different. It’s possible to perform multiple pairwise-comparison, to determine if the mean difference between specific pairs of group are statistically significant.
+
+As the ANOVA test is significant, we can compute Tukey HSD (Tukey Honest Significant Differences). Tukey test is a single-step multiple comparison procedure and statistical test. It is a post-hoc analysis, what means that it is used in conjunction with an ANOVA.
+
+```{r}
+#test with anova
+aov <- aov(Rootlength ~ Nutrient * Condition, data = growth_data)
+
+#run tukey
+TukeyHSD(aov)
+```
+
+
+
+We can see that most differences are significant, with the exception of Strain28, which in most cases does not show an effect.
+
+For some representations it is useful to plot significant letters. We can do this using some extra packages as follows:
+
+```{r}
+#load library
+library(agricolae)
+
+#separate nutrient conditions
+noP_data <- growth_data[growth_data$Nutrient == "noP", ]
+
+#run an anova
+aov_noP <- aov(Rootlength ~ Condition, data = noP_data)
+
+#run test
+HSD.test(aov_noP,"Condition", group=TRUE,console=TRUE)
+```
+
+
+
+## Check the homogeneity of variances
+
+The residuals versus fits plot is used to check the homogeneity of variances. In the plot below, there is no evident relationships between residuals and fitted values (the mean of each groups), which is good. So, we can assume the homogeneity of variances. Only a few points (41, 58 and 77 are detected as outliers, which can severely  normality and homogeneity of variance. It can be useful to remove outliers to meet the test assumptions.)
+
+```{r}
+#check for homogeneity
+plot(aov, 1)
+
+#Use the Levene’s test to check the homogeneity of variances. 
+library(car)
+leveneTest(Rootlength ~ Nutrient * Condition, data = growth_data)
+```
+
+From the output above we can see that the p-value is not less than the significance level of 0.05. This means that there is no evidence to suggest that the variance across groups is statistically significantly different. Therefore, we can assume the homogeneity of variances in the different treatment groups.
+
+
+## Check for normality v2
+
+Normality plot of the residuals. In the plot below, the quantiles of the residuals are plotted against the quantiles of the normal distribution. A 45-degree reference line is also plotted. The normal probability plot of residuals is used to verify the assumption that the residuals are normally distributed.
+
+The normal probability plot of the residuals should approximately follow a straight line. which we can see below. Again, we see the points marked as potential outliers.
+
+```{r}
+## plot
+plot(aov, 2)
+```
+
+
+

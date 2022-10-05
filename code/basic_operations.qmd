@@ -1,0 +1,122 @@
+# Basic operations
+
+
+- R can work as a calculator and knows all basic operations
+- In expressions and assignments, R does not care about spaces
+- Another important character is the semicolon. R evaluates code line by line. A line break tells R that a statement has to be evaluated. Instead, you can use a semicolon to tell R where a statement ends
+
+
+```{r}
+#| echo: false
+#| warning: false
+ 
+#load libs
+library(knitr)
+library(kableExtra)
+
+#read in data
+timecourse <- read.table("../data/Timecourse.txt", sep="\t", header=T,  quote = "")
+growth_data <- read.table("../data/Growth_Data.txt", sep="\t", header=T,  quote = "")
+
+#remove NAs
+timecourse_noNA <- timecourse[!is.na(timecourse$Rootlength), ]
+```
+
+
+```{r}
+#add
+3+2 
+```
+
+```{r}
+#multiply
+3.5*3
+```
+
+```{r}
+#divide
+2.1/3
+```
+
+```{r}
+#exponentials
+2^10
+```
+
+```{r}
+#more complex functions also work
+3*(5+2^1)
+```
+
+```{r}
+#combining two operations into one using a semicolon
+5+9 ; 4+5
+```
+
+
+
+## Logical operators
+
+One important features of R (and of any programming language) are logical operators. 
+
+When R evaluates an expression containing logical operators, it will return either TRUE or FALSE. It follows a list of them:
+
+```{r table_useful2, echo=FALSE, message=FALSE, warnings=FALSE}
+table2 <- data.frame(
+Operator = c("<",">","<=",">="),
+Meaning = c("less than ", "greater than ", "less than or equal to", "greater than or equal to" ),
+Operator = c("==", "!=", "&", "|"),
+Meaning = c("equal", "not equal", "and", "or")
+)
+
+kable(table2, format = "markdown",  align = 'l', booktabs = T, 
+      col.names = c("Operator", "Meaning","Operator", "Meaning" ) )
+```
+
+
+## Examples for using operators:
+
+### Basic operators
+
+```{r}
+#basic operators
+1==1
+```
+
+```{r}
+2>1
+```
+
+```{r}
+1==1 & 1>2
+```
+
+```{r}
+(1==1& 1>2) | 5<6
+```
+
+### Using operators to subset dataframes
+
+```{r}
+#only print data for the normal P conditions
+P_data <- growth_data[growth_data$Nutrient == "P", ]
+
+#test that all went ok
+dim(growth_data)
+dim(P_data)
+```
+
+```{r}
+#we can also subset our data by numbers, i.e. only keep rows were roots are longer than 5cm
+growth_data_10cm <- growth_data[growth_data$Rootlength > 5, ]
+dim(growth_data_10cm)
+```
+
+```{r}
+#instead of keeping rows with roots longer than 5cm we can also remove them using *!*
+growth_data_no10cm <- growth_data[!growth_data$Rootlength > 5, ]
+dim(growth_data_no10cm)
+```
+
+**Above you see a good example why dim() can very useful as it allows us to quickly check that what we do actually works. Always check afterwards that your function did what you expect you to do since as long as R is able to do something it will do it regardless if that might be different that you want R to do.**
+

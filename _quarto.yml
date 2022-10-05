@@ -11,6 +11,12 @@ book:
   chapters:
     - index.qmd
     - code/1_intro.qmd
+    - code/data_types.qmd
+    - code/data_transformations.qmd
+    - code/control_structures.qmd
+    - code/stats.qmd
+    - code/plotting_basics.qmd
+    - code/parsing_output_from_annotations.qmd
     - code/2_misc.qmd
 
 bibliography: references.bib
@@ -38,6 +44,8 @@ execute:
   eval: false
   freeze: auto
 
-knitr:
-  opts_chunk:
-    collapse: true
+#knitr:
+#  opts_chunk:
+#    collapse: true
+
+df-print: paged

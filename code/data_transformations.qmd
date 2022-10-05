@@ -1,0 +1,266 @@
+---
+execute:
+    eval: true
+
+df-print: paged
+---
+
+# Data transformations
+
+```{r}
+#| echo: false
+#| warning: false
+ 
+#load libs
+library(knitr)
+library(kableExtra)
+
+#read in data
+timecourse <- read.table("../data/Timecourse.txt", sep="\t", header=T,  quote = "", stringsAsFactors = TRUE)
+growth_data <- read.table("../data/Growth_Data.txt", sep="\t", header=T,  quote = "", stringsAsFactors = TRUE)
+
+#remove NAs
+timecourse_noNA <- timecourse[!is.na(timecourse$Rootlength), ]
+```
+
+
+## Dealing with NAs in our data
+
+### Removing NAs
+
+NAs are generated when our data contains a missing value. This can become problematic for certain computations and we can decide to remove all NAs.
+
+The function to do this is ``is.na``. 
+
+
+```{r}
+#create a vector that includes an NA
+y <- c(1,2,3,NA,5)
+
+#check whether we have NAs
+is.na(y)
+```
+
+```{r}
+#remove NAs from our data
+y[!is.na(y)]
+```
+
+- `!=` is "not equal to."
+- The function `is.na(z)` gives a logical vector of the same size as z with value TRUE if and only if the corresponding element in z is NA.
+- I.e. in this example we have FALSE FALSE FALSE  TRUE FALSE
+- When using `y[!is.na(y)]`, we retain the columns were `is.na` is False
+
+
+#### Replacing NAs with something else
+
+Another option might be to replace a NA with a 0 (or whatever else makes sense in a given context)
+
+```{r}
+#create a vector that includes an NA
+x <- c(1,2,3,NA,5)
+
+#check whether we have NAs
+is.na(x)
+
+#remove NAs from our data
+x[is.na(x)] <- 0
+
+#check data
+x
+```
+
+Notice, that here we use a similar syntax compared to before. Now we do
+
+- Find the NAs (I.e. in this example we have FALSE FALSE FALSE  TRUE FALSE)
+- If NA is TRUE then replace it with a 0
+
+### Replacing NAs in our dataframe
+
+Remember, in the beginning we said that their are NAs in our timecourse data. Let's have a look at this data and find the rows that contain no values.
+
+```{r}
+#check in which rows we have NAs inside the root length measurements
+which(is.na(timecourse$Rootlength)) 
+```
+
+```{r}
+#check a row with a NA value
+timecourse[29,]
+```
+
+```{r}
+#remove rows that contain NAs
+timecourse_noNA <- timecourse[!is.na(timecourse$Rootlength), ]
+
+#check if that worked
+which(is.na(timecourse_noNA$Rootlength)) 
+```
+
+## Subsetting our data
+
+We already have seen important ways to subset data:
+
+1. Use of the index by using the square brackets
+
+```{r}
+#subsetting rows and columns using the index
+growth_data[1:3,2:4]
+```
+
+2. Use of operators
+
+```{r}
+#subset using operators (only print rows if the Nutrient column equals P)
+P_data <- growth_data[growth_data$Nutrient == "P", ]
+head(P_data)
+```
+
+Now we want to look at some other examples:
+
+### grep and grepl
+
+Oftentimes you may need to filter a data set based on a partial character string that is beyond the scope of comparison operators.
+
+R provides such functions (grep and grepl) that match character patterns in specified vector.  While both of these functions find patterns, they return different output types based on those patterns.  
+
+- grep returns numeric values that correspond to the indexed locations of the patterns
+- grepl returns a logical vector in which 'TRUE' represents a pattern match.
+
+In our growth data, we only want to print measurements of our controls (i.e. MgCL treatments).
+
+```{r}
+#find the row index values with MgCL treatments using grep
+grep("MgCl", growth_data$Condition)
+```
+
+```{r}
+#use grepl to search for MgCL treatments, returning FALSE/TRUE statements for each row of our dataframe
+#with "TRUE" representing matched patterns
+grepl("Strain", growth_data$Condition)
+```
+
+Now lets use this to actually filter our data table for a pattern.
+
+#### Filter usign grep
+
+```{r}
+#use grep
+filter_for_value <-timecourse_noNA[grep("MgCl", timecourse_noNA$Condition),]
+
+#check the first rows of our data
+head(filter_for_value)
+
+#check the dimensions of the original dataframe
+dim(timecourse_noNA)
+
+#check the dimensions of our new dataframe
+dim(filter_for_value)
+```
+
+
+#### Filter usign grepl
+
+```{r}
+filter_for_value <-timecourse_noNA[grepl("MgC", timecourse_noNA$Condition),]
+
+#check the first rows of our data
+head(filter_for_value)
+
+#check the dimensions of the original dataframe
+dim(timecourse_noNA)
+
+#check the dimensions of our new dataframe
+dim(filter_for_value)
+```
+### Discard matching columns
+
+```{r}
+#filter data set based on values that do not match the specified pattern (by using the ! symbol)
+filter_for_not_a_value <- timecourse_noNA[!grepl("MgCl", timecourse_noNA$Condition),]
+
+#view dataframe
+head(filter_for_not_a_value)
+
+#check the dimensions of the original dataframe
+dim(timecourse_noNA)
+
+#check the dimensions of our new dataframe
+dim(filter_for_not_a_value)
+```
+
+Other comments:
+
+- Using regular expressions (programming symbol pattern) will increase their functionality
+- Specified patterns are case sensitive ('t' does not equal 'T')
+- Any matching pattern will be returned despite the context in which that pattern is located (i.e., grep('the', data) with return matches for 'the', 'theme', 'heather', 'breathe', and so on. This is where regular expressions are useful for specifying where in a string the pattern should appear.
+
+
+
+### Using regular expressions
+
+A regular expression (regex or regexp for short) is a special text string for describing a search pattern. You can think of regular expressions as wildcards on steroids. You are probably familiar with wildcard notations such as *.txt to find all text files in a file manager. 
+
+Regular expressions are explained in the AWK and General notebook. But just to give an example lets just grep Strains that have a 3 letter number
+
+If you want to know more, see this [cheat sheet here](https://www3.ntu.edu.sg/home/ehchua/programming/howto/Regexe.html)
+
+```{r}
+filter_3letters <- growth_data[grepl("[0-9]{3}", growth_data$Condition),]
+
+#check the structure of our data
+head(filter_3letters)
+
+#check the dimensions of the original dataframe
+dim(timecourse_noNA)
+
+#check the dimensions of our new dataframe
+dim(filter_3letters)
+```
+
+Here, ``[0-9]`` searches for every number from 0-9 and we look for three numbers.  
+
+### Levels and subsetting
+
+One important thing with subsetting is that the levels are still kept. So with the command above we remove every row that is not Strain101 and Strain230. However, the levels are still kept. Let's check this:
+
+```{r}
+levels(filter_3letters$Condition)
+```
+
+So we see that MgCl and Strain28 are still in the levels even if they do not occur in our table itself. Sometimes when working with subsetted dataframes, i.e. when doing stats or plotting, this can interfere with our analysis. Here, it is useful to drop empty levels.
+
+```{r}
+filter_3letters_clean <- droplevels(filter_3letters)
+levels(filter_3letters_clean$Condition)
+```
+
+
+## Add new columns to our data and combining values in different columns
+
+We can also add new columns into original table, i.e. if we want to not show the fresh weight in mg but in g.
+
+Below you can see that if we have numerical data in a column, we can use normal math operators (like +,-,/)
+
+```{r}
+#convert mg to g
+growth_data$FW_shoot_g <- growth_data$FW_shoot_mg/10
+head(growth_data)
+```
+
+```{r}
+#we can also round our data
+growth_data$FW_shoot_g <- round(growth_data$FW_shoot_mg/10, digits = 2)
+head(growth_data)
+```
+
+We can also add (or substract, etc ...) values from different columns. I.e. here we could calculate the ratios.
+
+```{r}
+#we can also do math with the values in two columns, i.e. if we want to calculate the ration between root length and fresh weight
+growth_data$ratio <- growth_data$Rootlength/growth_data$FW_shoot_mg
+head(growth_data)
+```
+
+
+

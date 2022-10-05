@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>R cookbook - 5&nbsp; Statistics in R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../code/plotting_basics.html" rel="next">
+<link href="../code/control_structures.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistics in R</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../" class="sidebar-logo-link">
+      <img src="../images/tree_of_life.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">R cookbook</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/1_intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction into R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/data_types.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data objects</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/data_transformations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data transformations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/control_structures.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Control Structures</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/stats.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistics in R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/plotting_basics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Basic plotting</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/parsing_output_from_annotations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Working with annotation data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/2_misc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Miscellaneous</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#summary-stats" id="toc-summary-stats" class="nav-link active" data-scroll-target="#summary-stats"><span class="toc-section-number">5.1</span>  Summary stats</a></li>
+  <li><a href="#the-table-command" id="toc-the-table-command" class="nav-link" data-scroll-target="#the-table-command"><span class="toc-section-number">5.2</span>  The table command</a></li>
+  <li><a href="#the-ddply-command" id="toc-the-ddply-command" class="nav-link" data-scroll-target="#the-ddply-command"><span class="toc-section-number">5.3</span>  The ddply command</a></li>
+  <li><a href="#tidyr" id="toc-tidyr" class="nav-link" data-scroll-target="#tidyr"><span class="toc-section-number">5.4</span>  tidyr</a></li>
+  <li><a href="#more-stats-tapply" id="toc-more-stats-tapply" class="nav-link" data-scroll-target="#more-stats-tapply"><span class="toc-section-number">5.5</span>  More stats: tapply</a></li>
+  <li><a href="#linear-models" id="toc-linear-models" class="nav-link" data-scroll-target="#linear-models"><span class="toc-section-number">5.6</span>  Linear models</a>
+  <ul class="collapse">
+  <li><a href="#basics" id="toc-basics" class="nav-link" data-scroll-target="#basics"><span class="toc-section-number">5.6.1</span>  Basics</a></li>
+  <li><a href="#analysing-residuals" id="toc-analysing-residuals" class="nav-link" data-scroll-target="#analysing-residuals"><span class="toc-section-number">5.6.2</span>  Analysing residuals</a></li>
+  </ul></li>
+  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution"><span class="toc-section-number">5.7</span>  Normal distribution</a>
+  <ul class="collapse">
+  <li><a href="#visualize-our-data-via-density-plots" id="toc-visualize-our-data-via-density-plots" class="nav-link" data-scroll-target="#visualize-our-data-via-density-plots"><span class="toc-section-number">5.7.1</span>  Visualize our data via density plots</a></li>
+  <li><a href="#visualize-our-data-via-q-q-plots" id="toc-visualize-our-data-via-q-q-plots" class="nav-link" data-scroll-target="#visualize-our-data-via-q-q-plots"><span class="toc-section-number">5.7.2</span>  Visualize our data via Q-Q plots</a></li>
+  <li><a href="#test-for-normality" id="toc-test-for-normality" class="nav-link" data-scroll-target="#test-for-normality"><span class="toc-section-number">5.7.3</span>  Test for normality</a></li>
+  </ul></li>
+  <li><a href="#anova" id="toc-anova" class="nav-link" data-scroll-target="#anova"><span class="toc-section-number">5.8</span>  ANOVA</a></li>
+  <li><a href="#tukey" id="toc-tukey" class="nav-link" data-scroll-target="#tukey"><span class="toc-section-number">5.9</span>  TUKEY</a></li>
+  <li><a href="#check-the-homogeneity-of-variances" id="toc-check-the-homogeneity-of-variances" class="nav-link" data-scroll-target="#check-the-homogeneity-of-variances"><span class="toc-section-number">5.10</span>  Check the homogeneity of variances</a></li>
+  <li><a href="#check-for-normality-v2" id="toc-check-for-normality-v2" class="nav-link" data-scroll-target="#check-for-normality-v2"><span class="toc-section-number">5.11</span>  Check for normality v2</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistics in R</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>A lot of helpful information that that was used here was inspired by a more detailed site that can be found <a href="http://www.learnbymarketing.com/tutorials/linear-regression-in-r/">here</a></p>
+<p>And please take note, that the writer of this tutorial is no statistician and if you spot issues feel free to let me know!</p>
+<div class="cell">
+
+</div>
+<section id="summary-stats" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="summary-stats"><span class="header-section-number">5.1</span> Summary stats</h2>
+<p>To do some basic stats we use the nutrient growth data set, which you find in the R_exercises folder.</p>
+<ul>
+<li><code>means()</code> = print the mean of a certain column</li>
+<li><code>summary()</code>= print the mean, median, max, min, … of a certain column.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get the menas of our root length</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(growth_data<span class="sc">$</span>Rootlength)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9.046117</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#return summary stats for the root length</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(growth_data<span class="sc">$</span>Rootlength)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  4.236   6.721   8.099   9.046  11.793  14.716 </code></pre>
+</div>
+</div>
+<p>We can also summarize data of several columns</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#return summary stats for the root length</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(growth_data[,<span class="fu">c</span>(<span class="st">"Rootlength"</span>, <span class="st">"FW_shoot_mg"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Rootlength      FW_shoot_mg   
+ Min.   : 4.236   Min.   : 3.75  
+ 1st Qu.: 6.721   1st Qu.: 7.69  
+ Median : 8.099   Median :11.62  
+ Mean   : 9.046   Mean   :15.23  
+ 3rd Qu.:11.793   3rd Qu.:22.05  
+ Max.   :14.716   Max.   :39.39  </code></pre>
+</div>
+</div>
+<p>We can also run <code>summary()</code> on our complete dataframe.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#run summary on all our data</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(growth_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   SampleID           Nutrient          Condition          FW_shoot_mg   
+ Length:105         Length:105         Length:105         Min.   : 3.75  
+ Class :character   Class :character   Class :character   1st Qu.: 7.69  
+ Mode  :character   Mode  :character   Mode  :character   Median :11.62  
+                                                          Mean   :15.23  
+                                                          3rd Qu.:22.05  
+                                                          Max.   :39.39  
+   Rootlength    
+ Min.   : 4.236  
+ 1st Qu.: 6.721  
+ Median : 8.099  
+ Mean   : 9.046  
+ 3rd Qu.:11.793  
+ Max.   :14.716  </code></pre>
+</div>
+</div>
+<p>This way we do not only get summary stats for our values, but also we get some counts on how many measurements we have for different conditions.</p>
+</section>
+<section id="the-table-command" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="the-table-command"><span class="header-section-number">5.2</span> The table command</h2>
+<p>The function table builds a contingency table of the counts at each factor level, or combinations of factor levels. This is quite useful to count the number of data points with certain metadata associated. So for example for our genome data we can ask how many measurements we made for each condition.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#summarize how many measurements we have for each treatment</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(growth_data<span class="sc">$</span>SampleID)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+      P   P_101   P_230    P_28     noP noP_101 noP_230  noP_28 
+     15      12      13      13      13      13      11      15 </code></pre>
+</div>
+</div>
+<p>Here, we see that we have a slightly different number of measurements for each condition and timepoint. For this tutorial we can ignore them, but this might be relevant if we have huge differences for some statistical analyses. This approach allows you to for larger datasets to easily check for samples that might be outliers in terms of measurements per sample.</p>
+</section>
+<section id="the-ddply-command" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="the-ddply-command"><span class="header-section-number">5.3</span> The ddply command</h2>
+<p>The table command can get rather slow and there are some useful packages to speed up things and run more complicated mathematical operations. One example is the <code>ddply()</code> function of the plyr package. A useful feature of ddply is that this tool stores the output as a dataframe instead of a table.</p>
+<p>Below we see examples were we summarize the data for the root length across different nutrient conditions. I.e. we do not want to have the mean for all root lengths but we want to see if roots have different lengths under low and high P conditions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load our package</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate the mean root length across our Sample IDs</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>growth_data_summarized <span class="ot">&lt;-</span> <span class="fu">ddply</span>(growth_data, .(Nutrient), summarize, <span class="at">Mean_RootLength =</span> <span class="fu">mean</span>(Rootlength))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#view data</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data_summarized)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Mean_RootLength"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"P","2":"11.513931","_rn_":"1"},{"1":"noP","2":"6.530845","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>The structure of the command is as follows:</p>
+<p><strong>ddply(Input_Data, .(Colum_we_want_to_sum_arcoss), summarize, New_Column_name = mean(Column_we_want_to_calc_the_mean_for))</strong></p>
+<p>We can also summarize the data combining different conditions (i.e.&nbsp;nutrient and condition).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Summarize our data across Nutrients and Conditions</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>growth_data_summarized <span class="ot">&lt;-</span> <span class="fu">ddply</span>(growth_data, .(Nutrient, Condition), summarize, <span class="at">Mean_RootLength =</span> <span class="fu">mean</span>(Rootlength))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#view data</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data_summarized)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Mean_RootLength"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"P","2":"MgCl","3":"9.853457","_rn_":"1"},{"1":"P","2":"Strain101","3":"12.729133","_rn_":"2"},{"1":"P","2":"Strain230","3":"11.814678","_rn_":"3"},{"1":"P","2":"Strain28","3":"12.007390","_rn_":"4"},{"1":"noP","2":"MgCl","3":"5.805198","_rn_":"5"},{"1":"noP","2":"Strain101","3":"7.094616","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>We can also calculate the mean, sd and se in one line of code</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#and we can use even fancier functions (i.e. get the se and sd), check the plyr package for more details</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>growth_data_summarized <span class="ot">&lt;-</span> <span class="fu">ddply</span>(growth_data, .(Nutrient, Condition), summarize, <span class="at">RootLength =</span> <span class="fu">mean</span>(Rootlength), <span class="at">sd =</span> <span class="fu">sd</span> (Rootlength), <span class="at">se =</span> <span class="fu">sd</span>(Rootlength) <span class="sc">/</span> <span class="fu">sqrt</span>((<span class="fu">length</span>(Rootlength))))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#view data</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data_summarized)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["RootLength"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"P","2":"MgCl","3":"9.853457","4":"1.2981376","5":"0.3351777","_rn_":"1"},{"1":"P","2":"Strain101","3":"12.729133","4":"0.9813173","5":"0.2832819","_rn_":"2"},{"1":"P","2":"Strain230","3":"11.814678","4":"0.9128499","5":"0.2531790","_rn_":"3"},{"1":"P","2":"Strain28","3":"12.007390","4":"0.5812310","5":"0.1612045","_rn_":"4"},{"1":"noP","2":"MgCl","3":"5.805198","4":"0.7738124","5":"0.2146170","_rn_":"5"},{"1":"noP","2":"Strain101","3":"7.094616","4":"0.5939804","5":"0.1647405","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="tidyr" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="tidyr"><span class="header-section-number">5.4</span> tidyr</h2>
+<p>Tydir is another package to summarize data but also to transform data. For now we will just discuss the basics to summarize data but we will try to add an extended section on this package later.</p>
+<p>You notice here that the syntax is a bit unusual and we use the <code>%&gt;%</code> symbol (a so-called forward pipe operator). This symbol is commonly used in the <strong>dplyr</strong> and <strong>tidyr</strong> packages. This function passes the left hand side of the operator to the first argument of the right hand side of the operator.</p>
+<p>In the following example, the a subset of the growth_data data (only 3 columns, not the whole dataframe) gets passed to <code>count()</code></p>
+<p>New functions:</p>
+<ul>
+<li><code>count()</code> = A function of the dplyr package. Here, we count the unique protein IDs grouped by BinID and gene (i.e.&nbsp;roughly equivalent to the columns we want to keep)</li>
+<li><code>summarize()</code> creates new data frame into one (or more) rows for each combination of grouping variables; if there are no grouping variables, the output will have a single row summarising all observations in the input. It will contain one column for each grouping variable and one column for each of the summary statistics that you have specified.</li>
+<li><code>mean()</code> = calculate the arithmetic mean.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#read in package</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#count how many measurements we have per conditions</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>growth_data <span class="sc">%&gt;%</span> <span class="fu">count</span>(Condition, <span class="at">sort =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Condition"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"MgCl","2":"28"},{"1":"Strain101","2":"25"},{"1":"Strain230","2":"24"},{"1":"Strain28","2":"28"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#count how many measurements we have per nutrient and conditions</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>growth_data <span class="sc">%&gt;%</span> <span class="fu">count</span>(Nutrient, Condition, <span class="at">sort =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["n"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"P","2":"MgCl","3":"15"},{"1":"P","2":"Strain101","3":"12"},{"1":"P","2":"Strain230","3":"13"},{"1":"P","2":"Strain28","3":"13"},{"1":"noP","2":"MgCl","3":"13"},{"1":"noP","2":"Strain101","3":"13"},{"1":"noP","2":"Strain230","3":"11"},{"1":"noP","2":"Strain28","3":"15"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get more comprehensive data stats and summarize for the whole dataset</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>growth_data <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_root =</span> <span class="fu">mean</span>(Rootlength, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["count"],"name":[1],"type":["int"],"align":["right"]},{"label":["mean_root"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"105","2":"9.046117"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Good things about tydir are:</p>
+<ul>
+<li>it is extremely fast, so is important for dealing with larger datasets</li>
+<li>we can combine several compands by using the pipe</li>
+</ul>
+<p>I.e. below we can see that we first group the input data and then summarized the group data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get more comprehensive data stats and summarize and grouping for the different conditions</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>growth_data <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Nutrient, Condition) <span class="sc">%&gt;%</span>  </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_root =</span> <span class="fu">mean</span>(Rootlength, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) ,<span class="at">.groups =</span> <span class="st">'drop'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["count"],"name":[3],"type":["int"],"align":["right"]},{"label":["mean_root"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"P","2":"MgCl","3":"15","4":"9.853457"},{"1":"P","2":"Strain101","3":"12","4":"12.729133"},{"1":"P","2":"Strain230","3":"13","4":"11.814678"},{"1":"P","2":"Strain28","3":"13","4":"12.007390"},{"1":"noP","2":"MgCl","3":"13","4":"5.805198"},{"1":"noP","2":"Strain101","3":"13","4":"7.094616"},{"1":"noP","2":"Strain230","3":"11","4":"7.172883"},{"1":"noP","2":"Strain28","3":"15","4":"6.200309"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>We can also do other stats than just calculating the mean:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get more comprehensive data stats and summarize and grouping for the different conditions</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>growth_data <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Nutrient, Condition) <span class="sc">%&gt;%</span>  </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">mean_root =</span> <span class="fu">mean</span>(Rootlength, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">sd_root =</span> <span class="fu">sd</span>(Rootlength),<span class="at">.groups =</span> <span class="st">'drop'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["count"],"name":[3],"type":["int"],"align":["right"]},{"label":["mean_root"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["sd_root"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"P","2":"MgCl","3":"15","4":"9.853457","5":"1.2981376"},{"1":"P","2":"Strain101","3":"12","4":"12.729133","5":"0.9813173"},{"1":"P","2":"Strain230","3":"13","4":"11.814678","5":"0.9128499"},{"1":"P","2":"Strain28","3":"13","4":"12.007390","5":"0.5812310"},{"1":"noP","2":"MgCl","3":"13","4":"5.805198","5":"0.7738124"},{"1":"noP","2":"Strain101","3":"13","4":"7.094616","5":"0.5939804"},{"1":"noP","2":"Strain230","3":"11","4":"7.172883","5":"0.6117203"},{"1":"noP","2":"Strain28","3":"15","4":"6.200309","5":"0.9988989"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Other useful summary functions:</p>
+<ul>
+<li><p><code>mean(x)</code>: sum of x divided by the length</p></li>
+<li><p><code>median(x)</code>: 50% of x is above and 50% is below</p></li>
+<li><p><code>sd(x)</code>: standard deviation</p></li>
+<li><p><code>IQR(x)</code>: interquartile range (robust equivalent of sd when outliers are present in the data)</p></li>
+<li><p><code>mad(x)</code>: median absolute deviation (robust equivalent of sd when outliers are present in the data)</p></li>
+<li><p><code>min(x)</code>: minimum value of x</p></li>
+<li><p><code>max(x)</code>: maximum value of x</p></li>
+<li><p><code>quantile(x, 0.25)</code>: 25% of x is below this value</p></li>
+<li><p><code>first(x)</code>: equivalent to x[1]</p></li>
+<li><p><code>nth(x, 2)</code>: equivalent to n&lt;-2; x[n]</p></li>
+<li><p><code>last(x)</code>: equivalent to x[length(x)]</p></li>
+<li><p><code>n(x)</code>: the number of elements in x</p></li>
+<li><p><code>sum(!is.na(x))</code>: count non-missing values</p></li>
+<li><p><code>n_distinct(x)</code>: count the number of unique value</p></li>
+<li><p><code>sum(x &gt; 10)</code>: count the number of elements where x &gt; 10</p></li>
+<li><p><code>mean(y == 0)</code>: proportion of elements where y = 0</p></li>
+</ul>
+</section>
+<section id="more-stats-tapply" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="more-stats-tapply"><span class="header-section-number">5.5</span> More stats: tapply</h2>
+<p>Tapply is a base R function and allows to apply a function to each cell of a ragged array, that is to each (non-empty) group of values given by a unique combination of the levels of certain factors. It can be used as an alternative to ddply.</p>
+<p>Suppose now we want to estimate the mean root length for each growth condition. Notice, how we can vary the index?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#index = factors we want to select</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(<span class="at">X =</span> growth_data<span class="sc">$</span>Rootlength, <span class="at">INDEX =</span> growth_data<span class="sc">$</span>Nutrient, <span class="at">FUN =</span> mean,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        P       noP 
+11.513931  6.530845 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#same but for two-way tables (this is not so useful here, but might be handy when you have different conditions for the same organism or a timecourse)</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(growth_data<span class="sc">$</span>Rootlength, <span class="at">INDEX =</span> <span class="fu">list</span>(growth_data<span class="sc">$</span>Nutrient, growth_data<span class="sc">$</span>Condition),<span class="at">FUN =</span> mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        MgCl Strain101 Strain230  Strain28
+P   9.853457 12.729133 11.814678 12.007390
+noP 5.805198  7.094616  7.172883  6.200309</code></pre>
+</div>
+</div>
+</section>
+<section id="linear-models" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="linear-models"><span class="header-section-number">5.6</span> Linear models</h2>
+<section id="basics" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="basics"><span class="header-section-number">5.6.1</span> Basics</h3>
+<p>It is very simple to investigate linear relationships among variables in R. We want to estimate how a quantitative dependent variable changes according to the levels of one or more categorical independent variables. In the command below, the linear relationship between Rootlength (the <strong>dependent</strong> variable, i.e.&nbsp;the one we<e2>&lt;80&gt;&lt;99&gt;re trying to predict) and FW_shoot_mg (the <strong>independent</strong> variable or the predictor) is calculated.</e2></p>
+<p>We need to use the function summary to see the results of that command; coef extracts the best-fit coefficients, anova performs an analysis of variance; there are many other extractor functions.</p>
+<p>In this case lets work with the data were we do not have to deal with the different time points to simplify things.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#read in data were we have several measurements</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>growth_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"../data/Growth_Data.txt"</span>, <span class="at">sep=</span><span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">header=</span>T, <span class="at">fill=</span><span class="cn">TRUE</span>, <span class="at">quote =</span> <span class="st">""</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">#is there a correlation between freshweight and root length?</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>linearmodel <span class="ot">&lt;-</span> <span class="fu">lm</span>(Rootlength <span class="sc">~</span> FW_shoot_mg, <span class="at">data =</span> growth_data)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>linearmodel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Rootlength ~ FW_shoot_mg, data = growth_data)
+
+Coefficients:
+(Intercept)  FW_shoot_mg  
+     5.2912       0.2465  </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#let's extract the entire t-table</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(linearmodel) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Rootlength ~ FW_shoot_mg, data = growth_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.5263 -0.9978 -0.0181  1.0094  3.9292 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  5.29124    0.30469   17.37   &lt;2e-16 ***
+FW_shoot_mg  0.24648    0.01712   14.40   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.615 on 103 degrees of freedom
+Multiple R-squared:  0.6681,    Adjusted R-squared:  0.6649 
+F-statistic: 207.4 on 1 and 103 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Here one of the values is the model p-Value (bottom last line) and the p-Value of individual predictor variables (extreme right column under <e2>&lt;80&gt;&lt;98&gt;Coefficients<e2>&lt;80&gt;&lt;99&gt;). The p-Values are very important because, we can consider a linear model to be statistically significant only when both these p-Values are less that the pre-determined statistical significance level, which is ideally 0.05. This is visually interpreted by the significance stars at the end of the row. The more the stars beside the variable<e2>&lt;80&gt;&lt;99&gt;s p-Value, the more significant the variable.</e2></e2></e2></p>
+<ul>
+<li>Residuals: The section summarizes the residuals, the error between the prediction of the model and the actual results. Smaller residuals are better.</li>
+<li>Coefficients: For each variable and the intercept, a weight is produced and that weight has other attributes like the standard error, a t-test value and significance.</li>
+<li>Estimate: This is the weight given to the variable. In the simple regression case (one variable plus the intercept), for every increase in root length, the model predicts an increase of 0.24.</li>
+<li>Std. Error: Tells you how precisely was the estimate measured. It<e2>&lt;80&gt;&lt;99&gt;s really only useful for calculating the t-value.</e2></li>
+<li>t-value and Pr(&gt;[t]): The t-value is calculated by taking the coefficient divided by the Std. Error. It is then used to test whether or not the coefficient is significantly different from zero. If it isn<e2>&lt;80&gt;&lt;99&gt;t significant, then the coefficient really isn<e2>&lt;80&gt;&lt;99&gt;t adding anything to the model and could be dropped or investigated further. Pr(&gt;|t|) is the significance level.</e2></e2></li>
+</ul>
+<p>Performance Measures:</p>
+<p>Three sets of measurements are provided.</p>
+<ul>
+<li>Residual Standard Error: This is the standard deviation of the residuals. Smaller is better.</li>
+<li>Multiple / Adjusted R-Square: For one variable, the distinction doesn<e2>&lt;80&gt;&lt;99&gt;t really matter. R-squared shows the amount of variance explained by the model. Adjusted R-Square takes into account the number of variables and is most useful for multiple-regression.</e2></li>
+<li>F-Statistic: The F-test checks if at least one variable<e2>&lt;80&gt;&lt;99&gt;s weight is significantly different than zero. This is a global test to help asses a model. If the p-value is not significant (e.g.&nbsp;greater than 0.05) than your model is essentially not doing anything.</e2></li>
+</ul>
+<p>We also can just print parts of the data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#print only the coefficients </span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">summary</span>(linearmodel))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Estimate Std. Error  t value     Pr(&gt;|t|)
+(Intercept) 5.2912436 0.30469198 17.36588 2.278273e-32
+FW_shoot_mg 0.2464783 0.01711628 14.40023 2.039703e-26</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#print only the anova stats</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(linearmodel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Df"],"name":[1],"type":["int"],"align":["right"]},{"label":["Sum Sq"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Mean Sq"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["F value"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"540.9865","3":"540.986514","4":"207.3665","5":"2.039703e-26","_rn_":"FW_shoot_mg"},{"1":"103","2":"268.7108","3":"2.608842","4":"NA","5":"NA","_rn_":"Residuals"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot add the best line to a plot</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(growth_data, <span class="fu">plot</span>(Rootlength <span class="sc">~</span> FW_shoot_mg, <span class="at">col =</span> <span class="dv">2</span>))</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(linearmodel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="stats_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>If we look at the stats and the p value we see a nice correlation but also that we have two distinct clusters as well as more spread in the cluster that is more to the right. These clusters likely are the two different nutrient conditions and sometimes it might make sense to separate data to get a clearer picture. Something else to consider is to ask whether the data is normally distributed and based on that what statistical test to choose.</p>
+</section>
+<section id="analysing-residuals" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="analysing-residuals"><span class="header-section-number">5.6.2</span> Analysing residuals</h3>
+<p>Anyone can fit a linear model in R. The real test is analyzing the residuals (the error or the difference between actual and predicted results).</p>
+<p>There are four things we are looking for when analyzing residuals.</p>
+<ul>
+<li>The mean of the errors is zero (and the sum of the errors is zero)</li>
+<li>The distribution of the errors are normal.</li>
+<li>All of the errors are independent.</li>
+<li>Variance of errors is constant (Homoscedastic)</li>
+</ul>
+<p>In R, you pull out the residuals by referencing the model and then the resid variable inside the model. Using the simple linear regression model (simple.fit) we<e2>&lt;80&gt;&lt;99&gt;ll plot a few graphs to help illustrate any problems with the model.</e2></p>
+<p>Below some examples:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>simple.fit <span class="ot">&lt;-</span> linearmodel</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="dv">2</span>,<span class="dv">2</span>,<span class="at">byrow=</span>T))</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co">#Rootlength x Residuals Plot</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(simple.fit<span class="sc">$</span>resid<span class="sc">~</span>growth_data<span class="sc">$</span>Rootlength[<span class="fu">order</span>(growth_data<span class="sc">$</span>Rootlength)],</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a> <span class="at">main=</span><span class="st">"Rootlength x Residuals</span><span class="sc">\n</span><span class="st">for Simple Regression"</span>,</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a> <span class="at">xlab=</span><span class="st">"Marketing Rootlength"</span>, <span class="at">ylab=</span><span class="st">"Residuals"</span>)</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Histogram of Residuals</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(simple.fit<span class="sc">$</span>resid, <span class="at">main=</span><span class="st">"Histogram of Residuals"</span>,</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a> <span class="at">ylab=</span><span class="st">"Residuals"</span>)</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="co">#Q-Q Plot</span></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(simple.fit<span class="sc">$</span>resid)</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(simple.fit<span class="sc">$</span>resid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="stats_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The histogram and QQ-plot are the ways to visually evaluate if the residual fit a normal distribution.</p>
+<ul>
+<li>If the histogram looks like a bell-curve it might be normally distributed.</li>
+<li>If the QQ-plot has the vast majority of points on or very near the line, the residuals may be normally distributed.</li>
+</ul>
+</section>
+</section>
+<section id="normal-distribution" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="normal-distribution"><span class="header-section-number">5.7</span> Normal distribution</h2>
+<section id="visualize-our-data-via-density-plots" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1" class="anchored" data-anchor-id="visualize-our-data-via-density-plots"><span class="header-section-number">5.7.1</span> Visualize our data via density plots</h3>
+<p>There are different ways to visualize this, one example is ggdensity of the ggpubr package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ggpubr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'ggpubr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:plyr':
+
+    mutate</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#is the data for my different variables normally distributed</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggdensity</span>(growth_data<span class="sc">$</span>Rootlength)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="stats_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We see nicely that we have two tails that likely represent the two nutrient conditions. To test this, we can simply subset the data as we have done before.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggdensity</span>(growth_data, <span class="at">x =</span> <span class="st">"Rootlength"</span>,</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">add =</span> <span class="st">"mean"</span>, <span class="at">rug =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>   <span class="at">color =</span> <span class="st">"Nutrient"</span>, <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"#00AFBB"</span>, <span class="st">"#E7B800"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="stats_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>No we see that indeed the tool tails we see are seem to be due to our two nutrient conditions.</p>
+</section>
+<section id="visualize-our-data-via-q-q-plots" class="level3" data-number="5.7.2">
+<h3 data-number="5.7.2" class="anchored" data-anchor-id="visualize-our-data-via-q-q-plots"><span class="header-section-number">5.7.2</span> Visualize our data via Q-Q plots</h3>
+<p>Another way to represent data is in a Q-Q plot: Q-Q plot (or quantile-quantile plot) draws the correlation between a given sample and the normal distribution. A 45-degree reference line is also plotted.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot all data</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggqqplot</span>(growth_data<span class="sc">$</span>Rootlength)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="stats_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot by group</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggqqplot</span>(growth_data, <span class="at">x =</span> <span class="st">"Rootlength"</span>,</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">color =</span> <span class="st">"Nutrient"</span>,  <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"#00AFBB"</span>, <span class="st">"#E7B800"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="stats_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Again, here we see that our data for the indivdual growth conditions fit quite nicely into normal distribution.</p>
+</section>
+<section id="test-for-normality" class="level3" data-number="5.7.3">
+<h3 data-number="5.7.3" class="anchored" data-anchor-id="test-for-normality"><span class="header-section-number">5.7.3</span> Test for normality</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#for all data</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(growth_data<span class="sc">$</span>Rootlength)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  growth_data$Rootlength
+W = 0.91773, p-value = 6.744e-06</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#separate nutrient conditions</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>noP_data <span class="ot">&lt;-</span> growth_data[growth_data<span class="sc">$</span>Nutrient <span class="sc">==</span> <span class="st">"noP"</span>, ]</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co">#test for noP only</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(noP_data<span class="sc">$</span>Rootlength)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  noP_data$Rootlength
+W = 0.96403, p-value = 0.1171</code></pre>
+</div>
+</div>
+<p>We can use ddplyr and the dlookr package for doing a group-wise comparison</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dlookr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dlookr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:tidyr':
+
+    extract</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:base':
+
+    transform</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>growth_data <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Nutrient) <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">normality</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["variable"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Nutrient"],"name":[2],"type":["chr"],"align":["left"]},{"label":["statistic"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["p_value"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["sample"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"FW_shoot_mg","2":"P","3":"0.9681759","4":"0.16818081","5":"53"},{"1":"FW_shoot_mg","2":"noP","3":"0.9831431","4":"0.66649085","5":"52"},{"1":"Rootlength","2":"P","3":"0.9515682","4":"0.03144205","5":"53"},{"1":"Rootlength","2":"noP","3":"0.9640334","4":"0.11709068","5":"52"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>The shapiro.test tests the NULL hypothesis that the samples came from a Normal distribution. This means that if your p-value &lt;= 0.05, then you would reject the NULL hypothesis that the samples came from a normal distribution.</p>
+<p>From the output, the p-value &lt; 0.05 for our complete dataset implies that the distribution of the data is significantly different from normal distribution. In other words, we can not assume the normality. However, we expect quite some differences dependent on the growth pattern and once we only look at our low P data we see that our indeed is normally distributed.</p>
+<p>Notice: Shapiro works only for sample sizes between 3-5000 numbers since when you feed it more data, the chances of the null hypothesis being rejected becomes larger. An alternative is the Anderson-Darling test that however has a similar problem with the Shapiro Wilk test. For large samples, you are most likely to reject the null hypothesis, so be aware of this.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nortest)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ad.test</span>(noP_data<span class="sc">$</span>Rootlength)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Anderson-Darling normality test
+
+data:  noP_data$Rootlength
+A = 0.58838, p-value = 0.1187</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="anova" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="anova"><span class="header-section-number">5.8</span> ANOVA</h2>
+<p>When we visualize the data, we see that there is a difference between the nutrient conditions but we want to know whether it is significant and more importantly, whether there is also a difference based on our treatments with different strains of microbes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lets visually compare our data with ggpubr again</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ggpubr"</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggboxplot</span>(growth_data, <span class="at">x =</span> <span class="st">"Condition"</span>, <span class="at">y =</span> <span class="st">"Rootlength"</span>, <span class="at">color =</span> <span class="st">"Nutrient"</span>,</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"#00AFBB"</span>, <span class="st">"#E7B800"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="stats_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We want to know whether root length depends on nutrient treatment</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Rootlength <span class="sc">~</span> Nutrient, <span class="at">data =</span> growth_data)</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+Nutrient      1  651.8   651.8     425 &lt;2e-16 ***
+Residuals   103  157.9     1.5                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Here, we see that there are significant differences based on our nutrient treatments. Now lets see how we can look at both the nutrient treatment and growth conditions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We want to know if root length depends on condition and nutrient</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Rootlength <span class="sc">~</span> Nutrient <span class="sc">+</span> Condition, <span class="at">data =</span> growth_data)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+Nutrient      1  651.8   651.8  712.58  &lt; 2e-16 ***
+Condition     3   66.5    22.2   24.23 7.27e-12 ***
+Residuals   100   91.5     0.9                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>From the ANOVA table we can conclude that both nutrient condition and treatment are statistically significant. Nutrient treatment is the most significant factor variable.</p>
+<p>Not the above fitted model is called additive model. It makes an assumption that the two factor variables are independent. If you think that these two variables might interact to create an synergistic effect, replace the plus symbol (+) by an asterisk (*), as follows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Two-way ANOVA with interaction effect</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co"># These two calls are equivalent</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Rootlength <span class="sc">~</span> Nutrient <span class="sc">*</span> Condition, <span class="at">data =</span> growth_data)</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Rootlength <span class="sc">~</span> Nutrient <span class="sc">+</span> Condition <span class="sc">+</span> Nutrient<span class="sc">:</span>Condition, <span class="at">data =</span> growth_data)</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co">#summarize the aov</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+Nutrient            1  651.8   651.8 817.131  &lt; 2e-16 ***
+Condition           3   66.5    22.2  27.780 4.72e-13 ***
+Nutrient:Condition  3   14.1     4.7   5.891 0.000976 ***
+Residuals          97   77.4     0.8                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>It can be seen that the two main effects (Nutrient and Condition) are statistically significant, as well as their interaction.</p>
+<p><strong>Note that, in the situation where the interaction is not significant you should use the additive model.</strong></p>
+</section>
+<section id="tukey" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="tukey"><span class="header-section-number">5.9</span> TUKEY</h2>
+<p>In ANOVA test, a significant p-value indicates that some of the group means are different, but we don<e2>&lt;80&gt;&lt;99&gt;t know which pairs of groups are different. It<e2>&lt;80&gt;&lt;99&gt;s possible to perform multiple pairwise-comparison, to determine if the mean difference between specific pairs of group are statistically significant.</e2></e2></p>
+<p>As the ANOVA test is significant, we can compute Tukey HSD (Tukey Honest Significant Differences). Tukey test is a single-step multiple comparison procedure and statistical test. It is a post-hoc analysis, what means that it is used in conjunction with an ANOVA.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">#test with anova</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Rootlength <span class="sc">~</span> Nutrient <span class="sc">*</span> Condition, <span class="at">data =</span> growth_data)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co">#run tukey</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = Rootlength ~ Nutrient * Condition, data = growth_data)
+
+$Nutrient
+           diff       lwr       upr p adj
+noP-P -4.983086 -5.329067 -4.637105     0
+
+$Condition
+                          diff        lwr        upr     p adj
+Strain101-MgCl       2.1029052  1.4604930  2.7453173 0.0000000
+Strain230-MgCl       1.6836191  1.0341749  2.3330633 0.0000000
+Strain28-MgCl        1.2784796  0.6545138  1.9024455 0.0000034
+Strain230-Strain101 -0.4192861 -1.0864726  0.2479004 0.3597470
+Strain28-Strain101  -0.8244256 -1.4668377 -0.1820134 0.0061445
+Strain28-Strain230  -0.4051395 -1.0545837  0.2443048 0.3663501
+
+$`Nutrient:Condition`
+                                  diff        lwr        upr     p adj
+noP:MgCl-P:MgCl             -4.0482585 -5.0967311 -2.9997859 0.0000000
+P:Strain101-P:MgCl           2.8756763  1.8040558  3.9472967 0.0000000
+noP:Strain101-P:MgCl        -2.7588405 -3.8073131 -1.7103679 0.0000000
+P:Strain230-P:MgCl           1.9612207  0.9127482  3.0096933 0.0000023
+noP:Strain230-P:MgCl        -2.6805735 -3.7789218 -1.5822252 0.0000000
+P:Strain28-P:MgCl            2.1539326  1.1054600  3.2024052 0.0000002
+noP:Strain28-P:MgCl         -3.6531484 -4.6634819 -2.6428149 0.0000000
+P:Strain101-noP:MgCl         6.9239348  5.8162834  8.0315861 0.0000000
+noP:Strain101-noP:MgCl       1.2894180  0.2041458  2.3746903 0.0087961
+P:Strain230-noP:MgCl         6.0094793  4.9242070  7.0947515 0.0000000
+noP:Strain230-noP:MgCl       1.3676850  0.2341551  2.5012149 0.0073003
+P:Strain28-noP:MgCl          6.2021911  5.1169189  7.2874633 0.0000000
+noP:Strain28-noP:MgCl        0.3951101 -0.6533625  1.4435827 0.9391499
+noP:Strain101-P:Strain101   -5.6345168 -6.7421681 -4.5268654 0.0000000
+P:Strain230-P:Strain101     -0.9144555 -2.0221069  0.1931958 0.1845494
+noP:Strain230-P:Strain101   -5.5562498 -6.7112241 -4.4012755 0.0000000
+P:Strain28-P:Strain101      -0.7217437 -1.8293950  0.3859077 0.4749256
+noP:Strain28-P:Strain101    -6.5288247 -7.6004451 -5.4572042 0.0000000
+P:Strain230-noP:Strain101    4.7200613  3.6347890  5.8053335 0.0000000
+noP:Strain230-noP:Strain101  0.0782670 -1.0552629  1.2117969 0.9999989
+P:Strain28-noP:Strain101     4.9127731  3.8275008  5.9980453 0.0000000
+noP:Strain28-noP:Strain101  -0.8943079 -1.9427805  0.1541647 0.1537008
+noP:Strain230-P:Strain230   -4.6417943 -5.7753242 -3.5082644 0.0000000
+P:Strain28-P:Strain230       0.1927118 -0.8925604  1.2779841 0.9993212
+noP:Strain28-P:Strain230    -5.6143692 -6.6628417 -4.5658966 0.0000000
+P:Strain28-noP:Strain230     4.8345061  3.7009762  5.9680360 0.0000000
+noP:Strain28-noP:Strain230  -0.9725749 -2.0709232  0.1257734 0.1223122
+noP:Strain28-P:Strain28     -5.8070810 -6.8555536 -4.7586084 0.0000000</code></pre>
+</div>
+</div>
+<p>We can see that most differences are significant, with the exception of Strain28, which in most cases does not show an effect.</p>
+<p>For some representations it is useful to plot significant letters. We can do this using some extra packages as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load library</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agricolae)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'agricolae'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:dlookr':
+
+    kurtosis, skewness</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co">#separate nutrient conditions</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>noP_data <span class="ot">&lt;-</span> growth_data[growth_data<span class="sc">$</span>Nutrient <span class="sc">==</span> <span class="st">"noP"</span>, ]</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="co">#run an anova</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>aov_noP <span class="ot">&lt;-</span> <span class="fu">aov</span>(Rootlength <span class="sc">~</span> Condition, <span class="at">data =</span> noP_data)</span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="co">#run test</span></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="fu">HSD.test</span>(aov_noP,<span class="st">"Condition"</span>, <span class="at">group=</span><span class="cn">TRUE</span>,<span class="at">console=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Study: aov_noP ~ "Condition"
+
+HSD Test for Rootlength 
+
+Mean Square Error:  0.606883 
+
+Condition,  means
+
+          Rootlength       std  r      Min      Max
+MgCl        5.805198 0.7738124 13 4.236348 6.834720
+Strain101   7.094616 0.5939804 13 5.947965 7.973207
+Strain230   7.172883 0.6117203 11 6.120089 8.197116
+Strain28    6.200309 0.9988989 15 4.384756 7.428674
+
+Alpha: 0.05 ; DF Error: 48 
+Critical Value of Studentized Range: 3.763749 
+
+Groups according to probability of means differences and alpha level( 0.05 )
+
+Treatments with the same letter are not significantly different.
+
+          Rootlength groups
+Strain230   7.172883      a
+Strain101   7.094616      a
+Strain28    6.200309      b
+MgCl        5.805198      b</code></pre>
+</div>
+</div>
+</section>
+<section id="check-the-homogeneity-of-variances" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="check-the-homogeneity-of-variances"><span class="header-section-number">5.10</span> Check the homogeneity of variances</h2>
+<p>The residuals versus fits plot is used to check the homogeneity of variances. In the plot below, there is no evident relationships between residuals and fitted values (the mean of each groups), which is good. So, we can assume the homogeneity of variances. Only a few points (41, 58 and 77 are detected as outliers, which can severely normality and homogeneity of variance. It can be useful to remove outliers to meet the test assumptions.)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check for homogeneity</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aov, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="stats_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Use the Levene&lt;e2&gt;&lt;80&gt;&lt;99&gt;s test to check the homogeneity of variances. </span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: carData</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'car'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:dplyr':
+
+    recode</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:purrr':
+
+    some</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(Rootlength <span class="sc">~</span> Nutrient <span class="sc">*</span> Condition, <span class="at">data =</span> growth_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Df"],"name":[1],"type":["int"],"align":["right"]},{"label":["F value"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"7","2":"1.862279","3":"0.08411691","_rn_":"group"},{"1":"97","2":"NA","3":"NA","_rn_":""}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>From the output above we can see that the p-value is not less than the significance level of 0.05. This means that there is no evidence to suggest that the variance across groups is statistically significantly different. Therefore, we can assume the homogeneity of variances in the different treatment groups.</p>
+</section>
+<section id="check-for-normality-v2" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="check-for-normality-v2"><span class="header-section-number">5.11</span> Check for normality v2</h2>
+<p>Normality plot of the residuals. In the plot below, the quantiles of the residuals are plotted against the quantiles of the normal distribution. A 45-degree reference line is also plotted. The normal probability plot of residuals is used to verify the assumption that the residuals are normally distributed.</p>
+<p>The normal probability plot of the residuals should approximately follow a straight line. which we can see below. Again, we see the points marked as potential outliers.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(aov, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="stats_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../code/control_structures.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Control Structures</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../code/plotting_basics.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Basic plotting</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,510 @@
+---
+execute:
+    eval: true
+
+df-print: paged
+---
+
+# Data objects
+
+```{r}
+#| echo: false
+#| warning: false
+ 
+#load libs
+library(knitr)
+library(kableExtra)
+
+#read in data
+timecourse <- read.table("../data/Timecourse.txt", sep="\t", header=T,  quote = "")
+growth_data <- read.table("../data/Growth_Data.txt", sep="\t", header=T,  quote = "")
+```
+
+In R, all types of data are treated as objects. 
+As such objects are units that we work with, i.e. data and functions. 
+
+Roughly we distinguish between:
+
+* Data types = For example: numeric, characters, factors, ... 
+    * You can identify your data type with the function `typeof()`
+* Data structures = For example: vector, matrix, list. 
+    * You can identify the structure with `class()` or `is()`
+* `str()` = defines what the indiv. components of your data are
+
+Everything that exists is an **object**.  
+Everything that happens is a **function call**.
+
+Below, we introduce all these different types of objects.
+
+
+## Data types
+
+When programming, data,values,etc. are stored in different ways: 
+
+R has 6 atomic classes. Below you can find each class with an example
+
+- character = "hello"
+- numeric (real or decimal) = 3, 14, ....
+- logical = TRUE
+- complex = 1+4i
+- integer = 2 (Must add a L at end to denote integer)
+- double = a number class, like the integer but with double precision floating points
+
+Here, is a quick example, how we can find out some things about our objects using:
+
+- - ``c()``= a function that will create a vector (a one dimensional array) and in our case store 3 numbers. We need to use this every time we deal with more than one number, character, etc....
+- ``class()`` = what class is our data?
+- ``length()`` = how long is our data?
+
+```{r}
+#create some objects
+character_object <- "dataset"
+number_object <- c(1,4,5)
+
+#asking with what type we work
+class(character_object)
+class(number_object)
+```
+
+```{r}
+#ask how long our objects are
+length(character_object)
+length(number_object)
+```
+
+## Data structures
+
+There are many types of data structures, the most frequently used ones being:
+
+* Vectors
+* Factors
+* Matrices
+* Lists
+* Data frames
+
+Certain operations only work on certain kind of structures, therefore, it is important to know what kind of data we are working with.
+
+In R, you do not need to specify the type of data a variable will receive beforehand. 
+You simply do the assignment, R will create a so called R-Object and assign a data type automatically. 
+
+
+### Vectors
+
+A vector is a collection of items of the same type (i.e characters, numbers). You can read in numbers and characters into the same vector, however, the number will be then seen as a character if you mix different classes.
+
+```{r}
+#lets create a random vector
+a_vector <- c(2, 3, 5, 7, 1) 
+
+#show the vector we just created
+a_vector
+```
+
+```{r}
+#asking how long your vector is
+length(a_vector)
+```
+
+
+#### Vector indexing
+
+If we want to only retrieve part of the data stored in a vector we can create a subset using the index as shown below.
+
+- square brackets [] = allow us to retrieve certain elements of a vector, i.e. [3] retrieves the 3rd element
+- we can combine ``c()`` and [] if we want to retrieve several elements of a vector.
+
+```{r}
+#retrieve the third element stored in a vector
+a_vector[3]
+```
+
+```{r}
+#retrieve the 1st and 3rd element by combining ``c()`` and []
+a_vector[c(1,3)]
+```
+
+```{r}
+#retrieve the 1-3rd element
+a_vector[c(1:3)]
+```
+
+```{r}
+#we can also add vectors of the same length together
+x <- c(1,2,3,4)
+y <- c(1,2,3,4)
+
+#and now we can combine our vectors
+x + y
+```
+
+Beware: If we add two vectors of different length, the shorter vector is duplicated. This only works if the shorter vector is proportional to the longer one
+
+```{r}
+#adding vectors of different lengths
+x <- c(1,2)
+y <- c(1,2,3,4)
+
+#and now we can combine our vectors
+x + y
+```
+
+Another way to extend vectors is:
+
+- ``append()`` --> Add elements to a vector.
+
+```{r}
+#add another datapoint to our vector
+a_vector <- append(a_vector, 13)
+a_vector
+```
+
+```{r}
+#add +1 to all our four numbers
+a_vector <- a_vector + 1
+a_vector
+```
+
+```{r}
+#remove the first element of our vector
+a_vector <- a_vector[-1]
+a_vector
+```
+
+We not only can extract the nth element but if we have header names then we can also use these to retrieve data:
+
+```{r}
+#create a vector and give it names (i.e. for counts from some microbes)
+x <- c(300, 410, 531)
+names(x) <- c("Ecoli","Archaeoglobus","Ignicoccus")
+
+#check how our data looks
+x
+```
+
+```{r}
+#now we can retrieve part of the vector using the names
+x[c("Ecoli","Ignicoccus")]
+```
+
+
+#### Changing vectors
+
+We can also change elements in our vector:
+
+```{r}
+#create a vector
+x <- 1:10
+
+#change the second last positions to 5 and 9
+x[9:10] <- c(5,9)
+
+#check if this worked
+x
+```
+
+```{r}
+#we can not only add things, we can also remove this using the minus symbol
+#i.e. lets remove the third element in our vector
+x[-3]
+
+#if we want to remove more than one thing we can use the **c()**
+#lets remove elements 4 until (and including) 9
+x[-c(4:9)]
+```
+
+
+### Matrix
+
+Matrices are the R objects in which the elements are arranged in a two-dimensional rectangular layout. They contain elements of the same type. Although you can construct matrices with characters or logicals, matrices are generally used to store numeric data. 
+
+The basic syntax for creating a matrix is:
+
+**matrix(data, nrow, ncol, byrow, dimnames)**
+
+- data: input vector whose components become the data elements from the matrix.
+- nrow: number of rows to be created.
+- ncol: number of columns to be created.
+- byrow: logical. If FALSE,(the default) the matrix is filled by columns, otherwise the matrix is filled by rows.
+- dimnames: A 'dimnames'’' attribute for the matrix: NULL or a list of length 2 giving the row and column names respectively.
+
+In contrast in a data frame (see below) the columns contain different types of data, while in a matrix all the elements are the same type of data. A matrix in R is like a mathematical matrix, containing all the same type of thing (usually numbers). R often but not always can use dataframes and a matrix used interchangeably.
+
+* Individual elements in a matrix can be printed using **[row,column]**. For example **[2,3]** would pull out the value in the 2nd ROW and third COLUMN.
+
+- ```dim()``` is extremely useful to control whether our data was transformed correctly during different operations. For example, after we merge two files we would like to know that they still have the same number of rows as when we started the analysis. Same if we remove for example 10 samples, then we want to make sure that this is indeed what happened.
+- ``head()`` is another useful function to check the first rows of a larger matrix (or dataframe)
+- ``tail()`` same as head but showing the last rows
+
+Let's start with creating a matrix with 3 columns and 4 rows (so including 12 data points)
+
+```{r}
+#define our row and column names
+row.names = c("row1", "row2", "row3", "row4")
+col.names = c("col1", "col2", "col3")
+
+#create our matrix (check the help function to see what is happening)
+matrix_A <- matrix(c(1:12), nrow = 4, byrow = T, dimnames = list(row.names,col.names))
+
+#check how our matrix looks like
+matrix_A
+```
+
+```{r}
+#print the value in the 2row and 3rd column
+matrix_A[2,3]
+```
+
+```{r}
+#print the values in the 3rd column
+matrix_A[,3]
+```
+
+```{r}
+#print everything except the 1st row
+matrix_A[-1,]
+```
+
+```{r}
+#print everything except the 2nd column
+matrix_A[,-2]
+```
+
+```{r}
+#see the dimensions of matrix, i.e. the nr of rows and columns
+dim(matrix_A)
+```
+
+```{r}
+#check the first rows of our matrix, since our data is small, everything is shown
+head(matrix_A)
+```
+
+
+
+### Lists
+
+Sometimes you need to store data of different types. For example, if you are collecting cell counts, you might want to have cell counts (numeric), the microbes investigated (character), their status (logical, with TRUE for alive and FALSE for dead, .... This kind of data can be stored in lists. Lists are the R objects which contain elements of different types (numeric, strings, vectors, even another list, or a matrix).
+
+A list is created using the list() function.
+
+For example, the following variable x is a list containing copies of three vectors n, s, b.
+
+```{r}
+#define our vectors
+n = c(20, 30, 50) 
+s = c("Ecoli", "Archaeoglobus", "Bacillus") 
+b = c(TRUE, FALSE, TRUE) 
+
+#combine the vectors in a list
+our_list = list(counts=n, strain=s, status=b) 
+
+#show our list
+our_list
+```
+
+```{r}
+#sublist the second element in a list
+our_list[2]
+```
+
+```{r}
+#retrieve the 2nd and 3rd member of our list
+our_list[c(2, 3)] 
+```
+
+```{r}
+#we can also retrieve elements of a list if we know the name using two different ways:
+our_list$strain
+our_list[["strain"]]
+```
+
+In the last example we use the ``$`` dollar symbol to extract data, i.e. to extract variables in a dataset (a matrix, list, dataframe). I.e. above the data we want to access is 'our_list' and the variable we want to extract is the strain.
+
+
+### Dataframes
+
+Dataframes are tables in which each column contains values of one variable type and each row contains one set of values from each column. 
+You can think of a data frame as a list of vectors of equal length.
+Most of our data very likely will be stored as dataframes.
+
+A Dataframe usually follows these rules:
+
+- The top line of the table, called the header, contains the column names. 
+- Column names (i.e. the header of our data) should be non-empty (if they are, R provides the object with default values).
+- Row names should be unique
+- Each column should contain the same number of data items
+- Each horizontal line after the header is a data row, which begins with the name of the row, and then followed by the actual data. 
+- Each data member of a row is called a cell.
+
+Importantly, most of the things we have learned before, i.e. how to subset data, apply here too.
+
+The growth data that we have read into R will be used to explain how dataframes work.
+
+
+#### Viewing data Dataframes
+
+- We can use the brackets as before to extract certain rows or columns.
+- We can use the dollar sign to again extract information as long as we know the column names. I.e. now we want to access the shoot fresh weight (FW_shoot_mg) in our 'growth_data' dataframe.
+- ``colnames()`` allows us to access the column names, i.e. the headers
+- ``rownames()`` allows us to access the rownames of our data (usually these are numbered if not specified otherwise while reading the table)
+- ``dim()`` allows us to check the dimensions (i.e. the number of rows and columns). This is useful to regullary check, especially if we modified our data somehow. 
+- ``head()`` shows the first rows of our dataframe
+
+
+```{r}
+#view our table
+head(growth_data)
+```
+
+```{r}
+#check how many rows and columns our data has
+dim(growth_data)
+```
+
+```{r}
+#extract the data from the 2nd row
+growth_data[2,]
+```
+
+```{r}
+#extract the first three columns
+head(growth_data[,1:3])
+```
+
+```{r}
+#extract a column of our data using the column name
+#combine it with the unique function, to remove duplicates
+unique(growth_data$Condition)
+```
+
+```{r}
+#print our headers
+colnames(growth_data)
+```
+
+```{r}
+#print the rownames
+rownames(growth_data)
+```
+
+When we print the rownames, we see that we have numbers from 1-105. When reading in a table into R it is the default behavior how rownames are generated. As a general rule, if you want o have other rownames, these must be unique.
+
+
+#### Adding new columns to Dataframes
+
+Below is a very basic way to add a new column (we name it newColumn) and fill all rows with the word `comment`
+
+```{r}
+#expand a dataframe, functions data.frame or cbind (or see below)
+growth_data$newColumn <- "comment"
+
+#check if that worked
+head(growth_data)
+```
+
+There are more sophisticated ways to add columns based on conditions or even merge dataframes. Some of these we will discuss later.
+
+
+## Check the structure of our data
+
+If we read in our own data, we should check as what type of class our table is stored. We have several ways to do this:
+
+- ``class()`` = determines as what kind of object is stored
+- ``str()`` = display the internal structure of an R object. 
+
+```{r}
+#check what kind of data we have:
+class(growth_data)
+```
+
+```{r}
+#check how are different parts of our data stored?
+str(growth_data)
+```
+
+We see that
+
+- our data is stored in a dataframe
+- that the data stored in different formats, i.e. numeric and characters
+- our data contains 105 observations and  6 variables
+
+
+## Factors
+
+Factors are data objects that are used to represent categorical data and store it in its different levels. 
+They are an important class for statistical analysis and for plotting.
+Factors are stored as integers, and have labels associated with these unique integers. 
+Once created, factors can only contain a pre-defined set values, known as levels. By default, R always sorts levels in alphabetical order. 
+
+- ``factor()`` allows us to create our own factor
+
+```{r}
+#lets make a vector
+Nutrients <- c("P", "P", "noP", "noP")
+
+#lets make our own simple factor
+Nutrients_factor <- factor(Nutrients)
+
+#lets compare the vector and factor we generated
+Nutrients
+Nutrients_factor
+```
+
+When we check our factor, we see that R assigns one level to ``P`` and another level to ``noP``. 
+We can also see, that R sorts the levels in an alphabetical way, i.e. first we have `noP` then `P`, even though in the initial code we first had P before noP.
+
+**Notice**: This looks different in the rendered HTML were we first have `P` and then `noP` for whatever reason. 
+
+
+### Checking the behaviour of factors
+
+Now, lets check how factors behave.
+
+- ``levels()`` = only prints the levels of a given factor. We can also run this on any column of our dataframe.
+- ``nlevels()`` = check how many levels we have.
+- While factors look (and often behave) like character vectors, they are actually integers under the hood, and you need to be careful when treating them like strings. We can test this by looking at what type of object we generated.
+
+```{r}
+#only print the levels
+levels(Nutrients_factor)
+```
+
+```{r}
+#check how many levels we have
+nlevels(Nutrients_factor)
+```
+
+```{r}
+#what class do we have
+class(Nutrients_factor)
+typeof(Nutrients_factor)
+```
+
+### Ordering factor levels
+
+For some things, the order of things might matter and then we need to order the factors ourselves.
+
+```{r}
+#check our levels
+levels(Nutrients_factor)
+```
+
+```{r}
+#reorder levels
+Nutrients_factor_reordered <- factor(Nutrients_factor, levels = c("P", "noP"))
+
+#check our levels
+levels(Nutrients_factor_reordered)
+```
+
+
+### Converting factors
+
+Sometimes you need to explicitly convert factors to either text or numbers. Or numbers to characters, etc.
+To do this, you use the functions ``as.character()`` or ``as.numeric()``.
+
+```{r}
+#convert our factor to a character
+Nutrients_characters <- as.character(Nutrients_factor)
+Nutrients_characters
+```

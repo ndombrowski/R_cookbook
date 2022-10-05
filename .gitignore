@@ -14,3 +14,4 @@ notes
 *.log
 .nojekyll
 /.quarto/
+_freeze/

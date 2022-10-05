@@ -1,0 +1,778 @@
+---
+execute:
+    eval: true
+
+df-print: paged
+---
+
+# Working with annotation data
+
+As mentioned in the beginning section, if working with genomes we often have large lists of proteins and their annotations, often from different databases.
+
+Here, we might be interested in condensing this information for each genome or for each phylum etc . OR we want to merge our data with other tables that are ordered differently. 
+We might also want to plot the data to compare the presence absence levels of different genomes. This section with discuss how to do this in a step by step manner.
+
+
+## Load essential packages
+
+```{r test}
+# | warning: false
+
+library("ggplot2")
+library("plyr")
+library("dplyr")
+library("grid")
+library("gplots")
+library("gridExtra")
+library("multcomp")
+library("reshape2")
+library("RColorBrewer")
+library('tidyr')
+library('tidyverse')
+library(data.table)
+library(knitr)
+library(kableExtra)
+```
+
+
+## Deal with the mapping file for our genomes
+
+### Load mapping file
+
+mapping file = a table that has the metadata for our genomes. 
+In this specific example it lists our 46 DPANN genomes into clusters based on their phylogenetic placement. 
+
+We later want to summarize our data by individual bins and the phylogenetic clusters defined in the mapping file.
+
+Notice: We can also sort our mapping file beforehand and use this order to order our tables, graph, etc...
+
+```{r}
+
+#read in the mapping file
+design <- read.table("../data/mapping.txt", sep="\t", header=T, fill=TRUE, quote = "")
+
+#check the structure of the mapping file
+head(design)
+```
+
+## Clean mapping file
+
+Here, we want to add an extra column that summarizes how many genomes are in each phylogenetic cluster.
+
+First lets summarize how many bins we have for each cluster:
+
+- ``ddply()`` = summarize our data by counting the number of bins we have in each cluster
+- ``order()`` = next, we order our data based on the clusters with the greater number of bins
+
+```{r}
+#add a new column that links the BinID and the taxonomic cluster
+design$NewName2 <-paste(design$BinID, design$Cluster, sep = "-")
+head(design)
+```
+
+```{r}
+#transform mapping file and summarize how many genomes we have/cluster
+Number_of_taxa <- ddply(design, .(Cluster), summarize, NrGenomes = length(Cluster))
+
+#order our data
+Number_of_taxa <- Number_of_taxa[order(Number_of_taxa$NrGenomes, decreasing = TRUE),] 
+
+#view data
+head(Number_of_taxa)
+```
+
+Next, add this information into our original mapping file:
+
+- ``paste()`` = paste together different columns. With sep we can control what delimiter we want to use when combining info
+
+
+```{r}
+#add a new column with the cluster count info into mapping file (then it can be added as a label into figures)
+design_2 <- merge(design, Number_of_taxa, by = "Cluster" )
+
+#view wether all went fine
+head(design_2)
+```
+
+Next, let's merge all relevant into one column using ``paste()`` again:
+
+```{r}
+#generate a new column into the mapping file that links the cluster name with the number of genomes of clusters in each cluster
+design_2$ClusterName <- paste(design_2$Cluster, " (", design_2$NrGenomes, ")", sep = "")
+
+#view data
+head(design_2)
+```
+
+
+## Generate lists to order dataframes
+
+The default behaviour of a lot of R functions is to order data alphabetically but this is not what we might want. 
+I.e. we want to order by different columns or simply order by the initial order in our mapping file. 
+To do this it is useful to have vectors that are order our bins, clusters, etc... like we want them.
+
+In this example the mapping file was ordered like this
+
+- The basal group
+- Groups from an older dataset (marine and aquifer)
+- two black sea clades
+
+Lets first check, whether our new mapping file still has that order
+
+```{r}
+#check the old data
+design$Cluster
+
+#check the new data
+design_2$Cluster
+```
+
+If we check the individual factors, we can see that the new dataframe is order by alphabet. Since this is not what we want, lets correct this
+
+- ``match(design_2$BinID, design$BinID)`` = We check what positions in design_2 match with design. Here, the first argument are the values to be matched and the second are the values to be matched against.
+- ``order()`` = we reorder our dataframe based on the results from ``match()``
+
+```{r}
+#reorder our old dataframe by the original one
+design_2 <- design_2[ order(match(design_2$BinID, design$BinID)), ]
+
+#check, if the basal clade is now in the correct order
+design_2$Cluster
+```
+
+Now, that the basal clade is in the first position, lets make vectors of the bins and clusters in order this we use:
+
+- ``unique()`` = we use unique on all ClusterNames in our mapping file. That way instead of having repeated names, we only have the unique ones
+- ``as.character()`` = we make sure that our R object we generated is a character (so has words).
+
+
+```{r}
+#make a list to order our bins
+Bin_order <- as.character(unique(design_2$BinID))
+Bin_order
+
+#make cluster order
+Cluster_order <- as.character(unique(design_2$ClusterName))
+Cluster_order
+```
+
+
+## Deal with mapping files for the annotations
+
+The mapping files (Arcog_mapping and Metabolism_file_KEGG) that are provided with this tutorial give extra information and order our KO and arCOG annotations.
+Genes_of_interest is a list of key metabolic genes we want to look at more closely.
+
+
+### Load and view the tables
+
+```{r}
+#general mapping file for arcog IDs
+Arcog_mapping <- read.table("../data/ar14_arCOGdef19.txt", sep="\t", header=T, fill=TRUE, quote = "")
+head(Arcog_mapping)
+
+#pathway mapping file
+Metabolism_file_KEGG <- read.table("../data/Metabolism_Table_KO_Apr2020.txt", sep="\t", header=T, fill=TRUE, quote = "")
+head(Metabolism_file_KEGG)
+
+#load the genes of interest
+Genes_of_interest <- read.table("../data/Genes_of_interest.txt", sep="\t", header=T, fill=TRUE, quote = "")
+head(Arcog_mapping)
+```
+
+
+### Make a vector to order our genes of interest
+
+- We use ``unique()`` to remove any duplicate gene names
+- ``arrange()`` can be used to order our dataframe by more than one column.
+
+You notice here that the syntax for ``arrange()`` is a bit unusual and we use the `` %>%`` symbol (a so-called forward pipe operator).
+This symbol is commonly used in the **dplyr** and **tidyr** packages which are extremely useful to summarize data.
+This function passes the left hand side of the operator to the first argument of the right hand side of the operator. 
+In the following example, the data frame Genes_of_interest gets passed to ``arrange()``
+
+```{r}
+#order metabolic genes
+Genes_Metabolism_order_temp <- Genes_of_interest %>% arrange(Order, Order2)
+
+#make a unique vector for our genes of interest
+Genes_Metabolism_order <- as.character(unique(Genes_Metabolism_order_temp$Gene))
+Genes_Metabolism_order
+
+#define a order for metabolic pathways
+Pathway_order <- as.character(unique(Genes_of_interest$pathway_2))
+Pathway_order
+```
+
+
+
+## Deal with annotation file
+
+### Read in table 
+
+You already here notice that this takes a bit longer and we just work with 46 bins. 
+This is a good reason to keep python in mind as depending on your computer the more memory heavy operations might get challenging. 
+Another alternative would be to run R on the clusters.
+
+```{r}
+#read in data and view it
+Input <- read.table("../data/UAP2_Annotation_table_u.txt", sep="\t", header=T, fill=TRUE, quote = "")
+head(Input)
+```
+
+### Make a mapping file that links all annotation IDs to their descriptions 
+
+What we do:
+
+- separate columns we are interested in for each Database of interest, i.e. arCOGs, and remove duplicate rows by using ``unique()``
+- change the column names using ``colnames()``. Here, we want to make sure that all the 6 new objects we generate have the same columns
+- combine our 6 dataframes using ``rbind()``. For this to work we need the same number of columns.
+
+In theory that would be a nice example for a loop as well, since we do exactly the same thing for 6x.
+
+```{r}
+#generate Description table for all DBs of interest
+Arcogs_Description <- unique(Input[,c("arcogs","arcogs_Description" )])
+colnames(Arcogs_Description) <- c("Gene", "Description")
+kable((head(Arcogs_Description)), format='markdown')
+
+KOs_Description <- Input[,c("KO_hmm","Definition" )]
+colnames(KOs_Description) <- c("Gene", "Description")
+kable((head(KOs_Description)), format='markdown')
+
+Pfam_Description <- unique(Input[,c("PFAM_hmm","PFAM_description" )])
+colnames(Pfam_Description) <- c("Gene", "Description")
+kable((head(Pfam_Description)), format='markdown')
+
+TIRGR_Description <- unique(Input[,c("TIRGR","TIGR_description" )])
+colnames(TIRGR_Description) <- c("Gene", "Description")
+kable((head(TIRGR_Description)), format='markdown')
+
+Cazy_Description <- unique(Input[,c("CAZy","Description" )])
+colnames(Cazy_Description) <- c("Gene", "Description")
+kable((head(Cazy_Description)), format='markdown')
+
+HydDB_Description <- unique(Input[,c("Description.1","Description.1" )])
+colnames(HydDB_Description) <- c("Gene", "Description")
+kable((head(HydDB_Description)), format='markdown')
+
+#make a file with a description of all the ids for each search
+All_Genes_Description <- rbind(Arcogs_Description,KOs_Description,Pfam_Description,TIRGR_Description, Cazy_Description, HydDB_Description)
+```
+
+
+### Parse table to make it easier to work with it
+
+Here we:
+
+- Subset the data for the columns we are interested in. Esp. for larger dataframes this will make the operations a bit quicker. For very large dataframes, i.e. 5000 genomes, it might be better to switch to python
+- Convert data from wide to long format
+- Clean factors. After subsetting often factors are not removed, we clean them up in that step
+
+Info:
+
+**Converting a wide to a long dataframe**
+
+- Wide dataframe: The Input data in this example is considered as a wide dataframe. I.e. all the gene IDs we are interested in are spread out into different columns
+- Long dataframe: The gene IDs we are interested in are found all in the same column. Important, most R functions work with long dataframes.
+
+```{r}
+
+#print the column names to subset our datatable
+colnames(Input)
+
+#only keep the columns we actually want to work with
+Input_subset = Input[,c('BinID','accession','arcogs','KO_hmm','PFAM_hmm','TIRGR','CAZy','Description.1' )]
+kable((head(Input_subset)), format='markdown')
+
+#convert dataframe from wide to long
+Input_long <- reshape2::melt(Input_subset,  id=c("accession","BinID"))
+
+#give informative headers
+colnames(Input_long) <- c("accession", "BinID", "DB", "gene")
+
+#clean factors, to remove issues when counting
+Input_long$gene <- as.factor(Input_long$gene)
+kable((head(Input_long)), format='markdown')
+
+```
+
+## Make count tables
+
+### Generate a count table for our genomes of interest
+
+Now we want to count, how often does a genome (i.e. NIOZ134_mb_b41_2) have a gene. I.e. how often do we want arCOG00570, arCOG01358, ...
+
+##### Do this via  a loop (not executed, just an example)
+
+Notice: 
+
+Since we run this chunk with ``, eval = FALSE`` we can still see the code but it is not executed.
+This is done because some computations take some time, which we do not want to spend, but I still want to show the code to give some alternative examples.
+
+```{r, eval = FALSE}
+
+#count the number of proteins for each genome of interest
+y <- c()
+for (i in Bin_order) {
+  x <-  table(subset(Input_long, BinID %in% paste(i))$gene)
+  y <- cbind (y,x)
+}
+
+#clean-up the table
+Counts_Table_loop <- y
+colnames(Counts_Table_loop) <- Bin_order
+Counts_Table_loop <- as.data.frame(Counts_Table_loop)
+kable((head(Counts_Table_loop)), format='markdown')
+
+#the '-' (=not identified genes) is also counted and listed in the first column and removed at this step
+Counts_Table_loop <- Counts_Table_loop[-1,]
+kable((head(Counts_Table_loop)), format='markdown')
+
+```
+
+##### Do this via ddply ((not executed, just an example))
+
+New functions:
+
+- ``spread()`` = converts our long to a wide dataframe by using the BinIDs as new column names, the count table as values to populate our dataframe and with missing values we print a 0.
+
+```{r, eval = FALSE}
+
+#count data and clean header
+Counts_Table_long <- ddply(Input_long, .(BinID, gene), summarize, GeneCount = length(gene))
+colnames(Counts_Table_long) <- c("BinID", "geneID", "count")
+kable((head(Counts_Table_long)), format='markdown')
+
+#transform to wide format, with fill = 0 instead of a NA we add a 0
+Counts_Table_wide <- spread(Counts_Table_long, BinID, count, fill = 0 )
+
+#view data
+kable((head(Counts_Table_wide)), format='markdown')
+```
+
+
+##### Do this via tidyr (usually a bit faster than ddplyr, which is why we use this way)
+
+Here, we use the `` %>%`` symbol again:
+In the following example, the a subset of the Input_long data (only 3 columns, not the whole dataframe) gets passed to ``count()``
+
+New functions:
+
+- ``count()`` = A function of the dplyr package. Here, we count the unique protein IDs grouped by BinID and gene (i.e. roughly equivalent to the columns we want to keep)
+
+```{r}
+
+#count data and clean header
+Counts_Table_long <- Input_long[,c('accession', 'BinID','gene')] %>% count(BinID, gene, sort = FALSE)
+colnames(Counts_Table_long) <- c("BinID", "geneID", "count")
+kable((head(Counts_Table_long)), format='markdown')
+```
+
+
+When viewing the data we also see that proteins with no annotations are counted (the minus symbol), since we do not care about this at this stage, lets remove everything with a minus symbol
+
+```{r}
+
+#delete rows with a minus symbol
+Counts_Table_long <- Counts_Table_long[Counts_Table_long$geneID!= "-", ]
+
+#clean factors
+Counts_Table_long$geneID <- factor(Counts_Table_long$geneID)
+
+#view data
+kable((head(Counts_Table_long)), format='markdown')
+
+```
+
+Now, we can convert the long to a wide table, since this format is a bit easier to read in excel later.
+
+```{r}
+
+#transform to wide format, with fill = 0 instead of a NA we add a 0
+Counts_Table_wide <- spread(Counts_Table_long, BinID, count, fill = 0 )
+kable((head(Counts_Table_wide)), format='markdown')
+
+```
+
+Also, we want our geneIDs to be the new rownames and we do this by using the ``rownames()`` functions.
+We do this since some functions do not like to have characters in their dataframe.
+
+```{r}
+#change the rownames
+rownames(Counts_Table_wide) <- Counts_Table_wide$geneID
+
+#view data
+kable((head(Counts_Table_wide)), format='markdown')
+```
+
+
+When we change the rownames and view the data, we see that the geneID is now both in the rownames as well as the first column. 
+Since that is a bit messy, we next remove the first column.
+
+```{r}
+
+#delete the first column
+Counts_Table_wide <- Counts_Table_wide[,-1]
+kable((head(Counts_Table_wide)), format='markdown')
+
+```
+
+
+```{r}
+#order our data so that the bins start first with the bins from the basal group
+Counts_Table_wide <- Counts_Table_wide[,Bin_order]
+
+#view data
+kable((head(Counts_Table_wide)), format='markdown')
+
+```
+
+If you run these three examples yourself, take not how different the speed is.
+
+
+### Generate a count table for our clusters of interest
+
+Same as above, but now we want to know for our 4 aquifer genomes, how many have Gene Xx and show this as percent. I.e. if 1/4 genomes have a gene, then 25% have it.
+
+First, lets merge in our taxa info into our count table, we need this to summarize our data by clusters.
+
+```{r}
+
+#merge the count table with mapping file to add in the taxa info (might take a while depending on size)
+Counts_Table_long_Tax <- merge(Counts_Table_long, design_2[,c("BinID", "ClusterName", "NrGenomes")], by = "BinID")
+kable((head(Counts_Table_long_Tax)), format='markdown')
+
+```
+
+Next, whenever we have a value higher than one, we replace it with 1. 
+That way we deal with our data like it is a presence/absence data.
+I.e. 0 = no genes present & 1 = gene present
+
+```{r}
+#convert counts to presence/absence matrix (just using 0/1) (this is needed to calculate the percentage across clusters)
+Counts_Table_long_Tax$count[Counts_Table_long_Tax$count > 1] <- 1
+kable((head(Counts_Table_long_Tax)), format='markdown')
+```
+
+Now, we can use tidyr to count of how many genomes in a cluster have a gene. 
+
+```{r}
+
+#count data and clean header
+Counts_Table_long_Tax_sum <- Counts_Table_long_Tax[,c('ClusterName', 'geneID','NrGenomes', 'count')] %>% count(ClusterName, geneID, NrGenomes, sort = FALSE)
+colnames(Counts_Table_long_Tax_sum) <- c("ClusterName", "geneID", "NrGenomes", "quantity")
+kable((head(Counts_Table_long_Tax_sum)), format='markdown')
+
+```
+
+Next, we want to calculate the percentage.
+I.e. in the first example, we have 4 aquifer genomes, two of which [FeFe]_Group_C3 (=50%).
+
+```{r}
+#calculate of the percentage to answer of the total genomes per cluster how many have a certain gene
+#notice: if running for your own data check here that your percentage makes sense. I.e. we do not want values above 100
+Counts_Table_long_Tax_sum$percentage <- round(Counts_Table_long_Tax_sum$quantity/Counts_Table_long_Tax_sum$NrGenomes*100, digits = 0)
+kable((head(Counts_Table_long_Tax_sum)), format='markdown')
+```
+
+For printing this, we want to convert our long to a wide table by using ``spread()``.
+Also, we want our geneIDs to be the new rownames and we do this by using the ``rownames()`` functions.
+We do this since some functions do not like to have characters in their dataframe.
+
+```{r}
+#convert long to wide format and clean table (i.e. place the rownames)
+Counts_Table_long_Tax_sum_wide <- spread(Counts_Table_long_Tax_sum[,c("geneID", "ClusterName", "percentage")], ClusterName, percentage)
+
+#change the rownames
+rownames(Counts_Table_long_Tax_sum_wide) <- Counts_Table_long_Tax_sum_wide$geneID
+
+#view data
+kable((head(Counts_Table_long_Tax_sum_wide)), format='markdown')
+```
+
+When we change the rownames and view the data, we see that the geneID is now both in the rownames as well as the first column. 
+Since that is a bit messy, we next remove the first column.
+
+```{r}
+
+#delete the first column
+Counts_Table_long_Tax_sum_wide <- Counts_Table_long_Tax_sum_wide[,-1]
+kable((head(Counts_Table_long_Tax_sum_wide)), format='markdown')
+
+```
+
+Now we see that we have NAs for genes that are not present in some of our clades.
+If we want to do more math then NAs are not helpful and we instead want to have a 0 there instead.
+
+```{r}
+
+#replace NAs with 0
+Counts_Table_long_Tax_sum_wide[is.na(Counts_Table_long_Tax_sum_wide)] <- 0
+kable((head(Counts_Table_long_Tax_sum_wide)), format='markdown')
+
+```
+
+Finally, we want to sort our data, starting with the Basal clade and ending with the Black Sea Clades
+
+```{r}
+
+#sort by cluster order (defined by the order of the mapping file)
+Counts_Table_long_Tax_sum_wide <- Counts_Table_long_Tax_sum_wide[,Cluster_order]
+kable((head(Counts_Table_long_Tax_sum_wide)), format='markdown')
+
+```
+
+
+## Merge our tables with the mapping data we have
+
+Now, that we have our count tables both for the bins as well as for all the clusters, we now want to add some gene description and subset the data based on different categores.
+
+### For the bins
+
+#### Add gene descriptions
+
+Remember above, we made a list of descriptions that links all geneIDs with what is behind all the gene IDs? Now we want to add this info back in in order to print all the counts.
+
+```{r}
+
+#merge
+Counts_Table_final <- merge(All_Genes_Description, Counts_Table_wide, by.x="Gene", by.y="row.names", all.x = T, sort = F)
+kable((head(Counts_Table_final)), format='markdown')
+
+#print (and beautify elsewhere)
+write.table(Counts_Table_final, "../output_examples/Counts_Table_final.txt",  sep = "\t", quote = F, row.names = T, na = "")
+
+```
+
+
+#### Merging with the arcog_table
+
+```{r}
+
+#merge
+Arcog_Data <- merge(Arcog_mapping, Counts_Table_wide, by.x="arcog", by.y="row.names", all.x = T, sort = F)
+kable((head(Arcog_Data)), format='markdown')
+
+#print (and beautify elsewhere)
+write.table(Arcog_Data, "../output_examples/ArCOG_Data.txt",  sep = "\t", quote = F, row.names = T, na = "")
+
+```
+
+
+#### Merging with the metabolism metadata file
+
+
+```{r}
+
+#merge
+KEGG_Metabolism <- merge(Metabolism_file_KEGG, Counts_Table_wide, by.x="KO", by.y="row.names", all.x = T, sort = F)
+kable((head(KEGG_Metabolism)), format='markdown')
+
+#print
+write.table(KEGG_Metabolism, "../output_examples/KEGG_Metabolism.txt",  sep = "\t", quote = F, row.names = T, na = "")
+
+```
+
+
+### For the clusters
+
+The process works exactly the same as above. So try by yourself if you can merge things ;-).
+
+
+
+
+## Plot the data for our genes of interest
+
+Here, we are not interested in plotting all genes but just want to plot things that are listed under the lipid pathway. 
+
+Since we are only interested in the Lipid pathway for the genes of interest (the table, among others, also lists genes involved in informational processing),
+we first need to make a gene list of just the genes we are interested in.
+
+New functions:
+
+- ``subset()`` = subsets a dataframe. Syntax --> subset(dataframe, column, %in% pattern_we_look_for)
+
+```{r}
+
+#subset genes of interest and clean factors
+Genes_Lipids <- subset(Genes_of_interest, Pathway_1 %in% "Lipids")
+Genes_Lipids$Gene <- factor(Genes_Lipids$Gene)
+Genes_Lipids$arcog <- factor(Genes_Lipids$arcog)
+
+#check how many genes we have
+dim(Genes_Lipids)
+
+kable((head(Genes_Lipids)), format='markdown')
+```
+
+Next, we want to make sure that the order is ok. In this specific example, we manually defined two columns for ordering (Order and Order2). 
+We sort based on these columns and make a vector to order our genes of interest and our pathways of interest.
+For the lipid genes we look at the mevalonate pathway and general lipid biosynthesis genes
+
+- ``length()``` - lets us check the length of a vector, here it allows us to see that we would expect 16 genes
+
+```{r}
+#define an order (we arange the dataframe based on two columsn, Order and Order2)
+Genes_Lipids_order_temp <- Genes_Lipids %>% arrange(Order, Order2)
+Genes_Lipids_order <- as.character(unique(Genes_Lipids_order_temp$Gene))
+length(Genes_Lipids_order)
+
+Genes_Lipids_order
+
+#The lipids belong to two different pathways, these 2 pathways we want to show in two separate heatmaps
+Lipids_Pathway_order <- as.character(unique(Genes_Lipids$pathway_2))
+Lipids_Pathway_order
+```
+
+Now that we know what genes we are interested in, lets subset our original count table.
+
+```{r}
+#subset our original count table for genes of interest and clean factors
+Genes_Lipids_counts <- subset(Counts_Table_long_Tax_sum, geneID %in% as.character(Genes_Lipids$arcog))
+Genes_Lipids_counts$geneID <- factor(Genes_Lipids_counts$geneID)
+
+#control that all went fine
+length(unique(Genes_Lipids_counts$geneID))
+
+dim(Genes_Lipids_counts)
+kable((head(Genes_Lipids_counts)), format='markdown')
+```
+
+With length we see that now we just have 15 genes. How can we find out what gene is missing?
+
+- ``setdiff()`` = we compare two vectors and print the elements that differ.
+
+```{r}
+
+setdiff(Genes_Lipids$arcog, Genes_Lipids_counts$geneID)
+
+```
+
+We can see that we miss K18689. If we check our original annotations input, we can see that K18689 does not exist in that table. So we can nout pull information because of that.
+This gives a good example, why it is important to check your data as we do not know whether this is an issue with the code or what the problem could be.
+
+-------
+
+Now, since our count data does not know that we categorize our different genes into different pathways, lets add this info in with ``merge()`` 
+
+```{r}
+#add in metadata (from the pathway info)
+Key_Lipids_genes_cluster <- merge(Genes_Lipids_counts, Genes_Lipids, by.x ="geneID", by.y = 'arcog' , all.x = T )
+kable((head(Key_Lipids_genes_cluster)), format='markdown')
+
+```
+
+### Categorizing data
+
+ There are different ways to color code data. By default the way we do it, we use a gradual color scale from 0-100%. 
+ However, we could also define categories with the ifelse statement we learned before.
+ Here, we define 4 categories (100%, 75-100 and, 33-75 and 0-33%)
+
+```{r}
+#define color code (not used for the current figure, but can be changed)
+#here , we define 3 color levels, which sometimes is useful to show very clear cutoffs
+Key_Lipids_genes_cluster$category <- ifelse(Key_Lipids_genes_cluster$percentage == 100, "1",
+                                         ifelse(Key_Lipids_genes_cluster$percentage >= 75, "0.75",
+                                                ifelse(Key_Lipids_genes_cluster$percentage >= 33, "0.33", "0")))
+```
+
+### Order our data
+
+Remember the annoying thing that R sorts alphabetically? 
+Let's make sure we ahve the order we want.
+
+```{r}
+#define order for the plot
+Key_Lipids_genes_cluster$ClusterName2 <-  factor(Key_Lipids_genes_cluster$ClusterName, levels = rev(Cluster_order))
+Key_Lipids_genes_cluster$Gene2 <-  factor(Key_Lipids_genes_cluster$Gene, levels = Genes_Lipids_order)
+Key_Lipids_genes_cluster$pathway_2b <-  factor(Key_Lipids_genes_cluster$pathway_2, levels = Lipids_Pathway_order)
+```
+
+### Plotting
+
+In the example here, we use a gradual scale. If we would want to use our 4 categories we can use this code ``#scale_fill_manual(values= c("white", "blue", "blue", "dodgerblue"))``
+and replacing the ``fill = percentage `` with ``fill = category ``. 
+
+
+```{r}
+
+#plot
+p1_Lipids <- 
+  ggplot(Key_Lipids_genes_cluster, aes(x=Gene2, y=ClusterName2)) + 
+  geom_tile(aes(fill = percentage)) +
+  geom_hline(yintercept=2.5) +
+  facet_wrap( ~ pathway_2b, nrow = 1, scales='free_x') +
+  scale_fill_distiller(palette = "Blues", direction = 1) +
+  theme_bw() +
+  #scale_fill_manual(values= c("white", "blue", "blue", "dodgerblue")) +
+  labs(x="", y="", fill="Percentage") + 
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(colour = "black")) +
+  theme(legend.position="left",
+        axis.text.x=element_text(angle=45,vjust = 1, hjust=1, size=8),
+        #axis.text.y=element_blank(),
+        axis.ticks=element_blank(),
+        axis.line=element_blank(),
+        plot.margin=unit(c(0, 0, 0, 0), "mm"))
+
+p1_Lipids
+
+as.data.frame(levels(Key_Lipids_genes_cluster$ClusterName2))
+
+p1_Lipids2 <- 
+  ggplot(Key_Lipids_genes_cluster, aes(x=Gene2, y=ClusterName2)) + 
+  geom_tile(aes(fill = percentage)) +
+  geom_hline(yintercept=2.5) +
+  facet_wrap( ~ pathway_2b, nrow = 1, scales='free_x') +
+  scale_fill_distiller(palette = "Blues", direction = 1) +
+  theme_bw() +
+  #scale_fill_manual(values= c("white", "blue", "blue", "dodgerblue")) +
+  labs(x="", y="", fill="Percentage") + 
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(colour = "black")) +
+  theme(legend.position="left",
+        axis.text.x=element_text(angle=45,vjust = 1, hjust=1, size=8),
+        #axis.text.y=element_blank(),
+        axis.ticks=element_blank(),
+        axis.line=element_blank(),
+        plot.margin=unit(c(0, 0, 0, 0), "mm"))
+
+p1_Lipids2
+
+```
+
+If we plot with facets we can sometimes have the problem that different genes have different widths.
+We can correct this behaviour with ggplotGrob.
+
+```{r}
+# convert ggplot object to grob object (used to rescale plot)
+gp_lipid <- ggplotGrob(p1_Lipids2)
+
+# optional: take a look at the grob object's layout
+gtable::gtable_show_layout(gp_lipid)
+
+# get gtable columns corresponding to the facets (5 & 9, in this case)
+facet.columns <- gp_lipid$layout$l[grepl("panel", gp_lipid$layout$name)]
+
+# get the number of unique x-axis values per facet (1 & 3, in this case)
+x.var <- sapply(ggplot_build(p1_Lipids)$layout$panel_scales_x,
+                function(l) length(l$range$range))
+
+# change the relative widths of the facet columns based on
+# how many unique x-axis values are in each facet
+gp_lipid$widths[facet.columns] <- gp_lipid$widths[facet.columns] * x.var
+
+# plot result
+grid::grid.draw(gp_lipid)
+
+#print
+#pdf("2_Output/Figure_S64.pdf", paper="special", family="sans",width=8, height=7, useDingbats=FALSE)
+#grid::grid.draw(gp_lipid)
+#dev.off() 
+
+```
+
+In this example we see that only the aquifer and the basal clade have all required genes for the mevalonate pathway and the lipid pathway that is required to make a key archaeal lipid.
+
