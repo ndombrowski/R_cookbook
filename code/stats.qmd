@@ -166,10 +166,10 @@ growth_data %>% summarise(
           mean_root = mean(Rootlength, na.rm = TRUE))
 ```
 
-Good things about tydir are:
+Good things about tydr are:
 
 - it is extremely fast, so is important for dealing with larger datasets
-- we can combine several compands by using the pipe
+- we can combine several commands by using the pipe
 
 I.e. below we can see that we first group the input data and then summarized the group data.
 
