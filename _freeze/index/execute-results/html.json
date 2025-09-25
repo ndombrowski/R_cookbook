@@ -1,12 +1,19 @@
 {
-  "hash": "a0b6a46581fea49db4536e703c5ad7b5",
+  "hash": "e24db5f97cb6bd9286c70e04a4e8e70b",
   "result": {
-    "markdown": "# Preface {.unnumbered}\n\nThis is a cook book for key R commands.\n\n\n\n",
-    "supporting": [],
+    "engine": "knitr",
+    "markdown": "# Preface {.unnumbered}\n\nThis is a cookbook for key R commands. \n\n\n\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
-    "includes": {},
+    "includes": {
+      "include-in-header": [
+        "<link href=\"site_libs/pagedtable-1.1/css/pagedtable.css\" rel=\"stylesheet\" />\n<script src=\"site_libs/pagedtable-1.1/js/pagedtable.js\"></script>\n"
+      ]
+    },
     "engineDependencies": {},
     "preserve": {},
     "postProcess": true

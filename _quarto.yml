@@ -4,7 +4,7 @@ project:
   output-dir: docs
 
 book:
-  title: "R cookbook"
+  title: "R  cookbook"
   author: "Nina Dombrowski"
   #date: "`r Sys.Date()`"
   chapters:

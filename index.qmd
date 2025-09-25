@@ -1,6 +1,6 @@
 # Preface {.unnumbered}
 
-This is a cook book for key R commands.
+This is a cookbook for key R commands. 
 
 ```{r, global_options, include=FALSE}
 #control soft wrap
