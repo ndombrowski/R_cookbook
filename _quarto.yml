@@ -7,7 +7,6 @@ book:
   title: "R cookbook"
   author: "Nina Dombrowski"
   #date: "`r Sys.Date()`"
-  logo: images/tree_of_life.png
   chapters:
     - index.qmd
     - code/1_intro.qmd
@@ -19,26 +18,29 @@ book:
     - code/parsing_output_from_annotations.qmd
     - code/2_misc.qmd
 
+logo: 
+  small: images/tree_of_life.png
+
 bibliography: references.bib
 
 format:
   html:
     theme: cosmo
     code-overflow: wrap
-  pdf:
-    documentclass: scrreprt
-    geometry:
-      - top=4mm
-      - left=4mm
-    #  - textwidth=4.5in
-      - heightrounded
-    fontfamily: libertinus
-    highlight-style: github
-    pandoc_args: --listings
-    includes:
-      in_header: preamble.tex
-    colorlinks: true
-    #code-block-bg: 7FB3D5
+  # pdf:
+  #   documentclass: scrreprt
+  #   geometry:
+  #     - top=4mm
+  #     - left=4mm
+  #   #  - textwidth=4.5in
+  #     - heightrounded
+  #   fontfamily: libertinus
+  #   highlight-style: github
+  #   pandoc_args: --listings
+  #   includes:
+  #     in_header: preamble.tex
+  #   colorlinks: true
+  #   #code-block-bg: 7FB3D5
 
 execute:
   eval: false
