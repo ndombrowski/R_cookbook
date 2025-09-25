@@ -3,9 +3,7 @@
   "result": {
     "engine": "knitr",
     "markdown": "# Preface {.unnumbered}\n\nThis is a cookbook for key R commands. \n\n\n\n\n\n",
-    "supporting": [
-      "index_files"
-    ],
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
