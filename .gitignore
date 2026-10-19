@@ -4,6 +4,7 @@
 *.rds
 .Ruserdata
 *_files
+!docs/**/*_files
 *_cache
 *.pdf
 .DS_Store
@@ -15,4 +16,7 @@ notes
 .nojekyll
 /.quarto/
 _freeze/
-*.*
+CLAUDE.md
+to_do.md
+
+**/*.quarto_ipynb

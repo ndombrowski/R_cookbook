@@ -15,8 +15,8 @@ library(knitr)
 library(kableExtra)
 
 #read in data
-timecourse <- read.table("../data/Timecourse.txt", sep="\t", header=T,  quote = "")
-growth_data <- read.table("../data/Growth_Data.txt", sep="\t", header=T,  quote = "")
+timecourse <- read.table("data/Timecourse.txt", sep="\t", header=T,  quote = "")
+growth_data <- read.table("data/Growth_Data.txt", sep="\t", header=T,  quote = "")
 
 #remove NAs
 timecourse_noNA <- timecourse[!is.na(timecourse$Rootlength), ]

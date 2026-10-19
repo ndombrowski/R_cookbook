@@ -49,7 +49,7 @@ Notice: We can also sort our mapping file beforehand and use this order to order
 ```{r}
 
 #read in the mapping file
-design <- read.table("../data/mapping.txt", sep="\t", header=T, fill=TRUE, quote = "")
+design <- read.table("data/mapping.txt", sep="\t", header=T, fill=TRUE, quote = "")
 
 #check the structure of the mapping file
 head(design)
@@ -167,15 +167,15 @@ Genes_of_interest is a list of key metabolic genes we want to look at more close
 
 ```{r}
 #general mapping file for arcog IDs
-Arcog_mapping <- read.table("../data/ar14_arCOGdef19.txt", sep="\t", header=T, fill=TRUE, quote = "")
+Arcog_mapping <- read.table("data/ar14_arCOGdef19.txt", sep="\t", header=T, fill=TRUE, quote = "")
 head(Arcog_mapping)
 
 #pathway mapping file
-Metabolism_file_KEGG <- read.table("../data/Metabolism_Table_KO_Apr2020.txt", sep="\t", header=T, fill=TRUE, quote = "")
+Metabolism_file_KEGG <- read.table("data/Metabolism_Table_KO_Apr2020.txt", sep="\t", header=T, fill=TRUE, quote = "")
 head(Metabolism_file_KEGG)
 
 #load the genes of interest
-Genes_of_interest <- read.table("../data/Genes_of_interest.txt", sep="\t", header=T, fill=TRUE, quote = "")
+Genes_of_interest <- read.table("data/Genes_of_interest.txt", sep="\t", header=T, fill=TRUE, quote = "")
 head(Arcog_mapping)
 ```
 
@@ -215,7 +215,7 @@ Another alternative would be to run R on the clusters.
 
 ```{r}
 #read in data and view it
-Input <- read.table("../data/UAP2_Annotation_table_u.txt", sep="\t", header=T, fill=TRUE, quote = "")
+Input <- read.table("data/UAP2_Annotation_table_u.txt", sep="\t", header=T, fill=TRUE, quote = "")
 head(Input)
 ```
 
@@ -540,7 +540,7 @@ Counts_Table_final <- merge(All_Genes_Description, Counts_Table_wide, by.x="Gene
 kable((head(Counts_Table_final)), format='markdown')
 
 #print (and beautify elsewhere)
-write.table(Counts_Table_final, "../output_examples/Counts_Table_final.txt",  sep = "\t", quote = F, row.names = T, na = "")
+write.table(Counts_Table_final, "output_examples/Counts_Table_final.txt",  sep = "\t", quote = F, row.names = T, na = "")
 
 ```
 
@@ -554,7 +554,7 @@ Arcog_Data <- merge(Arcog_mapping, Counts_Table_wide, by.x="arcog", by.y="row.na
 kable((head(Arcog_Data)), format='markdown')
 
 #print (and beautify elsewhere)
-write.table(Arcog_Data, "../output_examples/ArCOG_Data.txt",  sep = "\t", quote = F, row.names = T, na = "")
+write.table(Arcog_Data, "output_examples/ArCOG_Data.txt",  sep = "\t", quote = F, row.names = T, na = "")
 
 ```
 
@@ -569,7 +569,7 @@ KEGG_Metabolism <- merge(Metabolism_file_KEGG, Counts_Table_wide, by.x="KO", by.
 kable((head(KEGG_Metabolism)), format='markdown')
 
 #print
-write.table(KEGG_Metabolism, "../output_examples/KEGG_Metabolism.txt",  sep = "\t", quote = F, row.names = T, na = "")
+write.table(KEGG_Metabolism, "output_examples/KEGG_Metabolism.txt",  sep = "\t", quote = F, row.names = T, na = "")
 
 ```
 

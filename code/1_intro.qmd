@@ -25,7 +25,7 @@ This file contains measurements of root length and shoot fresh weight for plants
 1.2. **Timecourse.txt** 
 
 We found positive effects for some of the strains tested above and now we want to know how long it takes for this effect to appear. To answer this, we measured root length of our plants when adding our microbe and compared it to control treatments at 5 different time points. 
-Something unique with this dataframe is that we have empty cells (=NAs) and we need to deal with them as some R functions don't like empty cells.
+Something unique with this dataframe is that we have empty cells (R marks these as `NA`, short for "not available") and we need to deal with them as some R functions don't like empty cells.
 
 
 ## Good practices for coding
@@ -69,7 +69,7 @@ library(dlookr)
 library(nortest)
 
 #read in data
-growth_data <- read.table("../data/Growth_Data.txt", sep="\t", header=T,  quote = "", stringsAsFactors=TRUE)
+growth_data <- read.table("data/Growth_Data.txt", sep="\t", header=T,  quote = "", stringsAsFactors=TRUE)
 
 #check the structure of our data
 head(growth_data)
@@ -106,11 +106,48 @@ The annotation table looks like this:
 #| echo: false
 
 #read in data
-annotation_data <- read.table("../data/UAP2_Annotation_table_u.txt", sep="\t", header=T,  quote = "")
+annotation_data <- read.table("data/UAP2_Annotation_table_u.txt", sep="\t", header=T,  quote = "")
 
 #check the structure of our data
 kable(head(annotation_data), format='markdown')
 ```
+
+
+## Installation
+
+To follow this tutorial you need two programs: **R** and **RStudio**. R is the program that actually runs your code. RStudio is an editor that makes working with R easier: you write your code in it, run it, and see your tables and plots in one window. RStudio needs R to work, so install R first.
+
+Both programs are free and work on Windows, Mac and Linux.
+
+### Step 1: Install R
+
+1. Go to the R download page: <https://cran.r-project.org/>
+2. Click the download link for your operating system.
+    - **Windows:** click "Download R for Windows", then "base", then the download link at the top of the page.
+    - **Mac:** click "Download R for macOS". There are two installers. Pick the one that matches the chip in your Mac: "arm64" for newer Macs with an Apple chip (M1, M2, ...) and "x86_64" for older Macs with an Intel chip. If you are not sure, click the Apple menu and choose "About This Mac".
+3. Open the file you downloaded and follow the steps of the installer. The default settings are fine.
+
+### Step 2: Install RStudio
+
+1. Go to the RStudio download page: <https://posit.co/download/rstudio-desktop/>
+2. R is already installed, so you can skip step 1 on that page. Download the RStudio installer for your operating system.
+3. Open the file you downloaded and follow the steps of the installer.
+
+### Step 3: Check that it works
+
+Open RStudio. You do not need to open R itself, RStudio starts it for you. In the window called **Console** (by default on the left side) you should see a message that starts with the R version, for example `R version 4.4.2`.
+
+Click into the Console, type the following and press Enter:
+
+```{r}
+1 + 1
+```
+
+If R answers with `[1] 2`, everything is installed correctly. The `[1]` just means that this is the first value of the answer.
+
+::: {.callout-note}
+If you already have R and RStudio installed, check how old they are. Packages are often only built for recent R versions, so a very old R can cause errors when you install packages. To see your R version, type `R.version.string` in the Console.
+:::
 
 
 ## Working in R
@@ -127,7 +164,16 @@ Then, you should see something like this:
   <img height="300" src="../images/R.png">
 </p>
 
-To check your R version, start and quit R you can type the following in your terminal:
+To start R, type the following in your terminal (this is a terminal command, not R code):
+
+```{bash}
+#| eval: false
+
+#start R
+R
+```
+
+Once R has started, the terminal shows the R prompt `>`. Now you are inside R and can type R code. For example, to check your R version and then quit R again:
 
 ```{r}
 #| eval: false
@@ -135,31 +181,59 @@ To check your R version, start and quit R you can type the following in your ter
 #Ask what R version we have
 R.version
 
-#start R
-R
-
-#exit R
+#exit R and go back to the terminal
 q()
 ```
 
+On Windows, typing `R` in PowerShell does not start R, because `r` already means something else there. On Windows it is easiest to work in RStudio (see below).
 
 
-### RStudio (everything in one place):
 
+### Basic RStudio use
 
-R is command-line only while RStudio is a GUI ((graphical user interface)) version of R. Therefore, working in RStudio makes everything a bit more interactive.
+R on its own only has a command line: you type a command, press Enter and get an answer. RStudio puts a graphical interface around R, with windows and buttons, so that you can see your code, your data and your plots side by side.
 
-RStudio includes the following:
+#### The four panes
 
-* Script separate from command-line (left-hand screen)
-* Lists your variables (upper, right-hand corner)
-* Manual and an extensive help function
-* Easy install of new packages
-* Plots are shown within RStudio
+RStudio is split into four areas, called **panes**:
 
 <p align="left">
   <img height="400" src="../images/RStudio.png">
 </p>
+
+- **Source (top left):** this is where you write and edit your scripts. A script is a plain text file that contains your R code. This pane only appears once you open or create a file.
+- **Console (bottom left):** this is where R actually runs your code and prints the results. You can also type commands here directly.
+- **Environment (top right):** lists everything you have stored in R during this session, for example tables you have read in. Click on a table to look at it.
+- **Files, Plots, Packages, Help (bottom right):** shows the files in your folder, your plots, the packages you have installed and the help pages.
+
+You can rearrange the panes under Tools > Global Options > Pane Layout, so the positions on your computer might be different.
+
+#### Console or script?
+
+You can type code directly into the Console, but once you close RStudio that code is gone. Also, if you want to repeat an analysis a few weeks later, you will not remember exactly what you typed.
+
+That is why you should write your code in a **script** instead. The script is a record of everything you did, and you can run it again at any time. Some rules of thumb:
+
+- Use the **Console** for quick checks that you do not need to keep, for example looking at a table with `head()`.
+- Use a **script** for everything that is part of your analysis.
+
+#### Create, save and run a script
+
+1. Create a new script with File > New File > R Script. An empty file opens in the Source pane.
+2. Type some code into it, for example `1 + 1`.
+3. Save the script with File > Save (or Ctrl+S on Windows, Cmd+S on Mac). Give it a name that ends with `.R`, for example `my_first_script.R`.
+4. Run your code. Put the cursor on the line you want to run and press **Ctrl+Enter** (Windows) or **Cmd+Enter** (Mac). You can also click the **Run** button at the top of the script. The code is sent to the Console and the result appears there.
+
+To run several lines at once, select them with the mouse first and then press Ctrl+Enter (Cmd+Enter on Mac).
+
+#### Reading the Console
+
+The symbol at the start of the last line in the Console tells you what R is doing:
+
+- `>` means R is ready and waits for your next command.
+- `+` means R thinks your command is not finished yet and waits for the rest. This usually happens when you forgot a closing bracket `)` or quote `"`. Either type the missing part, or press **Esc** to cancel the command and start again.
+
+If R prints a message starting with `Error`, your command did not work. Read the message, it often tells you what went wrong (for example a misspelled name or a file that cannot be found). Messages starting with `Warning` mean the command did run, but R wants to tell you about something that might be a problem.
 
 
 
@@ -231,7 +305,7 @@ You can also open a new file in any text editor and save it with the .rmd extens
 
 #### Quarto 
 
-[Quarto®](https://quarto.org) is the predecessor of RMarkdown and is an open-source scientific and technical publishing system built on Pandoc and allows to:
+[Quarto®](https://quarto.org) is the successor of RMarkdown and is an open-source scientific and technical publishing system built on Pandoc and allows to:
 
 - Create dynamic content with Python, R, Julia, and Observable.
 - Author documents as plain text markdown or Jupyter notebooks.
@@ -284,12 +358,12 @@ echo 'a b c' | sed 's/ /\|/g'
 
 ```{bash}
 #list qmd files we have in our directory
-ls  *qmd
+ls code/*qmd
 ```
 
 ```{bash}
 #show whats in our data
-head ../data/Growth_Data.txt 
+head data/Growth_Data.txt 
 ```
 
 A general introduction into bash and awk is provided in separate tutorials that are also available on [github.](https://github.com/ndombrowski/AWK_tutorial)
@@ -343,15 +417,28 @@ An example would be something with a structure like this:
 
 In this example you see that we have 4 projects, and in each folder we have the R_script and folders for the required input and required output files. Also useful to have is a text file with the session info and if you plan to share this with others it is also good to have a README file that provides some background on the analysis done.
 
-Options to see the working dir and set the working directory in R are:
+To see the working directory R is currently using, type:
 
 ```{r, eval=FALSE}
 #print your wdir
 getwd()
-
-#setting your wdir
-setwd(getwd())
 ```
+
+### Make a project folder with RStudio
+
+The easiest way to get the working directory right is an **RStudio Project**. A project is a folder on your computer that RStudio remembers. When you open the project, RStudio automatically sets the working directory to that folder. This means you never have to type the full path to your files, and your code keeps working if you move the folder or share it with someone else.
+
+To create a project for this tutorial:
+
+1. Go to File > New Project > New Directory > New Project.
+2. Give the folder a name, for example `R_tutorial`, and choose where it should be saved with "Browse".
+3. Click "Create Project".
+
+RStudio now opens the project. You will see a file ending in `.Rproj` in the Files pane. The next time you want to work on this tutorial, open RStudio and use File > Open Project, or double-click the `.Rproj` file.
+
+You can check that it worked with `getwd()`. It should print the path of your new project folder.
+
+From now on, all paths in this tutorial are written relative to the project folder. For example, `data/Growth_Data.txt` means "the file `Growth_Data.txt` in the folder `data` inside my project folder".
 
 
 ## Packages
@@ -408,7 +495,7 @@ General rules for the syntax R uses:
 * If a variable exists, it will overwrite it with a new variable without asking
 * If you work with characters, i.e. words like 'hello', then this needs to be written with quotes around it: "hello" (this will become clearer below)
 * `ls()` shows all the variables that are known by the system at the moment
-* you can remove individual objects with ``rm()`` and remove all objects ``rm(list=ls())``
+* you can remove individual objects with ``rm()`` and remove all objects with ``rm(list = ls())``. This combines two functions: `ls()` lists all objects, and `rm()` removes everything in that list. The `list = ...` part is an argument, which is explained in the next section.
 
 We can store more or less everything in a variable and use it later. 
 For example, we can store numbers and do some math with them:
@@ -429,7 +516,7 @@ Functions are build in code that we can use to make our life easier, i.e. we can
 
 Base R already knows many useful functions but loading new packages greatly increases our repertoire.
 
-A list of most used functions can be found [here](**http://www.statmethods.net/management/functions.html)
+A list of most used functions can be found [here](http://www.statmethods.net/management/functions.html)
 
 A function consists of:
 
@@ -446,6 +533,30 @@ print(3+5)
 #use the log function
 log(10)
 ```
+
+### How to write arguments
+
+Arguments go inside the round brackets of a function, separated by commas. You write them as `name = value`. For example, `round()` rounds a number, and its argument `digits` says how many decimals you want to keep:
+
+```{r}
+# round to 2 decimals
+round(3.14159, digits = 2)
+```
+
+You can often leave out the name of an argument. R then matches the values by their position, so this gives the same result:
+
+```{r}
+# same as above, without the argument name
+round(3.14159, 2)
+```
+
+If you don't set an argument at all, R uses its **default value**. For `round()`, the default is `digits = 0`, so you get a whole number:
+
+```{r}
+round(3.14159)
+```
+
+Writing out the names makes your code easier to read, especially for functions with many arguments. You will see this a lot below, for example in `read.table("data/Growth_Data.txt", sep = "\t", header = TRUE)`.
 
 
 ### Call the default values of a function
@@ -481,13 +592,82 @@ kable_styling(latex_options = "striped", position = "left")
 
 
 
+## Get the data
+
+The example data for this tutorial is stored on GitHub, a website for sharing code and files. You can download it directly with R, so you do not need a GitHub account.
+
+Make sure you have your project open (see above) and run the code below. It uses a few new functions:
+
+1. `dir.create()` makes a new folder in your project. We make two: `data` for the input files and `output_examples` for files we will write later.
+2. `download.file()` downloads a file from a web address (`url`) and saves it under the name you give it (`destfile`).
+3. `mode = "wb"` tells R to copy the file exactly as it is. Without it, R on Windows changes the line endings of text files, and the file is no longer identical to the original.
+
+We only want to create a folder or download a file if we don't have it yet. Otherwise, every time you run your script again, R would download the files again and overwrite the ones you already have. To do this, we put each step inside an `if`:
+
+- `dir.exists()` and `file.exists()` check whether a folder or file is already there. They answer `TRUE` or `FALSE`.
+- The `!` in front means "not". It turns `TRUE` into `FALSE` and the other way around.
+- `if (...) { ... }` only runs the code between the curly brackets `{ }` if the part in the round brackets `( )` is `TRUE`.
+
+So `if (!file.exists("data/Growth_Data.txt")) { ... }` reads as: "if the file `data/Growth_Data.txt` does **not** exist, run the code inside the brackets". You will learn more about `if` in the chapter on [control structures](control_structures.qmd).
+
+```{r}
+#| eval: false
+
+# make a folder for the input data, but only if it does not exist yet
+if (!dir.exists("data")) {
+  dir.create("data")
+}
+
+# make a folder for our output files, but only if it does not exist yet
+if (!dir.exists("output_examples")) {
+  dir.create("output_examples")
+}
+
+# download the growth data, but only if we don't have it yet
+if (!file.exists("data/Growth_Data.txt")) {
+  download.file(url = "https://raw.githubusercontent.com/ndombrowski/R_cookbook/main/data/Growth_Data.txt",
+                destfile = "data/Growth_Data.txt",
+                mode = "wb")
+}
+
+# download the timecourse data, but only if we don't have it yet
+if (!file.exists("data/Timecourse.txt")) {
+  download.file(url = "https://raw.githubusercontent.com/ndombrowski/R_cookbook/main/data/Timecourse.txt",
+                destfile = "data/Timecourse.txt",
+                mode = "wb")
+}
+```
+
+The first time you run this, R prints a few lines for each download, ending with a line that starts with `downloaded`. If you run it again, nothing happens, because the files are already there.
+
+::: {.callout-tip}
+If you ever want a fresh copy of a file, for example because you changed it by accident, delete it in the Files pane and run the code again.
+:::
+
+Now check that the download worked. `file.exists()` answers `TRUE` if a file is there, and `file.size()` gives its size in bytes. Your numbers should be the same as below.
+
+```{r}
+# are the files there?
+file.exists("data/Growth_Data.txt")
+file.exists("data/Timecourse.txt")
+
+# how large are they (in bytes)?
+file.size("data/Growth_Data.txt")
+file.size("data/Timecourse.txt")
+```
+
+If you see `FALSE`, look at the Files pane. Is there a `data` folder in your project, and is it spelled exactly like this? R is case sensitive, so `Data` and `data` are two different folders.
+
+
 ## Read data into R
 
-To work with any kind of data we need to first read the data into R to be able to work with it. 
+To work with any kind of data we need to first read the data into R to be able to work with it.
+
+When R reads a table, it stores it as a **data frame**. A data frame is R's name for a table: each row is one measurement (here: one plant) and each column is one variable (for example the nutrient condition or the root length). Empty cells in a table become `NA` in R, which means "not available", i.e. a missing value.
 
 For tables, there are some things to be aware of:
 
-- It matters what separator our table uses to specify individual columns. I.e. some programs store data using commas while others use tab as default delimiter. By default R assume we use a tab, but we can change this behavior when we read in the table.
+- It matters what separator our table uses to specify individual columns. I.e. some programs store data using commas while others use tab as default delimiter. By default R uses any whitespace as delimiter, but we can change this behavior when we read in the table.
 - Do not have any hash symbols (#) in your table. R will read this as a commented cell and not read the table from that point onward
 - Avoid empty cells, as these sometimes can mess up your data.
 
@@ -495,9 +675,13 @@ For now, let's read in the table with our growth data and store it under the var
 
 Options that are good to keep in mind when reading in a table:
 
-- ``sep`` = define that our field separator is a tab. A tab is written like this ``/t``. If your data is using a space or comma, you can change that here.
-- ``header`` = tell R that our data comes with a custom header (the first row in your dataframe)
-- ``quote`` = deals with some annoying issue with data formatting in excel files
+- ``sep`` = define that our field separator is a tab. A tab is written like this ``\t``. If your data is using a space or comma, you can change that here.
+- ``header`` = tell R that our data comes with a custom header (the first row in your dataframe). `header = TRUE` means "yes, the first row contains the column names".
+- ``quote`` = tells R which characters mark the start and end of a text. By default, R treats both `"` and `'` this way. That causes problems as soon as a cell contains a single `'`, for example in a gene name like `5' nuclease`: R then thinks a text starts there and reads the rest of the file as one long piece of text. You may end up with missing rows or even an empty table, and R only shows a warning, not an error. With `quote = ""` we tell R that no character has a special meaning, so every cell is read exactly as it is.
+
+::: {.callout-note}
+In other people's code you will often see `T` and `F` instead of `TRUE` and `FALSE`, for example `header = T`. R understands both. In this tutorial we write `TRUE` and `FALSE` in full, because it is easier to read.
+:::
 
 General notice:
 
@@ -509,8 +693,8 @@ General notice:
 
 ```{r}
 #read in data
-timecourse <- read.table("../data/Timecourse.txt", sep="\t", header=T,  quote = "")
-growth_data <- read.table("../data/Growth_Data.txt", sep="\t", header=T,  quote = "")
+timecourse <- read.table("data/Timecourse.txt", sep = "\t", header = TRUE, quote = "")
+growth_data <- read.table("data/Growth_Data.txt", sep = "\t", header = TRUE, quote = "")
 
 #check the first few lines of our data
 head(growth_data)
@@ -546,15 +730,54 @@ Now, if we would have modified the table we might want to store it on your compu
 Notice, we always start from the location we set as working directory. 
 
 ```{r}
-write.table(growth_data, "../output_examples/growth_data_changed.txt",  sep = "\t", row.names = T, quote =F)
+write.table(growth_data, "output_examples/growth_data_changed.txt", sep = "\t", row.names = TRUE, quote = FALSE)
 ```
 
 Arguments:
 
 - `sep` --> we define what delimiter we want to use
-- `row.names` = T --> we want to include whatever is in the rownames
-- `quote` = F --> we do not want R to add any quotes around our columns.
+- `row.names = TRUE` --> we want to include whatever is in the rownames
+- `quote = FALSE` --> we do not want R to add any quotes around our columns.
 
+
+
+## Three things you need for the next sections
+
+The next sections use three pieces of R syntax that we have not seen yet. Here is a short introduction. You will learn more about them in the chapters on [data objects](data_types.qmd) and [data transformations](data_transformations.qmd).
+
+### `c()` combines values
+
+`c()` stands for "combine". It puts several values together into a **vector**, which is a list of values of the same kind (for example only numbers, or only text):
+
+```{r}
+# a vector with three numbers
+c(1, 5, 10)
+
+# a vector with two column names
+c("SampleID", "Rootlength")
+```
+
+### `[rows, columns]` selects part of a table
+
+With square brackets you can select rows and columns from a data frame. The part before the comma selects rows, the part after the comma selects columns. If you leave one side empty, R takes all of them.
+
+```{r}
+# rows 1 to 3, and only the columns SampleID and Rootlength
+growth_data[1:3, c("SampleID", "Rootlength")]
+```
+
+Here `1:3` means "the numbers 1 to 3", so rows 1, 2 and 3. If we write `growth_data[, c("SampleID", "Rootlength")]` instead, with nothing before the comma, we get these two columns for all 105 rows.
+
+### `$` takes one column
+
+With `$` you can take a single column from a data frame by its name:
+
+```{r}
+# the first few values of the column Rootlength
+head(growth_data$Rootlength)
+```
+
+You can also use `$` together with `<-` to add a new column. If you give a single value, R copies it into every row. We will do this in the merge section below.
 
 
 ## Useful functions in R
@@ -571,7 +794,7 @@ log, exp, sin, cos, tan, sqrt, etc. Other useful functions one can use on vector
 ```{r table_useful3, echo=FALSE, message=FALSE}
 table_useful3 <- data.frame(
 Name = c("max", "min", "length", "sum", "mean", "var", "sort"),
-Function = c("select smallest element", "select largest element", "gives the number of elements",
+Function = c("select largest element", "select smallest element", "gives the number of elements",
              "sums all elements", "obtains the mean value", "unbiased sample variance", 
              "see exercise 2c")
 )
@@ -588,7 +811,7 @@ For example, for very large dataframes we often can simplify things.
 Here, if we have a lot of treatments and did the experiment a long time ago, we might want to ask for a table that lists the treatments.
 
 ```{r}
-#make unique contig list that still contains info of our bin ID
+#make a table that lists each sample with its nutrient and condition only once
 mapping_file <- unique(growth_data[,c("SampleID", "Nutrient", "Condition")])
 
 #view data
@@ -603,9 +826,9 @@ We can also add additional metadata to our growth data.
 One way to do this is the **cbind()**  or **rbind()** functions. 
 However, these functions require the two dataframes to have the exact number of columns or rows, which we do not have. 
 
-Here, the ``merge()`` function of the data.table package is very useful to merge data with different dimensions as long as they have a common pattern (i.e. the SampleID).
+Here, the ``merge()`` function, which is part of base R, is very useful to merge data with different dimensions as long as they have a common pattern (i.e. the SampleID).
 
-First lets build an artificial mapping file that incldues the number of days we grew our plants:
+First lets build an artificial mapping file. It lists each sample once and adds a new column `Comment` that says from which experiment the data comes:
 
 ```{r}
 #make mapping that contains our basic sample info
@@ -621,9 +844,6 @@ head(mapping_file)
 Now we can use this mapping file and merge it with our growth data as follows:
 
 ```{r}
-#load our package
-library(plyr)
-
 #merge our mapping file with our growth data
 new_data_frame <- merge(growth_data, mapping_file, by = "SampleID")
 
@@ -642,8 +862,8 @@ dim(new_data_frame)
 With dim we see that we still have 105 rows (i.e. measurements) and that we now added 3 new columns. 
 
 ```{r}
-#if there is no match between dataframe 1 and dataframe 2 columns will by default be deleted. If you want to keep all columns do:
-#new_data_frame <- merge(growth_data, mapping_file, by = "SampleID". all.x = T)
+#by default, rows of dataframe 1 that have no matching SampleID in dataframe 2 are dropped. If you want to keep all rows of dataframe 1 (missing values become NA) do:
+#new_data_frame <- merge(growth_data, mapping_file, by = "SampleID", all.x = TRUE)
 ```
 
 

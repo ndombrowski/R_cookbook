@@ -17,8 +17,8 @@ library(kableExtra)
 library(plyr)
 
 #read in data
-timecourse <- read.table("../data/Timecourse.txt", sep="\t", header=T,  quote = "")
-growth_data <- read.table("../data/Growth_Data.txt", sep="\t", header=T,  quote = "")
+timecourse <- read.table("data/Timecourse.txt", sep="\t", header=T,  quote = "")
+growth_data <- read.table("data/Growth_Data.txt", sep="\t", header=T,  quote = "")
 mapping_file <- unique(growth_data[,c("SampleID", "Nutrient", "Condition")])
 
 #remove NAs
@@ -215,7 +215,7 @@ plot(x1, y2)
 plot(xn, ym)
 
 #save a file
-png("../output_examples/filename.png")
+png("output_examples/filename.png")
 plot(x, y)
 dev.off()
 ```
@@ -242,7 +242,7 @@ control <- timecourse_summary_Control$mean_root
 Microbe <- timecourse_summary_350$mean_root
 
 #define what we want to print
-png("../output_examples/filename2.png", width = 240, height = 480)
+png("output_examples/filename2.png", width = 240, height = 480)
 
 #define how we want to order our 3 plots into rows and columns
 par(mfrow = c(3, 1)) 
@@ -421,7 +421,7 @@ myplot_shoot <-
   geom_boxplot()
 
 #plot one graph
-pdf("../output_examples/Plot_root_length.pdf", width=3, height=3, family  = "Times")
+pdf("output_examples/Plot_root_length.pdf", width=3, height=3, family  = "Times")
 myplot_root
 dev.off()
 ```
@@ -450,7 +450,7 @@ ggarrange(myplot_root, myplot_shoot,
 
 ```{r}
 #we can also plot two graphs and print them in one pdf
-pdf("../output_examples/Two_plots.pdf", width=3, height=3, family  = "Times")
+pdf("output_examples/Two_plots.pdf", width=3, height=3, family  = "Times")
 ggarrange(myplot_root, myplot_shoot, 
           labels = c("A", "B"),
           ncol = 2, nrow = 1)

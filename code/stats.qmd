@@ -23,8 +23,8 @@ library(knitr)
 library(kableExtra)
 
 #read in data
-timecourse <- read.table("../data/Timecourse.txt", sep="\t", header=T,  quote = "")
-growth_data <- read.table("../data/Growth_Data.txt", sep="\t", header=T,  quote = "")
+timecourse <- read.table("data/Timecourse.txt", sep="\t", header=T,  quote = "")
+growth_data <- read.table("data/Growth_Data.txt", sep="\t", header=T,  quote = "")
 
 #remove NAs
 timecourse_noNA <- timecourse[!is.na(timecourse$Rootlength), ]
@@ -249,7 +249,7 @@ In this case lets work with the data were we do not have to deal with the differ
 
 ```{r}
 #read in data were we have several measurements
-growth_data <- read.table("../data/Growth_Data.txt", sep="\t", header=T, fill=TRUE, quote = "")
+growth_data <- read.table("data/Growth_Data.txt", sep="\t", header=T, fill=TRUE, quote = "")
 
 #is there a correlation between freshweight and root length?
 linearmodel <- lm(Rootlength ~ FW_shoot_mg, data = growth_data)

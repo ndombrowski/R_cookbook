@@ -16,8 +16,8 @@ library(knitr)
 library(kableExtra)
 
 #read in data
-timecourse <- read.table("../data/Timecourse.txt", sep="\t", header=T,  quote = "")
-growth_data <- read.table("../data/Growth_Data.txt", sep="\t", header=T,  quote = "")
+timecourse <- read.table("data/Timecourse.txt", sep="\t", header=T,  quote = "")
+growth_data <- read.table("data/Growth_Data.txt", sep="\t", header=T,  quote = "")
 ```
 
 In R, all types of data are treated as objects. 
