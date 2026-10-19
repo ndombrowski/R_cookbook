@@ -9,8 +9,7 @@ df-print: paged
 
 In this chapter you write your first R code. We start with the basics: how to store a value, how to use a function and how to add extra functions with packages. Then we download the example data, read it into R, change it a little and save the result in a new file.
 
-Before you start, open the RStudio project you made in the previous chapter and create a new script for this chapter, for example `first_steps.R`. Type the code of this chapter into that script and run it from there.
-
+Before you start, open the RStudio project you made in the previous chapter and create a new Quarto document for this chapter, for example `first_steps.qmd`. Save it directly in your project folder. Type the code of this chapter into chunks in that document and run it from there. Between the chunks, write down what you did, what you see in the results and which questions you have. You will learn more about how to do this in the chapter on [documenting your code](documenting_code.qmd).
 
 ## The assignment operator `<-`
 
@@ -29,13 +28,12 @@ You can read `x <- 1` as "x gets the value 1". In RStudio, the keyboard shortcut
 
 Some general rules:
 
-* R is case sensitive: `x` and `X` are two different objects.
-* If an object with that name already exists, R overwrites it without asking.
-* Text (R calls it a **character** value) needs quotes around it, for example `"hello"`. Without quotes, R thinks `hello` is the name of an object and looks for it.
-* Names can contain letters, numbers, `_` and `.`, but cannot start with a number. Choose names that are short but tell you what is inside, for example `growth_data` instead of `df1`.
+-   R is case sensitive: `x` and `X` are two different objects.
+-   If an object with that name already exists, R overwrites it without asking.
+-   Text (R calls it a **character** value) needs quotes around it, for example `"hello"`. Without quotes, R thinks `hello` is the name of an object and looks for it.
+-   Names can contain letters, numbers, `_` and `.`, but cannot start with a number. Choose names that are short but tell you what is inside, for example `growth_data` instead of `df1`.
 
 Every object you create appears in the **Environment** pane (top right in RStudio).
-
 
 ## Functions
 
@@ -87,13 +85,12 @@ How do you know which arguments a function has, and what their defaults are? The
 
 The help page opens in the Help pane. Most help pages have the same parts:
 
-- **Description:** what the function does.
-- **Usage:** how to call the function. Here you see all arguments, and for each argument with a default you see that default, for example `round(x, digits = 0)`.
-- **Arguments:** what each argument means.
-- **Examples:** at the very bottom. You can copy these into your script to try them out.
+-   **Description:** what the function does.
+-   **Usage:** how to call the function. Here you see all arguments, and for each argument with a default you see that default, for example `round(x, digits = 0)`.
+-   **Arguments:** what each argument means.
+-   **Examples:** at the very bottom. You can copy these into your document to try them out.
 
 Help pages are written for people who already know some R, so they can be hard to read at first. It is fine to only look at Usage and Examples in the beginning.
-
 
 ## Look at and clean up your workspace
 
@@ -114,12 +111,11 @@ rm(x)
 ls()
 ```
 
-To remove everything at once, use `rm(list = ls())`. This combines two functions: `ls()` makes a list of all objects, and the argument `list` of `rm()` tells it to remove everything in that list. This is useful when you want to run your script again from a clean start.
+To remove everything at once, use `rm(list = ls())`. This combines two functions: `ls()` makes a list of all objects, and the argument `list` of `rm()` tells it to remove everything in that list. This is useful when you want to run your document again from a clean start.
 
-::: {.callout-tip}
-When you close RStudio, it may ask whether you want to save your workspace to a file called `.RData`. Answer **No**. If you say yes, all your objects are loaded again the next time you open the project, and it becomes hard to tell whether your script still works on its own. Your script is the record of your analysis, not the workspace. You can switch the question off under Tools > Global Options > General: untick "Restore .RData into workspace at startup" and set "Save workspace to .RData on exit" to "Never".
+::: callout-tip
+When you close RStudio, it may ask whether you want to save your workspace to a file called `.RData`. Answer **No**. If you say yes, all your objects are loaded again the next time you open the project, and it becomes hard to tell whether your document still works on its own. Your document is the record of your analysis, not the workspace. You can switch the question off under Tools \> Global Options \> General: untick "Restore .RData into workspace at startup" and set "Save workspace to .RData on exit" to "Never".
 :::
-
 
 ## Packages
 
@@ -127,8 +123,8 @@ A **package** is a collection of extra functions (and sometimes data) that someo
 
 Working with a package takes two steps:
 
-1. **Install** the package. This downloads it to your computer. You only do this **once** (and again when you want to update it).
-2. **Load** the package with `library()`. This makes its functions available in your current R session. R forgets loaded packages when you close it, so you do this **every time** you start R. That is why `library()` calls belong at the top of your script.
+1.  **Install** the package. This downloads it to your computer. You only do this **once** (and again when you want to update it).
+2.  **Load** the package with `library()`. This makes its functions available in your current R session. R forgets loaded packages when you close it, so you do this **every time** you start R. That is why `library()` calls belong at the top of your document.
 
 As an example, here is how to install and load `ggplot2`, a package for making plots that we use later in this book. You do not need it for this chapter.
 
@@ -138,7 +134,7 @@ As an example, here is how to install and load `ggplot2`, a package for making p
 # install the package (only once, type this in the Console)
 install.packages("ggplot2")
 
-# load the package (every session, put this at the top of your script)
+# load the package (every session, put this at the top of your document)
 library(ggplot2)
 ```
 
@@ -146,21 +142,20 @@ Note the quotes: `install.packages()` needs the name as text in quotes, while `l
 
 Instead of typing `install.packages()`, you can also install packages in RStudio with the **Packages** tab (bottom right) and the **Install** button.
 
-::: {.callout-note}
-Put `install.packages()` in the Console, not in your script. Otherwise R downloads the package again every time you run the script.
+::: callout-note
+Put `install.packages()` in the Console, not in your document. Otherwise R downloads the package again every time you run the document.
 :::
 
 ### Updating packages
 
 Packages are updated regularly. To update them:
 
-- `old.packages()` lists the installed packages for which a newer version exists.
-- `update.packages()` updates them. R asks you for each package whether you want to update it. With `update.packages(ask = FALSE)` it updates everything without asking. This can take a while if you have not done it for some time.
+-   `old.packages()` lists the installed packages for which a newer version exists.
+-   `update.packages()` updates them. R asks you for each package whether you want to update it. With `update.packages(ask = FALSE)` it updates everything without asking. This can take a while if you have not done it for some time.
 
 In RStudio, you can also use the **Update** button in the Packages tab.
 
 Updates are usually a good idea, but sometimes a new version of a package works differently and older code no longer runs. This is one reason to record which package versions you used (see the chapter on [documenting your code](documenting_code.qmd)).
-
 
 ## Get the data
 
@@ -182,15 +177,15 @@ The example data for this tutorial is stored on GitHub, a website for sharing co
 
 Make sure you have your project open and run the code below. It uses a few new functions:
 
-1. `dir.create()` makes a new folder in your project. We make two: `data` for the input files and `output_examples` for files we will write later.
-2. `download.file()` downloads a file from a web address (`url`) and saves it under the name you give it (`destfile`).
-3. `mode = "wb"` tells R to copy the file exactly as it is. Without it, R on Windows changes the line endings of text files, and the file is no longer identical to the original. Excel files can even become unreadable.
+1.  `dir.create()` makes a new folder in your project. We make two: `data` for the input files and `output_examples` for files we will write later.
+2.  `download.file()` downloads a file from a web address (`url`) and saves it under the name you give it (`destfile`).
+3.  `mode = "wb"` tells R to copy the file exactly as it is. Without it, R on Windows changes the line endings of text files, and the file is no longer identical to the original. Excel files can even become unreadable.
 
-We only want to create a folder or download a file if we don't have it yet. Otherwise, every time you run your script again, R would download the files again and overwrite the ones you already have. To do this, we put each step inside an `if`:
+We only want to create a folder or download a file if we don't have it yet. Otherwise, every time you run your document again, R would download the files again and overwrite the ones you already have. To do this, we put each step inside an `if`:
 
-- `dir.exists()` and `file.exists()` check whether a folder or file is already there. They answer `TRUE` or `FALSE`.
-- The `!` in front means "not". It turns `TRUE` into `FALSE` and the other way around.
-- `if (...) { ... }` only runs the code between the curly brackets `{ }` if the part in the round brackets `( )` is `TRUE`.
+-   `dir.exists()` and `file.exists()` check whether a folder or file is already there. They answer `TRUE` or `FALSE`.
+-   The `!` in front means "not". It turns `TRUE` into `FALSE` and the other way around.
+-   `if (...) { ... }` only runs the code between the curly brackets `{ }` if the part in the round brackets `( )` is `TRUE`.
 
 So `if (!file.exists("data/Growth_Data.txt")) { ... }` reads as: "if the file `data/Growth_Data.txt` does **not** exist, run the code inside the brackets". You will learn more about `if` in the chapter on [control structures](control_structures.qmd).
 
@@ -231,7 +226,7 @@ if (!file.exists("data/mmc5.xlsx")) {
 
 The first time you run this, R prints a few lines for each download, ending with a line that starts with `downloaded`. If you run it again, nothing happens, because the files are already there.
 
-::: {.callout-tip}
+::: callout-tip
 If you ever want a fresh copy of a file, for example because you changed it by accident, delete it in the Files pane and run the code again.
 :::
 
@@ -251,7 +246,6 @@ file.size("data/mmc5.xlsx")
 
 If you see `FALSE`, look at the Files pane. Is there a `data` folder in your project, and is it spelled exactly like this? R is case sensitive, so `Data` and `data` are two different folders.
 
-
 ## Read data into R
 
 To work with data, we first need to read it into R.
@@ -260,19 +254,19 @@ When R reads a table, it stores it as a **data frame**. A data frame is R's name
 
 For tables, there are some things to be aware of:
 
-- It matters which character separates the columns. Some programs use commas, others use tabs. Our files use tabs. By default, `read.table()` treats any whitespace (spaces and tabs) as a separator, but we can change this when we read the table.
-- Do not have any hash symbols (`#`) in your table. By default, R reads everything after a `#` as a comment and ignores it.
-- Avoid empty cells where you can, as these can mess up your data.
+-   It matters which character separates the columns. Some programs use commas, others use tabs. Our files use tabs. By default, `read.table()` treats any whitespace (spaces and tabs) as a separator, but we can change this when we read the table.
+-   Do not have any hash symbols (`#`) in your table. By default, R reads everything after a `#` as a comment and ignores it.
+-   Avoid empty cells where you can, as these can mess up your data.
 
 We use the function `read.table()` and store the result under the name `growth_data`. The file is not directly in our project folder but in the subfolder `data`, so we write `data/Growth_Data.txt`.
 
 The arguments we use:
 
-- `sep` = the character that separates the columns. A tab is written as `"\t"`. If your data uses commas, write `sep = ","`.
-- `header` = whether the first row of the file contains the column names. `header = TRUE` means "yes, the first row contains the column names".
-- `quote` = which characters mark the start and end of a text. By default, R treats both `"` and `'` this way. That causes problems as soon as a cell contains a single `'`, for example in a gene name like `5' nuclease`: R then thinks a text starts there and reads the rest of the file as one long piece of text. You may end up with missing rows or even an empty table, and R only shows a warning, not an error. With `quote = ""` we tell R that no character has a special meaning, so every cell is read exactly as it is.
+-   `sep` = the character that separates the columns. A tab is written as `"\t"`. If your data uses commas, write `sep = ","`.
+-   `header` = whether the first row of the file contains the column names. `header = TRUE` means "yes, the first row contains the column names".
+-   `quote` = which characters mark the start and end of a text. By default, R treats both `"` and `'` this way. That causes problems as soon as a cell contains a single `'`, for example in a gene name like `5' nuclease`: R then thinks a text starts there and reads the rest of the file as one long piece of text. You may end up with missing rows or even an empty table, and R only shows a warning, not an error. With `quote = ""` we tell R that no character has a special meaning, so every cell is read exactly as it is.
 
-::: {.callout-note}
+::: callout-note
 In other people's code you will often see `T` and `F` instead of `TRUE` and `FALSE`, for example `header = T`. R understands both. In this tutorial we write `TRUE` and `FALSE` in full, because it is easier to read.
 :::
 
@@ -290,9 +284,9 @@ The first rows are complete, but further down the table you will find a few cell
 
 A few more functions that help you check a table:
 
-- `dim()` gives the dimensions of a table: first the number of rows, then the number of columns.
-- `colnames()` gives the column names.
-- `rownames()` gives the row names. Usually these are just the numbers 1, 2, 3, and so on. Our table has 594 rows, so we only look at the first few with `head()`.
+-   `dim()` gives the dimensions of a table: first the number of rows, then the number of columns.
+-   `colnames()` gives the column names.
+-   `rownames()` gives the row names. Usually these are just the numbers 1, 2, 3, and so on. Our table has 594 rows, so we only look at the first few with `head()`.
 
 ```{r}
 # check the dimensions of our data
@@ -320,10 +314,9 @@ head(timecourse)
 dim(timecourse)
 ```
 
-::: {.callout-tip}
+::: callout-tip
 For very large tables, `read.table()` can be slow. The function `fread()` from the package `data.table` is a much faster alternative.
 :::
-
 
 ## Read an Excel file
 
@@ -335,7 +328,7 @@ A lot of data is stored in Excel files. You could save each sheet as a text file
 install.packages("readxl")
 ```
 
-Then load the package in your script:
+Then load the package in your document:
 
 ```{r}
 #| warning: false
@@ -385,20 +378,19 @@ You may have noticed that the column `Nutrient` says `50 mM P`. This is a typo i
 
 A few more things to notice:
 
-- `read_excel()` gives you a **tibble**. A tibble is a data frame with a slightly different way of printing, for example with the column types shown under the names. Everything you learn about data frames also works on tibbles.
-- The column names contain spaces and brackets, for example `Primary Root Length (mm)`. R can handle them, but you have to put backticks around such names when you use them, for example `` growth_excel$`Primary Root Length (mm)` ``. This is one reason why short names without spaces are easier to work with.
+-   `read_excel()` gives you a **tibble**. A tibble is a data frame with a slightly different way of printing, for example with the column types shown under the names. Everything you learn about data frames also works on tibbles.
+-   The column names contain spaces and brackets, for example `Primary Root Length (mm)`. R can handle them, but you have to put backticks around such names when you use them, for example `` growth_excel$`Primary Root Length (mm)` ``. This is one reason why short names without spaces are easier to work with.
 
 This is how we made `Growth_Data.txt`: we read the sheet as shown above, gave the columns shorter names, kept only the three experiments in which all treatments were measured and saved the table with `write.table()`. You can find the full script, [make_example_data.R](https://github.com/ndombrowski/R_cookbook/blob/main/data/make_example_data.R), on GitHub.
 
-::: {.callout-tip}
+::: callout-tip
 When you collect your own data in Excel, you make your life in R much easier if you:
 
-- start the table in the first row, without titles or comments above it
-- use short column names without spaces or special characters
-- leave cells empty when a value is missing, and don't write text such as `NA`, `-` or `missing` in number columns
-- use one sheet per table
+-   start the table in the first row, without titles or comments above it
+-   use short column names without spaces or special characters
+-   leave cells empty when a value is missing, and don't write text such as `NA`, `-` or `missing` in number columns
+-   use one sheet per table
 :::
-
 
 ## Three things you need for the next sections
 
@@ -438,7 +430,6 @@ head(growth_data$Rootlength)
 
 You can also use `$` together with `<-` to add a new column. If you give a single value, R copies it into every row. We will do this in the merge section below.
 
-
 ## Find the unique combinations with `unique()`
 
 `unique()` removes duplicates and keeps each value, or each combination of values, only once.
@@ -456,7 +447,6 @@ mapping_file
 Instead of 594 rows we now have 6: 2 nutrient levels times 3 conditions. A table like this, which describes each sample or treatment, is often called a **mapping file** or **metadata**.
 
 The numbers on the left are the row names. `unique()` keeps the row names of the first row in which each combination appears.
-
 
 ## Combine two tables with `merge()`
 
@@ -492,7 +482,7 @@ dim(growth_data)
 dim(new_data_frame)
 ```
 
-::: {.callout-warning}
+::: callout-warning
 ## A common mistake: matching on too few columns
 
 What happens if we only match on `Condition`? In `mapping_file`, each condition appears twice, once for `low_P` and once for `high_P`. So every plant now matches two rows, and R makes a copy of the plant for each match:
@@ -510,12 +500,11 @@ We suddenly have twice as many plants as before, and there is no error message. 
 If you see columns ending in `.x` and `.y`, or more rows than you expected, check the `by` argument.
 :::
 
-::: {.callout-note}
+::: callout-note
 By default, `merge()` drops all rows that have no match in the other table. For example, if a condition is in `growth_data` but not in `mapping_file`, those plants disappear from the result without a warning. If you want to keep all rows of the first table, add `all.x = TRUE`. R then fills the missing values with `NA`:
 
 `merge(growth_data, mapping_file, by = c("Nutrient", "Condition"), all.x = TRUE)`
 :::
-
 
 ## Write data into a text file
 
@@ -527,36 +516,35 @@ write.table(new_data_frame, "output_examples/growth_data_changed.txt", sep = "\t
 
 The arguments:
 
-- `sep = "\t"` separates the columns with tabs, the same format as our input files.
-- `row.names = FALSE` leaves out the row names. With `TRUE`, R writes the row numbers as an extra first column. That column has no name in the header, so the header row then has one column less than the other rows, and other programs may shift all column names by one.
-- `quote = FALSE` writes text without quotes around it.
-- `na = ""` writes missing values as empty cells, like in our input file. By default, R writes the text `NA`, which other programs may read as text instead of as a missing value.
+-   `sep = "\t"` separates the columns with tabs, the same format as our input files.
+-   `row.names = FALSE` leaves out the row names. With `TRUE`, R writes the row numbers as an extra first column. That column has no name in the header, so the header row then has one column less than the other rows, and other programs may shift all column names by one.
+-   `quote = FALSE` writes text without quotes around it.
+-   `na = ""` writes missing values as empty cells, like in our input file. By default, R writes the text `NA`, which other programs may read as text instead of as a missing value.
 
 You can now open `growth_data_changed.txt` in the Files pane or in a text editor to look at it.
-
 
 ## Summary
 
 In this chapter you learned how to:
 
-- store values in objects with `<-`
-- use functions and set their arguments, and look up a function with `?`
-- list and remove objects with `ls()` and `rm()`
-- install packages once with `install.packages()` and load them in every session with `library()`
-- download files with `download.file()`
-- read a table with `read.table()` and check it with `head()`, `dim()` and `colnames()`
-- read a sheet of an Excel file with `read_excel()`, and use `skip` and `na` to deal with untidy sheets
-- select rows and columns with `[ , ]` and a single column with `$`
-- remove duplicates with `unique()` and combine tables with `merge()`
-- save a table with `write.table()`
+-   store values in objects with `<-`
+-   use functions and set their arguments, and look up a function with `?`
+-   list and remove objects with `ls()` and `rm()`
+-   install packages once with `install.packages()` and load them in every session with `library()`
+-   download files with `download.file()`
+-   read a table with `read.table()` and check it with `head()`, `dim()` and `colnames()`
+-   read a sheet of an Excel file with `read_excel()`, and use `skip` and `na` to deal with untidy sheets
+-   select rows and columns with `[ , ]` and a single column with `$`
+-   remove duplicates with `unique()` and combine tables with `merge()`
+-   save a table with `write.table()`
 
 ### Exercise
 
 Use the `timecourse` data frame for these questions:
 
-1. How many rows and columns does it have?
-2. Which time points were measured? Hint: use `unique()` on the column `Timepoint`.
-3. Make a table that lists each combination of `Nutrient`, `Condition` and `Timepoint` only once. How many rows does it have?
+1.  How many rows and columns does it have?
+2.  Which time points were measured? Hint: use `unique()` on the column `Timepoint`.
+3.  Make a table that lists each combination of `Nutrient`, `Condition` and `Timepoint` only once. How many rows does it have?
 
 ::: {.callout-tip collapse="true"}
 ## Solution

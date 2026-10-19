@@ -302,7 +302,7 @@ div.csl-indent {
 
 
 <p>In this chapter you write your first R code. We start with the basics: how to store a value, how to use a function and how to add extra functions with packages. Then we download the example data, read it into R, change it a little and save the result in a new file.</p>
-<p>Before you start, open the RStudio project you made in the previous chapter and create a new script for this chapter, for example <code>first_steps.R</code>. Type the code of this chapter into that script and run it from there.</p>
+<p>Before you start, open the RStudio project you made in the previous chapter and create a new Quarto document for this chapter, for example <code>first_steps.qmd</code>. Save it directly in your project folder. Type the code of this chapter into chunks in that document and run it from there. Between the chunks, write down what you did, what you see in the results and which questions you have. You will learn more about how to do this in the chapter on <a href="../code/documenting_code.html">documenting your code</a>.</p>
 <section id="the-assignment-operator--" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="the-assignment-operator--"><span class="header-section-number">2.1</span> The assignment operator <code>&lt;-</code></h2>
 <p>The <code>&lt;-</code> symbol stores a value under a name. The name and the value together are called an <strong>object</strong> (some people also say <strong>variable</strong>). Once a value is stored, you can use the name instead of the value:</p>
@@ -381,7 +381,7 @@ div.csl-indent {
 <li><strong>Description:</strong> what the function does.</li>
 <li><strong>Usage:</strong> how to call the function. Here you see all arguments, and for each argument with a default you see that default, for example <code>round(x, digits = 0)</code>.</li>
 <li><strong>Arguments:</strong> what each argument means.</li>
-<li><strong>Examples:</strong> at the very bottom. You can copy these into your script to try them out.</li>
+<li><strong>Examples:</strong> at the very bottom. You can copy these into your document to try them out.</li>
 </ul>
 <p>Help pages are written for people who already know some R, so they can be hard to read at first. It is fine to only look at Usage and Examples in the beginning.</p>
 </section>
@@ -407,7 +407,7 @@ div.csl-indent {
 <pre><code>[1] "y"</code></pre>
 </div>
 </div>
-<p>To remove everything at once, use <code>rm(list = ls())</code>. This combines two functions: <code>ls()</code> makes a list of all objects, and the argument <code>list</code> of <code>rm()</code> tells it to remove everything in that list. This is useful when you want to run your script again from a clean start.</p>
+<p>To remove everything at once, use <code>rm(list = ls())</code>. This combines two functions: <code>ls()</code> makes a list of all objects, and the argument <code>list</code> of <code>rm()</code> tells it to remove everything in that list. This is useful when you want to run your document again from a clean start.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -418,7 +418,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>When you close RStudio, it may ask whether you want to save your workspace to a file called <code>.RData</code>. Answer <strong>No</strong>. If you say yes, all your objects are loaded again the next time you open the project, and it becomes hard to tell whether your script still works on its own. Your script is the record of your analysis, not the workspace. You can switch the question off under Tools &gt; Global Options &gt; General: untick “Restore .RData into workspace at startup” and set “Save workspace to .RData on exit” to “Never”.</p>
+<p>When you close RStudio, it may ask whether you want to save your workspace to a file called <code>.RData</code>. Answer <strong>No</strong>. If you say yes, all your objects are loaded again the next time you open the project, and it becomes hard to tell whether your document still works on its own. Your document is the record of your analysis, not the workspace. You can switch the question off under Tools &gt; Global Options &gt; General: untick “Restore .RData into workspace at startup” and set “Save workspace to .RData on exit” to “Never”.</p>
 </div>
 </div>
 </section>
@@ -428,14 +428,14 @@ Tip
 <p>Working with a package takes two steps:</p>
 <ol type="1">
 <li><strong>Install</strong> the package. This downloads it to your computer. You only do this <strong>once</strong> (and again when you want to update it).</li>
-<li><strong>Load</strong> the package with <code>library()</code>. This makes its functions available in your current R session. R forgets loaded packages when you close it, so you do this <strong>every time</strong> you start R. That is why <code>library()</code> calls belong at the top of your script.</li>
+<li><strong>Load</strong> the package with <code>library()</code>. This makes its functions available in your current R session. R forgets loaded packages when you close it, so you do this <strong>every time</strong> you start R. That is why <code>library()</code> calls belong at the top of your document.</li>
 </ol>
 <p>As an example, here is how to install and load <code>ggplot2</code>, a package for making plots that we use later in this book. You do not need it for this chapter.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install the package (only once, type this in the Console)</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load the package (every session, put this at the top of your script)</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load the package (every session, put this at the top of your document)</span></span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Note the quotes: <code>install.packages()</code> needs the name as text in quotes, while <code>library()</code> works without them.</p>
@@ -450,7 +450,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Put <code>install.packages()</code> in the Console, not in your script. Otherwise R downloads the package again every time you run the script.</p>
+<p>Put <code>install.packages()</code> in the Console, not in your document. Otherwise R downloads the package again every time you run the document.</p>
 </div>
 </div>
 <section id="updating-packages" class="level3" data-number="2.4.1">
@@ -483,7 +483,7 @@ Note
 <li><code>download.file()</code> downloads a file from a web address (<code>url</code>) and saves it under the name you give it (<code>destfile</code>).</li>
 <li><code>mode = "wb"</code> tells R to copy the file exactly as it is. Without it, R on Windows changes the line endings of text files, and the file is no longer identical to the original. Excel files can even become unreadable.</li>
 </ol>
-<p>We only want to create a folder or download a file if we don’t have it yet. Otherwise, every time you run your script again, R would download the files again and overwrite the ones you already have. To do this, we put each step inside an <code>if</code>:</p>
+<p>We only want to create a folder or download a file if we don’t have it yet. Otherwise, every time you run your document again, R would download the files again and overwrite the ones you already have. To do this, we put each step inside an <code>if</code>:</p>
 <ul>
 <li><code>dir.exists()</code> and <code>file.exists()</code> check whether a folder or file is already there. They answer <code>TRUE</code> or <code>FALSE</code>.</li>
 <li>The <code>!</code> in front means “not”. It turns <code>TRUE</code> into <code>FALSE</code> and the other way around.</li>
@@ -680,7 +680,7 @@ Tip
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Then load the package in your script:</p>
+<p>Then load the package in your document:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>

@@ -240,11 +240,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#the-working-directory" id="toc-the-working-directory" class="nav-link" data-scroll-target="#the-working-directory"><span class="header-section-number">1.3.1</span> The working directory</a></li>
   <li><a href="#make-an-rstudio-project" id="toc-make-an-rstudio-project" class="nav-link" data-scroll-target="#make-an-rstudio-project"><span class="header-section-number">1.3.2</span> Make an RStudio project</a></li>
   </ul></li>
-  <li><a href="#write-your-first-script" id="toc-write-your-first-script" class="nav-link" data-scroll-target="#write-your-first-script"><span class="header-section-number">1.4</span> Write your first script</a>
+  <li><a href="#write-your-first-quarto-document" id="toc-write-your-first-quarto-document" class="nav-link" data-scroll-target="#write-your-first-quarto-document"><span class="header-section-number">1.4</span> Write your first Quarto document</a>
   <ul class="collapse">
-  <li><a href="#console-or-script" id="toc-console-or-script" class="nav-link" data-scroll-target="#console-or-script"><span class="header-section-number">1.4.1</span> Console or script?</a></li>
-  <li><a href="#create-save-and-run-a-script" id="toc-create-save-and-run-a-script" class="nav-link" data-scroll-target="#create-save-and-run-a-script"><span class="header-section-number">1.4.2</span> Create, save and run a script</a></li>
-  <li><a href="#reading-the-console" id="toc-reading-the-console" class="nav-link" data-scroll-target="#reading-the-console"><span class="header-section-number">1.4.3</span> Reading the Console</a></li>
+  <li><a href="#console-or-document" id="toc-console-or-document" class="nav-link" data-scroll-target="#console-or-document"><span class="header-section-number">1.4.1</span> Console or document?</a></li>
+  <li><a href="#create-and-save-a-quarto-document" id="toc-create-and-save-a-quarto-document" class="nav-link" data-scroll-target="#create-and-save-a-quarto-document"><span class="header-section-number">1.4.2</span> Create and save a Quarto document</a></li>
+  <li><a href="#text-and-code-chunks" id="toc-text-and-code-chunks" class="nav-link" data-scroll-target="#text-and-code-chunks"><span class="header-section-number">1.4.3</span> Text and code chunks</a></li>
+  <li><a href="#run-a-chunk" id="toc-run-a-chunk" class="nav-link" data-scroll-target="#run-a-chunk"><span class="header-section-number">1.4.4</span> Run a chunk</a></li>
+  <li><a href="#reading-the-console" id="toc-reading-the-console" class="nav-link" data-scroll-target="#reading-the-console"><span class="header-section-number">1.4.5</span> Reading the Console</a></li>
+  <li><a href="#what-about-r-scripts" id="toc-what-about-r-scripts" class="nav-link" data-scroll-target="#what-about-r-scripts"><span class="header-section-number">1.4.6</span> What about R scripts?</a></li>
   </ul></li>
   <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help"><span class="header-section-number">1.5</span> Getting help</a></li>
   <li><a href="#optional-start-r-from-the-terminal" id="toc-optional-start-r-from-the-terminal" class="nav-link" data-scroll-target="#optional-start-r-from-the-terminal"><span class="header-section-number">1.6</span> Optional: start R from the terminal</a></li>
@@ -274,7 +277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>R is a free, open source programming language for statistics and data analysis. It is widely used in biology, for example to analyse experiments, run statistical tests and make plots.</p>
-<p>This chapter gets you set up. You will install R and RStudio, learn your way around RStudio, make a project folder for this tutorial and write your first small script. In the <a href="../code/first_steps.html">next chapter</a> you start working with real data.</p>
+<p>This chapter gets you set up. You will install R and RStudio, learn your way around RStudio, make a project folder for this tutorial and write your first Quarto document. In the <a href="../code/first_steps.html">next chapter</a> you start working with real data.</p>
 <section id="installation" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="installation"><span class="header-section-number">1.1</span> Installation</h2>
 <p>To follow this tutorial you need two programs: <strong>R</strong> and <strong>RStudio</strong>. R is the program that actually runs your code. RStudio is an editor that makes working with R easier: you write your code in it, run it, and see your tables and plots in one window. RStudio needs R to work, so install R first.</p>
@@ -320,7 +323,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you already have R and RStudio installed, check how old they are. Packages are often only built for recent R versions, so a very old R can cause errors when you install packages. To see your R version, type <code>R.version.string</code> in the Console.</p>
+<p>rIf you already have R and RStudio installed, check how old they are. Packages are often only built for recent R versions, so a very old R can cause errors when you install packages. To see your R version, type <code>R.version.string</code> in the Console.</p>
 </div>
 </div>
 </section>
@@ -332,10 +335,10 @@ Note
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="the-four-panes"><span class="header-section-number">1.2.1</span> The four panes</h3>
 <p>RStudio is split into four areas, called <strong>panes</strong>:</p>
 <p align="left">
-<img height="400" src="../images/RStudio.png">
-</p>
+</p><p><img src="../images/RStudio.png" height="400"></p>
+<p></p>
 <ul>
-<li><strong>Source (top left):</strong> this is where you write and edit your scripts. A script is a plain text file that contains your R code. This pane only appears once you open or create a file.</li>
+<li><strong>Source (top left):</strong> this is where you write and edit your files, for example the Quarto document you create below. This pane only appears once you open or create a file.</li>
 <li><strong>Console (bottom left):</strong> this is where R actually runs your code and prints the results. You can also type commands here directly.</li>
 <li><strong>Environment (top right):</strong> lists everything you have stored in R during this session, for example tables you have read in. Click on a table to look at it.</li>
 <li><strong>Files, Plots, Packages, Help (bottom right):</strong> shows the files in your folder, your plots, the packages you have installed and the help pages.</li>
@@ -352,11 +355,11 @@ Note
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>It is a good idea to make one folder per project, with the same structure each time: for example a subfolder for the input data, one for the output files, and your scripts. Here is an example with four projects:</p>
+<p>It is a good idea to make one folder per project, with the same structure each time: for example a subfolder for the input data, one for the output files, and your scripts. Here is an example for a project folder that contains four sub-projects:</p>
 <p align="left">
-<img height="200" src="../images/FolderStructure.png">
-</p>
-<p>Each project folder has the R script and folders for the input and output files. If you plan to share your analysis with others, it is also good to add a README file that explains what the analysis is about.</p>
+</p><p><img src="../images/FolderStructure.png" height="200"></p>
+<p></p>
+<p>In the example above you can see that each sub-folder has an R script and folders for the input and output files. If you plan to share your analysis with others, it is also good to add a README file that explains what the analysis is about.</p>
 </section>
 <section id="make-an-rstudio-project" class="level3" data-number="1.3.2">
 <h3 data-number="1.3.2" class="anchored" data-anchor-id="make-an-rstudio-project"><span class="header-section-number">1.3.2</span> Make an RStudio project</h3>
@@ -372,43 +375,114 @@ Note
 <p>From now on, all paths in this tutorial are written relative to the project folder. For example, <code>data/Growth_Data.txt</code> means “the file <code>Growth_Data.txt</code> in the folder <code>data</code> inside my project folder”.</p>
 </section>
 </section>
-<section id="write-your-first-script" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="write-your-first-script"><span class="header-section-number">1.4</span> Write your first script</h2>
-<section id="console-or-script" class="level3" data-number="1.4.1">
-<h3 data-number="1.4.1" class="anchored" data-anchor-id="console-or-script"><span class="header-section-number">1.4.1</span> Console or script?</h3>
+<section id="write-your-first-quarto-document" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="write-your-first-quarto-document"><span class="header-section-number">1.4</span> Write your first Quarto document</h2>
+<section id="console-or-document" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="console-or-document"><span class="header-section-number">1.4.1</span> Console or document?</h3>
 <p>You can type code directly into the Console, but once you close RStudio that code is gone. Also, if you want to repeat an analysis a few weeks later, you will not remember exactly what you typed.</p>
-<p>That is why you should write your code in a <strong>script</strong> instead. The script is a record of everything you did, and you can run it again at any time. Some rules of thumb:</p>
+<p>That is why you should keep your work in a file. In this tutorial we use a <strong>Quarto document</strong>, a file that ends in <code>.qmd</code>. A Quarto document holds two things: your R code, and normal text around it. The code is a record of everything you did, and you can run it again at any time. The text is where you write down what you are doing and why, what you notice in the results, and which questions you still have. When you come back to your analysis later, or discuss it with your supervisor, these notes are often as useful as the code itself.</p>
+<p>Some rules of thumb:</p>
 <ul>
 <li>Use the <strong>Console</strong> for quick checks that you do not need to keep, for example looking at a table with <code>head()</code>.</li>
-<li>Use a <strong>script</strong> for everything that is part of your analysis.</li>
+<li>Use your <strong>Quarto document</strong> for everything that is part of your analysis, and for your thoughts about it.</li>
 </ul>
 </section>
-<section id="create-save-and-run-a-script" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="create-save-and-run-a-script"><span class="header-section-number">1.4.2</span> Create, save and run a script</h3>
+<section id="create-and-save-a-quarto-document" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="create-and-save-a-quarto-document"><span class="header-section-number">1.4.2</span> Create and save a Quarto document</h3>
 <ol type="1">
 <li>Make sure your project is open. Its name is shown in the top right corner of RStudio.</li>
-<li>Create a new script with File &gt; New File &gt; R Script. An empty file opens in the Source pane.</li>
-<li>Type some code into it, for example <code>1 + 1</code>.</li>
-<li>Save the script with File &gt; Save (or Ctrl+S on Windows, Cmd+S on Mac). Give it a name that ends with <code>.R</code>, for example <code>my_first_script.R</code>. RStudio suggests your project folder as the place to save it.</li>
-<li>Run your code. Put the cursor on the line you want to run and press <strong>Ctrl+Enter</strong> (Windows) or <strong>Cmd+Enter</strong> (Mac). You can also click the <strong>Run</strong> button at the top of the script. The code is sent to the Console and the result appears there.</li>
+<li>Go to File &gt; New File &gt; Quarto Document. A window opens. Type a title, for example “My first analysis”, and click “Create Empty Document” at the bottom left.</li>
+<li>Save the document with File &gt; Save (or Ctrl+S on Windows, Cmd+S on Mac). Give it a name that ends with <code>.qmd</code>, for example <code>analysis.qmd</code>. Save it <strong>directly in your project folder</strong>, not in a subfolder (see the tip below).</li>
 </ol>
-<p>To run several lines at once, select them with the mouse first and then press Ctrl+Enter (Cmd+Enter on Mac).</p>
+<p>RStudio can show a Quarto document in two ways, which you can switch between with the buttons <strong>Source</strong> and <strong>Visual</strong> at the top left of the document. In this tutorial we use <strong>Source</strong>, because it shows exactly what is in the file.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you run code in a Quarto document, RStudio uses the folder where the <code>.qmd</code> file is saved as the working directory. If your document is in the project folder, a path like <code>data/Growth_Data.txt</code> works as expected. If you save it in a subfolder, R looks for <code>data/</code> inside that subfolder and cannot find your files.</p>
+<p>You can see this setting under Tools &gt; Global Options &gt; R Markdown, next to “Evaluate chunks in directory”. The default is “Document”. Leave it like that and save your Quarto document in the project folder.</p>
+<p align="left">
+</p><p><img src="../images/RStudio_chunk_directory.png" width="500"></p>
+<p></p>
+</div>
+</div>
 </section>
-<section id="reading-the-console" class="level3" data-number="1.4.3">
-<h3 data-number="1.4.3" class="anchored" data-anchor-id="reading-the-console"><span class="header-section-number">1.4.3</span> Reading the Console</h3>
-<p>The symbol at the start of the last line in the Console tells you what R is doing:</p>
+<section id="text-and-code-chunks" class="level3" data-number="1.4.3">
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="text-and-code-chunks"><span class="header-section-number">1.4.3</span> Text and code chunks</h3>
+<p>A Quarto document has three parts:</p>
+<ol type="1">
+<li>A <strong>header</strong> at the top, between two lines of <code>---</code>. It holds settings such as the title. You can leave it as it is for now.</li>
+<li><strong>Text</strong>, which you type as in any text file. R ignores it.</li>
+<li><strong>Code chunks</strong>: blocks of R code. A chunk starts with <code>```{r}</code> and ends with <code>```</code>. R only runs what is inside a chunk.</li>
+</ol>
+<p>To add a chunk, click Code &gt; Insert Chunk, or press <strong>Ctrl+Alt+I</strong> (Cmd+Option+I on Mac).</p>
+<p>Type the following into your document below the header:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "My first analysis"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Trying out R</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>I want to check that R can do simple maths.</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>R gives 2, as expected. I am not sure yet what the <span class="co">[</span><span class="ot">1</span><span class="co">]</span> in front of the answer means.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The line starting with <code>##</code> is a heading. You will learn more ways to format your text in the chapter <a href="../code/documenting_code.html">Documenting your code</a>.</p>
+</section>
+<section id="run-a-chunk" class="level3" data-number="1.4.4">
+<h3 data-number="1.4.4" class="anchored" data-anchor-id="run-a-chunk"><span class="header-section-number">1.4.4</span> Run a chunk</h3>
+<p>There are several ways to run your code:</p>
+<ul>
+<li>Click the green arrow in the top right corner of a chunk to run the whole chunk.</li>
+<li>Put the cursor on a line inside a chunk and press <strong>Ctrl+Enter</strong> (Cmd+Enter on Mac) to run only that line.</li>
+<li>Select several lines with the mouse and press Ctrl+Enter (Cmd+Enter on Mac) to run just those lines.</li>
+</ul>
+<p align="left">
+</p><p><img src="../images/R2.png" width="800"></p>
+<p></p>
+<p>The result appears directly below the chunk. Add your thoughts about it as text below the chunk, then add the next chunk. Step by step, your document becomes a record of your analysis.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>At the top of the document you will also see a <strong>Render</strong> button. It turns your whole document into a report, for example an HTML page. You do not need it yet. We come back to it in the chapter <a href="../code/documenting_code.html">Documenting your code</a>.</p>
+</div>
+</div>
+</section>
+<section id="reading-the-console" class="level3" data-number="1.4.5">
+<h3 data-number="1.4.5" class="anchored" data-anchor-id="reading-the-console"><span class="header-section-number">1.4.5</span> Reading the Console</h3>
+<p>Even when you work in a Quarto document, your code is run in the Console. The symbol at the start of the last line in the Console tells you what R is doing:</p>
 <ul>
 <li><code>&gt;</code> means R is ready and waits for your next command.</li>
 <li><code>+</code> means R thinks your command is not finished yet and waits for the rest. This usually happens when you forgot a closing bracket <code>)</code> or quote <code>"</code>. Either type the missing part, or press <strong>Esc</strong> to cancel the command and start again.</li>
 </ul>
 <p>If R prints a message starting with <code>Error</code>, your command did not work. Read the message, it often tells you what went wrong (for example a misspelled name or a file that cannot be found). Messages starting with <code>Warning</code> mean the command did run, but R wants to tell you about something that might be a problem.</p>
 </section>
+<section id="what-about-r-scripts" class="level3" data-number="1.4.6">
+<h3 data-number="1.4.6" class="anchored" data-anchor-id="what-about-r-scripts"><span class="header-section-number">1.4.6</span> What about R scripts?</h3>
+<p>You will also come across <strong>R scripts</strong>: plain text files that end in <code>.R</code> and contain only code (File &gt; New File &gt; R Script). In a script, any notes have to be written as comments after a <code>#</code> sign. Scripts are useful when you run R without RStudio, for example on a computer cluster (see the optional section at the end of this chapter). For this tutorial, use your Quarto document.</p>
+</section>
 </section>
 <section id="getting-help" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="getting-help"><span class="header-section-number">1.5</span> Getting help</h2>
 <p>Inside R, you can open the help page of any function by typing <code>?</code> followed by the name of the function. For example, for the function <code>mean()</code>, which calculates an average:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>?mean</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>?mean</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The help page opens in the Help pane. In the <a href="../code/first_steps.html">next chapter</a> you will learn how to read these pages.</p>
 <p>Outside of R, good places to look for help are:</p>
@@ -421,7 +495,7 @@ Note
 <section id="optional-start-r-from-the-terminal" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="optional-start-r-from-the-terminal"><span class="header-section-number">1.6</span> Optional: start R from the terminal</h2>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -430,25 +504,25 @@ Note
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You do not need this for the tutorial. It is useful if you later work on a computer cluster, where there is no RStudio.</p>
 <p>On Linux and Mac, you can also start R directly from the terminal. Open a terminal, go to your project folder with <code>cd</code> and type <code>R</code>. You should then see something like this:</p>
 <p align="left">
-<img height="300" src="../images/R.png">
-</p>
+</p><p><img src="../images/R.png" height="300"></p>
+<p></p>
 <p>To start R, type the following in your terminal (this is a terminal command, not R code):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># start R</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># start R</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Once R has started, the terminal shows the R prompt <code>&gt;</code>. Now you are inside R and can type R code. For example, to check your R version and then quit R again:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ask what R version we have</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>R.version</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># exit R and go back to the terminal</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">q</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ask what R version we have</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>R.version</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># exit R and go back to the terminal</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">q</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>On Windows, typing <code>R</code> in PowerShell does not start R, because <code>r</code> already means something else there. On Windows it is easiest to work in RStudio.</p>
 </div>

@@ -225,17 +225,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#comments-in-your-scripts" id="toc-comments-in-your-scripts" class="nav-link active" data-scroll-target="#comments-in-your-scripts"><span class="header-section-number">3.1</span> Comments in your scripts</a></li>
-  <li><a href="#markdown" id="toc-markdown" class="nav-link" data-scroll-target="#markdown"><span class="header-section-number">3.2</span> Markdown</a></li>
-  <li><a href="#quarto-documents" id="toc-quarto-documents" class="nav-link" data-scroll-target="#quarto-documents"><span class="header-section-number">3.3</span> Quarto documents</a>
+  <li><a href="#markdown" id="toc-markdown" class="nav-link active" data-scroll-target="#markdown"><span class="header-section-number">3.1</span> Markdown</a></li>
+  <li><a href="#what-to-write-between-your-chunks" id="toc-what-to-write-between-your-chunks" class="nav-link" data-scroll-target="#what-to-write-between-your-chunks"><span class="header-section-number">3.2</span> What to write between your chunks</a></li>
+  <li><a href="#comments-in-your-code" id="toc-comments-in-your-code" class="nav-link" data-scroll-target="#comments-in-your-code"><span class="header-section-number">3.3</span> Comments in your code</a></li>
+  <li><a href="#turn-your-document-into-a-report" id="toc-turn-your-document-into-a-report" class="nav-link" data-scroll-target="#turn-your-document-into-a-report"><span class="header-section-number">3.4</span> Turn your document into a report</a>
   <ul class="collapse">
-  <li><a href="#create-a-quarto-document" id="toc-create-a-quarto-document" class="nav-link" data-scroll-target="#create-a-quarto-document"><span class="header-section-number">3.3.1</span> Create a Quarto document</a></li>
-  <li><a href="#what-a-quarto-document-looks-like" id="toc-what-a-quarto-document-looks-like" class="nav-link" data-scroll-target="#what-a-quarto-document-looks-like"><span class="header-section-number">3.3.2</span> What a Quarto document looks like</a></li>
-  <li><a href="#run-code-and-render-the-document" id="toc-run-code-and-render-the-document" class="nav-link" data-scroll-target="#run-code-and-render-the-document"><span class="header-section-number">3.3.3</span> Run code and render the document</a></li>
-  <li><a href="#chunk-options" id="toc-chunk-options" class="nav-link" data-scroll-target="#chunk-options"><span class="header-section-number">3.3.4</span> Chunk options</a></li>
-  <li><a href="#using-languages-other-than-r" id="toc-using-languages-other-than-r" class="nav-link" data-scroll-target="#using-languages-other-than-r"><span class="header-section-number">3.3.5</span> Using languages other than R</a></li>
+  <li><a href="#the-header" id="toc-the-header" class="nav-link" data-scroll-target="#the-header"><span class="header-section-number">3.4.1</span> The header</a></li>
+  <li><a href="#render-your-document" id="toc-render-your-document" class="nav-link" data-scroll-target="#render-your-document"><span class="header-section-number">3.4.2</span> Render your document</a></li>
+  <li><a href="#chunk-options" id="toc-chunk-options" class="nav-link" data-scroll-target="#chunk-options"><span class="header-section-number">3.4.3</span> Chunk options</a></li>
+  <li><a href="#optional-using-languages-other-than-r" id="toc-optional-using-languages-other-than-r" class="nav-link" data-scroll-target="#optional-using-languages-other-than-r"><span class="header-section-number">3.4.4</span> Optional: using languages other than R</a></li>
   </ul></li>
-  <li><a href="#good-practices" id="toc-good-practices" class="nav-link" data-scroll-target="#good-practices"><span class="header-section-number">3.4</span> Good practices</a></li>
+  <li><a href="#good-practices" id="toc-good-practices" class="nav-link" data-scroll-target="#good-practices"><span class="header-section-number">3.5</span> Good practices</a></li>
   </ul>
 </nav>
     </div>
@@ -262,59 +262,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Code that works today can be a mystery in six months, even to the person who wrote it. Good documentation means that you, your supervisor or a colleague can later understand what you did, why you did it, and run it again to get the same result.</p>
-<p>This chapter shows three ways to document your work:</p>
+<p>Since the <a href="../code/1_intro.html">first chapter</a>, you have been working in a Quarto document, with your code in chunks and your notes in between. This chapter shows how to get the most out of it:</p>
 <ul>
-<li>comments inside your R scripts</li>
-<li>Quarto documents, which combine text, code and results in one file</li>
+<li>how to format your notes with Markdown</li>
+<li>what to write between your chunks</li>
+<li>how to use comments inside your code</li>
+<li>how to turn your document into a report</li>
 <li>a set of good practices that make your analysis easier to repeat</li>
 </ul>
-<section id="comments-in-your-scripts" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="comments-in-your-scripts"><span class="header-section-number">3.1</span> Comments in your scripts</h2>
-<p>Everything on a line after a <code>#</code> is a <strong>comment</strong>. R ignores it, so you can write anything you like there:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this whole line is a comment</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># a comment can also follow some code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Good comments explain <strong>why</strong> you do something, not only <strong>what</strong> the code does. The code already shows what happens; the reason is often the part you forget.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not very helpful: says the same as the code</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>growth_data <span class="ot">&lt;-</span> growth_data[growth_data<span class="sc">$</span>Rootlength <span class="sc">&gt;</span> <span class="dv">0</span>, ]</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># more helpful: explains why</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># remove plants with root length 0, these seeds did not germinate</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>growth_data <span class="ot">&lt;-</span> growth_data[growth_data<span class="sc">$</span>Rootlength <span class="sc">&gt;</span> <span class="dv">0</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>It also helps to start each script with a short header that says who wrote it, when, and what it is for:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analysis of root length in the growth experiment</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Author: your name</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Date: 2026-10-19</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Purpose: test whether the bacterial strains change root length under low phosphorus</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>growth_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/Growth_Data.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">quote =</span> <span class="st">""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In RStudio, you can turn several lines into comments at once: select them and press Ctrl+Shift+C (Cmd+Shift+C on Mac). Press it again to remove the <code>#</code> signs.</p>
-</div>
-</div>
-</section>
-<section id="markdown" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="markdown"><span class="header-section-number">3.2</span> Markdown</h2>
-<p>Comments are fine for short notes, but sometimes you want to write more: what the experiment was, what a result means, which questions are still open. For this, we use <strong>Markdown</strong>.</p>
-<p>Markdown is a simple way to format plain text. You type a few special characters, and a program turns them into formatted text. Some examples:</p>
+<section id="markdown" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="markdown"><span class="header-section-number">3.1</span> Markdown</h2>
+<p>The text in a Quarto document is written in <strong>Markdown</strong>. Markdown is a simple way to format plain text. You type a few special characters, and a program turns them into formatted text. Some examples:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -357,6 +315,7 @@ Tip
 </tr>
 </tbody>
 </table>
+<p>Leave an empty line before a heading and before a list. Otherwise Markdown may not recognise them.</p>
 <p>Why use Markdown instead of a word processor?</p>
 <ul>
 <li>A Markdown file is a plain text file. You can open it with any text editor, on any operating system, and it will still be readable in many years.</li>
@@ -368,10 +327,65 @@ Tip
 <li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">A cheatsheet</a></li>
 </ul>
 </section>
-<section id="quarto-documents" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="quarto-documents"><span class="header-section-number">3.3</span> Quarto documents</h2>
-<p><a href="https://quarto.org">Quarto</a> lets you combine Markdown text and code in one document. When you <strong>render</strong> the document, Quarto runs the code and puts the text, the code and its results (tables, plots) together into one report, for example an HTML page, a PDF or a Word file. This book is made with Quarto.</p>
-<p>This is very useful for an analysis: your explanation, your code and your results stay together, and anyone can render the document again to check that the results are the same.</p>
+<section id="what-to-write-between-your-chunks" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="what-to-write-between-your-chunks"><span class="header-section-number">3.2</span> What to write between your chunks</h2>
+<p>The text between your chunks is where your analysis becomes understandable. A few questions can help you decide what to write:</p>
+<ul>
+<li><strong>What do I do here, and why?</strong> For example: “I remove the plants without a root length measurement, because they cannot be used for the comparison.”</li>
+<li><strong>What do I see?</strong> Describe the result in your own words, even if it seems obvious. For example: “The table has 594 rows, one per plant.”</li>
+<li><strong>What surprises me?</strong> Unexpected values, odd groups, numbers that are much larger or smaller than you thought.</li>
+<li><strong>What questions do I have?</strong> Things you want to check later, or ask your supervisor. Writing them down while you work means you don’t forget them.</li>
+</ul>
+<p>Here is an example of how this can look:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Read the growth data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>We read in the measurements of the plant experiment.</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>growth_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/Growth_Data.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">quote =</span> <span class="st">""</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(growth_data)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>The table has one row per plant and 594 plants in total. The columns are</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>the phosphate level, the bacterial treatment, the experiment, the root</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>length and the shoot weight.</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>Questions:</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Some values are <span class="in">`NA`</span>. How many are there, and are they in one group?</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Why are there three experiments? Were they done at different times?</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Your notes don’t need to be polished. They are mainly for you and the people you work with. Short, honest notes are much more useful than none.</p>
+</section>
+<section id="comments-in-your-code" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="comments-in-your-code"><span class="header-section-number">3.3</span> Comments in your code</h2>
+<p>Inside a chunk, you can write <strong>comments</strong>. Everything on a line after a <code>#</code> is a comment. R ignores it, so you can write anything you like there:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this whole line is a comment</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># a comment can also follow some code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Use the text between chunks for longer notes, and comments for short notes about a single line of code. Good comments explain <strong>why</strong> you do something, not only <strong>what</strong> the code does. The code already shows what happens; the reason is often the part you forget.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not very helpful: says the same as the code</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>growth_data <span class="ot">&lt;-</span> growth_data[growth_data<span class="sc">$</span>Rootlength <span class="sc">&gt;</span> <span class="dv">0</span>, ]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># more helpful: explains why</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># remove plants with root length 0, these seeds did not germinate</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>growth_data <span class="ot">&lt;-</span> growth_data[growth_data<span class="sc">$</span>Rootlength <span class="sc">&gt;</span> <span class="dv">0</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In RStudio, you can turn several lines into comments at once: select them and press Ctrl+Shift+C (Cmd+Shift+C on Mac). Press it again to remove the <code>#</code> signs.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -382,49 +396,34 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You may also come across <strong>R Markdown</strong> files (ending in <code>.Rmd</code>). R Markdown is the older predecessor of Quarto and works in a very similar way.</p>
+<p>In an R script (a <code>.R</code> file), comments are the only place for notes. There, it helps to start the script with a few comment lines that say who wrote it, when, and what it is for:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analysis of root length in the growth experiment</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Author: your name</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Date: 2026-10-19</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Purpose: test whether the bacterial strains change root length under low phosphorus</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In a Quarto document, the header at the top does this job (see below).</p>
 </div>
 </div>
-<section id="create-a-quarto-document" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="create-a-quarto-document"><span class="header-section-number">3.3.1</span> Create a Quarto document</h3>
-<p><strong>In RStudio:</strong> Quarto comes with recent versions of RStudio. Go to File &gt; New File &gt; Quarto Document, give it a title and click “Create”. RStudio opens a document that already contains some example text and code.</p>
-<p><strong>In VS Code or Positron:</strong> make sure Quarto is available (in VS Code, install the Quarto extension) and create a new file that ends in <code>.qmd</code>.</p>
-<p>Save the document in your project folder, for example as <code>my_analysis.qmd</code>.</p>
 </section>
-<section id="what-a-quarto-document-looks-like" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="what-a-quarto-document-looks-like"><span class="header-section-number">3.3.2</span> What a Quarto document looks like</h3>
-<p>A Quarto document has three parts:</p>
-<ol type="1">
-<li>A <strong>header</strong> at the top, between two lines of <code>---</code>. It contains settings, such as the title and the output format.</li>
-<li><strong>Text</strong>, written in Markdown.</li>
-<li><strong>Code chunks</strong>: blocks of code that Quarto runs. An R chunk starts with <code>```{r}</code> and ends with <code>```</code>.</li>
-</ol>
-<p>Here is a small example:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Root length analysis"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Your name"</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Read the data</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>We read in the growth data from the plant experiment.</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>growth_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/Growth_Data.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">quote =</span> <span class="st">""</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>The table has one row per plant.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="turn-your-document-into-a-report" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="turn-your-document-into-a-report"><span class="header-section-number">3.4</span> Turn your document into a report</h2>
+<p>You already know the three parts of a Quarto document from the <a href="../code/1_intro.html">first chapter</a>: the header, the text and the code chunks. Here we look at the header in more detail and at how to make a report from your document.</p>
+<section id="the-header" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="the-header"><span class="header-section-number">3.4.1</span> The header</h3>
+<p>The header at the top of the document, between the two lines of <code>---</code>, holds the settings of your document. It is a good place to say who wrote the document, when, and what it is about:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Root length in the growth experiment"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Your name"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-10-19"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>format: html</code> tells Quarto to make an HTML page, which you can open in any web browser. Other formats are possible, for example <code>pdf</code> or <code>docx</code> (a Word file), but they may need extra software.</p>
 </section>
-<section id="run-code-and-render-the-document" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="run-code-and-render-the-document"><span class="header-section-number">3.3.3</span> Run code and render the document</h3>
-<p>You can run each chunk on its own while you work. In RStudio, each chunk has small buttons in its top right corner. The middle one runs all chunks above the current one, and the right one (a green arrow) runs the current chunk:</p>
-<p align="left">
-<img width="800" src="../images/R2.png">
-</p>
-<p>You can also put your cursor on a line inside a chunk and press Ctrl+Enter (Cmd+Enter on Mac), exactly as in a script.</p>
-<p>To create the final report, click the <strong>Render</strong> button at the top of the document. Quarto then runs all code from top to bottom in a fresh R session and writes the report (here an HTML file) next to your <code>.qmd</code> file.</p>
+<section id="render-your-document" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="render-your-document"><span class="header-section-number">3.4.2</span> Render your document</h3>
+<p>To create a report, click the <strong>Render</strong> button at the top of the document. Quarto then runs all code from top to bottom in a fresh R session and puts the text, the code and its results (tables, plots) together. The report is saved next to your <code>.qmd</code> file, here as an HTML file with the same name. RStudio usually also opens it for you.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -438,16 +437,17 @@ Tip
 <p>Because rendering starts from a fresh R session, it only works if your document contains every step: loading packages, reading the data, and so on. If it renders without errors, you know that your analysis does not secretly depend on something you once typed into the Console.</p>
 </div>
 </div>
+<p>If rendering fails, Quarto prints an error message in the Background Jobs tab next to the Console. It tells you in which chunk the problem is. <!-- TODO Nina: check tab name ("Background Jobs") in current RStudio --> Fix the chunk, run it on its own to check, and render again.</p>
 </section>
-<section id="chunk-options" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="chunk-options"><span class="header-section-number">3.3.4</span> Chunk options</h3>
+<section id="chunk-options" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="chunk-options"><span class="header-section-number">3.4.3</span> Chunk options</h3>
 <p>You can control what a chunk does and what appears in the report with <strong>chunk options</strong>. In Quarto, you write them at the top of the chunk, on lines starting with <code>#|</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Some useful options:</p>
 <ul>
 <li><code>echo: false</code> hides the code, but shows its results in the report. Useful for plots.</li>
@@ -459,23 +459,38 @@ Tip
 </ul>
 <p>You find all options on the <a href="https://quarto.org/docs/computations/execution-options.html">Quarto website</a>.</p>
 </section>
-<section id="using-languages-other-than-r" class="level3" data-number="3.3.5">
-<h3 data-number="3.3.5" class="anchored" data-anchor-id="using-languages-other-than-r"><span class="header-section-number">3.3.5</span> Using languages other than R</h3>
+<section id="optional-using-languages-other-than-r" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="optional-using-languages-other-than-r"><span class="header-section-number">3.4.4</span> Optional: using languages other than R</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Click to expand
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You do not need this for the tutorial.</p>
 <p>Quarto documents can also contain code in other languages, such as bash (the language of the Linux and Mac command line) or Python. You only change the name in the curly brackets at the top of the chunk, for example <code>```{bash}</code> instead of <code>```{r}</code>.</p>
 <p>This is useful if part of your analysis runs on the command line, for example on a computer cluster, and another part in R. You can document both steps in the same file.</p>
 <p>Some examples with bash:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print something to the screen</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'hello world'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print something to the screen</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'hello world'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>hello world</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list the files in our data folder</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list the files in our data folder</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Genes_of_interest.txt
+Genotype_Meristem.txt
+Genotype_Rootlength.txt
 Growth_Data.txt
 Metabolism_Table_KO_Apr2020.txt
 Timecourse.txt
@@ -487,47 +502,40 @@ mmc5.xlsx</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the first lines of the growth data</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 3 data/Growth_Data.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the first lines of the growth data</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 3 data/Growth_Data.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Nutrient    Condition   Experiment  Rootlength  FW_shoot_mg
 low_P   mock    ex61    40.4    6.6
 low_P   mock    ex61    38  6.8</code></pre>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <p>To run bash chunks, bash must be installed on your computer. On Mac and Linux it already is. On Windows, it is available for example through Git for Windows or WSL. If you don’t have bash, these chunks give an error, but this does not affect your R chunks.</p>
-</div>
-</div>
 <p>A general introduction into bash and awk is provided in a separate tutorial on <a href="https://github.com/ndombrowski/AWK_tutorial">GitHub</a>.</p>
+</div>
+</div>
+</div>
 </section>
 </section>
-<section id="good-practices" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="good-practices"><span class="header-section-number">3.4</span> Good practices</h2>
+<section id="good-practices" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="good-practices"><span class="header-section-number">3.5</span> Good practices</h2>
 <p>These practices are useful in any programming language. You don’t need to follow all of them from day one, but the earlier they become habits, the easier your life will be.</p>
 <ul>
 <li><strong>Keep each project in its own folder</strong>, with subfolders for input data and output files, and use an RStudio project (see <a href="../code/1_intro.html">Getting started</a>).</li>
-<li><strong>Start each script with a header</strong>: who wrote it, when, and why.</li>
-<li><strong>Load all packages at the top</strong> of the script, so you see at once what the script needs.</li>
+<li><strong>Fill in the header of your document</strong>: who wrote it, when, and what it is about.</li>
+<li><strong>Load all packages at the top</strong> of your document, so you see at once what it needs.</li>
+<li><strong>Write down what you see and what you wonder about</strong> between your chunks, not only the code.</li>
 <li><strong>Comment your code</strong> so that you can still understand it in 5 years. Explain why, not only what.</li>
 <li><strong>Use descriptive names</strong> for objects: short, but clear enough that you know what is inside, for example <code>growth_data</code> instead of <code>df1</code>.</li>
 <li><strong>Break your code into small steps</strong> and check the result of each step, for example with <code>head()</code> and <code>dim()</code>. One line per step is easier to read and to fix than one long line that does everything.</li>
-<li><strong>Never change your raw data by hand.</strong> Read it into R, change it there, and save the result in a new file. Then your script documents every change.</li>
-<li><strong>Save tables, not workspaces.</strong> Write the tables you need with <code>write.table()</code> instead of saving the whole workspace. The workspace hides how the objects were made; the script and the tables don’t.</li>
+<li><strong>Render your document from time to time.</strong> This checks that it still runs from top to bottom without errors.</li>
+<li><strong>Never change your raw data by hand.</strong> Read it into R, change it there, and save the result in a new file. Then your document records every change.</li>
+<li><strong>Save tables, not workspaces.</strong> Write the tables you need with <code>write.table()</code> instead of saving the whole workspace. The workspace hides how the objects were made; your document and the tables don’t.</li>
 <li><strong>If you use random numbers</strong>, for example for sampling, set and report the starting point with <code>set.seed()</code>, for example <code>set.seed(42)</code>. Then you get the same random numbers each time you run the code.</li>
-<li><strong>Record the software versions</strong> you used. Packages change over time, and the same code can give different results or errors with another version. The function <code>sessionInfo()</code> prints your R version and all loaded packages with their versions. Run it at the end of your script or report:</li>
+<li><strong>Record the software versions</strong> you used. Packages change over time, and the same code can give different results or errors with another version. The function <code>sessionInfo()</code> prints your R version and all loaded packages with their versions. Run it at the end of your document:</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.4.2 (2024-10-31 ucrt)
 Platform: x86_64-w64-mingw32/x64

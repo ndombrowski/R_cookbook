@@ -9,7 +9,7 @@ df-print: paged
 
 R is a free, open source programming language for statistics and data analysis. It is widely used in biology, for example to analyse experiments, run statistical tests and make plots.
 
-This chapter gets you set up. You will install R and RStudio, learn your way around RStudio, make a project folder for this tutorial and write your first small script. In the [next chapter](first_steps.qmd) you start working with real data.
+This chapter gets you set up. You will install R and RStudio, learn your way around RStudio, make a project folder for this tutorial and write your first Quarto document. In the [next chapter](first_steps.qmd) you start working with real data.
 
 ## Installation
 
@@ -44,7 +44,7 @@ Click into the Console, type the following and press Enter:
 If R answers with `[1] 2`, everything is installed correctly. The `[1]` just means that this is the first value of the answer.
 
 ::: callout-note
-If you already have R and RStudio installed, check how old they are. Packages are often only built for recent R versions, so a very old R can cause errors when you install packages. To see your R version, type `R.version.string` in the Console.
+rIf you already have R and RStudio installed, check how old they are. Packages are often only built for recent R versions, so a very old R can cause errors when you install packages. To see your R version, type `R.version.string` in the Console.
 :::
 
 ## Find your way around RStudio
@@ -61,7 +61,7 @@ RStudio is split into four areas, called **panes**:
 
 </p>
 
--   **Source (top left):** this is where you write and edit your scripts. A script is a plain text file that contains your R code. This pane only appears once you open or create a file.
+-   **Source (top left):** this is where you write and edit your files, for example the Quarto document you create below. This pane only appears once you open or create a file.
 -   **Console (bottom left):** this is where R actually runs your code and prints the results. You can also type commands here directly.
 -   **Environment (top right):** lists everything you have stored in R during this session, for example tables you have read in. Click on a table to look at it.
 -   **Files, Plots, Packages, Help (bottom right):** shows the files in your folder, your plots, the packages you have installed and the help pages.
@@ -108,35 +108,101 @@ You can check that it worked with `getwd()`. It should print the path of your ne
 
 From now on, all paths in this tutorial are written relative to the project folder. For example, `data/Growth_Data.txt` means "the file `Growth_Data.txt` in the folder `data` inside my project folder".
 
-## Write your first script
+## Write your first Quarto document
 
-### Console or script?
+### Console or document?
 
 You can type code directly into the Console, but once you close RStudio that code is gone. Also, if you want to repeat an analysis a few weeks later, you will not remember exactly what you typed.
 
-That is why you should write your code in a **script** instead. The script is a record of everything you did, and you can run it again at any time. Some rules of thumb:
+That is why you should keep your work in a file. In this tutorial we use a **Quarto document**, a file that ends in `.qmd`. A Quarto document holds two things: your R code, and normal text around it. The code is a record of everything you did, and you can run it again at any time. The text is where you write down what you are doing and why, what you notice in the results, and which questions you still have. When you come back to your analysis later, or discuss it with your supervisor, these notes are often as useful as the code itself.
+
+Some rules of thumb:
 
 -   Use the **Console** for quick checks that you do not need to keep, for example looking at a table with `head()`.
--   Use a **script** for everything that is part of your analysis.
+-   Use your **Quarto document** for everything that is part of your analysis, and for your thoughts about it.
 
-### Create, save and run a script
+### Create and save a Quarto document
 
 1.  Make sure your project is open. Its name is shown in the top right corner of RStudio.
-2.  Create a new script with File \> New File \> R Script. An empty file opens in the Source pane.
-3.  Type some code into it, for example `1 + 1`.
-4.  Save the script with File \> Save (or Ctrl+S on Windows, Cmd+S on Mac). Give it a name that ends with `.R`, for example `my_first_script.R`. RStudio suggests your project folder as the place to save it.
-5.  Run your code. Put the cursor on the line you want to run and press **Ctrl+Enter** (Windows) or **Cmd+Enter** (Mac). You can also click the **Run** button at the top of the script. The code is sent to the Console and the result appears there.
+2.  Go to File \> New File \> Quarto Document. A window opens. Type a title, for example "My first analysis", and click "Create Empty Document" at the bottom left.
+3.  Save the document with File \> Save (or Ctrl+S on Windows, Cmd+S on Mac). Give it a name that ends with `.qmd`, for example `analysis.qmd`. Save it **directly in your project folder**, not in a subfolder (see the tip below).
 
-To run several lines at once, select them with the mouse first and then press Ctrl+Enter (Cmd+Enter on Mac).
+RStudio can show a Quarto document in two ways, which you can switch between with the buttons **Source** and **Visual** at the top left of the document. In this tutorial we use **Source**, because it shows exactly what is in the file.
+
+::: callout-tip
+When you run code in a Quarto document, RStudio uses the folder where the `.qmd` file is saved as the working directory. If your document is in the project folder, a path like `data/Growth_Data.txt` works as expected. If you save it in a subfolder, R looks for `data/` inside that subfolder and cannot find your files.
+
+You can see this setting under Tools \> Global Options \> R Markdown, next to "Evaluate chunks in directory". The default is "Document". Leave it like that and save your Quarto document in the project folder.
+
+<p align="left">
+
+<img src="../images/RStudio_chunk_directory.png" width="500"/>
+
+</p>
+:::
+
+### Text and code chunks
+
+A Quarto document has three parts:
+
+1.  A **header** at the top, between two lines of `---`. It holds settings such as the title. You can leave it as it is for now.
+2.  **Text**, which you type as in any text file. R ignores it.
+3.  **Code chunks**: blocks of R code. A chunk starts with ```` ```{r} ```` and ends with ```` ``` ````. R only runs what is inside a chunk.
+
+To add a chunk, click Code \> Insert Chunk, or press **Ctrl+Alt+I** (Cmd+Option+I on Mac).
+
+Type the following into your document below the header:
+
+````markdown
+---
+title: "My first analysis"
+---
+
+## Trying out R
+
+I want to check that R can do simple maths.
+
+```{{r}}
+1 + 1
+```
+
+R gives 2, as expected. I am not sure yet what the [1] in front of the answer means.
+````
+
+The line starting with `##` is a heading. You will learn more ways to format your text in the chapter [Documenting your code](documenting_code.qmd).
+
+### Run a chunk
+
+There are several ways to run your code:
+
+-   Click the green arrow in the top right corner of a chunk to run the whole chunk.
+-   Put the cursor on a line inside a chunk and press **Ctrl+Enter** (Cmd+Enter on Mac) to run only that line.
+-   Select several lines with the mouse and press Ctrl+Enter (Cmd+Enter on Mac) to run just those lines.
+
+<p align="left">
+
+<img src="../images/R2.png" width="800"/>
+
+</p>
+
+The result appears directly below the chunk. Add your thoughts about it as text below the chunk, then add the next chunk. Step by step, your document becomes a record of your analysis.
+
+::: callout-note
+At the top of the document you will also see a **Render** button. It turns your whole document into a report, for example an HTML page. You do not need it yet. We come back to it in the chapter [Documenting your code](documenting_code.qmd).
+:::
 
 ### Reading the Console
 
-The symbol at the start of the last line in the Console tells you what R is doing:
+Even when you work in a Quarto document, your code is run in the Console. The symbol at the start of the last line in the Console tells you what R is doing:
 
 -   `>` means R is ready and waits for your next command.
 -   `+` means R thinks your command is not finished yet and waits for the rest. This usually happens when you forgot a closing bracket `)` or quote `"`. Either type the missing part, or press **Esc** to cancel the command and start again.
 
 If R prints a message starting with `Error`, your command did not work. Read the message, it often tells you what went wrong (for example a misspelled name or a file that cannot be found). Messages starting with `Warning` mean the command did run, but R wants to tell you about something that might be a problem.
+
+### What about R scripts?
+
+You will also come across **R scripts**: plain text files that end in `.R` and contain only code (File \> New File \> R Script). In a script, any notes have to be written as comments after a `#` sign. Scripts are useful when you run R without RStudio, for example on a computer cluster (see the optional section at the end of this chapter). For this tutorial, use your Quarto document.
 
 ## Getting help
 
