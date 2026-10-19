@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Miscellaneous – R  cookbook</title>
+<title>10&nbsp; Miscellaneous – R  cookbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -121,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/2_misc.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Miscellaneous</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/2_misc.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Miscellaneous</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -157,49 +157,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/1_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction into R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/first_steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First steps in R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/documenting_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Documenting your code</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/data_types.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data objects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data objects</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/data_transformations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data transformations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data transformations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/control_structures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Control Structures</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Control Structures</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/stats.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/plotting_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Basic plotting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic plotting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/parsing_output_from_annotations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Working with annotation data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Working with annotation data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/2_misc.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
   </div>
 </li>
     </ul>
@@ -212,10 +224,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#search-and-replace-in-markdown" id="toc-search-and-replace-in-markdown" class="nav-link active" data-scroll-target="#search-and-replace-in-markdown"><span class="header-section-number">8.1</span> Search and replace in markdown</a></li>
-  <li><a href="#print-the-session-info" id="toc-print-the-session-info" class="nav-link" data-scroll-target="#print-the-session-info"><span class="header-section-number">8.2</span> Print the session info:</a>
+  <li><a href="#search-and-replace-in-markdown" id="toc-search-and-replace-in-markdown" class="nav-link active" data-scroll-target="#search-and-replace-in-markdown"><span class="header-section-number">10.1</span> Search and replace in markdown</a></li>
+  <li><a href="#print-the-session-info" id="toc-print-the-session-info" class="nav-link" data-scroll-target="#print-the-session-info"><span class="header-section-number">10.2</span> Print the session info:</a>
   <ul class="collapse">
-  <li><a href="#clean-up-the-working-environment" id="toc-clean-up-the-working-environment" class="nav-link" data-scroll-target="#clean-up-the-working-environment"><span class="header-section-number">8.2.1</span> Clean-up the working environment</a></li>
+  <li><a href="#clean-up-the-working-environment" id="toc-clean-up-the-working-environment" class="nav-link" data-scroll-target="#clean-up-the-working-environment"><span class="header-section-number">10.2.1</span> Clean-up the working environment</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -225,7 +237,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Miscellaneous</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Miscellaneous</span></h1>
 </div>
 
 
@@ -242,16 +254,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="search-and-replace-in-markdown" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="search-and-replace-in-markdown"><span class="header-section-number">8.1</span> Search and replace in markdown</h2>
+<section id="search-and-replace-in-markdown" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="search-and-replace-in-markdown"><span class="header-section-number">10.1</span> Search and replace in markdown</h2>
 <p>If we want to search for the end of the line to, for example, add two spaces (and thus create a linebreak), we can:</p>
 <ul>
 <li>find `<code>(.)$</code> with Regex selected</li>
 <li>and replace with <code>\1your_string</code></li>
 </ul>
 </section>
-<section id="print-the-session-info" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="print-the-session-info"><span class="header-section-number">8.2</span> Print the session info:</h2>
+<section id="print-the-session-info" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="print-the-session-info"><span class="header-section-number">10.2</span> Print the session info:</h2>
 <p>This prints our session info (used R version, packages, etc) and is very important to store to reproduce our code for others</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|eval: false</span></span>
@@ -282,8 +294,8 @@ loaded via a namespace (and not attached):
 [13] evaluate_1.0.3   </code></pre>
 </div>
 </div>
-<section id="clean-up-the-working-environment" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="clean-up-the-working-environment"><span class="header-section-number">8.2.1</span> Clean-up the working environment</h3>
+<section id="clean-up-the-working-environment" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="clean-up-the-working-environment"><span class="header-section-number">10.2.1</span> Clean-up the working environment</h3>
 <p>Notice: At the moment, we do not want to clean up the working directory, therefore, in our documentation we put a <code>#</code> in front of it. If you want to run the code just remove the <code>#</code></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#rm(list = ls()) </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -697,7 +709,7 @@ loaded via a namespace (and not attached):
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../code/parsing_output_from_annotations.html" class="pagination-link" aria-label="Working with annotation data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Working with annotation data</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Working with annotation data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

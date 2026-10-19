@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; First steps in R – R  cookbook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../code/documenting_code.html" rel="next">
+<link href="../code/1_intro.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-56845be1c3e1e64cc04b6f7b628b8285.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/first_steps.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First steps in R</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">R cookbook</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/1_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/first_steps.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First steps in R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/documenting_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Documenting your code</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/data_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data objects</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/data_transformations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data transformations</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/control_structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Control Structures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/stats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/plotting_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic plotting</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/parsing_output_from_annotations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Working with annotation data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/2_misc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#the-assignment-operator--" id="toc-the-assignment-operator--" class="nav-link active" data-scroll-target="#the-assignment-operator--"><span class="header-section-number">2.1</span> The assignment operator <code>&lt;-</code></a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">2.2</span> Functions</a>
+  <ul class="collapse">
+  <li><a href="#how-to-write-arguments" id="toc-how-to-write-arguments" class="nav-link" data-scroll-target="#how-to-write-arguments"><span class="header-section-number">2.2.1</span> How to write arguments</a></li>
+  <li><a href="#find-out-what-a-function-does" id="toc-find-out-what-a-function-does" class="nav-link" data-scroll-target="#find-out-what-a-function-does"><span class="header-section-number">2.2.2</span> Find out what a function does</a></li>
+  </ul></li>
+  <li><a href="#look-at-and-clean-up-your-workspace" id="toc-look-at-and-clean-up-your-workspace" class="nav-link" data-scroll-target="#look-at-and-clean-up-your-workspace"><span class="header-section-number">2.3</span> Look at and clean up your workspace</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">2.4</span> Packages</a>
+  <ul class="collapse">
+  <li><a href="#updating-packages" id="toc-updating-packages" class="nav-link" data-scroll-target="#updating-packages"><span class="header-section-number">2.4.1</span> Updating packages</a></li>
+  </ul></li>
+  <li><a href="#get-the-data" id="toc-get-the-data" class="nav-link" data-scroll-target="#get-the-data"><span class="header-section-number">2.5</span> Get the data</a>
+  <ul class="collapse">
+  <li><a href="#the-example-data" id="toc-the-example-data" class="nav-link" data-scroll-target="#the-example-data"><span class="header-section-number">2.5.1</span> The example data</a></li>
+  <li><a href="#download-the-files" id="toc-download-the-files" class="nav-link" data-scroll-target="#download-the-files"><span class="header-section-number">2.5.2</span> Download the files</a></li>
+  </ul></li>
+  <li><a href="#read-data-into-r" id="toc-read-data-into-r" class="nav-link" data-scroll-target="#read-data-into-r"><span class="header-section-number">2.6</span> Read data into R</a></li>
+  <li><a href="#read-an-excel-file" id="toc-read-an-excel-file" class="nav-link" data-scroll-target="#read-an-excel-file"><span class="header-section-number">2.7</span> Read an Excel file</a></li>
+  <li><a href="#three-things-you-need-for-the-next-sections" id="toc-three-things-you-need-for-the-next-sections" class="nav-link" data-scroll-target="#three-things-you-need-for-the-next-sections"><span class="header-section-number">2.8</span> Three things you need for the next sections</a>
+  <ul class="collapse">
+  <li><a href="#c-combines-values" id="toc-c-combines-values" class="nav-link" data-scroll-target="#c-combines-values"><span class="header-section-number">2.8.1</span> <code>c()</code> combines values</a></li>
+  <li><a href="#rows-columns-selects-part-of-a-table" id="toc-rows-columns-selects-part-of-a-table" class="nav-link" data-scroll-target="#rows-columns-selects-part-of-a-table"><span class="header-section-number">2.8.2</span> <code>[rows, columns]</code> selects part of a table</a></li>
+  <li><a href="#takes-one-column" id="toc-takes-one-column" class="nav-link" data-scroll-target="#takes-one-column"><span class="header-section-number">2.8.3</span> <code>$</code> takes one column</a></li>
+  </ul></li>
+  <li><a href="#find-the-unique-combinations-with-unique" id="toc-find-the-unique-combinations-with-unique" class="nav-link" data-scroll-target="#find-the-unique-combinations-with-unique"><span class="header-section-number">2.9</span> Find the unique combinations with <code>unique()</code></a></li>
+  <li><a href="#combine-two-tables-with-merge" id="toc-combine-two-tables-with-merge" class="nav-link" data-scroll-target="#combine-two-tables-with-merge"><span class="header-section-number">2.10</span> Combine two tables with <code>merge()</code></a></li>
+  <li><a href="#write-data-into-a-text-file" id="toc-write-data-into-a-text-file" class="nav-link" data-scroll-target="#write-data-into-a-text-file"><span class="header-section-number">2.11</span> Write data into a text file</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">2.12</span> Summary</a>
+  <ul class="collapse">
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">2.12.1</span> Exercise</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First steps in R</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In this chapter you write your first R code. We start with the basics: how to store a value, how to use a function and how to add extra functions with packages. Then we download the example data, read it into R, change it a little and save the result in a new file.</p>
+<p>Before you start, open the RStudio project you made in the previous chapter and create a new script for this chapter, for example <code>first_steps.R</code>. Type the code of this chapter into that script and run it from there.</p>
+<section id="the-assignment-operator--" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="the-assignment-operator--"><span class="header-section-number">2.1</span> The assignment operator <code>&lt;-</code></h2>
+<p>The <code>&lt;-</code> symbol stores a value under a name. The name and the value together are called an <strong>object</strong> (some people also say <strong>variable</strong>). Once a value is stored, you can use the name instead of the value:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store some numbers</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># do some simple math with the numbers we have stored</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<p>You can read <code>x &lt;- 1</code> as “x gets the value 1”. In RStudio, the keyboard shortcut Alt + - (Option + - on Mac) types the <code>&lt;-</code> for you.</p>
+<p>Some general rules:</p>
+<ul>
+<li>R is case sensitive: <code>x</code> and <code>X</code> are two different objects.</li>
+<li>If an object with that name already exists, R overwrites it without asking.</li>
+<li>Text (R calls it a <strong>character</strong> value) needs quotes around it, for example <code>"hello"</code>. Without quotes, R thinks <code>hello</code> is the name of an object and looks for it.</li>
+<li>Names can contain letters, numbers, <code>_</code> and <code>.</code>, but cannot start with a number. Choose names that are short but tell you what is inside, for example <code>growth_data</code> instead of <code>df1</code>.</li>
+</ul>
+<p>Every object you create appears in the <strong>Environment</strong> pane (top right in RStudio).</p>
+</section>
+<section id="functions" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="functions"><span class="header-section-number">2.2</span> Functions</h2>
+<p>A <strong>function</strong> is a piece of code that does one specific job, for example calculating a mean or reading a table. R comes with many functions already built in, and packages (see below) add many more.</p>
+<p>You use a function by writing its name followed by round brackets. Inside the brackets you put the input for the function:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print something to the screen</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="dv">3</span> <span class="sc">+</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the natural logarithm of 10</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.302585</code></pre>
+</div>
+</div>
+<section id="how-to-write-arguments" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="how-to-write-arguments"><span class="header-section-number">2.2.1</span> How to write arguments</h3>
+<p>The values inside the brackets are called <strong>arguments</strong>. They tell the function what to work on and how exactly to behave. Arguments are separated by commas, and you write them as <code>name = value</code>. For example, <code>round()</code> rounds a number, and its argument <code>digits</code> says how many decimals you want to keep:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># round to 2 decimals</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">3.14159</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.14</code></pre>
+</div>
+</div>
+<p>You can often leave out the name of an argument. R then matches the values by their position, so this gives the same result:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># same as above, without the argument name</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">3.14159</span>, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.14</code></pre>
+</div>
+</div>
+<p>If you don’t set an argument at all, R uses its <strong>default value</strong>. For <code>round()</code>, the default is <code>digits = 0</code>, so you get a whole number:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">3.14159</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<p>Writing out the names makes your code easier to read, especially for functions with many arguments. You will see this a lot below, for example in <code>read.table("data/Growth_Data.txt", sep = "\t", header = TRUE)</code>.</p>
+</section>
+<section id="find-out-what-a-function-does" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="find-out-what-a-function-does"><span class="header-section-number">2.2.2</span> Find out what a function does</h3>
+<p>How do you know which arguments a function has, and what their defaults are? The help page tells you. Type <code>?</code> followed by the function name:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>?round</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The help page opens in the Help pane. Most help pages have the same parts:</p>
+<ul>
+<li><strong>Description:</strong> what the function does.</li>
+<li><strong>Usage:</strong> how to call the function. Here you see all arguments, and for each argument with a default you see that default, for example <code>round(x, digits = 0)</code>.</li>
+<li><strong>Arguments:</strong> what each argument means.</li>
+<li><strong>Examples:</strong> at the very bottom. You can copy these into your script to try them out.</li>
+</ul>
+<p>Help pages are written for people who already know some R, so they can be hard to read at first. It is fine to only look at Usage and Examples in the beginning.</p>
+</section>
+</section>
+<section id="look-at-and-clean-up-your-workspace" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="look-at-and-clean-up-your-workspace"><span class="header-section-number">2.3</span> Look at and clean up your workspace</h2>
+<p>Everything you have stored during your current R session is called your <strong>workspace</strong>. You see it in the Environment pane, but you can also list it with <code>ls()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list the objects in the current workspace</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "x" "y"</code></pre>
+</div>
+</div>
+<p>To remove an object, use <code>rm()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove the object x</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(x)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># x is gone, only y is left</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "y"</code></pre>
+</div>
+</div>
+<p>To remove everything at once, use <code>rm(list = ls())</code>. This combines two functions: <code>ls()</code> makes a list of all objects, and the argument <code>list</code> of <code>rm()</code> tells it to remove everything in that list. This is useful when you want to run your script again from a clean start.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you close RStudio, it may ask whether you want to save your workspace to a file called <code>.RData</code>. Answer <strong>No</strong>. If you say yes, all your objects are loaded again the next time you open the project, and it becomes hard to tell whether your script still works on its own. Your script is the record of your analysis, not the workspace. You can switch the question off under Tools &gt; Global Options &gt; General: untick “Restore .RData into workspace at startup” and set “Save workspace to .RData on exit” to “Never”.</p>
+</div>
+</div>
+</section>
+<section id="packages" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="packages"><span class="header-section-number">2.4</span> Packages</h2>
+<p>A <strong>package</strong> is a collection of extra functions (and sometimes data) that someone wrote and shared. Base R can already do a lot, but for many tasks, such as nicer plots or specific statistical tests, you will use packages. Most packages are stored on CRAN, the same website where you downloaded R.</p>
+<p>Working with a package takes two steps:</p>
+<ol type="1">
+<li><strong>Install</strong> the package. This downloads it to your computer. You only do this <strong>once</strong> (and again when you want to update it).</li>
+<li><strong>Load</strong> the package with <code>library()</code>. This makes its functions available in your current R session. R forgets loaded packages when you close it, so you do this <strong>every time</strong> you start R. That is why <code>library()</code> calls belong at the top of your script.</li>
+</ol>
+<p>As an example, here is how to install and load <code>ggplot2</code>, a package for making plots that we use later in this book. You do not need it for this chapter.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install the package (only once, type this in the Console)</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load the package (every session, put this at the top of your script)</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Note the quotes: <code>install.packages()</code> needs the name as text in quotes, while <code>library()</code> works without them.</p>
+<p>Instead of typing <code>install.packages()</code>, you can also install packages in RStudio with the <strong>Packages</strong> tab (bottom right) and the <strong>Install</strong> button.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Put <code>install.packages()</code> in the Console, not in your script. Otherwise R downloads the package again every time you run the script.</p>
+</div>
+</div>
+<section id="updating-packages" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="updating-packages"><span class="header-section-number">2.4.1</span> Updating packages</h3>
+<p>Packages are updated regularly. To update them:</p>
+<ul>
+<li><code>old.packages()</code> lists the installed packages for which a newer version exists.</li>
+<li><code>update.packages()</code> updates them. R asks you for each package whether you want to update it. With <code>update.packages(ask = FALSE)</code> it updates everything without asking. This can take a while if you have not done it for some time.</li>
+</ul>
+<p>In RStudio, you can also use the <strong>Update</strong> button in the Packages tab.</p>
+<p>Updates are usually a good idea, but sometimes a new version of a package works differently and older code no longer runs. This is one reason to record which package versions you used (see the chapter on <a href="../code/documenting_code.html">documenting your code</a>).</p>
+</section>
+</section>
+<section id="get-the-data" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="get-the-data"><span class="header-section-number">2.5</span> Get the data</h2>
+<section id="the-example-data" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="the-example-data"><span class="header-section-number">2.5.1</span> The example data</h3>
+<p>In the next chapters we work with data from a real plant experiment, published in <span class="citation" data-cites="garridooter2018">Garrido-Oter et al. (<a href="#ref-garridooter2018" role="doc-biblioref">2018</a>)</span>. We grew <em>Arabidopsis thaliana</em> plants with or without root bacteria and wanted to know whether the bacteria help the plant grow when it does not get enough phosphate, an important plant nutrient. The plants were grown with either a low (50 µM) or a high (625 µM) amount of phosphate. They were either inoculated with one of two <em>Rhizobium</em> strains (<code>129E</code> or <code>13C</code>) or were mock-treated, i.e.&nbsp;treated in the same way but without bacteria (<code>mock</code>). The mock plants are our control.</p>
+<p>There are two data files:</p>
+<p><strong>Growth_Data.txt</strong> contains the root length (<code>Rootlength</code>, in mm) and the shoot fresh weight (<code>FW_shoot_mg</code>, in mg) of each plant. The column <code>Nutrient</code> says whether the plant got low (<code>low_P</code>) or high (<code>high_P</code>) phosphate, and <code>Condition</code> says whether it was treated with a strain or was a mock control. The column <code>Experiment</code> tells you in which of the 3 repeats of the experiment (<code>ex61</code>, <code>ex64</code>, <code>ex65</code>) the plant was measured. The published data contains more experiments, but we only use the three in which all treatments were measured. For a few plants, the root length or the shoot weight could not be measured, so this file has some empty cells.</p>
+<p><strong>Timecourse.txt</strong> follows up on this. Strain 129E helped the plants grow, so we wanted to know how long it takes until the effect appears. We measured the root length of plants with and without 129E at 6 time points: 0, 4, 8, 12, 16 and 18 days after transfer to the treatment (<code>Timepoint</code>).</p>
+<p>Both files were made from the raw data table that was published with the paper. This table is an Excel file with one sheet per figure (<code>mmc5.xlsx</code>). We download it as well, to practise reading Excel files.</p>
+</section>
+<section id="download-the-files" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="download-the-files"><span class="header-section-number">2.5.2</span> Download the files</h3>
+<p>The example data for this tutorial is stored on GitHub, a website for sharing code and files. You can download it directly with R, so you do not need a GitHub account.</p>
+<p>Make sure you have your project open and run the code below. It uses a few new functions:</p>
+<ol type="1">
+<li><code>dir.create()</code> makes a new folder in your project. We make two: <code>data</code> for the input files and <code>output_examples</code> for files we will write later.</li>
+<li><code>download.file()</code> downloads a file from a web address (<code>url</code>) and saves it under the name you give it (<code>destfile</code>).</li>
+<li><code>mode = "wb"</code> tells R to copy the file exactly as it is. Without it, R on Windows changes the line endings of text files, and the file is no longer identical to the original. Excel files can even become unreadable.</li>
+</ol>
+<p>We only want to create a folder or download a file if we don’t have it yet. Otherwise, every time you run your script again, R would download the files again and overwrite the ones you already have. To do this, we put each step inside an <code>if</code>:</p>
+<ul>
+<li><code>dir.exists()</code> and <code>file.exists()</code> check whether a folder or file is already there. They answer <code>TRUE</code> or <code>FALSE</code>.</li>
+<li>The <code>!</code> in front means “not”. It turns <code>TRUE</code> into <code>FALSE</code> and the other way around.</li>
+<li><code>if (...) { ... }</code> only runs the code between the curly brackets <code>{ }</code> if the part in the round brackets <code>( )</code> is <code>TRUE</code>.</li>
+</ul>
+<p>So <code>if (!file.exists("data/Growth_Data.txt")) { ... }</code> reads as: “if the file <code>data/Growth_Data.txt</code> does <strong>not</strong> exist, run the code inside the brackets”. You will learn more about <code>if</code> in the chapter on <a href="../code/control_structures.html">control structures</a>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a folder for the input data, but only if it does not exist yet</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">"data"</span>)) {</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="st">"data"</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># make a folder for our output files, but only if it does not exist yet</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">"output_examples"</span>)) {</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="st">"output_examples"</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># download the growth data, but only if we don't have it yet</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(<span class="st">"data/Growth_Data.txt"</span>)) {</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">"https://raw.githubusercontent.com/ndombrowski/R_cookbook/main/data/Growth_Data.txt"</span>,</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>                <span class="at">destfile =</span> <span class="st">"data/Growth_Data.txt"</span>,</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">mode =</span> <span class="st">"wb"</span>)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="co"># download the timecourse data, but only if we don't have it yet</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(<span class="st">"data/Timecourse.txt"</span>)) {</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">"https://raw.githubusercontent.com/ndombrowski/R_cookbook/main/data/Timecourse.txt"</span>,</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>                <span class="at">destfile =</span> <span class="st">"data/Timecourse.txt"</span>,</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>                <span class="at">mode =</span> <span class="st">"wb"</span>)</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="co"># download the Excel file with the raw data of the paper, but only if we don't have it yet</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(<span class="st">"data/mmc5.xlsx"</span>)) {</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">"https://raw.githubusercontent.com/ndombrowski/R_cookbook/main/data/mmc5.xlsx"</span>,</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>                <span class="at">destfile =</span> <span class="st">"data/mmc5.xlsx"</span>,</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>                <span class="at">mode =</span> <span class="st">"wb"</span>)</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The first time you run this, R prints a few lines for each download, ending with a line that starts with <code>downloaded</code>. If you run it again, nothing happens, because the files are already there.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you ever want a fresh copy of a file, for example because you changed it by accident, delete it in the Files pane and run the code again.</p>
+</div>
+</div>
+<p>Now check that the download worked. <code>file.exists()</code> answers <code>TRUE</code> if a file is there, and <code>file.size()</code> gives its size in bytes. Your numbers should be the same as below.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># are the files there?</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(<span class="st">"data/Growth_Data.txt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(<span class="st">"data/Timecourse.txt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.exists</span>(<span class="st">"data/mmc5.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how large are they (in bytes)?</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">file.size</span>(<span class="st">"data/Growth_Data.txt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15811</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.size</span>(<span class="st">"data/Timecourse.txt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 46050</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.size</span>(<span class="st">"data/mmc5.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 441420</code></pre>
+</div>
+</div>
+<p>If you see <code>FALSE</code>, look at the Files pane. Is there a <code>data</code> folder in your project, and is it spelled exactly like this? R is case sensitive, so <code>Data</code> and <code>data</code> are two different folders.</p>
+</section>
+</section>
+<section id="read-data-into-r" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="read-data-into-r"><span class="header-section-number">2.6</span> Read data into R</h2>
+<p>To work with data, we first need to read it into R.</p>
+<p>When R reads a table, it stores it as a <strong>data frame</strong>. A data frame is R’s name for a table: each row is one measurement (here: one plant) and each column is one variable (for example the nutrient condition or the root length). Empty cells in a table become <code>NA</code> in R, which means “not available”, i.e.&nbsp;a missing value.</p>
+<p>For tables, there are some things to be aware of:</p>
+<ul>
+<li>It matters which character separates the columns. Some programs use commas, others use tabs. Our files use tabs. By default, <code>read.table()</code> treats any whitespace (spaces and tabs) as a separator, but we can change this when we read the table.</li>
+<li>Do not have any hash symbols (<code>#</code>) in your table. By default, R reads everything after a <code>#</code> as a comment and ignores it.</li>
+<li>Avoid empty cells where you can, as these can mess up your data.</li>
+</ul>
+<p>We use the function <code>read.table()</code> and store the result under the name <code>growth_data</code>. The file is not directly in our project folder but in the subfolder <code>data</code>, so we write <code>data/Growth_Data.txt</code>.</p>
+<p>The arguments we use:</p>
+<ul>
+<li><code>sep</code> = the character that separates the columns. A tab is written as <code>"\t"</code>. If your data uses commas, write <code>sep = ","</code>.</li>
+<li><code>header</code> = whether the first row of the file contains the column names. <code>header = TRUE</code> means “yes, the first row contains the column names”.</li>
+<li><code>quote</code> = which characters mark the start and end of a text. By default, R treats both <code>"</code> and <code>'</code> this way. That causes problems as soon as a cell contains a single <code>'</code>, for example in a gene name like <code>5' nuclease</code>: R then thinks a text starts there and reads the rest of the file as one long piece of text. You may end up with missing rows or even an empty table, and R only shows a warning, not an error. With <code>quote = ""</code> we tell R that no character has a special meaning, so every cell is read exactly as it is.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In other people’s code you will often see <code>T</code> and <code>F</code> instead of <code>TRUE</code> and <code>FALSE</code>, for example <code>header = T</code>. R understands both. In this tutorial we write <code>TRUE</code> and <code>FALSE</code> in full, because it is easier to read.</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the growth data</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>growth_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/Growth_Data.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">quote =</span> <span class="st">""</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check the first few lines of our data</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Experiment"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_mg"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"low_P","2":"mock","3":"ex61","4":"40.4","5":"6.6","_rn_":"1"},{"1":"low_P","2":"mock","3":"ex61","4":"38.0","5":"6.8","_rn_":"2"},{"1":"low_P","2":"mock","3":"ex61","4":"74.7","5":"8.1","_rn_":"3"},{"1":"low_P","2":"mock","3":"ex61","4":"34.4","5":"8.3","_rn_":"4"},{"1":"low_P","2":"mock","3":"ex61","4":"31.9","5":"8.6","_rn_":"5"},{"1":"low_P","2":"mock","3":"ex61","4":"66.5","5":"8.9","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p><code>head()</code> shows the first 6 rows of a table. Use it every time you read or change a table, to check that everything went alright.</p>
+<p>The first rows are complete, but further down the table you will find a few cells with <code>NA</code>. These are the plants for which the root length or the shoot weight is missing. We will learn how to deal with such missing values in the chapter on <a href="../code/data_transformations.html">data transformations</a>.</p>
+<p>A few more functions that help you check a table:</p>
+<ul>
+<li><code>dim()</code> gives the dimensions of a table: first the number of rows, then the number of columns.</li>
+<li><code>colnames()</code> gives the column names.</li>
+<li><code>rownames()</code> gives the row names. Usually these are just the numbers 1, 2, 3, and so on. Our table has 594 rows, so we only look at the first few with <code>head()</code>.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the dimensions of our data</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 594   5</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the column names</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Nutrient"    "Condition"   "Experiment"  "Rootlength"  "FW_shoot_mg"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the first few row names</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">rownames</span>(growth_data))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1" "2" "3" "4" "5" "6"</code></pre>
+</div>
+</div>
+<p>Now read the timecourse data in the same way:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the timecourse data</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>timecourse <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/Timecourse.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">quote =</span> <span class="st">""</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># check the first few lines and the dimensions</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(timecourse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Timepoint"],"name":[3],"type":["int"],"align":["right"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"high_P","2":"mock","3":"0","4":"15.42","_rn_":"1"},{"1":"high_P","2":"mock","3":"0","4":"18.49","_rn_":"2"},{"1":"high_P","2":"mock","3":"0","4":"12.09","_rn_":"3"},{"1":"high_P","2":"mock","3":"0","4":"18.34","_rn_":"4"},{"1":"high_P","2":"mock","3":"0","4":"15.86","_rn_":"5"},{"1":"high_P","2":"mock","3":"0","4":"16.83","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2323    4</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For very large tables, <code>read.table()</code> can be slow. The function <code>fread()</code> from the package <code>data.table</code> is a much faster alternative.</p>
+</div>
+</div>
+</section>
+<section id="read-an-excel-file" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="read-an-excel-file"><span class="header-section-number">2.7</span> Read an Excel file</h2>
+<p>A lot of data is stored in Excel files. You could save each sheet as a text file in Excel first, but R can also read Excel files directly. For this, we use the package <code>readxl</code>. If you have not installed it yet, type this in the Console:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Then load the package in your script:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>An Excel file can have several sheets. <code>excel_sheets()</code> lists their names:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># which sheets are in the file?</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">excel_sheets</span>(<span class="st">"data/mmc5.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "metadata"      "Fig 3A"        "Fig 3B"        "Fig 4B PRL"   
+ [5] "Fig 4B #CELLS" "Fig 5A"        "Fig 6A"        "Fig 6B"       
+ [9] "Fig 7"         "Fig S4A"       "Fig S5A,B"     "Fig S5C"      
+[13] "Fig S5D"       "Fig S5E"       "Fig S6C,D"     "Fig S6E"      
+[17] "Fig S6F"       "Fig S6G"      </code></pre>
+</div>
+</div>
+<p>The growth data comes from the sheet <code>Fig S5A,B</code>. Let’s read it with <code>read_excel()</code>. The argument <code>sheet</code> says which sheet we want:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read one sheet</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>growth_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/mmc5.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Fig S5A,B"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+• `` -&gt; `...2`
+• `` -&gt; `...3`
+• `` -&gt; `...4`
+• `` -&gt; `...5`
+• `` -&gt; `...6`</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_excel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["# Raw data for Fig S5A,B"],"name":[1],"type":["chr"],"align":["left"]},{"label":["...2"],"name":[2],"type":["chr"],"align":["left"]},{"label":["...3"],"name":[3],"type":["chr"],"align":["left"]},{"label":["...4"],"name":[4],"type":["chr"],"align":["left"]},{"label":["...5"],"name":[5],"type":["chr"],"align":["left"]},{"label":["...6"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"Nutrient","2":"Treatment","3":"experiment_id","4":"Technical_replicate","5":"Primary Root Length (mm)","6":"Shoot Fresh Weight (mg)"},{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"36.763695650000003","6":"__NA__"},{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"41.034637680000003","6":"__NA__"},{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"44.819407409999997","6":"__NA__"},{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"47.3822963","6":"__NA__"},{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"48.247333329999996","6":"__NA__"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>This does not look right. The column names are <code># Raw data for Fig S5A,B</code>, <code>...2</code>, <code>...3</code> and so on, and the real column names are in the first row. If you open the file in Excel you see why: the first line of the sheet is a comment, and the table only starts in the second line. <code>read_excel()</code> always uses the first line as column names.</p>
+<p>We can tell <code>read_excel()</code> to skip the first line with <code>skip = 1</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># skip the comment line</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>growth_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/mmc5.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Fig S5A,B"</span>, <span class="at">skip =</span> <span class="dv">1</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_excel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Treatment"],"name":[2],"type":["chr"],"align":["left"]},{"label":["experiment_id"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Technical_replicate"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Primary Root Length (mm)"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Shoot Fresh Weight (mg)"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"36.763695650000003","6":"__NA__"},{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"41.034637680000003","6":"__NA__"},{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"44.819407409999997","6":"__NA__"},{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"47.3822963","6":"__NA__"},{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"48.247333329999996","6":"__NA__"},{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"48.52333333","6":"__NA__"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Better. But there is one more problem, which is easy to miss. Underneath each column name, R shows what kind of values the column contains: <code>&lt;chr&gt;</code> means text (character) and <code>&lt;dbl&gt;</code> means numbers. The columns <code>Primary Root Length (mm)</code> and <code>Shoot Fresh Weight (mg)</code> should contain numbers, but they are <code>&lt;chr&gt;</code>. The reason is that in this sheet, missing values are written as the text <code>NA</code>. R does not know this is a missing value, so it reads the whole column as text, and you can’t calculate with it. With the argument <code>na</code> we tell R which cells mean “missing value”:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># treat empty cells and the text "NA" as missing values</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>growth_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/mmc5.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Fig S5A,B"</span>, <span class="at">skip =</span> <span class="dv">1</span>, <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>))</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_excel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Treatment"],"name":[2],"type":["chr"],"align":["left"]},{"label":["experiment_id"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Technical_replicate"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Primary Root Length (mm)"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Shoot Fresh Weight (mg)"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"36.76370","6":"NA"},{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"41.03464","6":"NA"},{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"44.81941","6":"NA"},{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"47.38230","6":"NA"},{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"48.24733","6":"NA"},{"1":"50 mM P","2":"mock","3":"ex21","4":"1","5":"48.52333","6":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Now both measurement columns are numbers (<code>&lt;dbl&gt;</code>).</p>
+<p>You may have noticed that the column <code>Nutrient</code> says <code>50 mM P</code>. This is a typo in the published table: the plants got 50 µM and 625 µM phosphate. Real data contains mistakes like this, and it is one more reason to always look at your data after reading it.</p>
+<p>A few more things to notice:</p>
+<ul>
+<li><code>read_excel()</code> gives you a <strong>tibble</strong>. A tibble is a data frame with a slightly different way of printing, for example with the column types shown under the names. Everything you learn about data frames also works on tibbles.</li>
+<li>The column names contain spaces and brackets, for example <code>Primary Root Length (mm)</code>. R can handle them, but you have to put backticks around such names when you use them, for example <code>growth_excel$`Primary Root Length (mm)`</code>. This is one reason why short names without spaces are easier to work with.</li>
+</ul>
+<p>This is how we made <code>Growth_Data.txt</code>: we read the sheet as shown above, gave the columns shorter names, kept only the three experiments in which all treatments were measured and saved the table with <code>write.table()</code>. You can find the full script, <a href="https://github.com/ndombrowski/R_cookbook/blob/main/data/make_example_data.R">make_example_data.R</a>, on GitHub.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you collect your own data in Excel, you make your life in R much easier if you:</p>
+<ul>
+<li>start the table in the first row, without titles or comments above it</li>
+<li>use short column names without spaces or special characters</li>
+<li>leave cells empty when a value is missing, and don’t write text such as <code>NA</code>, <code>-</code> or <code>missing</code> in number columns</li>
+<li>use one sheet per table</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="three-things-you-need-for-the-next-sections" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="three-things-you-need-for-the-next-sections"><span class="header-section-number">2.8</span> Three things you need for the next sections</h2>
+<p>The next sections use three pieces of R syntax that we have not seen yet. Here is a short introduction. You will learn more about them in the chapters on <a href="../code/data_types.html">data objects</a> and <a href="../code/data_transformations.html">data transformations</a>.</p>
+<section id="c-combines-values" class="level3" data-number="2.8.1">
+<h3 data-number="2.8.1" class="anchored" data-anchor-id="c-combines-values"><span class="header-section-number">2.8.1</span> <code>c()</code> combines values</h3>
+<p><code>c()</code> stands for “combine”. It puts several values together into a <strong>vector</strong>, which is a list of values of the same kind (for example only numbers, or only text):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a vector with three numbers</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  1  5 10</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a vector with two column names</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"Condition"</span>, <span class="st">"Rootlength"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Condition"  "Rootlength"</code></pre>
+</div>
+</div>
+</section>
+<section id="rows-columns-selects-part-of-a-table" class="level3" data-number="2.8.2">
+<h3 data-number="2.8.2" class="anchored" data-anchor-id="rows-columns-selects-part-of-a-table"><span class="header-section-number">2.8.2</span> <code>[rows, columns]</code> selects part of a table</h3>
+<p>With square brackets you can select rows and columns from a data frame. The part before the comma selects rows, the part after the comma selects columns. If you leave one side empty, R takes all of them.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rows 1 to 3, and only the columns Condition and Rootlength</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>growth_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">c</span>(<span class="st">"Condition"</span>, <span class="st">"Rootlength"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Condition"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Rootlength"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"mock","2":"40.4","_rn_":"1"},{"1":"mock","2":"38.0","_rn_":"2"},{"1":"mock","2":"74.7","_rn_":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Here <code>1:3</code> means “the numbers 1 to 3”, so rows 1, 2 and 3. If we write <code>growth_data[, c("Condition", "Rootlength")]</code> instead, with nothing before the comma, we get these two columns for all 594 rows.</p>
+</section>
+<section id="takes-one-column" class="level3" data-number="2.8.3">
+<h3 data-number="2.8.3" class="anchored" data-anchor-id="takes-one-column"><span class="header-section-number">2.8.3</span> <code>$</code> takes one column</h3>
+<p>With <code>$</code> you can take a single column from a data frame by its name:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the first few values of the column Rootlength</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data<span class="sc">$</span>Rootlength)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 40.4 38.0 74.7 34.4 31.9 66.5</code></pre>
+</div>
+</div>
+<p>You can also use <code>$</code> together with <code>&lt;-</code> to add a new column. If you give a single value, R copies it into every row. We will do this in the merge section below.</p>
+</section>
+</section>
+<section id="find-the-unique-combinations-with-unique" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="find-the-unique-combinations-with-unique"><span class="header-section-number">2.9</span> Find the unique combinations with <code>unique()</code></h2>
+<p><code>unique()</code> removes duplicates and keeps each value, or each combination of values, only once.</p>
+<p>In our growth data, each plant got one combination of nutrient and condition, for example <code>low_P</code> and <code>129E</code>. Many plants share the same combination. If we take the columns <code>Nutrient</code> and <code>Condition</code> and remove the duplicates, we get a short overview of all treatments in our experiment:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a table that lists each combination of nutrient and condition only once</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>mapping_file <span class="ot">&lt;-</span> <span class="fu">unique</span>(growth_data[, <span class="fu">c</span>(<span class="st">"Nutrient"</span>, <span class="st">"Condition"</span>)])</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># view the data</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>mapping_file</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"low_P","2":"mock","_rn_":"1"},{"1":"high_P","2":"mock","_rn_":"106"},{"1":"low_P","2":"13C","_rn_":"210"},{"1":"high_P","2":"13C","_rn_":"298"},{"1":"low_P","2":"129E","_rn_":"385"},{"1":"high_P","2":"129E","_rn_":"492"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Instead of 594 rows we now have 6: 2 nutrient levels times 3 conditions. A table like this, which describes each sample or treatment, is often called a <strong>mapping file</strong> or <strong>metadata</strong>.</p>
+<p>The numbers on the left are the row names. <code>unique()</code> keeps the row names of the first row in which each combination appears.</p>
+</section>
+<section id="combine-two-tables-with-merge" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="combine-two-tables-with-merge"><span class="header-section-number">2.10</span> Combine two tables with <code>merge()</code></h2>
+<p>Often we have extra information about our samples in a separate table and want to add it to our data. The function <code>merge()</code> combines two tables based on columns they have in common. Each row in the first table gets the information from the matching row in the second table.</p>
+<p>Let’s add a column <code>Source</code> to our mapping file that says from which figure of the paper the data comes. This is useful if you later combine data from several figures or experiments:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a new column that says where the data comes from</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>mapping_file<span class="sc">$</span>Source <span class="ot">&lt;-</span> <span class="st">"Fig S5A,B"</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co"># view the data</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>mapping_file</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Source"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"low_P","2":"mock","3":"Fig S5A,B","_rn_":"1"},{"1":"high_P","2":"mock","3":"Fig S5A,B","_rn_":"106"},{"1":"low_P","2":"13C","3":"Fig S5A,B","_rn_":"210"},{"1":"high_P","2":"13C","3":"Fig S5A,B","_rn_":"298"},{"1":"low_P","2":"129E","3":"Fig S5A,B","_rn_":"385"},{"1":"high_P","2":"129E","3":"Fig S5A,B","_rn_":"492"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Now we merge the mapping file with our growth data:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge our growth data with the mapping file</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>new_data_frame <span class="ot">&lt;-</span> <span class="fu">merge</span>(growth_data, mapping_file, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Nutrient"</span>, <span class="st">"Condition"</span>))</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co"># view the data</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(new_data_frame)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Experiment"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_mg"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Source"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"high_P","2":"129E","3":"ex61","4":"111.6","5":"9.7","6":"Fig S5A,B","_rn_":"1"},{"1":"high_P","2":"129E","3":"ex61","4":"92.4","5":"11.7","6":"Fig S5A,B","_rn_":"2"},{"1":"high_P","2":"129E","3":"ex61","4":"77.5","5":"12.1","6":"Fig S5A,B","_rn_":"3"},{"1":"high_P","2":"129E","3":"ex61","4":"112.3","5":"12.6","6":"Fig S5A,B","_rn_":"4"},{"1":"high_P","2":"129E","3":"ex61","4":"96.3","5":"12.7","6":"Fig S5A,B","_rn_":"5"},{"1":"high_P","2":"129E","3":"ex61","4":"76.2","5":"13.4","6":"Fig S5A,B","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>The argument <code>by</code> says which columns to use for matching the rows. Here we need two: a row in <code>growth_data</code> matches a row in <code>mapping_file</code> only if <strong>both</strong> the nutrient and the condition are the same. Note that <code>merge()</code> sorts the result by the <code>by</code> columns, so the rows are now in a different order than in <code>growth_data</code>.</p>
+<p>After a merge, always check that you have the number of rows you expected. We still want 594 rows (one per plant) and one extra column:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the dimensions before and after merging</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 594   5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(new_data_frame)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 594   6</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>A common mistake: matching on too few columns
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What happens if we only match on <code>Condition</code>? In <code>mapping_file</code>, each condition appears twice, once for <code>low_P</code> and once for <code>high_P</code>. So every plant now matches two rows, and R makes a copy of the plant for each match:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge on Condition only (this is wrong!)</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>wrong_merge <span class="ot">&lt;-</span> <span class="fu">merge</span>(growth_data, mapping_file, <span class="at">by =</span> <span class="st">"Condition"</span>)</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(wrong_merge)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1188    7</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wrong_merge)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Condition"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Nutrient.x"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Experiment"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_mg"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Nutrient.y"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Source"],"name":[7],"type":["chr"],"align":["left"]}],"data":[{"1":"129E","2":"low_P","3":"ex61","4":"86.1","5":"5.5","6":"low_P","7":"Fig S5A,B","_rn_":"1"},{"1":"129E","2":"low_P","3":"ex61","4":"86.1","5":"5.5","6":"high_P","7":"Fig S5A,B","_rn_":"2"},{"1":"129E","2":"low_P","3":"ex61","4":"58.4","5":"7.5","6":"low_P","7":"Fig S5A,B","_rn_":"3"},{"1":"129E","2":"low_P","3":"ex61","4":"58.4","5":"7.5","6":"high_P","7":"Fig S5A,B","_rn_":"4"},{"1":"129E","2":"low_P","3":"ex61","4":"NA","5":"9.1","6":"low_P","7":"Fig S5A,B","_rn_":"5"},{"1":"129E","2":"low_P","3":"ex61","4":"NA","5":"9.1","6":"high_P","7":"Fig S5A,B","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>We suddenly have twice as many plants as before, and there is no error message. You also see two new columns, <code>Nutrient.x</code> and <code>Nutrient.y</code>. Both tables had a column called <code>Nutrient</code> that was not used for matching, so R keeps both. To tell them apart, R adds <code>.x</code> to the column from the first table and <code>.y</code> to the column from the second table.</p>
+<p>If you see columns ending in <code>.x</code> and <code>.y</code>, or more rows than you expected, check the <code>by</code> argument.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>By default, <code>merge()</code> drops all rows that have no match in the other table. For example, if a condition is in <code>growth_data</code> but not in <code>mapping_file</code>, those plants disappear from the result without a warning. If you want to keep all rows of the first table, add <code>all.x = TRUE</code>. R then fills the missing values with <code>NA</code>:</p>
+<p><code>merge(growth_data, mapping_file, by = c("Nutrient", "Condition"), all.x = TRUE)</code></p>
+</div>
+</div>
+</section>
+<section id="write-data-into-a-text-file" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="write-data-into-a-text-file"><span class="header-section-number">2.11</span> Write data into a text file</h2>
+<p>We changed our table, so let’s save the result in a new file. We use <code>write.table()</code> and save the file in the folder <code>output_examples</code>. As for reading, the path starts from our project folder.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(new_data_frame, <span class="st">"output_examples/growth_data_changed.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>, <span class="at">na =</span> <span class="st">""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The arguments:</p>
+<ul>
+<li><code>sep = "\t"</code> separates the columns with tabs, the same format as our input files.</li>
+<li><code>row.names = FALSE</code> leaves out the row names. With <code>TRUE</code>, R writes the row numbers as an extra first column. That column has no name in the header, so the header row then has one column less than the other rows, and other programs may shift all column names by one.</li>
+<li><code>quote = FALSE</code> writes text without quotes around it.</li>
+<li><code>na = ""</code> writes missing values as empty cells, like in our input file. By default, R writes the text <code>NA</code>, which other programs may read as text instead of as a missing value.</li>
+</ul>
+<p>You can now open <code>growth_data_changed.txt</code> in the Files pane or in a text editor to look at it.</p>
+</section>
+<section id="summary" class="level2" data-number="2.12">
+<h2 data-number="2.12" class="anchored" data-anchor-id="summary"><span class="header-section-number">2.12</span> Summary</h2>
+<p>In this chapter you learned how to:</p>
+<ul>
+<li>store values in objects with <code>&lt;-</code></li>
+<li>use functions and set their arguments, and look up a function with <code>?</code></li>
+<li>list and remove objects with <code>ls()</code> and <code>rm()</code></li>
+<li>install packages once with <code>install.packages()</code> and load them in every session with <code>library()</code></li>
+<li>download files with <code>download.file()</code></li>
+<li>read a table with <code>read.table()</code> and check it with <code>head()</code>, <code>dim()</code> and <code>colnames()</code></li>
+<li>read a sheet of an Excel file with <code>read_excel()</code>, and use <code>skip</code> and <code>na</code> to deal with untidy sheets</li>
+<li>select rows and columns with <code>[ , ]</code> and a single column with <code>$</code></li>
+<li>remove duplicates with <code>unique()</code> and combine tables with <code>merge()</code></li>
+<li>save a table with <code>write.table()</code></li>
+</ul>
+<section id="exercise" class="level3" data-number="2.12.1">
+<h3 data-number="2.12.1" class="anchored" data-anchor-id="exercise"><span class="header-section-number">2.12.1</span> Exercise</h3>
+<p>Use the <code>timecourse</code> data frame for these questions:</p>
+<ol type="1">
+<li>How many rows and columns does it have?</li>
+<li>Which time points were measured? Hint: use <code>unique()</code> on the column <code>Timepoint</code>.</li>
+<li>Make a table that lists each combination of <code>Nutrient</code>, <code>Condition</code> and <code>Timepoint</code> only once. How many rows does it have?</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. rows and columns</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2323    4</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. the time points</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(timecourse<span class="sc">$</span>Timepoint)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  0  4  8 12 16 18</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. each combination only once</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>timecourse_treatments <span class="ot">&lt;-</span> <span class="fu">unique</span>(timecourse[, <span class="fu">c</span>(<span class="st">"Nutrient"</span>, <span class="st">"Condition"</span>, <span class="st">"Timepoint"</span>)])</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse_treatments)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24  3</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-garridooter2018" class="csl-entry" role="listitem">
+Garrido-Oter, Ruben, Ryohei Thomas Nakano, Nina Dombrowski, Ka-Wai Ma, Alice C. McHardy, and Paul Schulze-Lefert. 2018. <span>“Modular Traits of the Rhizobiales Root Microbiota and Their Evolutionary Relationship with Symbiotic Rhizobia.”</span> <em>Cell Host &amp; Microbe</em> 24 (1): 155–167.e5. <a href="https://doi.org/10.1016/j.chom.2018.06.006">https://doi.org/10.1016/j.chom.2018.06.006</a>.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../code/1_intro.html" class="pagination-link" aria-label="Getting started">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../code/documenting_code.html" class="pagination-link" aria-label="Documenting your code">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Documenting your code</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

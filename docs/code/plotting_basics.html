@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Basic plotting – R  cookbook</title>
+<title>8&nbsp; Basic plotting – R  cookbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -122,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/plotting_basics.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Basic plotting</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/plotting_basics.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic plotting</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -158,49 +158,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/1_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction into R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/first_steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First steps in R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/documenting_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Documenting your code</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/data_types.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data objects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data objects</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/data_transformations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data transformations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data transformations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/control_structures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Control Structures</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Control Structures</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/stats.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/plotting_basics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Basic plotting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic plotting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/parsing_output_from_annotations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Working with annotation data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Working with annotation data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/2_misc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
   </div>
 </li>
     </ul>
@@ -213,18 +225,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#using-base-r" id="toc-using-base-r" class="nav-link active" data-scroll-target="#using-base-r"><span class="header-section-number">6.1</span> Using base R</a>
+  <li><a href="#using-base-r" id="toc-using-base-r" class="nav-link active" data-scroll-target="#using-base-r"><span class="header-section-number">8.1</span> Using base R</a>
   <ul class="collapse">
-  <li><a href="#scatter-plots" id="toc-scatter-plots" class="nav-link" data-scroll-target="#scatter-plots"><span class="header-section-number">6.1.1</span> Scatter plots</a></li>
-  <li><a href="#lineplots" id="toc-lineplots" class="nav-link" data-scroll-target="#lineplots"><span class="header-section-number">6.1.2</span> Lineplots</a></li>
+  <li><a href="#scatter-plots" id="toc-scatter-plots" class="nav-link" data-scroll-target="#scatter-plots"><span class="header-section-number">8.1.1</span> Scatter plots</a></li>
+  <li><a href="#lineplots" id="toc-lineplots" class="nav-link" data-scroll-target="#lineplots"><span class="header-section-number">8.1.2</span> Lineplots</a></li>
   </ul></li>
-  <li><a href="#info-on-using-par" id="toc-info-on-using-par" class="nav-link" data-scroll-target="#info-on-using-par"><span class="header-section-number">6.2</span> info on using par</a>
+  <li><a href="#info-on-using-par" id="toc-info-on-using-par" class="nav-link" data-scroll-target="#info-on-using-par"><span class="header-section-number">8.2</span> info on using par</a>
   <ul class="collapse">
-  <li><a href="#printing-our-results-using-par" id="toc-printing-our-results-using-par" class="nav-link" data-scroll-target="#printing-our-results-using-par"><span class="header-section-number">6.2.1</span> Printing our results using par</a></li>
+  <li><a href="#printing-our-results-using-par" id="toc-printing-our-results-using-par" class="nav-link" data-scroll-target="#printing-our-results-using-par"><span class="header-section-number">8.2.1</span> Printing our results using par</a></li>
   </ul></li>
-  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms"><span class="header-section-number">6.3</span> Histograms</a></li>
-  <li><a href="#boxplots" id="toc-boxplots" class="nav-link" data-scroll-target="#boxplots"><span class="header-section-number">6.4</span> Boxplots</a></li>
-  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2"><span class="header-section-number">6.5</span> Ggplot2</a></li>
+  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms"><span class="header-section-number">8.3</span> Histograms</a></li>
+  <li><a href="#boxplots" id="toc-boxplots" class="nav-link" data-scroll-target="#boxplots"><span class="header-section-number">8.4</span> Boxplots</a></li>
+  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2"><span class="header-section-number">8.5</span> Ggplot2</a></li>
   </ul>
 </nav>
     </div>
@@ -233,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Basic plotting</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic plotting</span></h1>
 </div>
 
 
@@ -250,10 +262,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="using-base-r" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="using-base-r"><span class="header-section-number">6.1</span> Using base R</h2>
-<section id="scatter-plots" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="scatter-plots"><span class="header-section-number">6.1.1</span> Scatter plots</h3>
+<section id="using-base-r" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="using-base-r"><span class="header-section-number">8.1</span> Using base R</h2>
+<section id="scatter-plots" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="scatter-plots"><span class="header-section-number">8.1.1</span> Scatter plots</h3>
 <p>The examples below are part of base R, i.e.&nbsp;we can plot without using any packages. However, there are some nice packages that let you control a lot of parameters, which are good to learn for more sophisticates plots.</p>
 <p>Plotting in base R is simple, we just need to define, what we plot against the x- and y-axis.</p>
 <div class="cell">
@@ -270,13 +282,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Now, lets add some more axis labels to make it more informative and lets startt the plot at 0:</p>
+<p>Plants with a missing root length or shoot weight are simply left out of the plot.</p>
+<p>Now, lets add some more axis labels to make it more informative and lets start the plot at 0:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lets plot our root length against our shoot weight</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> growth_data<span class="sc">$</span>FW_shoot_mg</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> growth_data<span class="sc">$</span>Rootlength</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">xlab =</span> <span class="st">"Shoot_weight_mg"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength_cm"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">xlab =</span> <span class="st">"Shoot_weight_mg"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength_mm"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">160</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -296,17 +309,17 @@ lm(formula = growth_data$Rootlength ~ growth_data$FW_shoot_mg)
 
 Coefficients:
             (Intercept)  growth_data$FW_shoot_mg  
-                 5.2912                   0.2465  </code></pre>
+                 45.471                    1.782  </code></pre>
 </div>
 </div>
-<p>Here, the intercept is 5.2912 and the slope is 0.2465 .</p>
+<p>Here, the intercept is 45.471 and the slope is 1.782.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lets plot our root length against our shoot weight</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> growth_data<span class="sc">$</span>FW_shoot_mg</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> growth_data<span class="sc">$</span>Rootlength</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#plot</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">xlab =</span> <span class="st">"Shoot_weight_mg"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength_cm"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">xlab =</span> <span class="st">"Shoot_weight_mg"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength_mm"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">160</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#add the info from ln (both lines of code do the same thing)</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(growth_data<span class="sc">$</span>Rootlength <span class="sc">~</span> growth_data<span class="sc">$</span>FW_shoot_mg))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -333,8 +346,8 @@ Coefficients:
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>modsum<span class="sc">$</span>coefficients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                         Estimate Std. Error  t value     Pr(&gt;|t|)
-(Intercept)             5.2912436 0.30469198 17.36588 2.278273e-32
-growth_data$FW_shoot_mg 0.2464783 0.01711628 14.40023 2.039703e-26</code></pre>
+(Intercept)             45.471292  2.2969633 19.79626 9.470283e-67
+growth_data$FW_shoot_mg  1.781836  0.1278697 13.93478 3.480146e-38</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#get the p-value (its in the coefficient table, in the 2nd row and 4th column)</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>my.p <span class="ot">=</span> modsum<span class="sc">$</span>coefficients[<span class="dv">2</span>,<span class="dv">4</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -345,13 +358,13 @@ growth_data$FW_shoot_mg 0.2464783 0.01711628 14.40023 2.039703e-26</code></pre>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mylabel <span class="ot">=</span> <span class="fu">bquote</span>(<span class="fu">italic</span>(R)<span class="sc">^</span><span class="dv">2</span> <span class="sc">==</span> .(<span class="fu">format</span>(r2, <span class="at">digits =</span> <span class="dv">3</span>)))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plot</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">xlab =</span> <span class="st">"Shoot_weight_mg"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength_cm"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">xlab =</span> <span class="st">"Shoot_weight_mg"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength_mm"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">160</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#add the info from ln (both lines of code do the same thing)</span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(growth_data<span class="sc">$</span>Rootlength <span class="sc">~</span> growth_data<span class="sc">$</span>FW_shoot_mg))</span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#add the text</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">45</span>, <span class="at">y =</span><span class="dv">14</span>, <span class="at">labels =</span> mylabel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">45</span>, <span class="at">y =</span> <span class="dv">150</span>, <span class="at">labels =</span> mylabel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -370,21 +383,21 @@ growth_data$FW_shoot_mg 0.2464783 0.01711628 14.40023 2.039703e-26</code></pre>
 <pre><code>expression(NULL, NULL)</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#add our two values into the vector</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>rp[<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">substitute</span>(<span class="fu">expression</span>(<span class="fu">italic</span>(R)<span class="sc">^</span><span class="dv">2</span> <span class="sc">==</span> MYVALUE), </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>rp[<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">substitute</span>(<span class="fu">expression</span>(<span class="fu">italic</span>(R)<span class="sc">^</span><span class="dv">2</span> <span class="sc">==</span> MYVALUE),</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">list</span>(<span class="at">MYVALUE =</span> <span class="fu">format</span>(r2,<span class="at">dig=</span><span class="dv">3</span>)))[<span class="dv">2</span>]</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>rp[<span class="dv">2</span>] <span class="ot">=</span> <span class="fu">substitute</span>(<span class="fu">expression</span>(<span class="fu">italic</span>(p) <span class="sc">==</span> MYOTHERVALUE), </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>rp[<span class="dv">2</span>] <span class="ot">=</span> <span class="fu">substitute</span>(<span class="fu">expression</span>(<span class="fu">italic</span>(p) <span class="sc">==</span> MYOTHERVALUE),</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">list</span>(<span class="at">MYOTHERVALUE =</span> <span class="fu">format</span>(my.p, <span class="at">digits =</span> <span class="dv">2</span>)))[<span class="dv">2</span>]</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>rp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>expression(italic(R)^2 == "0.665", italic(p) == "2e-26")</code></pre>
+<pre><code>expression(italic(R)^2 == "0.253", italic(p) == "3.5e-38")</code></pre>
 </div>
 </div>
 <p>Lets plot this:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">xlab =</span> <span class="st">"Shoot_weight_mg"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength_cm"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">xlab =</span> <span class="st">"Shoot_weight_mg"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength_mm"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">160</span>), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#add the info from ln (both lines of code do the same thing)</span></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(growth_data<span class="sc">$</span>Rootlength <span class="sc">~</span> growth_data<span class="sc">$</span>FW_shoot_mg))</span>
@@ -400,8 +413,8 @@ growth_data$FW_shoot_mg 0.2464783 0.01711628 14.40023 2.039703e-26</code></pre>
 </div>
 </div>
 </section>
-<section id="lineplots" class="level3" data-number="6.1.2">
-<h3 data-number="6.1.2" class="anchored" data-anchor-id="lineplots"><span class="header-section-number">6.1.2</span> Lineplots</h3>
+<section id="lineplots" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="lineplots"><span class="header-section-number">8.1.2</span> Lineplots</h3>
 <p>Now, lets work with our time course data to draw some line plots. I.e. lineplots are ideal if we have measurements over time.</p>
 <p>Lets first summarize our time course data to make it easier to plot.</p>
 <div class="cell">
@@ -431,26 +444,23 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first filter to only print P data, then summarize the data by condition and timepoint and calculate the mean</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>timecourse_summary <span class="ot">&lt;-</span> timecourse_noNA <span class="sc">%&gt;%</span> </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Nutrient <span class="sc">==</span> <span class="st">"P"</span>)  <span class="sc">%&gt;%</span> </span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Condition, Timepoint) <span class="sc">%&gt;%</span>  </span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean_root =</span> <span class="fu">mean</span>(Rootlength))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'Condition'. You can override using the
-`.groups` argument.</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(timecourse_summary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first filter to only keep the low_P data, then summarize the data by condition and timepoint and calculate the mean</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>timecourse_summary <span class="ot">&lt;-</span> timecourse <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Nutrient <span class="sc">==</span> <span class="st">"low_P"</span>)  <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Condition, Timepoint) <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean_root =</span> <span class="fu">mean</span>(Rootlength), <span class="at">.groups =</span> <span class="st">'drop'</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(timecourse_summary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["Condition"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Timepoint"],"name":[2],"type":["chr"],"align":["left"]},{"label":["mean_root"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"350","2":"t0","3":"1.521533"},{"1":"350","2":"t1","3":"2.328333"},{"1":"350","2":"t2","3":"3.851552"},{"1":"350","2":"t3","3":"5.717783"},{"1":"350","2":"t4","3":"9.387750"},{"1":"350","2":"t5","3":"11.221909"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["Condition"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Timepoint"],"name":[2],"type":["int"],"align":["right"]},{"label":["mean_root"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"129E","2":"0","3":"14.64293"},{"1":"129E","2":"4","3":"21.85920"},{"1":"129E","2":"8","3":"37.14109"},{"1":"129E","2":"12","3":"54.05670"},{"1":"129E","2":"16","3":"71.34373"},{"1":"129E","2":"18","3":"83.07679"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#split the data into our two categories</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>timecourse_summary_Control <span class="ot">&lt;-</span> timecourse_summary[timecourse_summary<span class="sc">$</span>Condition <span class="sc">==</span> <span class="st">'MgCl'</span>,]</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>timecourse_summary_350 <span class="ot">&lt;-</span> timecourse_summary[timecourse_summary<span class="sc">$</span>Condition <span class="sc">==</span> <span class="st">'350'</span>,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#split the data into our two categories</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>timecourse_summary_Control <span class="ot">&lt;-</span> timecourse_summary[timecourse_summary<span class="sc">$</span>Condition <span class="sc">==</span> <span class="st">'mock'</span>,]</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>timecourse_summary_129E <span class="ot">&lt;-</span> timecourse_summary[timecourse_summary<span class="sc">$</span>Condition <span class="sc">==</span> <span class="st">'129E'</span>,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Useful comments:</p>
 <ul>
@@ -463,10 +473,10 @@ Attaching package: 'dplyr'</code></pre>
 <li>col = hexadecimal or string, colour of the points/lines.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> timecourse_summary_Control<span class="sc">$</span>mean_root</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">"Timepoints"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength (cm)"</span>, <span class="at">col =</span> <span class="st">"#7700BB"</span>, <span class="at">main =</span> <span class="st">"Growth measurements"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> timecourse_summary_Control<span class="sc">$</span>Timepoint</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> timecourse_summary_Control<span class="sc">$</span>mean_root</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">"Days after transfer"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength (mm)"</span>, <span class="at">col =</span> <span class="st">"#7700BB"</span>, <span class="at">main =</span> <span class="st">"Growth measurements"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -479,13 +489,13 @@ Attaching package: 'dplyr'</code></pre>
 <p>To add elements to an existing plot, one can use points, lines, abline, text, … We can also add a legend to the plot.</p>
 <p>In the previous graph eith out growth measurements let us add the root growth of our microbe treatment.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> timecourse_summary_Control<span class="sc">$</span>mean_root</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> timecourse_summary_350<span class="sc">$</span>mean_root</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">"Timepoints"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength (cm)"</span>,<span class="at">col =</span> <span class="st">"#7700BB"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>), <span class="at">main =</span> <span class="st">"Growth measurements"</span>)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, z, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">col =</span> <span class="st">"#5555DD"</span>)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="fu">c</span>(<span class="st">"control"</span>, <span class="st">"microbe"</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#7700BB"</span>, <span class="st">"#5555DD"</span>),<span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> timecourse_summary_Control<span class="sc">$</span>Timepoint</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> timecourse_summary_Control<span class="sc">$</span>mean_root</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> timecourse_summary_129E<span class="sc">$</span>mean_root</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">"Days after transfer"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength (mm)"</span>,<span class="at">col =</span> <span class="st">"#7700BB"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">90</span>), <span class="at">main =</span> <span class="st">"Growth measurements"</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, z, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">col =</span> <span class="st">"#5555DD"</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="fu">c</span>(<span class="st">"control"</span>, <span class="st">"microbe"</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#7700BB"</span>, <span class="st">"#5555DD"</span>),<span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -497,28 +507,28 @@ Attaching package: 'dplyr'</code></pre>
 <p>We can see nicely, that our roots grow longer past the 3rd timepoint.</p>
 </section>
 </section>
-<section id="info-on-using-par" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="info-on-using-par"><span class="header-section-number">6.2</span> info on using par</h2>
+<section id="info-on-using-par" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="info-on-using-par"><span class="header-section-number">8.2</span> info on using par</h2>
 <p>To change graphical parameters globally you can use par. R allows for n × m figures in a single page, by adjusting the parameter mfrow:</p>
 <ul>
 <li>mfrow = c(3, 1) –&gt; we have 3 plots distributed across 3 rows and one column</li>
 <li>par(mai = c(2, 0.82, 0.82, 0.42)) –&gt; sets the bottom, left, top and right margins respectively of the plot region in number of lines of text. If we change the margins it is recommended to reset them to the default after plotting with <code>par(mai = c(1.02, 0.82, 0.82, 0.42))</code>.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(n, m)) <span class="co"># n: number of figures in rows, m: ... in columns.</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x1, y1)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x1, y2)</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xn, ym)</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co">#save a file</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"output_examples/filename.png"</span>)</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(n, m)) <span class="co"># n: number of figures in rows, m: ... in columns.</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x1, y1)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x1, y2)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xn, ym)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">#save a file</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"output_examples/filename.png"</span>)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In the above code chunk, you first open a png file, then plot directly to that file, and finally explicitly close the plotting device with dev.off(). Thus, you do not see the plot on the graphics window. The Cairo package is supposed to be superior to these basic plotting functions, but it does not come with the base installation of R, therefore you will have to install it to try it out (if you are interested, or at a later time).</p>
-<section id="printing-our-results-using-par" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="printing-our-results-using-par"><span class="header-section-number">6.2.1</span> Printing our results using par</h3>
+<section id="printing-our-results-using-par" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="printing-our-results-using-par"><span class="header-section-number">8.2.1</span> Printing our results using par</h3>
 <p>Now lets generate a png file plot.png containing three plots in three different rows.</p>
 <ul>
 <li>The data for our control treatment</li>
@@ -526,38 +536,38 @@ Attaching package: 'dplyr'</code></pre>
 <li>The data combined in one plot</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>control <span class="ot">&lt;-</span> timecourse_summary_Control<span class="sc">$</span>mean_root</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>Microbe <span class="ot">&lt;-</span> timecourse_summary_350<span class="sc">$</span>mean_root</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co">#define what we want to print</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"output_examples/filename2.png"</span>, <span class="at">width =</span> <span class="dv">240</span>, <span class="at">height =</span> <span class="dv">480</span>)</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co">#define how we want to order our 3 plots into rows and columns</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)) </span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co">#build plot1</span></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, control, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">"Timepoints"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength (cm)"</span>,<span class="at">col =</span> <span class="st">"#7700BB"</span>, <span class="at">main =</span> <span class="st">"Growth measurements"</span>)</span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="co">#build plot2</span></span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, Microbe, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">"Timepoints"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength (cm)"</span>,<span class="at">col =</span> <span class="st">"#5555DD"</span>, <span class="at">main =</span> <span class="st">"Growth measurements"</span>)</span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="co">#build plot3</span></span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, control, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">"Timepoints"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength (cm)"</span>,<span class="at">col =</span> <span class="st">"#7700BB"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15</span>), <span class="at">main =</span> <span class="st">"Growth measurements"</span>)</span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, Microbe, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">col =</span> <span class="st">"#5555DD"</span>)</span>
-<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="fu">c</span>(<span class="st">"control"</span>, <span class="st">"microbe"</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#7700BB"</span>, <span class="st">"#5555DD"</span>),<span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">1</span>))</span>
-<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="co">#closes the specified plot</span></span>
-<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> timecourse_summary_Control<span class="sc">$</span>Timepoint</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>control <span class="ot">&lt;-</span> timecourse_summary_Control<span class="sc">$</span>mean_root</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>Microbe <span class="ot">&lt;-</span> timecourse_summary_129E<span class="sc">$</span>mean_root</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">#define what we want to print</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"output_examples/filename2.png"</span>, <span class="at">width =</span> <span class="dv">240</span>, <span class="at">height =</span> <span class="dv">480</span>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">#define how we want to order our 3 plots into rows and columns</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>))</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co">#build plot1</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, control, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">"Days after transfer"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength (mm)"</span>,<span class="at">col =</span> <span class="st">"#7700BB"</span>, <span class="at">main =</span> <span class="st">"Growth measurements"</span>)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="co">#build plot2</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, Microbe, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">"Days after transfer"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength (mm)"</span>,<span class="at">col =</span> <span class="st">"#5555DD"</span>, <span class="at">main =</span> <span class="st">"Growth measurements"</span>)</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="co">#build plot3</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, control, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">"Days after transfer"</span>, <span class="at">ylab =</span> <span class="st">"Rootlength (mm)"</span>,<span class="at">col =</span> <span class="st">"#7700BB"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">90</span>), <span class="at">main =</span> <span class="st">"Growth measurements"</span>)</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, Microbe, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">col =</span> <span class="st">"#5555DD"</span>)</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="fu">c</span>(<span class="st">"control"</span>, <span class="st">"microbe"</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#7700BB"</span>, <span class="st">"#5555DD"</span>),<span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">1</span>))</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a><span class="co">#closes the specified plot</span></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
-<section id="histograms" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="histograms"><span class="header-section-number">6.3</span> Histograms</h2>
+<section id="histograms" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="histograms"><span class="header-section-number">8.3</span> Histograms</h2>
 <p>A histogram shows the frequency of data values in equally sized intervals. Density plots are an alternative, but because of the smoothing between data points, histograms provide a more ‘natural’ look at your data. If you are interested in how to make a density plot, look at the help page of density.</p>
 <p>As an example, lets plot the distribution of our root length measurements across our data.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(growth_data[, <span class="st">"Rootlength"</span>], <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">main =</span> <span class="st">"Data distribution"</span>, <span class="at">breaks =</span> <span class="dv">10</span>, <span class="at">density =</span> <span class="dv">100</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">border =</span> <span class="st">"darkblue"</span>, <span class="at">xlab =</span> <span class="st">"Rootlength"</span>, <span class="at">labels =</span>T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(growth_data[, <span class="st">"Rootlength"</span>], <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">main =</span> <span class="st">"Data distribution"</span>, <span class="at">breaks =</span> <span class="dv">10</span>, <span class="at">density =</span> <span class="dv">100</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">border =</span> <span class="st">"darkblue"</span>, <span class="at">xlab =</span> <span class="st">"Rootlength (mm)"</span>, <span class="at">labels =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -567,8 +577,8 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 </section>
-<section id="boxplots" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="boxplots"><span class="header-section-number">6.4</span> Boxplots</h2>
+<section id="boxplots" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="boxplots"><span class="header-section-number">8.4</span> Boxplots</h2>
 <p>Boxplots represent a compact summary of a data vector in graphical form.</p>
 <p>As we’ve already seen above, the function summary returns summary statistics on the command line: the minimum, first quartile, mean, median, third quartile and the maximum.</p>
 <p>The boxplot displays these values graphically (except the mean) as follows:</p>
@@ -580,8 +590,8 @@ Attaching package: 'dplyr'</code></pre>
 </ul>
 <p>We will first make a boxplot of all measurements and then check for differences between the two nutrient conditions.. Play around with the parameters and add colors and labels.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all data</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(growth_data<span class="sc">$</span>Rootlength, <span class="at">cex =</span> <span class="fl">0.8</span>,  <span class="at">ylab =</span> <span class="st">"Root length (cm)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all data</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(growth_data<span class="sc">$</span>Rootlength, <span class="at">cex =</span> <span class="fl">0.8</span>,  <span class="at">ylab =</span> <span class="st">"Root length (mm)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -591,8 +601,8 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data by nutrient condition</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(growth_data<span class="sc">$</span>Rootlength <span class="sc">~</span> growth_data<span class="sc">$</span>Nutrient, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">cex =</span> <span class="fl">0.8</span>, <span class="at">ylab =</span> <span class="st">"Root length (cm)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data by nutrient condition</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(growth_data<span class="sc">$</span>Rootlength <span class="sc">~</span> growth_data<span class="sc">$</span>Nutrient, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">cex =</span> <span class="fl">0.8</span>, <span class="at">ylab =</span> <span class="st">"Root length (mm)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -602,8 +612,8 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data by nutrient and growth condition</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(growth_data<span class="sc">$</span>Rootlength <span class="sc">~</span> growth_data<span class="sc">$</span>Nutrient <span class="sc">*</span> growth_data<span class="sc">$</span>Condition, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">cex =</span> <span class="fl">0.8</span>, <span class="at">ylab =</span> <span class="st">"Root length (cm)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data by nutrient and growth condition</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(growth_data<span class="sc">$</span>Rootlength <span class="sc">~</span> growth_data<span class="sc">$</span>Nutrient <span class="sc">*</span> growth_data<span class="sc">$</span>Condition, <span class="at">las =</span> <span class="dv">2</span>, <span class="at">cex =</span> <span class="fl">0.8</span>, <span class="at">ylab =</span> <span class="st">"Root length (mm)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -613,24 +623,29 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 </section>
-<section id="ggplot2" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="ggplot2"><span class="header-section-number">6.5</span> Ggplot2</h2>
+<section id="ggplot2" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="ggplot2"><span class="header-section-number">8.5</span> Ggplot2</h2>
 <p>Gplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.</p>
 <p>Detailed info can be found here: https://ggplot2.tidyverse.org</p>
 <p>One important difference to basic plots is that argument can be given in separate blocks that are separated by a <code>+</code></p>
-<section id="start-with-a-basic-bargraph" class="level4" data-number="6.5.0.1">
-<h4 data-number="6.5.0.1" class="anchored" data-anchor-id="start-with-a-basic-bargraph"><span class="header-section-number">6.5.0.1</span> Start with a basic bargraph</h4>
+<p>ggplot2 also leaves out missing values, but in contrast to base R it tells you about it with a warning that starts with “Removed 15 rows containing …”. 15 is the number of plants without a root length. This is not an error: the plot is still made, R just wants you to know that some plants are not shown.</p>
+<section id="start-with-a-basic-bargraph" class="level4" data-number="8.5.0.1">
+<h4 data-number="8.5.0.1" class="anchored" data-anchor-id="start-with-a-basic-bargraph"><span class="header-section-number">8.5.0.1</span> Start with a basic bargraph</h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'ggplot2' was built under R version 4.4.3</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make a bargraph</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>myplot <span class="ot">&lt;-</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>Nutrient, <span class="at">y =</span> Rootlength)) <span class="sc">+</span>  <span class="co">#here we provide the dimensions of our plot</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)                                   <span class="co">#here, we say what kind of plot we want </span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>myplot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make a bargraph</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>myplot <span class="ot">&lt;-</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>Nutrient, <span class="at">y =</span> Rootlength)) <span class="sc">+</span>  <span class="co">#here we provide the dimensions of our plot</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>)                                   <span class="co">#here, we say what kind of plot we want</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>myplot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 15 rows containing missing values or values outside the scale range
+(`geom_bar()`).</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -641,12 +656,16 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <p>We see that the default behavior is to sum everything, which is not what we want. Luckily switching different graph types is very quick</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make a boxplot instead of bargrpah</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>myplot <span class="ot">&lt;-</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>Nutrient, <span class="at">y =</span> Rootlength)) <span class="sc">+</span>  </span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()                                   </span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>myplot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make a boxplot instead of bargrpah</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>myplot <span class="ot">&lt;-</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>Nutrient, <span class="at">y =</span> Rootlength)) <span class="sc">+</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>myplot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 15 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -658,12 +677,16 @@ Attaching package: 'dplyr'</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#do a histogram</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>myplot <span class="ot">&lt;-</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(Rootlength)) <span class="sc">+</span>  </span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()                                   </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(Rootlength)) <span class="sc">+</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
 <span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>myplot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 15 rows containing non-finite outside the scale range
+(`stat_bin()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -676,11 +699,15 @@ Attaching package: 'dplyr'</code></pre>
 <p>The only thing we might want to watch out for is that depending on what data we plot the astethics might need to be adopted. I.e. for a histogram there is no need to provide a x and y value, but we only need to define for what data we want to plot a histogram.</p>
 <p>Another useful feature is to add colors by groupings, i.e.&nbsp;nutrient conditions, using the fill option.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>myplot <span class="ot">&lt;-</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>Nutrient, <span class="at">y =</span> Rootlength, <span class="at">fill =</span> Nutrient)) <span class="sc">+</span>  </span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()                                   </span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>myplot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>myplot <span class="ot">&lt;-</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>Nutrient, <span class="at">y =</span> Rootlength, <span class="at">fill =</span> Nutrient)) <span class="sc">+</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>myplot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 15 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -690,24 +717,28 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 </section>
-<section id="prettify" class="level4" data-number="6.5.0.2">
-<h4 data-number="6.5.0.2" class="anchored" data-anchor-id="prettify"><span class="header-section-number">6.5.0.2</span> Prettify</h4>
+<section id="prettify" class="level4" data-number="8.5.0.2">
+<h4 data-number="8.5.0.2" class="anchored" data-anchor-id="prettify"><span class="header-section-number">8.5.0.2</span> Prettify</h4>
 <p>By default the basic design of a ggplot2 is not ready for publication but we can control every aspects to make it look nicer. A cheat sheet for all the options can be found <a href="http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/">here</a></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>myplot <span class="ot">&lt;-</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>Nutrient, <span class="at">y =</span> Rootlength, <span class="at">fill =</span> Nutrient)) <span class="sc">+</span>  </span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()  <span class="sc">+</span>                                 </span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"grey"</span>)) <span class="sc">+</span>                                          <span class="co">#add some other colors</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">16</span>)) <span class="sc">+</span>                               <span class="co">#make the axis start at 0 </span></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span>                                                                            <span class="co">#remove the grey background</span></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Root length (cm)"</span>) <span class="sc">+</span>                                                              <span class="co">#change the label for the y-axis</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span>                                                                              <span class="co">#remove the label for the x axis</span></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(), <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),           <span class="co">#modify the grid lines</span></span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.background =</span> <span class="fu">element_blank</span>(), <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"black"</span>)) <span class="sc">+</span></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"right"</span>,                                                          <span class="co">#move the legend around</span></span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">45</span>,<span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">size=</span><span class="dv">12</span>))                            <span class="co">#control size and orientation of the axis labels</span></span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>myplot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>myplot <span class="ot">&lt;-</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>Nutrient, <span class="at">y =</span> Rootlength, <span class="at">fill =</span> Nutrient)) <span class="sc">+</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()  <span class="sc">+</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"grey"</span>)) <span class="sc">+</span>                                          <span class="co">#add some other colors</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">160</span>)) <span class="sc">+</span>                              <span class="co">#make the axis start at 0</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span>                                                                            <span class="co">#remove the grey background</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Root length (mm)"</span>) <span class="sc">+</span>                                                              <span class="co">#change the label for the y-axis</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span>                                                                              <span class="co">#remove the label for the x axis</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.major =</span> <span class="fu">element_blank</span>(), <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),           <span class="co">#modify the grid lines</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.background =</span> <span class="fu">element_blank</span>(), <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"black"</span>)) <span class="sc">+</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"right"</span>,                                                          <span class="co">#move the legend around</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x=</span><span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">45</span>,<span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">size=</span><span class="dv">12</span>))                            <span class="co">#control size and orientation of the axis labels</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>myplot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 15 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -717,19 +748,23 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 </section>
-<section id="sort-data" class="level4" data-number="6.5.0.3">
-<h4 data-number="6.5.0.3" class="anchored" data-anchor-id="sort-data"><span class="header-section-number">6.5.0.3</span> Sort data</h4>
+<section id="sort-data" class="level4" data-number="8.5.0.3">
+<h4 data-number="8.5.0.3" class="anchored" data-anchor-id="sort-data"><span class="header-section-number">8.5.0.3</span> Sort data</h4>
 <p>By default most programs sort alpha in an alphabetical way. We can reorder this using vectors (which we can write ourselves or use a mapping file to create them)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#reorder the nutrient levels in our factors</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>growth_data<span class="sc">$</span>Nutrient2 <span class="ot">&lt;-</span>  <span class="fu">factor</span>(growth_data<span class="sc">$</span>Nutrient, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"P"</span>, <span class="st">"noP"</span>)) </span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plot in our new order</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>myplot <span class="ot">&lt;-</span></span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>Nutrient2, <span class="at">y =</span> Rootlength, <span class="at">fill =</span> Nutrient)) <span class="sc">+</span>  </span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>myplot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#reorder the nutrient levels in our factors</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>growth_data<span class="sc">$</span>Nutrient2 <span class="ot">&lt;-</span>  <span class="fu">factor</span>(growth_data<span class="sc">$</span>Nutrient, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"low_P"</span>, <span class="st">"high_P"</span>))</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plot in our new order</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>myplot <span class="ot">&lt;-</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>Nutrient2, <span class="at">y =</span> Rootlength, <span class="at">fill =</span> Nutrient)) <span class="sc">+</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>myplot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 15 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -739,31 +774,35 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 </section>
-<section id="printing-data" class="level4" data-number="6.5.0.4">
-<h4 data-number="6.5.0.4" class="anchored" data-anchor-id="printing-data"><span class="header-section-number">6.5.0.4</span> Printing data</h4>
+<section id="printing-data" class="level4" data-number="8.5.0.4">
+<h4 data-number="8.5.0.4" class="anchored" data-anchor-id="printing-data"><span class="header-section-number">8.5.0.4</span> Printing data</h4>
 <p>With <code>pdf()</code> we tell R that we want to print something to our computer. Inside the function we can define the name of the pdf to generate, the size and other things. After adding the plot we want to print it is important to run <code>dev.off()</code> in order to tell R to stop the “printing mode” and go back to the default mode.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lets first generate two plots</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>myplot_root <span class="ot">&lt;-</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>Nutrient2, <span class="at">y =</span> Rootlength, <span class="at">fill =</span> Nutrient)) <span class="sc">+</span>  </span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>myplot_shoot <span class="ot">&lt;-</span></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>Nutrient2, <span class="at">y =</span> FW_shoot_mg, <span class="at">fill =</span> Nutrient)) <span class="sc">+</span>  </span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="co">#plot one graph</span></span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">"output_examples/Plot_root_length.pdf"</span>, <span class="at">width=</span><span class="dv">3</span>, <span class="at">height=</span><span class="dv">3</span>, <span class="at">family  =</span> <span class="st">"Times"</span>)</span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>myplot_root</span>
-<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lets first generate two plots</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>myplot_root <span class="ot">&lt;-</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>Nutrient2, <span class="at">y =</span> Rootlength, <span class="at">fill =</span> Nutrient)) <span class="sc">+</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>myplot_shoot <span class="ot">&lt;-</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>Nutrient2, <span class="at">y =</span> FW_shoot_mg, <span class="at">fill =</span> Nutrient)) <span class="sc">+</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="co">#plot one graph</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">"output_examples/Plot_root_length.pdf"</span>, <span class="at">width=</span><span class="dv">3</span>, <span class="at">height=</span><span class="dv">3</span>, <span class="at">family  =</span> <span class="st">"Times"</span>)</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>myplot_root</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 15 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>png 
   2 </code></pre>
 </div>
 </div>
 </section>
-<section id="combining-and-printing-multiple-plots" class="level4" data-number="6.5.0.5">
-<h4 data-number="6.5.0.5" class="anchored" data-anchor-id="combining-and-printing-multiple-plots"><span class="header-section-number">6.5.0.5</span> Combining and printing multiple plots</h4>
+<section id="combining-and-printing-multiple-plots" class="level4" data-number="8.5.0.5">
+<h4 data-number="8.5.0.5" class="anchored" data-anchor-id="combining-and-printing-multiple-plots"><span class="header-section-number">8.5.0.5</span> Combining and printing multiple plots</h4>
 <p>The ggpubr package is nice to combine multiple plots onto one plot. Some more information on this package can be found <a href="https://rpkgs.datanovia.com/ggpubr/index.html">here</a></p>
 <p>How it works:</p>
 <ul>
@@ -772,8 +811,8 @@ Attaching package: 'dplyr'</code></pre>
 <li>the ncol and nrow arguments allow us to control how many plots go into a row and a column</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load package</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load package</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: package 'ggpubr' was built under R version 4.4.3</code></pre>
 </div>
@@ -786,10 +825,18 @@ Attaching package: 'ggpubr'</code></pre>
 
     mutate</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#view how ggarrange deals with two plots</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(myplot_root, myplot_shoot, </span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>),</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">#view how ggarrange deals with two plots</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(myplot_root, myplot_shoot,</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>),</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 15 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 8 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -799,160 +846,111 @@ Attaching package: 'ggpubr'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#we can also plot two graphs and print them in one pdf</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">"output_examples/Two_plots.pdf"</span>, <span class="at">width=</span><span class="dv">3</span>, <span class="at">height=</span><span class="dv">3</span>, <span class="at">family  =</span> <span class="st">"Times"</span>)</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(myplot_root, myplot_shoot, </span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>),</span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>)</span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">#we can also plot two graphs and print them in one pdf</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">"output_examples/Two_plots.pdf"</span>, <span class="at">width=</span><span class="dv">3</span>, <span class="at">height=</span><span class="dv">3</span>, <span class="at">family  =</span> <span class="st">"Times"</span>)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggarrange</span>(myplot_root, myplot_shoot,</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>),</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 15 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 8 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>png 
   2 </code></pre>
 </div>
 </div>
 </section>
-<section id="sorting-data-v2" class="level4" data-number="6.5.0.6">
-<h4 data-number="6.5.0.6" class="anchored" data-anchor-id="sorting-data-v2"><span class="header-section-number">6.5.0.6</span> Sorting data v2</h4>
+<section id="sorting-data-v2" class="level4" data-number="8.5.0.6">
+<h4 data-number="8.5.0.6" class="anchored" data-anchor-id="sorting-data-v2"><span class="header-section-number">8.5.0.6</span> Sorting data v2</h4>
 <p>If we have multiple conditions, i.e.&nbsp;nutrient conditions and other treatments there are several ways to plot these</p>
 <ol type="1">
 <li>Plot them side by side and color by nutrient conditions.</li>
 </ol>
+<p>For this, we need one column that names each combination of nutrient and condition. <code>paste()</code> glues the values of two columns together, and <code>sep = "_"</code> puts an underscore between them:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pdf("Plot_root_length.pdf", width=3, height=3, family  = "Times")</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>SampleID, <span class="at">y =</span> Rootlength, <span class="at">fill =</span> Nutrient)) <span class="sc">+</span>  </span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make a column with the combination of nutrient and condition, i.e. low_P_129E</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>growth_data<span class="sc">$</span>SampleID <span class="ot">&lt;-</span> <span class="fu">paste</span>(growth_data<span class="sc">$</span>Nutrient, growth_data<span class="sc">$</span>Condition, <span class="at">sep =</span> <span class="st">"_"</span>)</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Experiment"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_mg"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Nutrient2"],"name":[6],"type":["fct"],"align":["left"]},{"label":["SampleID"],"name":[7],"type":["chr"],"align":["left"]}],"data":[{"1":"low_P","2":"mock","3":"ex61","4":"40.4","5":"6.6","6":"low_P","7":"low_P_mock","_rn_":"1"},{"1":"low_P","2":"mock","3":"ex61","4":"38.0","5":"6.8","6":"low_P","7":"low_P_mock","_rn_":"2"},{"1":"low_P","2":"mock","3":"ex61","4":"74.7","5":"8.1","6":"low_P","7":"low_P_mock","_rn_":"3"},{"1":"low_P","2":"mock","3":"ex61","4":"34.4","5":"8.3","6":"low_P","7":"low_P_mock","_rn_":"4"},{"1":"low_P","2":"mock","3":"ex61","4":"31.9","5":"8.6","6":"low_P","7":"low_P_mock","_rn_":"5"},{"1":"low_P","2":"mock","3":"ex61","4":"66.5","5":"8.9","6":"low_P","7":"low_P_mock","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pdf("Plot_root_length.pdf", width=3, height=3, family  = "Times")</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>SampleID, <span class="at">y =</span> Rootlength, <span class="at">fill =</span> Nutrient)) <span class="sc">+</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 15 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="plotting_basics_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="plotting_basics_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dev.off()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="2" type="1">
 <li>Change the order.</li>
 </ol>
 <p>Now, here the order is not nice, but as mentioned we can use mapping files to sort our data. Lets try.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lets check how our mapping file looked like</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>((mapping_file), <span class="at">format=</span><span class="st">'markdown'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make a mapping file that lists each combination only once</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>mapping_file <span class="ot">&lt;-</span> <span class="fu">unique</span>(growth_data[, <span class="fu">c</span>(<span class="st">"SampleID"</span>, <span class="st">"Nutrient"</span>, <span class="st">"Condition"</span>)])</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="co">#lets check how our mapping file looks like</span></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>mapping_file</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: left;">SampleID</th>
-<th style="text-align: left;">Nutrient</th>
-<th style="text-align: left;">Condition</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">noP</td>
-<td style="text-align: left;">noP</td>
-<td style="text-align: left;">MgCl</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">14</td>
-<td style="text-align: left;">noP_101</td>
-<td style="text-align: left;">noP</td>
-<td style="text-align: left;">Strain101</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">27</td>
-<td style="text-align: left;">noP_230</td>
-<td style="text-align: left;">noP</td>
-<td style="text-align: left;">Strain230</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">38</td>
-<td style="text-align: left;">noP_28</td>
-<td style="text-align: left;">noP</td>
-<td style="text-align: left;">Strain28</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">53</td>
-<td style="text-align: left;">P</td>
-<td style="text-align: left;">P</td>
-<td style="text-align: left;">MgCl</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">68</td>
-<td style="text-align: left;">P_101</td>
-<td style="text-align: left;">P</td>
-<td style="text-align: left;">Strain101</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">80</td>
-<td style="text-align: left;">P_230</td>
-<td style="text-align: left;">P</td>
-<td style="text-align: left;">Strain230</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">93</td>
-<td style="text-align: left;">P_28</td>
-<td style="text-align: left;">P</td>
-<td style="text-align: left;">Strain28</td>
-</tr>
-</tbody>
-</table>
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["SampleID"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Nutrient"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"low_P_mock","2":"low_P","3":"mock","_rn_":"1"},{"1":"high_P_mock","2":"high_P","3":"mock","_rn_":"106"},{"1":"low_P_13C","2":"low_P","3":"13C","_rn_":"210"},{"1":"high_P_13C","2":"high_P","3":"13C","_rn_":"298"},{"1":"low_P_129E","2":"low_P","3":"129E","_rn_":"385"},{"1":"high_P_129E","2":"high_P","3":"129E","_rn_":"492"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
 </div>
-<p>We can use this simpler table to define how we want to resort our growth data. First, lets reorder the metadata first by nutrient and then condition:</p>
+</div>
+<p>We can use this simpler table to define how we want to resort our growth data. First, lets reorder the metadata first by nutrient and then by condition. <code>order()</code> gives the row numbers in the order in which the rows should be sorted, first by the first column we give it and then by the second:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lets sort the file first conditon an the nutrient (in reverse order, by using the rev() function )</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>mapping_file <span class="ot">&lt;-</span> mapping_file[<span class="fu">with</span>(mapping_file, <span class="fu">order</span>(Condition, <span class="fu">rev</span>(Nutrient))), ]</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co">#check whether we like how things are ordered (look at the order of the first line)</span></span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>mapping_file<span class="sc">$</span>SampleID</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co">#lets sort the file first by nutrient and then by condition</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>mapping_file <span class="ot">&lt;-</span> mapping_file[<span class="fu">order</span>(mapping_file<span class="sc">$</span>Nutrient, mapping_file<span class="sc">$</span>Condition), ]</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="co">#check whether we like how things are ordered</span></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>mapping_file<span class="sc">$</span>SampleID</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "P"       "noP"     "P_101"   "noP_101" "P_230"   "noP_230" "P_28"   
-[8] "noP_28" </code></pre>
+<pre><code>[1] "high_P_129E" "high_P_13C"  "high_P_mock" "low_P_129E"  "low_P_13C"  
+[6] "low_P_mock" </code></pre>
 </div>
 </div>
 <p>Now, we can use the order of this file to re-order our larger dataframe with the growth data.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">#reorder the levels of our growth data using the mapping file</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>growth_data<span class="sc">$</span>SampleID2 <span class="ot">&lt;-</span>  <span class="fu">factor</span>(growth_data<span class="sc">$</span>SampleID, <span class="at">levels =</span> <span class="fu">as.character</span>(mapping_file<span class="sc">$</span>SampleID)) </span>
-<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co">#reorder the levels of our growth data using the mapping file</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>growth_data<span class="sc">$</span>SampleID2 <span class="ot">&lt;-</span>  <span class="fu">factor</span>(growth_data<span class="sc">$</span>SampleID, <span class="at">levels =</span> <span class="fu">as.character</span>(mapping_file<span class="sc">$</span>SampleID))</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["SampleID"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Nutrient"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[3],"type":["chr"],"align":["left"]},{"label":["FW_shoot_mg"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Rootlength"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Nutrient2"],"name":[6],"type":["fct"],"align":["left"]},{"label":["SampleID2"],"name":[7],"type":["fct"],"align":["left"]}],"data":[{"1":"noP","2":"noP","3":"MgCl","4":"10.26","5":"5.931015","6":"noP","7":"noP","_rn_":"1"},{"1":"noP","2":"noP","3":"MgCl","4":"6.52","5":"5.743447","6":"noP","7":"noP","_rn_":"2"},{"1":"noP","2":"noP","3":"MgCl","4":"12.17","5":"6.834720","6":"noP","7":"noP","_rn_":"3"},{"1":"noP","2":"noP","3":"MgCl","4":"11.37","5":"6.742735","6":"noP","7":"noP","_rn_":"4"},{"1":"noP","2":"noP","3":"MgCl","4":"9.80","5":"6.736886","6":"noP","7":"noP","_rn_":"5"},{"1":"noP","2":"noP","3":"MgCl","4":"3.75","5":"4.236348","6":"noP","7":"noP","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Experiment"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_mg"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Nutrient2"],"name":[6],"type":["fct"],"align":["left"]},{"label":["SampleID"],"name":[7],"type":["chr"],"align":["left"]},{"label":["SampleID2"],"name":[8],"type":["fct"],"align":["left"]}],"data":[{"1":"low_P","2":"mock","3":"ex61","4":"40.4","5":"6.6","6":"low_P","7":"low_P_mock","8":"low_P_mock","_rn_":"1"},{"1":"low_P","2":"mock","3":"ex61","4":"38.0","5":"6.8","6":"low_P","7":"low_P_mock","8":"low_P_mock","_rn_":"2"},{"1":"low_P","2":"mock","3":"ex61","4":"74.7","5":"8.1","6":"low_P","7":"low_P_mock","8":"low_P_mock","_rn_":"3"},{"1":"low_P","2":"mock","3":"ex61","4":"34.4","5":"8.3","6":"low_P","7":"low_P_mock","8":"low_P_mock","_rn_":"4"},{"1":"low_P","2":"mock","3":"ex61","4":"31.9","5":"8.6","6":"low_P","7":"low_P_mock","8":"low_P_mock","_rn_":"5"},{"1":"low_P","2":"mock","3":"ex61","4":"66.5","5":"8.9","6":"low_P","7":"low_P_mock","8":"low_P_mock","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot (for now lets do this side by side)</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>SampleID2, <span class="at">y =</span> Rootlength, <span class="at">fill =</span> Nutrient)) <span class="sc">+</span>  </span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="plotting_basics_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot (for now lets do this side by side)</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>SampleID2, <span class="at">y =</span> Rootlength, <span class="at">fill =</span> Nutrient)) <span class="sc">+</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 15 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
 </div>
-</div>
-</div>
-</section>
-<section id="bargraphs-with-error-bars" class="level4" data-number="6.5.0.7">
-<h4 data-number="6.5.0.7" class="anchored" data-anchor-id="bargraphs-with-error-bars"><span class="header-section-number">6.5.0.7</span> Bargraphs with error bars</h4>
-<p>For bargraphs we can also make them nice looking with errorbars, however, the values for the mean, sd and so one ideally should be listed in a summary table.</p>
-<p>Luckily we have learned before how we can use ddply to create such a table again and then blot it:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co">#summarize</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>growth_data_summarized <span class="ot">&lt;-</span> <span class="fu">ddply</span>(growth_data, .(SampleID, Nutrient), summarize, <span class="at">RootLength =</span> <span class="fu">mean</span>(Rootlength), <span class="at">sd =</span> <span class="fu">sd</span> (Rootlength), <span class="at">se =</span> <span class="fu">sd</span>(Rootlength) <span class="sc">/</span> <span class="fu">sqrt</span>((<span class="fu">length</span>(Rootlength))))</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co">#order levels</span></span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>growth_data_summarized<span class="sc">$</span>SampleID2 <span class="ot">&lt;-</span>  <span class="fu">factor</span>(growth_data_summarized<span class="sc">$</span>SampleID, <span class="at">levels =</span> <span class="fu">as.character</span>(mapping_file<span class="sc">$</span>SampleID)) </span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="co">#plot</span></span>
-<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data_summarized, <span class="fu">aes</span>(<span class="at">x=</span>SampleID2, <span class="at">y=</span>RootLength, <span class="at">fill=</span>Nutrient)) <span class="sc">+</span> </span>
-<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">color=</span><span class="st">"black"</span>, </span>
-<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">position=</span><span class="fu">position_dodge</span>()) <span class="sc">+</span></span>
-<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>RootLength<span class="sc">-</span>sd, <span class="at">ymax=</span>RootLength<span class="sc">+</span>sd), <span class="at">width=</span>.<span class="dv">2</span>,</span>
-<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a>                 <span class="at">position=</span><span class="fu">position_dodge</span>(.<span class="dv">9</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -962,19 +960,49 @@ Attaching package: 'ggpubr'</code></pre>
 </div>
 </div>
 </section>
-<section id="faceting-data" class="level4" data-number="6.5.0.8">
-<h4 data-number="6.5.0.8" class="anchored" data-anchor-id="faceting-data"><span class="header-section-number">6.5.0.8</span> Faceting data</h4>
-<p>Sometimes, we might to plot data into separate plots. This can be done in ggplot with one extra command. Facetting can do this for you.</p>
-<p>Options: - Scales “free” tells ggplot that the scales can be different between plots. I.e. axis height. - ncol = allows to control the dimensions of the plot</p>
+<section id="bargraphs-with-error-bars" class="level4" data-number="8.5.0.7">
+<h4 data-number="8.5.0.7" class="anchored" data-anchor-id="bargraphs-with-error-bars"><span class="header-section-number">8.5.0.7</span> Bargraphs with error bars</h4>
+<p>For bargraphs we can also make them nice looking with errorbars, however, the values for the mean, sd and so one ideally should be listed in a summary table.</p>
+<p>Luckily we have learned before how we can use ddply to create such a table again and then blot it:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot horizontal</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>SampleID2, <span class="at">y =</span> Rootlength, <span class="at">fill =</span> Nutrient)) <span class="sc">+</span>  </span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(. <span class="sc">~</span> Nutrient, <span class="at">scales =</span> <span class="st">"free"</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co">#summarize</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>growth_data_summarized <span class="ot">&lt;-</span> <span class="fu">ddply</span>(growth_data, .(SampleID, Nutrient), summarize, <span class="at">RootLength =</span> <span class="fu">mean</span>(Rootlength, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">sd =</span> <span class="fu">sd</span>(Rootlength, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">se =</span> <span class="fu">sd</span>(Rootlength, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(Rootlength))))</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="co">#order levels</span></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>growth_data_summarized<span class="sc">$</span>SampleID2 <span class="ot">&lt;-</span>  <span class="fu">factor</span>(growth_data_summarized<span class="sc">$</span>SampleID, <span class="at">levels =</span> <span class="fu">as.character</span>(mapping_file<span class="sc">$</span>SampleID))</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a><span class="co">#plot</span></span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data_summarized, <span class="fu">aes</span>(<span class="at">x=</span>SampleID2, <span class="at">y=</span>RootLength, <span class="at">fill=</span>Nutrient)) <span class="sc">+</span></span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">color=</span><span class="st">"black"</span>,</span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a>           <span class="at">position=</span><span class="fu">position_dodge</span>()) <span class="sc">+</span></span>
+<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>RootLength<span class="sc">-</span>sd, <span class="at">ymax=</span>RootLength<span class="sc">+</span>sd), <span class="at">width=</span>.<span class="dv">2</span>,</span>
+<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a>                 <span class="at">position=</span><span class="fu">position_dodge</span>(.<span class="dv">9</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="plotting_basics_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="faceting-data" class="level4" data-number="8.5.0.8">
+<h4 data-number="8.5.0.8" class="anchored" data-anchor-id="faceting-data"><span class="header-section-number">8.5.0.8</span> Faceting data</h4>
+<p>Sometimes, we might to plot data into separate plots. This can be done in ggplot with one extra command. Facetting can do this for you.</p>
+<p>Options: - Scales “free” tells ggplot that the scales can be different between plots. I.e. axis height. - ncol = allows to control the dimensions of the plot</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot horizontal</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(growth_data, <span class="fu">aes</span>(<span class="at">x =</span>SampleID2, <span class="at">y =</span> Rootlength, <span class="at">fill =</span> Nutrient)) <span class="sc">+</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(. <span class="sc">~</span> Nutrient, <span class="at">scales =</span> <span class="st">"free"</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 15 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="plotting_basics_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1388,12 +1416,12 @@ Attaching package: 'ggpubr'</code></pre>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../code/stats.html" class="pagination-link" aria-label="Statistics in R">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistics in R</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistics in R</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../code/parsing_output_from_annotations.html" class="pagination-link" aria-label="Working with annotation data">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Working with annotation data</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Working with annotation data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

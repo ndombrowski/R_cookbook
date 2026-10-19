@@ -1,0 +1,185 @@
+---
+execute:
+    eval: true
+
+df-print: paged
+---
+
+# Statistics in R: advanced topics
+
+<!--
+DRAFT, not listed in _quarto.yml (2026-10-19).
+Plan in to_do.md ("Planned: advanced stats chapter"): batch effects and unbalanced designs (full Fig S5A,B sheet),
+balanced blocks / unequal variances / multiple testing (Fig S5D), three-way interaction (Fig 6A).
+The sections below were moved here from stats.qmd unchanged. They use the growth data subset (ex61, ex64, ex65).
+-->
+
+```{r}
+#| echo: false
+#| warning: false
+
+#read in data
+growth_data <- read.table("data/Growth_Data.txt", sep = "\t", header = TRUE, quote = "")
+library(dplyr)
+```
+
+
+## Normal distribution
+
+
+### Visualize our data via density plots
+
+There are different ways to visualize this, one example is ggdensity of the ggpubr package.
+
+The plotting functions remove missing values themselves, but tell us about it with a warning. To avoid the warning, we first remove the plants without a root length.
+
+```{r}
+library("ggpubr")
+
+#keep only plants with a root length
+growth_data_root <- growth_data[!is.na(growth_data$Rootlength), ]
+
+#is the data for my different variables normally distributed
+ggdensity(growth_data_root$Rootlength)
+```
+
+The data doesn't seem to be perfectly normally distributed. Let's check whether this has to do with the different nutrient conditions:
+<!-- TODO Nina: interpretation written for the old data; check against the new density plot -->
+
+```{r}
+ggdensity(growth_data_root, x = "Rootlength",
+   add = "mean", rug = TRUE,
+   color = "Nutrient", palette = c("#00AFBB", "#E7B800"))
+```
+
+We see that the first plot condensed the two nutrient conditions.
+<!-- TODO Nina: consider why the curves still have bumps-->
+
+But each nutrient condition still contains three treatments: the mock control and the two strains. Let's check whether the strains explain the remaining bumps. With `color = "Condition"` we draw one curve per treatment, and with `facet.by = "Nutrient"` we get one panel per nutrient condition:
+
+```{r}
+ggdensity(growth_data_root, x = "Rootlength",
+   add = "mean", rug = TRUE,
+   color = "Condition", palette = c("#2A6FDB", "#D9822B", "#8C8C8C"),
+   facet.by = "Nutrient")
+```
+
+<!-- TODO Nina: interpretation of the per-treatment density plot -->
+
+
+### Visualize our data via Q-Q plots
+
+Another way to represent data is in  a Q-Q plot: Q-Q plot (or quantile-quantile plot) draws the correlation between a given sample and the normal distribution. A 45-degree reference line is also plotted.
+
+```{r}
+#plot all data
+ggqqplot(growth_data_root$Rootlength)
+```
+
+
+```{r}
+#plot by group
+ggqqplot(growth_data_root, x = "Rootlength",
+         color = "Nutrient",  palette = c("#00AFBB", "#E7B800"))
+```
+
+Again, here we see that our data for the indivdual growth conditions fit better into normal distribution.
+<!-- TODO Nina: The tails still are off, maybe something to look into -->
+
+As for the density plots, we can also split the data by nutrient condition and treatment:
+
+```{r}
+#plot by nutrient and treatment
+ggqqplot(growth_data_root, x = "Rootlength",
+         color = "Condition", palette = c("#2A6FDB", "#D9822B", "#8C8C8C"),
+         facet.by = "Nutrient")
+```
+
+<!-- TODO Nina: interpretation of the per-treatment Q-Q plots -->
+
+
+### Test for normality
+
+```{r}
+#for all data
+shapiro.test(growth_data$Rootlength)
+```
+
+
+```{r}
+#separate nutrient conditions
+low_P_data <- growth_data[growth_data$Nutrient == "low_P", ]
+
+#test for low_P only
+shapiro.test(low_P_data$Rootlength)
+```
+
+We can use ddplyr and the dlookr package for doing a group-wise comparison
+
+
+```{r}
+library(dplyr)
+library(dlookr)
+
+growth_data %>%
+  group_by(Nutrient) %>%
+  normality()
+```
+
+To test each treatment separately, we group by both columns. `normality()` then runs one Shapiro-Wilk test for each combination of nutrient condition and treatment:
+
+```{r}
+growth_data %>%
+  group_by(Nutrient, Condition) %>%
+  normality()
+```
+
+<!-- TODO Nina: interpretation of the per-treatment normality tests -->
+
+
+The shapiro.test tests the NULL hypothesis that the samples came from a Normal distribution. This means that if your p-value <= 0.05, then you would reject the NULL hypothesis that the samples came from a normal distribution.
+
+From the output, the p-value < 0.05 for our complete dataset implies that the distribution of the data is significantly different from normal distribution. In other words, we can not assume the normality. However, we expect quite some differences dependent on the growth pattern and once we only look at our low P data we see that our indeed is normally distributed.
+<!-- TODO Nina: interpretation written for the old data (105 plants); check against the new Shapiro and dlookr output. With ~290 plants per nutrient, see also the note on sample size below -->
+Notice: Shapiro works only for sample sizes between 3-5000 numbers since when you feed it more data, the chances of the null hypothesis being rejected becomes larger. An alternative is the Anderson-Darling test that however has a similar problem with the Shapiro Wilk test. For large samples, you are most likely to reject the null hypothesis, so be aware of this.
+
+```{r}
+library(nortest)
+ad.test(low_P_data$Rootlength)
+```
+
+
+### Why are some groups still not quite normal?
+
+Splitting the data by nutrient condition and treatment made the curves much more regular, but some of them still have bumps, and a few groups still fail the Shapiro-Wilk test. There are two reasons for this.
+
+**1. The experiments differ a little.** Our data comes from three repeats of the same experiment (`ex61`, `ex64` and `ex65`). Plants grown at different times never grow exactly the same, for example because the growth chamber or the batch of seeds was slightly different. We can check this with `tapply()`, which we used above, by calculating the mean root length for each treatment group in each experiment:
+
+```{r}
+#make one column with the treatment group
+growth_data_root$Group <- paste(growth_data_root$Nutrient, growth_data_root$Condition, sep = "_")
+
+#mean root length per treatment group (rows) and experiment (columns)
+round(tapply(growth_data_root$Rootlength, INDEX = list(growth_data_root$Group, growth_data_root$Experiment), FUN = mean), 1)
+```
+
+For most groups, the three experiments give similar means. But for `high_P_129E`, the roots in `ex64` are on average about 20 mm longer than in `ex65`, and for `low_P_mock`, the roots in `ex64` are shorter than in the other two experiments. If we put these plants together in one curve, we get a mix of slightly shifted distributions, and that shows up as a shoulder or a second bump. Such differences between repeats are often called **batch effects**. They can be included in a statistical model, for example by adding `Experiment` as an extra factor, but we will not go into that here.
+<!-- TODO Nina: check the wording and the possible causes (growth chamber, seed batch) for these experiments -->
+
+**2. Some bumpiness is normal.** A density curve is an estimate based on the data we have. With around 100 plants per group, a curve can have small bumps even if the data really comes from a normal distribution. You can try this yourself: `rnorm(100)` draws 100 random numbers from a normal distribution, and plotting their density a few times shows how different the curves look:
+
+```{r}
+#draw 100 random numbers from a normal distribution and plot their density
+#set.seed() makes sure we get the same random numbers every time we run this
+set.seed(1)
+plot(density(rnorm(100)), main = "Density of 100 random normal values")
+```
+
+Run the last line a few times without `set.seed()` and look how the shape changes. In a simulation with 2000 such samples, more than a third of the curves had two or more peaks.
+<!-- TODO Nina: the "more than a third" (38%) comes from a simulation run outside the book (2000 samples of rnorm(100), default density()); keep, drop, or add the simulation code -->
+
+For the same reason, keep the sample size in mind when you read the Shapiro-Wilk test. With around 100 values per group, the test already flags small deviations from a normal distribution. A low p-value then does not automatically mean that you can't use a test such as ANOVA. ANOVA is generally considered fairly robust to moderate deviations from normality when the groups are this large and of similar size, so the Q-Q plots are often more useful for judging whether the deviation matters.
+<!-- TODO Nina: the ANOVA robustness statement is general knowledge, not checked against a source for this book; check and add a reference if you keep it -->
+
+
+

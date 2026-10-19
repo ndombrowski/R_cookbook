@@ -1,0 +1,4 @@
+# Store the example data exactly as it is, without line-ending conversion,
+# so that the file sizes shown in the book match the files downloaded from GitHub.
+data/*.txt -text
+data/*.xlsx binary

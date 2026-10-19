@@ -11,6 +11,8 @@ book:
   chapters:
     - index.qmd
     - code/1_intro.qmd
+    - code/first_steps.qmd
+    - code/documenting_code.qmd
     - code/data_types.qmd
     - code/data_transformations.qmd
     - code/control_structures.qmd

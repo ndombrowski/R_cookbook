@@ -7,7 +7,27 @@ df-print: paged
 
 # Working with annotation data
 
-As mentioned in the beginning section, if working with genomes we often have large lists of proteins and their annotations, often from different databases.
+## The example data
+
+This chapter uses a second, larger dataset. It is the output of the [Spang_team annotation pipeline](https://github.com/ndombrowski/Annotation_workflow), but the workflow shown here can be used for any type of categorical data you want to summarize.
+
+With this pipeline, we generated the file **UAP2_Annotation_table_u.txt**, which includes annotations for a set of 46 DPANN genomes. It lists each individual protein found across these 46 genomes, together with its annotations from several databases (arCOG, KO, PFAM, ...).
+
+Specifically, we want to learn how to:
+
+- Make a count table for each genome
+- Make a count table for clusters of interest
+- Make a heatmap for genes of interest
+- Merge our results with some pre-sorted tables
+
+For this to work, we have some additional files to make our job easier:
+
+- **mapping.txt** = a list that defines to which cluster (i.e. a group based on a phylogenetic tree) each genome (bin) belongs
+- **Genes_of_interest.txt** = a list of genes we are interested in and that we want to plot in a heatmap
+- **ar14_arCOGdef19.txt** = metadata for the arCOG annotations
+- **Metabolism_Table_KO_Apr2020.txt** = metadata for KOs, sorted by pathways
+
+When working with genomes, we often have large lists of proteins and their annotations, often from different databases.
 
 Here, we might be interested in condensing this information for each genome or for each phylum etc . OR we want to merge our data with other tables that are ordered differently. 
 We might also want to plot the data to compare the presence absence levels of different genomes. This section with discuss how to do this in a step by step manner.

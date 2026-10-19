@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Working with annotation data – R  cookbook</title>
+<title>9&nbsp; Working with annotation data – R  cookbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -122,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/parsing_output_from_annotations.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Working with annotation data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/parsing_output_from_annotations.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Working with annotation data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -158,49 +158,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/1_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction into R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/first_steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First steps in R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/documenting_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Documenting your code</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/data_types.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data objects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data objects</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/data_transformations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data transformations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data transformations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/control_structures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Control Structures</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Control Structures</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/stats.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/plotting_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Basic plotting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic plotting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/parsing_output_from_annotations.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Working with annotation data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Working with annotation data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/2_misc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
   </div>
 </li>
     </ul>
@@ -213,39 +225,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#load-essential-packages" id="toc-load-essential-packages" class="nav-link active" data-scroll-target="#load-essential-packages"><span class="header-section-number">7.1</span> Load essential packages</a></li>
-  <li><a href="#deal-with-the-mapping-file-for-our-genomes" id="toc-deal-with-the-mapping-file-for-our-genomes" class="nav-link" data-scroll-target="#deal-with-the-mapping-file-for-our-genomes"><span class="header-section-number">7.2</span> Deal with the mapping file for our genomes</a>
+  <li><a href="#the-example-data" id="toc-the-example-data" class="nav-link active" data-scroll-target="#the-example-data"><span class="header-section-number">9.1</span> The example data</a></li>
+  <li><a href="#load-essential-packages" id="toc-load-essential-packages" class="nav-link" data-scroll-target="#load-essential-packages"><span class="header-section-number">9.2</span> Load essential packages</a></li>
+  <li><a href="#deal-with-the-mapping-file-for-our-genomes" id="toc-deal-with-the-mapping-file-for-our-genomes" class="nav-link" data-scroll-target="#deal-with-the-mapping-file-for-our-genomes"><span class="header-section-number">9.3</span> Deal with the mapping file for our genomes</a>
   <ul class="collapse">
-  <li><a href="#load-mapping-file" id="toc-load-mapping-file" class="nav-link" data-scroll-target="#load-mapping-file"><span class="header-section-number">7.2.1</span> Load mapping file</a></li>
+  <li><a href="#load-mapping-file" id="toc-load-mapping-file" class="nav-link" data-scroll-target="#load-mapping-file"><span class="header-section-number">9.3.1</span> Load mapping file</a></li>
   </ul></li>
-  <li><a href="#clean-mapping-file" id="toc-clean-mapping-file" class="nav-link" data-scroll-target="#clean-mapping-file"><span class="header-section-number">7.3</span> Clean mapping file</a></li>
-  <li><a href="#generate-lists-to-order-dataframes" id="toc-generate-lists-to-order-dataframes" class="nav-link" data-scroll-target="#generate-lists-to-order-dataframes"><span class="header-section-number">7.4</span> Generate lists to order dataframes</a></li>
-  <li><a href="#deal-with-mapping-files-for-the-annotations" id="toc-deal-with-mapping-files-for-the-annotations" class="nav-link" data-scroll-target="#deal-with-mapping-files-for-the-annotations"><span class="header-section-number">7.5</span> Deal with mapping files for the annotations</a>
+  <li><a href="#clean-mapping-file" id="toc-clean-mapping-file" class="nav-link" data-scroll-target="#clean-mapping-file"><span class="header-section-number">9.4</span> Clean mapping file</a></li>
+  <li><a href="#generate-lists-to-order-dataframes" id="toc-generate-lists-to-order-dataframes" class="nav-link" data-scroll-target="#generate-lists-to-order-dataframes"><span class="header-section-number">9.5</span> Generate lists to order dataframes</a></li>
+  <li><a href="#deal-with-mapping-files-for-the-annotations" id="toc-deal-with-mapping-files-for-the-annotations" class="nav-link" data-scroll-target="#deal-with-mapping-files-for-the-annotations"><span class="header-section-number">9.6</span> Deal with mapping files for the annotations</a>
   <ul class="collapse">
-  <li><a href="#load-and-view-the-tables" id="toc-load-and-view-the-tables" class="nav-link" data-scroll-target="#load-and-view-the-tables"><span class="header-section-number">7.5.1</span> Load and view the tables</a></li>
-  <li><a href="#make-a-vector-to-order-our-genes-of-interest" id="toc-make-a-vector-to-order-our-genes-of-interest" class="nav-link" data-scroll-target="#make-a-vector-to-order-our-genes-of-interest"><span class="header-section-number">7.5.2</span> Make a vector to order our genes of interest</a></li>
+  <li><a href="#load-and-view-the-tables" id="toc-load-and-view-the-tables" class="nav-link" data-scroll-target="#load-and-view-the-tables"><span class="header-section-number">9.6.1</span> Load and view the tables</a></li>
+  <li><a href="#make-a-vector-to-order-our-genes-of-interest" id="toc-make-a-vector-to-order-our-genes-of-interest" class="nav-link" data-scroll-target="#make-a-vector-to-order-our-genes-of-interest"><span class="header-section-number">9.6.2</span> Make a vector to order our genes of interest</a></li>
   </ul></li>
-  <li><a href="#deal-with-annotation-file" id="toc-deal-with-annotation-file" class="nav-link" data-scroll-target="#deal-with-annotation-file"><span class="header-section-number">7.6</span> Deal with annotation file</a>
+  <li><a href="#deal-with-annotation-file" id="toc-deal-with-annotation-file" class="nav-link" data-scroll-target="#deal-with-annotation-file"><span class="header-section-number">9.7</span> Deal with annotation file</a>
   <ul class="collapse">
-  <li><a href="#read-in-table" id="toc-read-in-table" class="nav-link" data-scroll-target="#read-in-table"><span class="header-section-number">7.6.1</span> Read in table</a></li>
-  <li><a href="#make-a-mapping-file-that-links-all-annotation-ids-to-their-descriptions" id="toc-make-a-mapping-file-that-links-all-annotation-ids-to-their-descriptions" class="nav-link" data-scroll-target="#make-a-mapping-file-that-links-all-annotation-ids-to-their-descriptions"><span class="header-section-number">7.6.2</span> Make a mapping file that links all annotation IDs to their descriptions</a></li>
-  <li><a href="#parse-table-to-make-it-easier-to-work-with-it" id="toc-parse-table-to-make-it-easier-to-work-with-it" class="nav-link" data-scroll-target="#parse-table-to-make-it-easier-to-work-with-it"><span class="header-section-number">7.6.3</span> Parse table to make it easier to work with it</a></li>
+  <li><a href="#read-in-table" id="toc-read-in-table" class="nav-link" data-scroll-target="#read-in-table"><span class="header-section-number">9.7.1</span> Read in table</a></li>
+  <li><a href="#make-a-mapping-file-that-links-all-annotation-ids-to-their-descriptions" id="toc-make-a-mapping-file-that-links-all-annotation-ids-to-their-descriptions" class="nav-link" data-scroll-target="#make-a-mapping-file-that-links-all-annotation-ids-to-their-descriptions"><span class="header-section-number">9.7.2</span> Make a mapping file that links all annotation IDs to their descriptions</a></li>
+  <li><a href="#parse-table-to-make-it-easier-to-work-with-it" id="toc-parse-table-to-make-it-easier-to-work-with-it" class="nav-link" data-scroll-target="#parse-table-to-make-it-easier-to-work-with-it"><span class="header-section-number">9.7.3</span> Parse table to make it easier to work with it</a></li>
   </ul></li>
-  <li><a href="#make-count-tables" id="toc-make-count-tables" class="nav-link" data-scroll-target="#make-count-tables"><span class="header-section-number">7.7</span> Make count tables</a>
+  <li><a href="#make-count-tables" id="toc-make-count-tables" class="nav-link" data-scroll-target="#make-count-tables"><span class="header-section-number">9.8</span> Make count tables</a>
   <ul class="collapse">
-  <li><a href="#generate-a-count-table-for-our-genomes-of-interest" id="toc-generate-a-count-table-for-our-genomes-of-interest" class="nav-link" data-scroll-target="#generate-a-count-table-for-our-genomes-of-interest"><span class="header-section-number">7.7.1</span> Generate a count table for our genomes of interest</a></li>
-  <li><a href="#generate-a-count-table-for-our-clusters-of-interest" id="toc-generate-a-count-table-for-our-clusters-of-interest" class="nav-link" data-scroll-target="#generate-a-count-table-for-our-clusters-of-interest"><span class="header-section-number">7.7.2</span> Generate a count table for our clusters of interest</a></li>
+  <li><a href="#generate-a-count-table-for-our-genomes-of-interest" id="toc-generate-a-count-table-for-our-genomes-of-interest" class="nav-link" data-scroll-target="#generate-a-count-table-for-our-genomes-of-interest"><span class="header-section-number">9.8.1</span> Generate a count table for our genomes of interest</a></li>
+  <li><a href="#generate-a-count-table-for-our-clusters-of-interest" id="toc-generate-a-count-table-for-our-clusters-of-interest" class="nav-link" data-scroll-target="#generate-a-count-table-for-our-clusters-of-interest"><span class="header-section-number">9.8.2</span> Generate a count table for our clusters of interest</a></li>
   </ul></li>
-  <li><a href="#merge-our-tables-with-the-mapping-data-we-have" id="toc-merge-our-tables-with-the-mapping-data-we-have" class="nav-link" data-scroll-target="#merge-our-tables-with-the-mapping-data-we-have"><span class="header-section-number">7.8</span> Merge our tables with the mapping data we have</a>
+  <li><a href="#merge-our-tables-with-the-mapping-data-we-have" id="toc-merge-our-tables-with-the-mapping-data-we-have" class="nav-link" data-scroll-target="#merge-our-tables-with-the-mapping-data-we-have"><span class="header-section-number">9.9</span> Merge our tables with the mapping data we have</a>
   <ul class="collapse">
-  <li><a href="#for-the-bins" id="toc-for-the-bins" class="nav-link" data-scroll-target="#for-the-bins"><span class="header-section-number">7.8.1</span> For the bins</a></li>
-  <li><a href="#for-the-clusters" id="toc-for-the-clusters" class="nav-link" data-scroll-target="#for-the-clusters"><span class="header-section-number">7.8.2</span> For the clusters</a></li>
+  <li><a href="#for-the-bins" id="toc-for-the-bins" class="nav-link" data-scroll-target="#for-the-bins"><span class="header-section-number">9.9.1</span> For the bins</a></li>
+  <li><a href="#for-the-clusters" id="toc-for-the-clusters" class="nav-link" data-scroll-target="#for-the-clusters"><span class="header-section-number">9.9.2</span> For the clusters</a></li>
   </ul></li>
-  <li><a href="#plot-the-data-for-our-genes-of-interest" id="toc-plot-the-data-for-our-genes-of-interest" class="nav-link" data-scroll-target="#plot-the-data-for-our-genes-of-interest"><span class="header-section-number">7.9</span> Plot the data for our genes of interest</a>
+  <li><a href="#plot-the-data-for-our-genes-of-interest" id="toc-plot-the-data-for-our-genes-of-interest" class="nav-link" data-scroll-target="#plot-the-data-for-our-genes-of-interest"><span class="header-section-number">9.10</span> Plot the data for our genes of interest</a>
   <ul class="collapse">
-  <li><a href="#categorizing-data" id="toc-categorizing-data" class="nav-link" data-scroll-target="#categorizing-data"><span class="header-section-number">7.9.1</span> Categorizing data</a></li>
-  <li><a href="#order-our-data" id="toc-order-our-data" class="nav-link" data-scroll-target="#order-our-data"><span class="header-section-number">7.9.2</span> Order our data</a></li>
-  <li><a href="#plotting" id="toc-plotting" class="nav-link" data-scroll-target="#plotting"><span class="header-section-number">7.9.3</span> Plotting</a></li>
+  <li><a href="#categorizing-data" id="toc-categorizing-data" class="nav-link" data-scroll-target="#categorizing-data"><span class="header-section-number">9.10.1</span> Categorizing data</a></li>
+  <li><a href="#order-our-data" id="toc-order-our-data" class="nav-link" data-scroll-target="#order-our-data"><span class="header-section-number">9.10.2</span> Order our data</a></li>
+  <li><a href="#plotting" id="toc-plotting" class="nav-link" data-scroll-target="#plotting"><span class="header-section-number">9.10.3</span> Plotting</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -255,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Working with annotation data</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Working with annotation data</span></h1>
 </div>
 
 
@@ -272,10 +285,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>As mentioned in the beginning section, if working with genomes we often have large lists of proteins and their annotations, often from different databases.</p>
+<section id="the-example-data" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="the-example-data"><span class="header-section-number">9.1</span> The example data</h2>
+<p>This chapter uses a second, larger dataset. It is the output of the <a href="https://github.com/ndombrowski/Annotation_workflow">Spang_team annotation pipeline</a>, but the workflow shown here can be used for any type of categorical data you want to summarize.</p>
+<p>With this pipeline, we generated the file <strong>UAP2_Annotation_table_u.txt</strong>, which includes annotations for a set of 46 DPANN genomes. It lists each individual protein found across these 46 genomes, together with its annotations from several databases (arCOG, KO, PFAM, …).</p>
+<p>Specifically, we want to learn how to:</p>
+<ul>
+<li>Make a count table for each genome</li>
+<li>Make a count table for clusters of interest</li>
+<li>Make a heatmap for genes of interest</li>
+<li>Merge our results with some pre-sorted tables</li>
+</ul>
+<p>For this to work, we have some additional files to make our job easier:</p>
+<ul>
+<li><strong>mapping.txt</strong> = a list that defines to which cluster (i.e.&nbsp;a group based on a phylogenetic tree) each genome (bin) belongs</li>
+<li><strong>Genes_of_interest.txt</strong> = a list of genes we are interested in and that we want to plot in a heatmap</li>
+<li><strong>ar14_arCOGdef19.txt</strong> = metadata for the arCOG annotations</li>
+<li><strong>Metabolism_Table_KO_Apr2020.txt</strong> = metadata for KOs, sorted by pathways</li>
+</ul>
+<p>When working with genomes, we often have large lists of proteins and their annotations, often from different databases.</p>
 <p>Here, we might be interested in condensing this information for each genome or for each phylum etc . OR we want to merge our data with other tables that are ordered differently. We might also want to plot the data to compare the presence absence levels of different genomes. This section with discuss how to do this in a step by step manner.</p>
-<section id="load-essential-packages" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="load-essential-packages"><span class="header-section-number">7.1</span> Load essential packages</h2>
+</section>
+<section id="load-essential-packages" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="load-essential-packages"><span class="header-section-number">9.2</span> Load essential packages</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># | warning: false</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -478,10 +510,10 @@ The following object is masked from 'package:dplyr':
 </div>
 </div>
 </section>
-<section id="deal-with-the-mapping-file-for-our-genomes" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="deal-with-the-mapping-file-for-our-genomes"><span class="header-section-number">7.2</span> Deal with the mapping file for our genomes</h2>
-<section id="load-mapping-file" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="load-mapping-file"><span class="header-section-number">7.2.1</span> Load mapping file</h3>
+<section id="deal-with-the-mapping-file-for-our-genomes" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="deal-with-the-mapping-file-for-our-genomes"><span class="header-section-number">9.3</span> Deal with the mapping file for our genomes</h2>
+<section id="load-mapping-file" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="load-mapping-file"><span class="header-section-number">9.3.1</span> Load mapping file</h3>
 <p>mapping file = a table that has the metadata for our genomes. In this specific example it lists our 46 DPANN genomes into clusters based on their phylogenetic placement.</p>
 <p>We later want to summarize our data by individual bins and the phylogenetic clusters defined in the mapping file.</p>
 <p>Notice: We can also sort our mapping file beforehand and use this order to order our tables, graph, etc…</p>
@@ -501,8 +533,8 @@ The following object is masked from 'package:dplyr':
 </div>
 </section>
 </section>
-<section id="clean-mapping-file" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="clean-mapping-file"><span class="header-section-number">7.3</span> Clean mapping file</h2>
+<section id="clean-mapping-file" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="clean-mapping-file"><span class="header-section-number">9.4</span> Clean mapping file</h2>
 <p>Here, we want to add an extra column that summarizes how many genomes are in each phylogenetic cluster.</p>
 <p>First lets summarize how many bins we have for each cluster:</p>
 <ul>
@@ -572,8 +604,8 @@ The following object is masked from 'package:dplyr':
 </div>
 </div>
 </section>
-<section id="generate-lists-to-order-dataframes" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="generate-lists-to-order-dataframes"><span class="header-section-number">7.4</span> Generate lists to order dataframes</h2>
+<section id="generate-lists-to-order-dataframes" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="generate-lists-to-order-dataframes"><span class="header-section-number">9.5</span> Generate lists to order dataframes</h2>
 <p>The default behaviour of a lot of R functions is to order data alphabetically but this is not what we might want. I.e. we want to order by different columns or simply order by the initial order in our mapping file. To do this it is useful to have vectors that are order our bins, clusters, etc… like we want them.</p>
 <p>In this example the mapping file was ordered like this</p>
 <ul>
@@ -662,11 +694,11 @@ The following object is masked from 'package:dplyr':
 </div>
 </div>
 </section>
-<section id="deal-with-mapping-files-for-the-annotations" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="deal-with-mapping-files-for-the-annotations"><span class="header-section-number">7.5</span> Deal with mapping files for the annotations</h2>
+<section id="deal-with-mapping-files-for-the-annotations" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="deal-with-mapping-files-for-the-annotations"><span class="header-section-number">9.6</span> Deal with mapping files for the annotations</h2>
 <p>The mapping files (Arcog_mapping and Metabolism_file_KEGG) that are provided with this tutorial give extra information and order our KO and arCOG annotations. Genes_of_interest is a list of key metabolic genes we want to look at more closely.</p>
-<section id="load-and-view-the-tables" class="level3" data-number="7.5.1">
-<h3 data-number="7.5.1" class="anchored" data-anchor-id="load-and-view-the-tables"><span class="header-section-number">7.5.1</span> Load and view the tables</h3>
+<section id="load-and-view-the-tables" class="level3" data-number="9.6.1">
+<h3 data-number="9.6.1" class="anchored" data-anchor-id="load-and-view-the-tables"><span class="header-section-number">9.6.1</span> Load and view the tables</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co">#general mapping file for arcog IDs</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>Arcog_mapping <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/ar14_arCOGdef19.txt"</span>, <span class="at">sep=</span><span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">header=</span>T, <span class="at">fill=</span><span class="cn">TRUE</span>, <span class="at">quote =</span> <span class="st">""</span>)</span>
@@ -700,8 +732,8 @@ The following object is masked from 'package:dplyr':
 </div>
 </div>
 </section>
-<section id="make-a-vector-to-order-our-genes-of-interest" class="level3" data-number="7.5.2">
-<h3 data-number="7.5.2" class="anchored" data-anchor-id="make-a-vector-to-order-our-genes-of-interest"><span class="header-section-number">7.5.2</span> Make a vector to order our genes of interest</h3>
+<section id="make-a-vector-to-order-our-genes-of-interest" class="level3" data-number="9.6.2">
+<h3 data-number="9.6.2" class="anchored" data-anchor-id="make-a-vector-to-order-our-genes-of-interest"><span class="header-section-number">9.6.2</span> Make a vector to order our genes of interest</h3>
 <ul>
 <li>We use <code>unique()</code> to remove any duplicate gene names</li>
 <li><code>arrange()</code> can be used to order our dataframe by more than one column.</li>
@@ -863,10 +895,10 @@ The following object is masked from 'package:dplyr':
 </div>
 </section>
 </section>
-<section id="deal-with-annotation-file" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="deal-with-annotation-file"><span class="header-section-number">7.6</span> Deal with annotation file</h2>
-<section id="read-in-table" class="level3" data-number="7.6.1">
-<h3 data-number="7.6.1" class="anchored" data-anchor-id="read-in-table"><span class="header-section-number">7.6.1</span> Read in table</h3>
+<section id="deal-with-annotation-file" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="deal-with-annotation-file"><span class="header-section-number">9.7</span> Deal with annotation file</h2>
+<section id="read-in-table" class="level3" data-number="9.7.1">
+<h3 data-number="9.7.1" class="anchored" data-anchor-id="read-in-table"><span class="header-section-number">9.7.1</span> Read in table</h3>
 <p>You already here notice that this takes a bit longer and we just work with 46 bins. This is a good reason to keep python in mind as depending on your computer the more memory heavy operations might get challenging. Another alternative would be to run R on the clusters.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co">#read in data and view it</span></span>
@@ -881,8 +913,8 @@ The following object is masked from 'package:dplyr':
 </div>
 </div>
 </section>
-<section id="make-a-mapping-file-that-links-all-annotation-ids-to-their-descriptions" class="level3" data-number="7.6.2">
-<h3 data-number="7.6.2" class="anchored" data-anchor-id="make-a-mapping-file-that-links-all-annotation-ids-to-their-descriptions"><span class="header-section-number">7.6.2</span> Make a mapping file that links all annotation IDs to their descriptions</h3>
+<section id="make-a-mapping-file-that-links-all-annotation-ids-to-their-descriptions" class="level3" data-number="9.7.2">
+<h3 data-number="9.7.2" class="anchored" data-anchor-id="make-a-mapping-file-that-links-all-annotation-ids-to-their-descriptions"><span class="header-section-number">9.7.2</span> Make a mapping file that links all annotation IDs to their descriptions</h3>
 <p>What we do:</p>
 <ul>
 <li>separate columns we are interested in for each Database of interest, i.e.&nbsp;arCOGs, and remove duplicate rows by using <code>unique()</code></li>
@@ -1148,8 +1180,8 @@ The following object is masked from 'package:dplyr':
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>All_Genes_Description <span class="ot">&lt;-</span> <span class="fu">rbind</span>(Arcogs_Description,KOs_Description,Pfam_Description,TIRGR_Description, Cazy_Description, HydDB_Description)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="parse-table-to-make-it-easier-to-work-with-it" class="level3" data-number="7.6.3">
-<h3 data-number="7.6.3" class="anchored" data-anchor-id="parse-table-to-make-it-easier-to-work-with-it"><span class="header-section-number">7.6.3</span> Parse table to make it easier to work with it</h3>
+<section id="parse-table-to-make-it-easier-to-work-with-it" class="level3" data-number="9.7.3">
+<h3 data-number="9.7.3" class="anchored" data-anchor-id="parse-table-to-make-it-easier-to-work-with-it"><span class="header-section-number">9.7.3</span> Parse table to make it easier to work with it</h3>
 <p>Here we:</p>
 <ul>
 <li>Subset the data for the columns we are interested in. Esp. for larger dataframes this will make the operations a bit quicker. For very large dataframes, i.e.&nbsp;5000 genomes, it might be better to switch to python</li>
@@ -1336,13 +1368,13 @@ The following object is masked from 'package:dplyr':
 </div>
 </section>
 </section>
-<section id="make-count-tables" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="make-count-tables"><span class="header-section-number">7.7</span> Make count tables</h2>
-<section id="generate-a-count-table-for-our-genomes-of-interest" class="level3" data-number="7.7.1">
-<h3 data-number="7.7.1" class="anchored" data-anchor-id="generate-a-count-table-for-our-genomes-of-interest"><span class="header-section-number">7.7.1</span> Generate a count table for our genomes of interest</h3>
+<section id="make-count-tables" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="make-count-tables"><span class="header-section-number">9.8</span> Make count tables</h2>
+<section id="generate-a-count-table-for-our-genomes-of-interest" class="level3" data-number="9.8.1">
+<h3 data-number="9.8.1" class="anchored" data-anchor-id="generate-a-count-table-for-our-genomes-of-interest"><span class="header-section-number">9.8.1</span> Generate a count table for our genomes of interest</h3>
 <p>Now we want to count, how often does a genome (i.e.&nbsp;NIOZ134_mb_b41_2) have a gene. I.e. how often do we want arCOG00570, arCOG01358, …</p>
-<section id="do-this-via-a-loop-not-executed-just-an-example" class="level5" data-number="7.7.1.0.1">
-<h5 data-number="7.7.1.0.1" class="anchored" data-anchor-id="do-this-via-a-loop-not-executed-just-an-example"><span class="header-section-number">7.7.1.0.1</span> Do this via a loop (not executed, just an example)</h5>
+<section id="do-this-via-a-loop-not-executed-just-an-example" class="level5" data-number="9.8.1.0.1">
+<h5 data-number="9.8.1.0.1" class="anchored" data-anchor-id="do-this-via-a-loop-not-executed-just-an-example"><span class="header-section-number">9.8.1.0.1</span> Do this via a loop (not executed, just an example)</h5>
 <p>Notice:</p>
 <p>Since we run this chunk with <code>, eval = FALSE</code> we can still see the code but it is not executed. This is done because some computations take some time, which we do not want to spend, but I still want to show the code to give some alternative examples.</p>
 <div class="cell">
@@ -1364,8 +1396,8 @@ The following object is masked from 'package:dplyr':
 <span id="cb83-16"><a href="#cb83-16" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>((<span class="fu">head</span>(Counts_Table_loop)), <span class="at">format=</span><span class="st">'markdown'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="do-this-via-ddply-not-executed-just-an-example" class="level5" data-number="7.7.1.0.2">
-<h5 data-number="7.7.1.0.2" class="anchored" data-anchor-id="do-this-via-ddply-not-executed-just-an-example"><span class="header-section-number">7.7.1.0.2</span> Do this via ddply ((not executed, just an example))</h5>
+<section id="do-this-via-ddply-not-executed-just-an-example" class="level5" data-number="9.8.1.0.2">
+<h5 data-number="9.8.1.0.2" class="anchored" data-anchor-id="do-this-via-ddply-not-executed-just-an-example"><span class="header-section-number">9.8.1.0.2</span> Do this via ddply ((not executed, just an example))</h5>
 <p>New functions:</p>
 <ul>
 <li><code>spread()</code> = converts our long to a wide dataframe by using the BinIDs as new column names, the count table as values to populate our dataframe and with missing values we print a 0.</li>
@@ -1383,8 +1415,8 @@ The following object is masked from 'package:dplyr':
 <span id="cb84-10"><a href="#cb84-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>((<span class="fu">head</span>(Counts_Table_wide)), <span class="at">format=</span><span class="st">'markdown'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="do-this-via-tidyr-usually-a-bit-faster-than-ddplyr-which-is-why-we-use-this-way" class="level5" data-number="7.7.1.0.3">
-<h5 data-number="7.7.1.0.3" class="anchored" data-anchor-id="do-this-via-tidyr-usually-a-bit-faster-than-ddplyr-which-is-why-we-use-this-way"><span class="header-section-number">7.7.1.0.3</span> Do this via tidyr (usually a bit faster than ddplyr, which is why we use this way)</h5>
+<section id="do-this-via-tidyr-usually-a-bit-faster-than-ddplyr-which-is-why-we-use-this-way" class="level5" data-number="9.8.1.0.3">
+<h5 data-number="9.8.1.0.3" class="anchored" data-anchor-id="do-this-via-tidyr-usually-a-bit-faster-than-ddplyr-which-is-why-we-use-this-way"><span class="header-section-number">9.8.1.0.3</span> Do this via tidyr (usually a bit faster than ddplyr, which is why we use this way)</h5>
 <p>Here, we use the <code>%&gt;%</code> symbol again: In the following example, the a subset of the Input_long data (only 3 columns, not the whole dataframe) gets passed to <code>count()</code></p>
 <p>New functions:</p>
 <ul>
@@ -3138,8 +3170,8 @@ The following object is masked from 'package:dplyr':
 <p>If you run these three examples yourself, take not how different the speed is.</p>
 </section>
 </section>
-<section id="generate-a-count-table-for-our-clusters-of-interest" class="level3" data-number="7.7.2">
-<h3 data-number="7.7.2" class="anchored" data-anchor-id="generate-a-count-table-for-our-clusters-of-interest"><span class="header-section-number">7.7.2</span> Generate a count table for our clusters of interest</h3>
+<section id="generate-a-count-table-for-our-clusters-of-interest" class="level3" data-number="9.8.2">
+<h3 data-number="9.8.2" class="anchored" data-anchor-id="generate-a-count-table-for-our-clusters-of-interest"><span class="header-section-number">9.8.2</span> Generate a count table for our clusters of interest</h3>
 <p>Same as above, but now we want to know for our 4 aquifer genomes, how many have Gene Xx and show this as percent. I.e. if 1/4 genomes have a gene, then 25% have it.</p>
 <p>First, lets merge in our taxa info into our count table, we need this to summarize our data by clusters.</p>
 <div class="cell">
@@ -3715,13 +3747,13 @@ The following object is masked from 'package:dplyr':
 </div>
 </section>
 </section>
-<section id="merge-our-tables-with-the-mapping-data-we-have" class="level2" data-number="7.8">
-<h2 data-number="7.8" class="anchored" data-anchor-id="merge-our-tables-with-the-mapping-data-we-have"><span class="header-section-number">7.8</span> Merge our tables with the mapping data we have</h2>
+<section id="merge-our-tables-with-the-mapping-data-we-have" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="merge-our-tables-with-the-mapping-data-we-have"><span class="header-section-number">9.9</span> Merge our tables with the mapping data we have</h2>
 <p>Now, that we have our count tables both for the bins as well as for all the clusters, we now want to add some gene description and subset the data based on different categores.</p>
-<section id="for-the-bins" class="level3" data-number="7.8.1">
-<h3 data-number="7.8.1" class="anchored" data-anchor-id="for-the-bins"><span class="header-section-number">7.8.1</span> For the bins</h3>
-<section id="add-gene-descriptions" class="level4" data-number="7.8.1.1">
-<h4 data-number="7.8.1.1" class="anchored" data-anchor-id="add-gene-descriptions"><span class="header-section-number">7.8.1.1</span> Add gene descriptions</h4>
+<section id="for-the-bins" class="level3" data-number="9.9.1">
+<h3 data-number="9.9.1" class="anchored" data-anchor-id="for-the-bins"><span class="header-section-number">9.9.1</span> For the bins</h3>
+<section id="add-gene-descriptions" class="level4" data-number="9.9.1.1">
+<h4 data-number="9.9.1.1" class="anchored" data-anchor-id="add-gene-descriptions"><span class="header-section-number">9.9.1.1</span> Add gene descriptions</h4>
 <p>Remember above, we made a list of descriptions that links all geneIDs with what is behind all the gene IDs? Now we want to add this info back in in order to print all the counts.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co">#merge</span></span>
@@ -4139,8 +4171,8 @@ The following object is masked from 'package:dplyr':
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(Counts_Table_final, <span class="st">"output_examples/Counts_Table_final.txt"</span>,  <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">quote =</span> F, <span class="at">row.names =</span> T, <span class="at">na =</span> <span class="st">""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="merging-with-the-arcog_table" class="level4" data-number="7.8.1.2">
-<h4 data-number="7.8.1.2" class="anchored" data-anchor-id="merging-with-the-arcog_table"><span class="header-section-number">7.8.1.2</span> Merging with the arcog_table</h4>
+<section id="merging-with-the-arcog_table" class="level4" data-number="9.9.1.2">
+<h4 data-number="9.9.1.2" class="anchored" data-anchor-id="merging-with-the-arcog_table"><span class="header-section-number">9.9.1.2</span> Merging with the arcog_table</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co">#merge</span></span>
 <span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>Arcog_Data <span class="ot">&lt;-</span> <span class="fu">merge</span>(Arcog_mapping, Counts_Table_wide, <span class="at">by.x=</span><span class="st">"arcog"</span>, <span class="at">by.y=</span><span class="st">"row.names"</span>, <span class="at">all.x =</span> T, <span class="at">sort =</span> F)</span>
@@ -4605,8 +4637,8 @@ The following object is masked from 'package:dplyr':
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(Arcog_Data, <span class="st">"output_examples/ArCOG_Data.txt"</span>,  <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">quote =</span> F, <span class="at">row.names =</span> T, <span class="at">na =</span> <span class="st">""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="merging-with-the-metabolism-metadata-file" class="level4" data-number="7.8.1.3">
-<h4 data-number="7.8.1.3" class="anchored" data-anchor-id="merging-with-the-metabolism-metadata-file"><span class="header-section-number">7.8.1.3</span> Merging with the metabolism metadata file</h4>
+<section id="merging-with-the-metabolism-metadata-file" class="level4" data-number="9.9.1.3">
+<h4 data-number="9.9.1.3" class="anchored" data-anchor-id="merging-with-the-metabolism-metadata-file"><span class="header-section-number">9.9.1.3</span> Merging with the metabolism metadata file</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co">#merge</span></span>
 <span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>KEGG_Metabolism <span class="ot">&lt;-</span> <span class="fu">merge</span>(Metabolism_file_KEGG, Counts_Table_wide, <span class="at">by.x=</span><span class="st">"KO"</span>, <span class="at">by.y=</span><span class="st">"row.names"</span>, <span class="at">all.x =</span> T, <span class="at">sort =</span> F)</span>
@@ -5056,13 +5088,13 @@ The following object is masked from 'package:dplyr':
 </div>
 </section>
 </section>
-<section id="for-the-clusters" class="level3" data-number="7.8.2">
-<h3 data-number="7.8.2" class="anchored" data-anchor-id="for-the-clusters"><span class="header-section-number">7.8.2</span> For the clusters</h3>
+<section id="for-the-clusters" class="level3" data-number="9.9.2">
+<h3 data-number="9.9.2" class="anchored" data-anchor-id="for-the-clusters"><span class="header-section-number">9.9.2</span> For the clusters</h3>
 <p>The process works exactly the same as above. So try by yourself if you can merge things ;-).</p>
 </section>
 </section>
-<section id="plot-the-data-for-our-genes-of-interest" class="level2" data-number="7.9">
-<h2 data-number="7.9" class="anchored" data-anchor-id="plot-the-data-for-our-genes-of-interest"><span class="header-section-number">7.9</span> Plot the data for our genes of interest</h2>
+<section id="plot-the-data-for-our-genes-of-interest" class="level2" data-number="9.10">
+<h2 data-number="9.10" class="anchored" data-anchor-id="plot-the-data-for-our-genes-of-interest"><span class="header-section-number">9.10</span> Plot the data for our genes of interest</h2>
 <p>Here, we are not interested in plotting all genes but just want to plot things that are listed under the lipid pathway.</p>
 <p>Since we are only interested in the Lipid pathway for the genes of interest (the table, among others, also lists genes involved in informational processing), we first need to make a gene list of just the genes we are interested in.</p>
 <p>New functions:</p>
@@ -5487,8 +5519,8 @@ The following object is masked from 'package:dplyr':
 </table>
 </div>
 </div>
-<section id="categorizing-data" class="level3" data-number="7.9.1">
-<h3 data-number="7.9.1" class="anchored" data-anchor-id="categorizing-data"><span class="header-section-number">7.9.1</span> Categorizing data</h3>
+<section id="categorizing-data" class="level3" data-number="9.10.1">
+<h3 data-number="9.10.1" class="anchored" data-anchor-id="categorizing-data"><span class="header-section-number">9.10.1</span> Categorizing data</h3>
 <p>There are different ways to color code data. By default the way we do it, we use a gradual color scale from 0-100%. However, we could also define categories with the ifelse statement we learned before. Here, we define 4 categories (100%, 75-100 and, 33-75 and 0-33%)</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co">#define color code (not used for the current figure, but can be changed)</span></span>
@@ -5498,8 +5530,8 @@ The following object is masked from 'package:dplyr':
 <span id="cb122-5"><a href="#cb122-5" aria-hidden="true" tabindex="-1"></a>                                                <span class="fu">ifelse</span>(Key_Lipids_genes_cluster<span class="sc">$</span>percentage <span class="sc">&gt;=</span> <span class="dv">33</span>, <span class="st">"0.33"</span>, <span class="st">"0"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="order-our-data" class="level3" data-number="7.9.2">
-<h3 data-number="7.9.2" class="anchored" data-anchor-id="order-our-data"><span class="header-section-number">7.9.2</span> Order our data</h3>
+<section id="order-our-data" class="level3" data-number="9.10.2">
+<h3 data-number="9.10.2" class="anchored" data-anchor-id="order-our-data"><span class="header-section-number">9.10.2</span> Order our data</h3>
 <p>Remember the annoying thing that R sorts alphabetically? Let’s make sure we ahve the order we want.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co">#define order for the plot</span></span>
@@ -5508,8 +5540,8 @@ The following object is masked from 'package:dplyr':
 <span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a>Key_Lipids_genes_cluster<span class="sc">$</span>pathway_2b <span class="ot">&lt;-</span>  <span class="fu">factor</span>(Key_Lipids_genes_cluster<span class="sc">$</span>pathway_2, <span class="at">levels =</span> Lipids_Pathway_order)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="plotting" class="level3" data-number="7.9.3">
-<h3 data-number="7.9.3" class="anchored" data-anchor-id="plotting"><span class="header-section-number">7.9.3</span> Plotting</h3>
+<section id="plotting" class="level3" data-number="9.10.3">
+<h3 data-number="9.10.3" class="anchored" data-anchor-id="plotting"><span class="header-section-number">9.10.3</span> Plotting</h3>
 <p>In the example here, we use a gradual scale. If we would want to use our 4 categories we can use this code <code>#scale_fill_manual(values= c("white", "blue", "blue", "dodgerblue"))</code> and replacing the <code>fill = percentage</code> with <code>fill = category</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot</span></span>
@@ -6019,12 +6051,12 @@ The following object is masked from 'package:dplyr':
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../code/plotting_basics.html" class="pagination-link" aria-label="Basic plotting">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Basic plotting</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic plotting</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../code/2_misc.html" class="pagination-link" aria-label="Miscellaneous">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,0 +1,225 @@
+---
+execute:
+    eval: true
+
+df-print: paged
+---
+
+# Documenting your code
+
+Code that works today can be a mystery in six months, even to the person who wrote it. Good documentation means that you, your supervisor or a colleague can later understand what you did, why you did it, and run it again to get the same result.
+
+This chapter shows three ways to document your work:
+
+- comments inside your R scripts
+- Quarto documents, which combine text, code and results in one file
+- a set of good practices that make your analysis easier to repeat
+
+
+## Comments in your scripts
+
+Everything on a line after a `#` is a **comment**. R ignores it, so you can write anything you like there:
+
+```{r}
+# this whole line is a comment
+x <- 5 # a comment can also follow some code
+```
+
+Good comments explain **why** you do something, not only **what** the code does. The code already shows what happens; the reason is often the part you forget.
+
+```{r}
+#| eval: false
+
+# not very helpful: says the same as the code
+growth_data <- growth_data[growth_data$Rootlength > 0, ]
+
+# more helpful: explains why
+# remove plants with root length 0, these seeds did not germinate
+growth_data <- growth_data[growth_data$Rootlength > 0, ]
+```
+
+It also helps to start each script with a short header that says who wrote it, when, and what it is for:
+
+```{r}
+#| eval: false
+
+# Analysis of root length in the growth experiment
+# Author: your name
+# Date: 2026-10-19
+# Purpose: test whether the bacterial strains change root length under low phosphorus
+
+# load packages
+library(ggplot2)
+
+# read in data
+growth_data <- read.table("data/Growth_Data.txt", sep = "\t", header = TRUE, quote = "")
+```
+
+::: {.callout-tip}
+In RStudio, you can turn several lines into comments at once: select them and press Ctrl+Shift+C (Cmd+Shift+C on Mac). Press it again to remove the `#` signs.
+:::
+
+
+## Markdown
+
+Comments are fine for short notes, but sometimes you want to write more: what the experiment was, what a result means, which questions are still open. For this, we use **Markdown**.
+
+Markdown is a simple way to format plain text. You type a few special characters, and a program turns them into formatted text. Some examples:
+
+| You type | You get |
+|---|---|
+| `# Title` | a heading of the first level |
+| `## Subtitle` | a heading of the second level |
+| `**bold**` | **bold** |
+| `*italic*` | *italic* |
+| `` `code` `` | `code` |
+| `* item` or `- item` at the start of a line | a bullet point |
+| `1. item` at the start of a line | a numbered list |
+| `[link text](https://quarto.org)` | [link text](https://quarto.org) |
+
+Why use Markdown instead of a word processor?
+
+- A Markdown file is a plain text file. You can open it with any text editor, on any operating system, and it will still be readable in many years.
+- It is used in many places, for example on GitHub, in Jupyter notebooks and in Quarto. This book itself is written in Markdown.
+
+This tutorial does not cover Markdown in detail, but there is good material online:
+
+- [A step-by-step tutorial](https://www.markdowntutorial.com)
+- [A cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
+
+## Quarto documents
+
+[Quarto](https://quarto.org) lets you combine Markdown text and code in one document. When you **render** the document, Quarto runs the code and puts the text, the code and its results (tables, plots) together into one report, for example an HTML page, a PDF or a Word file. This book is made with Quarto.
+
+This is very useful for an analysis: your explanation, your code and your results stay together, and anyone can render the document again to check that the results are the same.
+
+::: {.callout-note}
+You may also come across **R Markdown** files (ending in `.Rmd`). R Markdown is the older predecessor of Quarto and works in a very similar way.
+:::
+
+### Create a Quarto document
+
+**In RStudio:** Quarto comes with recent versions of RStudio. Go to File > New File > Quarto Document, give it a title and click "Create". RStudio opens a document that already contains some example text and code.
+
+**In VS Code or Positron:** make sure Quarto is available (in VS Code, install the Quarto extension) and create a new file that ends in `.qmd`.
+
+Save the document in your project folder, for example as `my_analysis.qmd`.
+
+### What a Quarto document looks like
+
+A Quarto document has three parts:
+
+1. A **header** at the top, between two lines of `---`. It contains settings, such as the title and the output format.
+2. **Text**, written in Markdown.
+3. **Code chunks**: blocks of code that Quarto runs. An R chunk starts with ```` ```{r} ```` and ends with ```` ``` ````.
+
+Here is a small example:
+
+````markdown
+---
+title: "Root length analysis"
+author: "Your name"
+format: html
+---
+
+## Read the data
+
+We read in the growth data from the plant experiment.
+
+```{{r}}
+growth_data <- read.table("data/Growth_Data.txt", sep = "\t", header = TRUE, quote = "")
+head(growth_data)
+```
+
+The table has one row per plant.
+````
+
+### Run code and render the document
+
+You can run each chunk on its own while you work. In RStudio, each chunk has small buttons in its top right corner. The middle one runs all chunks above the current one, and the right one (a green arrow) runs the current chunk:
+
+<p align="left">
+  <img width=800 src="../images/R2.png">
+</p>
+
+You can also put your cursor on a line inside a chunk and press Ctrl+Enter (Cmd+Enter on Mac), exactly as in a script.
+
+To create the final report, click the **Render** button at the top of the document. Quarto then runs all code from top to bottom in a fresh R session and writes the report (here an HTML file) next to your `.qmd` file.
+
+::: {.callout-tip}
+Because rendering starts from a fresh R session, it only works if your document contains every step: loading packages, reading the data, and so on. If it renders without errors, you know that your analysis does not secretly depend on something you once typed into the Console.
+:::
+
+### Chunk options
+
+You can control what a chunk does and what appears in the report with **chunk options**. In Quarto, you write them at the top of the chunk, on lines starting with `#|`:
+
+````markdown
+```{{r}}
+#| echo: false
+#| warning: false
+
+head(growth_data)
+```
+````
+
+Some useful options:
+
+* `echo: false` hides the code, but shows its results in the report. Useful for plots.
+* `eval: false` shows the code, but does not run it.
+* `include: false` runs the code, but shows neither the code nor its results. The results can still be used by later chunks.
+* `warning: false` hides warnings in the report.
+* `message: false` hides messages, for example the ones some packages print when you load them.
+* `fig-cap: "..."` adds a caption to a plot.
+
+You find all options on the [Quarto website](https://quarto.org/docs/computations/execution-options.html).
+
+### Using languages other than R
+
+Quarto documents can also contain code in other languages, such as bash (the language of the Linux and Mac command line) or Python. You only change the name in the curly brackets at the top of the chunk, for example ```` ```{bash} ```` instead of ```` ```{r} ````.
+
+This is useful if part of your analysis runs on the command line, for example on a computer cluster, and another part in R. You can document both steps in the same file.
+
+Some examples with bash:
+
+```{bash}
+# print something to the screen
+echo 'hello world'
+```
+
+```{bash}
+# list the files in our data folder
+ls data
+```
+
+```{bash}
+# show the first lines of the growth data
+head -n 3 data/Growth_Data.txt
+```
+
+::: {.callout-note}
+To run bash chunks, bash must be installed on your computer. On Mac and Linux it already is. On Windows, it is available for example through Git for Windows or WSL. If you don't have bash, these chunks give an error, but this does not affect your R chunks.
+:::
+
+A general introduction into bash and awk is provided in a separate tutorial on [GitHub](https://github.com/ndombrowski/AWK_tutorial).
+
+
+## Good practices
+
+These practices are useful in any programming language. You don't need to follow all of them from day one, but the earlier they become habits, the easier your life will be.
+
+* **Keep each project in its own folder**, with subfolders for input data and output files, and use an RStudio project (see [Getting started](1_intro.qmd)).
+* **Start each script with a header**: who wrote it, when, and why.
+* **Load all packages at the top** of the script, so you see at once what the script needs.
+* **Comment your code** so that you can still understand it in 5 years. Explain why, not only what.
+* **Use descriptive names** for objects: short, but clear enough that you know what is inside, for example `growth_data` instead of `df1`.
+* **Break your code into small steps** and check the result of each step, for example with `head()` and `dim()`. One line per step is easier to read and to fix than one long line that does everything.
+* **Never change your raw data by hand.** Read it into R, change it there, and save the result in a new file. Then your script documents every change.
+* **Save tables, not workspaces.** Write the tables you need with `write.table()` instead of saving the whole workspace. The workspace hides how the objects were made; the script and the tables don't.
+* **If you use random numbers**, for example for sampling, set and report the starting point with `set.seed()`, for example `set.seed(42)`. Then you get the same random numbers each time you run the code.
+* **Record the software versions** you used. Packages change over time, and the same code can give different results or errors with another version. The function `sessionInfo()` prints your R version and all loaded packages with their versions. Run it at the end of your script or report:
+
+```{r}
+sessionInfo()
+```

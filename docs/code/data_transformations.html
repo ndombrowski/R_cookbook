@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Data transformations – R  cookbook</title>
+<title>5&nbsp; Data transformations – R  cookbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -122,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/data_transformations.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data transformations</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/data_transformations.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data transformations</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -158,49 +158,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/1_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction into R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/first_steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First steps in R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../code/documenting_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Documenting your code</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/data_types.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data objects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data objects</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/data_transformations.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data transformations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data transformations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/control_structures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Control Structures</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Control Structures</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/stats.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/plotting_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Basic plotting</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic plotting</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/parsing_output_from_annotations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Working with annotation data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Working with annotation data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../code/2_misc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Miscellaneous</span></span></a>
   </div>
 </li>
     </ul>
@@ -213,19 +225,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#dealing-with-nas-in-our-data" id="toc-dealing-with-nas-in-our-data" class="nav-link active" data-scroll-target="#dealing-with-nas-in-our-data"><span class="header-section-number">3.1</span> Dealing with NAs in our data</a>
+  <li><a href="#dealing-with-nas-in-our-data" id="toc-dealing-with-nas-in-our-data" class="nav-link active" data-scroll-target="#dealing-with-nas-in-our-data"><span class="header-section-number">5.1</span> Dealing with NAs in our data</a>
   <ul class="collapse">
-  <li><a href="#removing-nas" id="toc-removing-nas" class="nav-link" data-scroll-target="#removing-nas"><span class="header-section-number">3.1.1</span> Removing NAs</a></li>
-  <li><a href="#replacing-nas-in-our-dataframe" id="toc-replacing-nas-in-our-dataframe" class="nav-link" data-scroll-target="#replacing-nas-in-our-dataframe"><span class="header-section-number">3.1.2</span> Replacing NAs in our dataframe</a></li>
+  <li><a href="#removing-nas" id="toc-removing-nas" class="nav-link" data-scroll-target="#removing-nas"><span class="header-section-number">5.1.1</span> Removing NAs</a></li>
+  <li><a href="#removing-nas-from-our-dataframe" id="toc-removing-nas-from-our-dataframe" class="nav-link" data-scroll-target="#removing-nas-from-our-dataframe"><span class="header-section-number">5.1.2</span> Removing NAs from our dataframe</a></li>
   </ul></li>
-  <li><a href="#subsetting-our-data" id="toc-subsetting-our-data" class="nav-link" data-scroll-target="#subsetting-our-data"><span class="header-section-number">3.2</span> Subsetting our data</a>
+  <li><a href="#subsetting-our-data" id="toc-subsetting-our-data" class="nav-link" data-scroll-target="#subsetting-our-data"><span class="header-section-number">5.2</span> Subsetting our data</a>
   <ul class="collapse">
-  <li><a href="#grep-and-grepl" id="toc-grep-and-grepl" class="nav-link" data-scroll-target="#grep-and-grepl"><span class="header-section-number">3.2.1</span> grep and grepl</a></li>
-  <li><a href="#discard-matching-columns" id="toc-discard-matching-columns" class="nav-link" data-scroll-target="#discard-matching-columns"><span class="header-section-number">3.2.2</span> Discard matching columns</a></li>
-  <li><a href="#using-regular-expressions" id="toc-using-regular-expressions" class="nav-link" data-scroll-target="#using-regular-expressions"><span class="header-section-number">3.2.3</span> Using regular expressions</a></li>
-  <li><a href="#levels-and-subsetting" id="toc-levels-and-subsetting" class="nav-link" data-scroll-target="#levels-and-subsetting"><span class="header-section-number">3.2.4</span> Levels and subsetting</a></li>
+  <li><a href="#grep-and-grepl" id="toc-grep-and-grepl" class="nav-link" data-scroll-target="#grep-and-grepl"><span class="header-section-number">5.2.1</span> grep and grepl</a></li>
+  <li><a href="#discard-matching-rows" id="toc-discard-matching-rows" class="nav-link" data-scroll-target="#discard-matching-rows"><span class="header-section-number">5.2.2</span> Discard matching rows</a></li>
+  <li><a href="#using-regular-expressions" id="toc-using-regular-expressions" class="nav-link" data-scroll-target="#using-regular-expressions"><span class="header-section-number">5.2.3</span> Using regular expressions</a></li>
+  <li><a href="#levels-and-subsetting" id="toc-levels-and-subsetting" class="nav-link" data-scroll-target="#levels-and-subsetting"><span class="header-section-number">5.2.4</span> Levels and subsetting</a></li>
   </ul></li>
-  <li><a href="#add-new-columns-to-our-data-and-combining-values-in-different-columns" id="toc-add-new-columns-to-our-data-and-combining-values-in-different-columns" class="nav-link" data-scroll-target="#add-new-columns-to-our-data-and-combining-values-in-different-columns"><span class="header-section-number">3.3</span> Add new columns to our data and combining values in different columns</a></li>
+  <li><a href="#add-new-columns-to-our-data-and-combining-values-in-different-columns" id="toc-add-new-columns-to-our-data-and-combining-values-in-different-columns" class="nav-link" data-scroll-target="#add-new-columns-to-our-data-and-combining-values-in-different-columns"><span class="header-section-number">5.3</span> Add new columns to our data and combining values in different columns</a></li>
   </ul>
 </nav>
     </div>
@@ -234,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Data transformations</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data transformations</span></h1>
 </div>
 
 
@@ -251,10 +263,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="dealing-with-nas-in-our-data" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="dealing-with-nas-in-our-data"><span class="header-section-number">3.1</span> Dealing with NAs in our data</h2>
-<section id="removing-nas" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="removing-nas"><span class="header-section-number">3.1.1</span> Removing NAs</h3>
+<section id="dealing-with-nas-in-our-data" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="dealing-with-nas-in-our-data"><span class="header-section-number">5.1</span> Dealing with NAs in our data</h2>
+<section id="removing-nas" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="removing-nas"><span class="header-section-number">5.1.1</span> Removing NAs</h3>
 <p>NAs are generated when our data contains a missing value. This can become problematic for certain computations and we can decide to remove all NAs.</p>
 <p>The function to do this is <code>is.na</code>.</p>
 <div class="cell">
@@ -275,13 +287,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <ul>
-<li><code>!=</code> is “not equal to.”</li>
-<li>The function <code>is.na(z)</code> gives a logical vector of the same size as z with value TRUE if and only if the corresponding element in z is NA.</li>
+<li><code>!</code> means “not”. It turns <code>TRUE</code> into <code>FALSE</code> and the other way around.</li>
+<li>The function <code>is.na(y)</code> gives a logical vector of the same size as y with value TRUE if and only if the corresponding element in y is NA.</li>
 <li>I.e. in this example we have FALSE FALSE FALSE TRUE FALSE</li>
-<li>When using <code>y[!is.na(y)]</code>, we retain the columns were <code>is.na</code> is False</li>
+<li>When using <code>y[!is.na(y)]</code>, we keep the elements where <code>is.na</code> is FALSE</li>
 </ul>
-<section id="replacing-nas-with-something-else" class="level4" data-number="3.1.1.1">
-<h4 data-number="3.1.1.1" class="anchored" data-anchor-id="replacing-nas-with-something-else"><span class="header-section-number">3.1.1.1</span> Replacing NAs with something else</h4>
+<section id="replacing-nas-with-something-else" class="level4" data-number="5.1.1.1">
+<h4 data-number="5.1.1.1" class="anchored" data-anchor-id="replacing-nas-with-something-else"><span class="header-section-number">5.1.1.1</span> Replacing NAs with something else</h4>
 <p>Another option might be to replace a NA with a 0 (or whatever else makes sense in a given context)</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create a vector that includes an NA</span></span>
@@ -292,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE FALSE FALSE  TRUE FALSE</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#remove NAs from our data</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#replace NAs with 0</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">is.na</span>(x)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#check data</span></span>
@@ -306,59 +318,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Find the NAs (I.e. in this example we have FALSE FALSE FALSE TRUE FALSE)</li>
 <li>If NA is TRUE then replace it with a 0</li>
 </ul>
+<p>Be careful with this: a 0 is a real measurement, a missing value is not. If you replace missing root lengths with 0, a mean or a statistical test will treat these plants as plants without roots.</p>
 </section>
 </section>
-<section id="replacing-nas-in-our-dataframe" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="replacing-nas-in-our-dataframe"><span class="header-section-number">3.1.2</span> Replacing NAs in our dataframe</h3>
-<p>Remember, in the beginning we said that their are NAs in our timecourse data. Let’s have a look at this data and find the rows that contain no values.</p>
+<section id="removing-nas-from-our-dataframe" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="removing-nas-from-our-dataframe"><span class="header-section-number">5.1.2</span> Removing NAs from our dataframe</h3>
+<p>Remember that our growth data contains NAs: for a few plants, the root length or the shoot weight is missing. Let’s first count how many NAs we have in each measurement column. <code>is.na()</code> gives <code>TRUE</code> for each missing value, and <code>sum()</code> counts the <code>TRUE</code> values:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check in which rows we have NAs inside the root length measurements</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">is.na</span>(timecourse<span class="sc">$</span>Rootlength)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#count the NAs in the root length and in the shoot weight</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(growth_data<span class="sc">$</span>Rootlength))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1]  29  30 233 234 235 236 237 238 239 240 268 269 270 330 360 374 375 376
- [19] 377 378 379 380 381 382 383 384 385 386 387 388 389 390 402 403 404 405
- [37] 406 407 408 409 410 411 412 413 414 415 416 417 418 419 420 444 445 446
- [55] 447 448 449 450 475 476 477 478 479 480 492 493 494 495 496 497 498 499
- [73] 500 515 516 517 518 519 520 533 534 535 536 537 538 539 540 550 551 552
- [91] 553 554 555 556 557 558 559 560 574 575 605</code></pre>
+<pre><code>[1] 15</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(growth_data<span class="sc">$</span>FW_shoot_mg))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+<p><code>which()</code> tells us in which rows the NAs are:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check in which rows we have NAs inside the shoot weight measurements</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">is.na</span>(growth_data<span class="sc">$</span>FW_shoot_mg))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  32  33 208 209 383 384 527 562</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check a row with a NA value</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>timecourse[<span class="dv">29</span>,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check a row with a NA value</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>growth_data[<span class="dv">32</span>,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["SampleID"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Nutrient"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[3],"type":["fct"],"align":["left"]},{"label":["Timepoint"],"name":[4],"type":["fct"],"align":["left"]},{"label":["Rootlength"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"P_MgCl_t0","2":"P","3":"MgCl","4":"t0","5":"NA","_rn_":"29"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Experiment"],"name":[3],"type":["fct"],"align":["left"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_mg"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"low_P","2":"mock","3":"ex61","4":"49.6","5":"NA","_rn_":"32"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
 </div>
+<p>If we want to analyse the shoot weight, we can remove the rows without a shoot weight:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#remove rows that contain NAs</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>timecourse_noNA <span class="ot">&lt;-</span> timecourse[<span class="sc">!</span><span class="fu">is.na</span>(timecourse<span class="sc">$</span>Rootlength), ]</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#check if that worked</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">is.na</span>(timecourse_noNA<span class="sc">$</span>Rootlength)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#remove rows that contain NAs in the shoot weight</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>growth_data_shoot <span class="ot">&lt;-</span> growth_data[<span class="sc">!</span><span class="fu">is.na</span>(growth_data<span class="sc">$</span>FW_shoot_mg), ]</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#check if that worked</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(growth_data_shoot<span class="sc">$</span>FW_shoot_mg))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>integer(0)</code></pre>
+<pre><code>[1] 0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#compare the dimensions before and after</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 594   5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(growth_data_shoot)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 586   5</code></pre>
 </div>
 </div>
+<p>Notice that we only removed rows with a missing shoot weight. All of the removed plants do have a root length. So if we want to analyse the root length, we should not use <code>growth_data_shoot</code>, but remove the NAs in the column <code>Rootlength</code> instead. Only remove the NAs you need to remove, otherwise you throw away good data.</p>
 </section>
 </section>
-<section id="subsetting-our-data" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="subsetting-our-data"><span class="header-section-number">3.2</span> Subsetting our data</h2>
+<section id="subsetting-our-data" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="subsetting-our-data"><span class="header-section-number">5.2</span> Subsetting our data</h2>
 <p>We already have seen important ways to subset data:</p>
 <ol type="1">
 <li>Use of the index by using the square brackets</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#subsetting rows and columns using the index</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>growth_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#subsetting rows and columns using the index</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>growth_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["fct"],"align":["left"]},{"label":["FW_shoot_mg"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"noP","2":"MgCl","3":"10.26","_rn_":"1"},{"1":"noP","2":"MgCl","3":"6.52","_rn_":"2"},{"1":"noP","2":"MgCl","3":"12.17","_rn_":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Condition"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Experiment"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Rootlength"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"mock","2":"ex61","3":"40.4","_rn_":"1"},{"1":"mock","2":"ex61","3":"38.0","_rn_":"2"},{"1":"mock","2":"ex61","3":"74.7","_rn_":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -367,130 +398,130 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Use of operators</li>
 </ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#subset using operators (only print rows if the Nutrient column equals P)</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>P_data <span class="ot">&lt;-</span> growth_data[growth_data<span class="sc">$</span>Nutrient <span class="sc">==</span> <span class="st">"P"</span>, ]</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(P_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#subset using operators (only keep rows if the Nutrient column equals low_P)</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>low_P_data <span class="ot">&lt;-</span> growth_data[growth_data<span class="sc">$</span>Nutrient <span class="sc">==</span> <span class="st">"low_P"</span>, ]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(low_P_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["SampleID"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Nutrient"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[3],"type":["fct"],"align":["left"]},{"label":["FW_shoot_mg"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Rootlength"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"P","2":"P","3":"MgCl","4":"32.42","5":"11.286793","_rn_":"53"},{"1":"P","2":"P","3":"MgCl","4":"21.03","5":"10.456630","_rn_":"54"},{"1":"P","2":"P","3":"MgCl","4":"18.35","5":"11.106341","_rn_":"55"},{"1":"P","2":"P","3":"MgCl","4":"21.04","5":"10.816896","_rn_":"56"},{"1":"P","2":"P","3":"MgCl","4":"16.61","5":"10.608252","_rn_":"57"},{"1":"P","2":"P","3":"MgCl","4":"25.79","5":"7.121587","_rn_":"58"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Experiment"],"name":[3],"type":["fct"],"align":["left"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_mg"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"low_P","2":"mock","3":"ex61","4":"40.4","5":"6.6","_rn_":"1"},{"1":"low_P","2":"mock","3":"ex61","4":"38.0","5":"6.8","_rn_":"2"},{"1":"low_P","2":"mock","3":"ex61","4":"74.7","5":"8.1","_rn_":"3"},{"1":"low_P","2":"mock","3":"ex61","4":"34.4","5":"8.3","_rn_":"4"},{"1":"low_P","2":"mock","3":"ex61","4":"31.9","5":"8.6","_rn_":"5"},{"1":"low_P","2":"mock","3":"ex61","4":"66.5","5":"8.9","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
 </div>
 <p>Now we want to look at some other examples:</p>
-<section id="grep-and-grepl" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="grep-and-grepl"><span class="header-section-number">3.2.1</span> grep and grepl</h3>
+<section id="grep-and-grepl" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="grep-and-grepl"><span class="header-section-number">5.2.1</span> grep and grepl</h3>
 <p>Oftentimes you may need to filter a data set based on a partial character string that is beyond the scope of comparison operators.</p>
 <p>R provides such functions (grep and grepl) that match character patterns in specified vector. While both of these functions find patterns, they return different output types based on those patterns.</p>
 <ul>
 <li>grep returns numeric values that correspond to the indexed locations of the patterns</li>
 <li>grepl returns a logical vector in which ‘TRUE’ represents a pattern match.</li>
 </ul>
-<p>In our growth data, we only want to print measurements of our controls (i.e.&nbsp;MgCL treatments).</p>
+<p>In our growth data, we only want to print measurements of our controls (i.e.&nbsp;the mock treatments). Our table has many rows, so we only look at the first few results with <code>head()</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#find the row index values with MgCL treatments using grep</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">"MgCl"</span>, growth_data<span class="sc">$</span>Condition)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#find the row index values with mock treatments using grep</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">grep</span>(<span class="st">"mock"</span>, growth_data<span class="sc">$</span>Condition))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 53 54 55 56 57 58 59 60 61 62 63 64
-[26] 65 66 67</code></pre>
+<pre><code>[1] 1 2 3 4 5 6</code></pre>
 </div>
 </div>
+<p>To see how <code>grepl</code> works, let’s first try it on a short vector with our three conditions. Both strains (129E and 13C) contain a 1, the mock treatment does not:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#use grepl to search for MgCL treatments, returning FALSE/TRUE statements for each row of our dataframe</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#with "TRUE" representing matched patterns</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grepl</span>(<span class="st">"Strain"</span>, growth_data<span class="sc">$</span>Condition)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#use grepl to search for conditions that contain a 1, returning FALSE/TRUE statements for each element</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#with "TRUE" representing matched patterns</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grepl</span>(<span class="st">"1"</span>, <span class="fu">c</span>(<span class="st">"mock"</span>, <span class="st">"129E"</span>, <span class="st">"13C"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [13] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [25]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [37]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [49]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
- [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
- [73]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [85]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
- [97]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<pre><code>[1] FALSE  TRUE  TRUE</code></pre>
+</div>
+</div>
+<p>On our dataframe, <code>grepl</code> gives one TRUE or FALSE for each of the 594 rows. Instead of printing them all, we can count the TRUE values with <code>sum()</code>, i.e.&nbsp;the number of plants treated with a strain:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#count the rows where the condition contains a 1</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">grepl</span>(<span class="st">"1"</span>, growth_data<span class="sc">$</span>Condition))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 385</code></pre>
 </div>
 </div>
 <p>Now lets use this to actually filter our data table for a pattern.</p>
-<section id="filter-usign-grep" class="level4" data-number="3.2.1.1">
-<h4 data-number="3.2.1.1" class="anchored" data-anchor-id="filter-usign-grep"><span class="header-section-number">3.2.1.1</span> Filter usign grep</h4>
+<section id="filter-using-grep" class="level4" data-number="5.2.1.1">
+<h4 data-number="5.2.1.1" class="anchored" data-anchor-id="filter-using-grep"><span class="header-section-number">5.2.1.1</span> Filter using grep</h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#use grep</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>filter_for_value <span class="ot">&lt;-</span>timecourse_noNA[<span class="fu">grep</span>(<span class="st">"MgCl"</span>, timecourse_noNA<span class="sc">$</span>Condition),]</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#check the first rows of our data</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(filter_for_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div data-pagedtable="false">
-  <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["SampleID"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Nutrient"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[3],"type":["fct"],"align":["left"]},{"label":["Timepoint"],"name":[4],"type":["fct"],"align":["left"]},{"label":["Rootlength"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"P_MgCl_t0","2":"P","3":"MgCl","4":"t0","5":"1.542","_rn_":"1"},{"1":"P_MgCl_t0","2":"P","3":"MgCl","4":"t0","5":"1.849","_rn_":"2"},{"1":"P_MgCl_t0","2":"P","3":"MgCl","4":"t0","5":"1.209","_rn_":"3"},{"1":"P_MgCl_t0","2":"P","3":"MgCl","4":"t0","5":"1.834","_rn_":"4"},{"1":"P_MgCl_t0","2":"P","3":"MgCl","4":"t0","5":"1.586","_rn_":"5"},{"1":"P_MgCl_t0","2":"P","3":"MgCl","4":"t0","5":"1.683","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of the original dataframe</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse_noNA)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 526   5</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of our new dataframe</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(filter_for_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 235   5</code></pre>
-</div>
-</div>
-</section>
-<section id="filter-usign-grepl" class="level4" data-number="3.2.1.2">
-<h4 data-number="3.2.1.2" class="anchored" data-anchor-id="filter-usign-grepl"><span class="header-section-number">3.2.1.2</span> Filter usign grepl</h4>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>filter_for_value <span class="ot">&lt;-</span>timecourse_noNA[<span class="fu">grepl</span>(<span class="st">"MgC"</span>, timecourse_noNA<span class="sc">$</span>Condition),]</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#check the first rows of our data</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(filter_for_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div data-pagedtable="false">
-  <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["SampleID"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Nutrient"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[3],"type":["fct"],"align":["left"]},{"label":["Timepoint"],"name":[4],"type":["fct"],"align":["left"]},{"label":["Rootlength"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"P_MgCl_t0","2":"P","3":"MgCl","4":"t0","5":"1.542","_rn_":"1"},{"1":"P_MgCl_t0","2":"P","3":"MgCl","4":"t0","5":"1.849","_rn_":"2"},{"1":"P_MgCl_t0","2":"P","3":"MgCl","4":"t0","5":"1.209","_rn_":"3"},{"1":"P_MgCl_t0","2":"P","3":"MgCl","4":"t0","5":"1.834","_rn_":"4"},{"1":"P_MgCl_t0","2":"P","3":"MgCl","4":"t0","5":"1.586","_rn_":"5"},{"1":"P_MgCl_t0","2":"P","3":"MgCl","4":"t0","5":"1.683","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of the original dataframe</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse_noNA)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 526   5</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of our new dataframe</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(filter_for_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 235   5</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="discard-matching-columns" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="discard-matching-columns"><span class="header-section-number">3.2.2</span> Discard matching columns</h3>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#filter data set based on values that do not match the specified pattern (by using the ! symbol)</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>filter_for_not_a_value <span class="ot">&lt;-</span> timecourse_noNA[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">"MgCl"</span>, timecourse_noNA<span class="sc">$</span>Condition),]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#use grep</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>filter_for_value <span class="ot">&lt;-</span> timecourse[<span class="fu">grep</span>(<span class="st">"mock"</span>, timecourse<span class="sc">$</span>Condition),]</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#view dataframe</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(filter_for_not_a_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#check the first rows of our data</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(filter_for_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["SampleID"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Nutrient"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[3],"type":["fct"],"align":["left"]},{"label":["Timepoint"],"name":[4],"type":["fct"],"align":["left"]},{"label":["Rootlength"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"P_350_t0","2":"P","3":"350","4":"t0","5":"1.124","_rn_":"61"},{"1":"P_350_t0","2":"P","3":"350","4":"t0","5":"1.606","_rn_":"62"},{"1":"P_350_t0","2":"P","3":"350","4":"t0","5":"1.519","_rn_":"63"},{"1":"P_350_t0","2":"P","3":"350","4":"t0","5":"1.253","_rn_":"64"},{"1":"P_350_t0","2":"P","3":"350","4":"t0","5":"1.190","_rn_":"65"},{"1":"P_350_t0","2":"P","3":"350","4":"t0","5":"2.053","_rn_":"66"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Timepoint"],"name":[3],"type":["int"],"align":["right"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"high_P","2":"mock","3":"0","4":"15.42","_rn_":"1"},{"1":"high_P","2":"mock","3":"0","4":"18.49","_rn_":"2"},{"1":"high_P","2":"mock","3":"0","4":"12.09","_rn_":"3"},{"1":"high_P","2":"mock","3":"0","4":"18.34","_rn_":"4"},{"1":"high_P","2":"mock","3":"0","4":"15.86","_rn_":"5"},{"1":"high_P","2":"mock","3":"0","4":"16.83","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of the original dataframe</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse_noNA)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 526   5</code></pre>
+<pre><code>[1] 2323    4</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of our new dataframe</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(filter_for_not_a_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(filter_for_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 291   5</code></pre>
+<pre><code>[1] 1156    4</code></pre>
+</div>
+</div>
+</section>
+<section id="filter-using-grepl" class="level4" data-number="5.2.1.2">
+<h4 data-number="5.2.1.2" class="anchored" data-anchor-id="filter-using-grepl"><span class="header-section-number">5.2.1.2</span> Filter using grepl</h4>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>filter_for_value <span class="ot">&lt;-</span> timecourse[<span class="fu">grepl</span>(<span class="st">"moc"</span>, timecourse<span class="sc">$</span>Condition),]</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">#check the first rows of our data</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(filter_for_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Timepoint"],"name":[3],"type":["int"],"align":["right"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"high_P","2":"mock","3":"0","4":"15.42","_rn_":"1"},{"1":"high_P","2":"mock","3":"0","4":"18.49","_rn_":"2"},{"1":"high_P","2":"mock","3":"0","4":"12.09","_rn_":"3"},{"1":"high_P","2":"mock","3":"0","4":"18.34","_rn_":"4"},{"1":"high_P","2":"mock","3":"0","4":"15.86","_rn_":"5"},{"1":"high_P","2":"mock","3":"0","4":"16.83","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of the original dataframe</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2323    4</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of our new dataframe</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(filter_for_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1156    4</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="discard-matching-rows" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="discard-matching-rows"><span class="header-section-number">5.2.2</span> Discard matching rows</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#filter data set based on values that do not match the specified pattern (by using the ! symbol)</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>filter_for_not_a_value <span class="ot">&lt;-</span> timecourse[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">"mock"</span>, timecourse<span class="sc">$</span>Condition),]</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co">#view dataframe</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(filter_for_not_a_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Timepoint"],"name":[3],"type":["int"],"align":["right"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"high_P","2":"129E","3":"0","4":"11.24","_rn_":"59"},{"1":"high_P","2":"129E","3":"0","4":"16.06","_rn_":"60"},{"1":"high_P","2":"129E","3":"0","4":"15.19","_rn_":"61"},{"1":"high_P","2":"129E","3":"0","4":"12.53","_rn_":"62"},{"1":"high_P","2":"129E","3":"0","4":"11.90","_rn_":"63"},{"1":"high_P","2":"129E","3":"0","4":"20.53","_rn_":"64"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of the original dataframe</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2323    4</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of our new dataframe</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(filter_for_not_a_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1167    4</code></pre>
 </div>
 </div>
 <p>Other comments:</p>
@@ -500,92 +531,104 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Any matching pattern will be returned despite the context in which that pattern is located (i.e., grep(‘the’, data) with return matches for ‘the’, ‘theme’, ‘heather’, ‘breathe’, and so on. This is where regular expressions are useful for specifying where in a string the pattern should appear.</li>
 </ul>
 </section>
-<section id="using-regular-expressions" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="using-regular-expressions"><span class="header-section-number">3.2.3</span> Using regular expressions</h3>
+<section id="using-regular-expressions" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="using-regular-expressions"><span class="header-section-number">5.2.3</span> Using regular expressions</h3>
 <p>A regular expression (regex or regexp for short) is a special text string for describing a search pattern. You can think of regular expressions as wildcards on steroids. You are probably familiar with wildcard notations such as *.txt to find all text files in a file manager.</p>
-<p>Regular expressions are explained in the AWK and General notebook. But just to give an example lets just grep Strains that have a 3 letter number</p>
+<p>Regular expressions are explained in the AWK and General notebook. But just to give an example lets just grep strains that have a number with 3 digits</p>
 <p>If you want to know more, see this <a href="https://www3.ntu.edu.sg/home/ehchua/programming/howto/Regexe.html">cheat sheet here</a></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>filter_3letters <span class="ot">&lt;-</span> growth_data[<span class="fu">grepl</span>(<span class="st">"[0-9]{3}"</span>, growth_data<span class="sc">$</span>Condition),]</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">#check the structure of our data</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(filter_3letters)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>filter_3digits <span class="ot">&lt;-</span> growth_data[<span class="fu">grepl</span>(<span class="st">"[0-9]{3}"</span>, growth_data<span class="sc">$</span>Condition),]</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co">#check the structure of our data</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(filter_3digits)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["SampleID"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Nutrient"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[3],"type":["fct"],"align":["left"]},{"label":["FW_shoot_mg"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Rootlength"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"noP_101","2":"noP","3":"Strain101","4":"10.49","5":"7.143667","_rn_":"14"},{"1":"noP_101","2":"noP","3":"Strain101","4":"8.91","5":"7.669841","_rn_":"15"},{"1":"noP_101","2":"noP","3":"Strain101","4":"9.32","5":"7.807710","_rn_":"16"},{"1":"noP_101","2":"noP","3":"Strain101","4":"6.76","5":"7.508370","_rn_":"17"},{"1":"noP_101","2":"noP","3":"Strain101","4":"5.99","5":"6.607630","_rn_":"18"},{"1":"noP_101","2":"noP","3":"Strain101","4":"8.26","5":"7.269267","_rn_":"19"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Experiment"],"name":[3],"type":["fct"],"align":["left"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_mg"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"low_P","2":"129E","3":"ex61","4":"86.1","5":"5.5","_rn_":"385"},{"1":"low_P","2":"129E","3":"ex61","4":"58.4","5":"7.5","_rn_":"386"},{"1":"low_P","2":"129E","3":"ex61","4":"NA","5":"9.1","_rn_":"387"},{"1":"low_P","2":"129E","3":"ex61","4":"86.7","5":"9.6","_rn_":"388"},{"1":"low_P","2":"129E","3":"ex61","4":"67.0","5":"9.9","_rn_":"389"},{"1":"low_P","2":"129E","3":"ex61","4":"36.3","5":"10.9","_rn_":"390"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of the original dataframe</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse_noNA)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of the original dataframe</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 526   5</code></pre>
+<pre><code>[1] 594   5</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of our new dataframe</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(filter_3letters)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of our new dataframe</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(filter_3digits)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 49  5</code></pre>
+<pre><code>[1] 210   5</code></pre>
 </div>
 </div>
-<p>Here, <code>[0-9]</code> searches for every number from 0-9 and we look for three numbers.</p>
+<p>Here, <code>[0-9]</code> searches for every number from 0-9 and with <code>{3}</code> we look for three numbers in a row. <code>129E</code> matches, but <code>13C</code> does not, because it only has two numbers.</p>
 </section>
-<section id="levels-and-subsetting" class="level3" data-number="3.2.4">
-<h3 data-number="3.2.4" class="anchored" data-anchor-id="levels-and-subsetting"><span class="header-section-number">3.2.4</span> Levels and subsetting</h3>
-<p>One important thing with subsetting is that the levels are still kept. So with the command above we remove every row that is not Strain101 and Strain230. However, the levels are still kept. Let’s check this:</p>
+<section id="levels-and-subsetting" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="levels-and-subsetting"><span class="header-section-number">5.2.4</span> Levels and subsetting</h3>
+<p>One important thing with subsetting is that the levels are still kept. So with the command above we remove every row that is not 129E. However, the levels are still kept. Let’s check this:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(filter_3letters<span class="sc">$</span>Condition)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(filter_3digits<span class="sc">$</span>Condition)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "MgCl"      "Strain101" "Strain230" "Strain28" </code></pre>
+<pre><code>[1] "129E" "13C"  "mock"</code></pre>
 </div>
 </div>
-<p>So we see that MgCl and Strain28 are still in the levels even if they do not occur in our table itself. Sometimes when working with subsetted dataframes, i.e.&nbsp;when doing stats or plotting, this can interfere with our analysis. Here, it is useful to drop empty levels.</p>
+<p>So we see that 13C and mock are still in the levels even if they do not occur in our table itself. Sometimes when working with subsetted dataframes, i.e.&nbsp;when doing stats or plotting, this can interfere with our analysis. Here, it is useful to drop empty levels.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>filter_3letters_clean <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(filter_3letters)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(filter_3letters_clean<span class="sc">$</span>Condition)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>filter_3digits_clean <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(filter_3digits)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(filter_3digits_clean<span class="sc">$</span>Condition)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Strain101" "Strain230"</code></pre>
+<pre><code>[1] "129E"</code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="add-new-columns-to-our-data-and-combining-values-in-different-columns" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="add-new-columns-to-our-data-and-combining-values-in-different-columns"><span class="header-section-number">3.3</span> Add new columns to our data and combining values in different columns</h2>
+<section id="add-new-columns-to-our-data-and-combining-values-in-different-columns" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="add-new-columns-to-our-data-and-combining-values-in-different-columns"><span class="header-section-number">5.3</span> Add new columns to our data and combining values in different columns</h2>
 <p>We can also add new columns into original table, i.e.&nbsp;if we want to not show the fresh weight in mg but in g.</p>
 <p>Below you can see that if we have numerical data in a column, we can use normal math operators (like +,-,/)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#convert mg to g</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>growth_data<span class="sc">$</span>FW_shoot_g <span class="ot">&lt;-</span> growth_data<span class="sc">$</span>FW_shoot_mg<span class="sc">/</span><span class="dv">10</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">#convert mg to g (1 g = 1000 mg)</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>growth_data<span class="sc">$</span>FW_shoot_g <span class="ot">&lt;-</span> growth_data<span class="sc">$</span>FW_shoot_mg<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["SampleID"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Nutrient"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[3],"type":["fct"],"align":["left"]},{"label":["FW_shoot_mg"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Rootlength"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_g"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"noP","2":"noP","3":"MgCl","4":"10.26","5":"5.931015","6":"1.026","_rn_":"1"},{"1":"noP","2":"noP","3":"MgCl","4":"6.52","5":"5.743447","6":"0.652","_rn_":"2"},{"1":"noP","2":"noP","3":"MgCl","4":"12.17","5":"6.834720","6":"1.217","_rn_":"3"},{"1":"noP","2":"noP","3":"MgCl","4":"11.37","5":"6.742735","6":"1.137","_rn_":"4"},{"1":"noP","2":"noP","3":"MgCl","4":"9.80","5":"6.736886","6":"0.980","_rn_":"5"},{"1":"noP","2":"noP","3":"MgCl","4":"3.75","5":"4.236348","6":"0.375","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Experiment"],"name":[3],"type":["fct"],"align":["left"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_mg"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_g"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"low_P","2":"mock","3":"ex61","4":"40.4","5":"6.6","6":"0.0066","_rn_":"1"},{"1":"low_P","2":"mock","3":"ex61","4":"38.0","5":"6.8","6":"0.0068","_rn_":"2"},{"1":"low_P","2":"mock","3":"ex61","4":"74.7","5":"8.1","6":"0.0081","_rn_":"3"},{"1":"low_P","2":"mock","3":"ex61","4":"34.4","5":"8.3","6":"0.0083","_rn_":"4"},{"1":"low_P","2":"mock","3":"ex61","4":"31.9","5":"8.6","6":"0.0086","_rn_":"5"},{"1":"low_P","2":"mock","3":"ex61","4":"66.5","5":"8.9","6":"0.0089","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">#we can also round our data</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>growth_data<span class="sc">$</span>FW_shoot_g <span class="ot">&lt;-</span> <span class="fu">round</span>(growth_data<span class="sc">$</span>FW_shoot_mg<span class="sc">/</span><span class="dv">10</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">#we can also round our data</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>growth_data<span class="sc">$</span>FW_shoot_g <span class="ot">&lt;-</span> <span class="fu">round</span>(growth_data<span class="sc">$</span>FW_shoot_mg<span class="sc">/</span><span class="dv">1000</span>, <span class="at">digits =</span> <span class="dv">4</span>)</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["SampleID"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Nutrient"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[3],"type":["fct"],"align":["left"]},{"label":["FW_shoot_mg"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Rootlength"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_g"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"noP","2":"noP","3":"MgCl","4":"10.26","5":"5.931015","6":"1.03","_rn_":"1"},{"1":"noP","2":"noP","3":"MgCl","4":"6.52","5":"5.743447","6":"0.65","_rn_":"2"},{"1":"noP","2":"noP","3":"MgCl","4":"12.17","5":"6.834720","6":"1.22","_rn_":"3"},{"1":"noP","2":"noP","3":"MgCl","4":"11.37","5":"6.742735","6":"1.14","_rn_":"4"},{"1":"noP","2":"noP","3":"MgCl","4":"9.80","5":"6.736886","6":"0.98","_rn_":"5"},{"1":"noP","2":"noP","3":"MgCl","4":"3.75","5":"4.236348","6":"0.38","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Experiment"],"name":[3],"type":["fct"],"align":["left"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_mg"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_g"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"low_P","2":"mock","3":"ex61","4":"40.4","5":"6.6","6":"0.0066","_rn_":"1"},{"1":"low_P","2":"mock","3":"ex61","4":"38.0","5":"6.8","6":"0.0068","_rn_":"2"},{"1":"low_P","2":"mock","3":"ex61","4":"74.7","5":"8.1","6":"0.0081","_rn_":"3"},{"1":"low_P","2":"mock","3":"ex61","4":"34.4","5":"8.3","6":"0.0083","_rn_":"4"},{"1":"low_P","2":"mock","3":"ex61","4":"31.9","5":"8.6","6":"0.0086","_rn_":"5"},{"1":"low_P","2":"mock","3":"ex61","4":"66.5","5":"8.9","6":"0.0089","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
 </div>
 <p>We can also add (or substract, etc …) values from different columns. I.e. here we could calculate the ratios.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#we can also do math with the values in two columns, i.e. if we want to calculate the ration between root length and fresh weight</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>growth_data<span class="sc">$</span>ratio <span class="ot">&lt;-</span> growth_data<span class="sc">$</span>Rootlength<span class="sc">/</span>growth_data<span class="sc">$</span>FW_shoot_mg</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">#we can also do math with the values in two columns, i.e. if we want to calculate the ratio between root length and fresh weight</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>growth_data<span class="sc">$</span>ratio <span class="ot">&lt;-</span> growth_data<span class="sc">$</span>Rootlength<span class="sc">/</span>growth_data<span class="sc">$</span>FW_shoot_mg</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["SampleID"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Nutrient"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[3],"type":["fct"],"align":["left"]},{"label":["FW_shoot_mg"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Rootlength"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_g"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["ratio"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"noP","2":"noP","3":"MgCl","4":"10.26","5":"5.931015","6":"1.03","7":"0.5780717","_rn_":"1"},{"1":"noP","2":"noP","3":"MgCl","4":"6.52","5":"5.743447","6":"0.65","7":"0.8808968","_rn_":"2"},{"1":"noP","2":"noP","3":"MgCl","4":"12.17","5":"6.834720","6":"1.22","7":"0.5616039","_rn_":"3"},{"1":"noP","2":"noP","3":"MgCl","4":"11.37","5":"6.742735","6":"1.14","7":"0.5930286","_rn_":"4"},{"1":"noP","2":"noP","3":"MgCl","4":"9.80","5":"6.736886","6":"0.98","7":"0.6874374","_rn_":"5"},{"1":"noP","2":"noP","3":"MgCl","4":"3.75","5":"4.236348","6":"0.38","7":"1.1296929","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Experiment"],"name":[3],"type":["fct"],"align":["left"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_mg"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_g"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["ratio"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"low_P","2":"mock","3":"ex61","4":"40.4","5":"6.6","6":"0.0066","7":"6.121212","_rn_":"1"},{"1":"low_P","2":"mock","3":"ex61","4":"38.0","5":"6.8","6":"0.0068","7":"5.588235","_rn_":"2"},{"1":"low_P","2":"mock","3":"ex61","4":"74.7","5":"8.1","6":"0.0081","7":"9.222222","_rn_":"3"},{"1":"low_P","2":"mock","3":"ex61","4":"34.4","5":"8.3","6":"0.0083","7":"4.144578","_rn_":"4"},{"1":"low_P","2":"mock","3":"ex61","4":"31.9","5":"8.6","6":"0.0086","7":"3.709302","_rn_":"5"},{"1":"low_P","2":"mock","3":"ex61","4":"66.5","5":"8.9","6":"0.0089","7":"7.471910","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>In the rows where the shoot weight is missing, the ratio is <code>NA</code> too: any calculation with a missing value gives a missing value. Let’s check this for rows 32 and 33:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">#rows with a missing shoot weight</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>growth_data[<span class="dv">32</span><span class="sc">:</span><span class="dv">33</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["fct"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["fct"],"align":["left"]},{"label":["Experiment"],"name":[3],"type":["fct"],"align":["left"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_mg"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_g"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["ratio"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"low_P","2":"mock","3":"ex61","4":"49.6","5":"NA","6":"NA","7":"NA","_rn_":"32"},{"1":"low_P","2":"mock","3":"ex61","4":"53.6","5":"NA","6":"NA","7":"NA","_rn_":"33"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -998,12 +1041,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../code/data_types.html" class="pagination-link" aria-label="Data objects">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data objects</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data objects</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../code/control_structures.html" class="pagination-link" aria-label="Control Structures">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Control Structures</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Control Structures</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

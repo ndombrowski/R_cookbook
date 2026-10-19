@@ -16,8 +16,8 @@ library(knitr)
 library(kableExtra)
 
 #read in data
-timecourse <- read.table("data/Timecourse.txt", sep="\t", header=T,  quote = "")
-growth_data <- read.table("data/Growth_Data.txt", sep="\t", header=T,  quote = "")
+timecourse <- read.table("data/Timecourse.txt", sep = "\t", header = TRUE, quote = "")
+growth_data <- read.table("data/Growth_Data.txt", sep = "\t", header = TRUE, quote = "")
 ```
 
 In R, all types of data are treated as objects. 
@@ -213,6 +213,31 @@ x[-c(4:9)]
 ```
 
 
+#### Useful functions for vectors
+
+Apart from the basic math operators, R has many functions that work on vectors. Some common ones are `log()`, `exp()`, `sqrt()` and the following:
+
+| Name | Function |
+|---|---|
+| `max()` | select the largest element |
+| `min()` | select the smallest element |
+| `length()` | give the number of elements |
+| `sum()` | sum all elements |
+| `mean()` | calculate the mean value |
+| `var()` | calculate the sample variance |
+| `sort()` | sort the elements from small to large |
+
+```{r}
+#create a vector
+x <- c(4, 8, 1, 5)
+
+#try some of the functions
+max(x)
+mean(x)
+sort(x)
+```
+
+
 ### Matrix
 
 Matrices are the R objects in which the elements are arranged in a two-dimensional rectangular layout. They contain elements of the same type. Although you can construct matrices with characters or logicals, matrices are generally used to store numeric data. 
@@ -383,11 +408,11 @@ colnames(growth_data)
 ```
 
 ```{r}
-#print the rownames
-rownames(growth_data)
+#print the first few rownames
+head(rownames(growth_data))
 ```
 
-When we print the rownames, we see that we have numbers from 1-105. When reading in a table into R it is the default behavior how rownames are generated. As a general rule, if you want o have other rownames, these must be unique.
+The rownames are simply the numbers from 1 to 594. When reading in a table into R it is the default behavior how rownames are generated. As a general rule, if you want o have other rownames, these must be unique.
 
 
 #### Adding new columns to Dataframes
@@ -426,7 +451,7 @@ We see that
 
 - our data is stored in a dataframe
 - that the data stored in different formats, i.e. numeric and characters
-- our data contains 105 observations and  6 variables
+- our data contains 594 observations and 6 variables (the 5 columns of our file plus the column `newColumn` we added above)
 
 
 ## Factors
@@ -440,7 +465,7 @@ Once created, factors can only contain a pre-defined set values, known as levels
 
 ```{r}
 #lets make a vector
-Nutrients <- c("P", "P", "noP", "noP")
+Nutrients <- c("low_P", "low_P", "high_P", "high_P")
 
 #lets make our own simple factor
 Nutrients_factor <- factor(Nutrients)
@@ -450,10 +475,8 @@ Nutrients
 Nutrients_factor
 ```
 
-When we check our factor, we see that R assigns one level to ``P`` and another level to ``noP``. 
-We can also see, that R sorts the levels in an alphabetical way, i.e. first we have `noP` then `P`, even though in the initial code we first had P before noP.
-
-**Notice**: This looks different in the rendered HTML were we first have `P` and then `noP` for whatever reason. 
+When we check our factor, we see that R assigns one level to `low_P` and another level to `high_P`.
+We can also see that R sorts the levels in alphabetical order, i.e. first we have `high_P` and then `low_P`, even though in our vector `low_P` came first.
 
 
 ### Checking the behaviour of factors
@@ -491,7 +514,7 @@ levels(Nutrients_factor)
 
 ```{r}
 #reorder levels
-Nutrients_factor_reordered <- factor(Nutrients_factor, levels = c("P", "noP"))
+Nutrients_factor_reordered <- factor(Nutrients_factor, levels = c("low_P", "high_P"))
 
 #check our levels
 levels(Nutrients_factor_reordered)

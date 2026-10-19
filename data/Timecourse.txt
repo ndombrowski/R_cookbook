@@ -1,628 +1,2324 @@
-SampleID	Nutrient	Condition	Timepoint	Rootlength
-P_MgCl_t0	P	MgCl	t0	1.542
-P_MgCl_t0	P	MgCl	t0	1.849
-P_MgCl_t0	P	MgCl	t0	1.209
-P_MgCl_t0	P	MgCl	t0	1.834
-P_MgCl_t0	P	MgCl	t0	1.586
-P_MgCl_t0	P	MgCl	t0	1.683
-P_MgCl_t0	P	MgCl	t0	1.608
-P_MgCl_t0	P	MgCl	t0	1.8
-P_MgCl_t0	P	MgCl	t0	1.63
-P_MgCl_t0	P	MgCl	t0	1.125
-P_MgCl_t0	P	MgCl	t0	1.865
-P_MgCl_t0	P	MgCl	t0	1.633
-P_MgCl_t0	P	MgCl	t0	1.624
-P_MgCl_t0	P	MgCl	t0	1.491
-P_MgCl_t0	P	MgCl	t0	1.315
-P_MgCl_t0	P	MgCl	t0	1.872
-P_MgCl_t0	P	MgCl	t0	1.319
-P_MgCl_t0	P	MgCl	t0	2.496
-P_MgCl_t0	P	MgCl	t0	1.328
-P_MgCl_t0	P	MgCl	t0	1.459
-P_MgCl_t0	P	MgCl	t0	1.184
-P_MgCl_t0	P	MgCl	t0	1.758
-P_MgCl_t0	P	MgCl	t0	1.951
-P_MgCl_t0	P	MgCl	t0	1.765
-P_MgCl_t0	P	MgCl	t0	1.569
-P_MgCl_t0	P	MgCl	t0	1.679
-P_MgCl_t0	P	MgCl	t0	1.745
-P_MgCl_t0	P	MgCl	t0	1.256
-P_MgCl_t0	P	MgCl	t0	
-P_MgCl_t0	P	MgCl	t0	
-noP_MgCl_t0	noP	MgCl	t0	1.448
-noP_MgCl_t0	noP	MgCl	t0	1.399
-noP_MgCl_t0	noP	MgCl	t0	1.67
-noP_MgCl_t0	noP	MgCl	t0	1.42
-noP_MgCl_t0	noP	MgCl	t0	1.12
-noP_MgCl_t0	noP	MgCl	t0	1.312
-noP_MgCl_t0	noP	MgCl	t0	1.586
-noP_MgCl_t0	noP	MgCl	t0	1.485
-noP_MgCl_t0	noP	MgCl	t0	1.367
-noP_MgCl_t0	noP	MgCl	t0	1.627
-noP_MgCl_t0	noP	MgCl	t0	1.573
-noP_MgCl_t0	noP	MgCl	t0	1.555
-noP_MgCl_t0	noP	MgCl	t0	1.535
-noP_MgCl_t0	noP	MgCl	t0	1.72
-noP_MgCl_t0	noP	MgCl	t0	1.609
-noP_MgCl_t0	noP	MgCl	t0	1.439
-noP_MgCl_t0	noP	MgCl	t0	1.679
-noP_MgCl_t0	noP	MgCl	t0	1.333
-noP_MgCl_t0	noP	MgCl	t0	1.77
-noP_MgCl_t0	noP	MgCl	t0	1.74
-noP_MgCl_t0	noP	MgCl	t0	1.834
-noP_MgCl_t0	noP	MgCl	t0	1.663
-noP_MgCl_t0	noP	MgCl	t0	1.83
-noP_MgCl_t0	noP	MgCl	t0	1.925
-noP_MgCl_t0	noP	MgCl	t0	1.735
-noP_MgCl_t0	noP	MgCl	t0	1.422
-noP_MgCl_t0	noP	MgCl	t0	1.862
-noP_MgCl_t0	noP	MgCl	t0	1.845
-noP_MgCl_t0	noP	MgCl	t0	1.711
-noP_MgCl_t0	noP	MgCl	t0	1.469
-P_350_t0	P	350	t0	1.124
-P_350_t0	P	350	t0	1.606
-P_350_t0	P	350	t0	1.519
-P_350_t0	P	350	t0	1.253
-P_350_t0	P	350	t0	1.19
-P_350_t0	P	350	t0	2.053
-P_350_t0	P	350	t0	1.677
-P_350_t0	P	350	t0	1.505
-P_350_t0	P	350	t0	1.178
-P_350_t0	P	350	t0	1.873
-P_350_t0	P	350	t0	1.453
-P_350_t0	P	350	t0	1.523
-P_350_t0	P	350	t0	1.803
-P_350_t0	P	350	t0	1.465
-P_350_t0	P	350	t0	1.59
-P_350_t0	P	350	t0	1.471
-P_350_t0	P	350	t0	1.614
-P_350_t0	P	350	t0	1.727
-P_350_t0	P	350	t0	1.47
-P_350_t0	P	350	t0	1.708
-P_350_t0	P	350	t0	1.709
-P_350_t0	P	350	t0	1.387
-P_350_t0	P	350	t0	1.639
-P_350_t0	P	350	t0	1.825
-P_350_t0	P	350	t0	1.277
-P_350_t0	P	350	t0	1.054
-P_350_t0	P	350	t0	1.876
-P_350_t0	P	350	t0	1.246
-P_350_t0	P	350	t0	1.617
-P_350_t0	P	350	t0	1.214
-noP_350_t0	noP	350	t0	1.754
-noP_350_t0	noP	350	t0	1.997
-noP_350_t0	noP	350	t0	1.678
-noP_350_t0	noP	350	t0	1.412
-noP_350_t0	noP	350	t0	1.15
-noP_350_t0	noP	350	t0	1.257
-noP_350_t0	noP	350	t0	1.517
-noP_350_t0	noP	350	t0	1.491
-noP_350_t0	noP	350	t0	1.299
-noP_350_t0	noP	350	t0	1.512
-noP_350_t0	noP	350	t0	1.752
-noP_350_t0	noP	350	t0	1.376
-noP_350_t0	noP	350	t0	2.107
-noP_350_t0	noP	350	t0	1.492
-noP_350_t0	noP	350	t0	1.582
-noP_350_t0	noP	350	t0	1.552
-noP_350_t0	noP	350	t0	1.579
-noP_350_t0	noP	350	t0	1.366
-noP_350_t0	noP	350	t0	1.807
-noP_350_t0	noP	350	t0	1.497
-noP_350_t0	noP	350	t0	1.348
-noP_350_t0	noP	350	t0	1.438
-noP_350_t0	noP	350	t0	1.453
-noP_350_t0	noP	350	t0	1.42
-noP_350_t0	noP	350	t0	1.141
-noP_350_t0	noP	350	t0	1.719
-noP_350_t0	noP	350	t0	1.751
-noP_350_t0	noP	350	t0	1.119
-noP_350_t0	noP	350	t0	1.777
-noP_350_t0	noP	350	t0	1.651
-P_MgCl_t1	P	MgCl	t1	2.52
-P_MgCl_t1	P	MgCl	t1	2.892
-P_MgCl_t1	P	MgCl	t1	2.457
-P_MgCl_t1	P	MgCl	t1	2.426
-P_MgCl_t1	P	MgCl	t1	2.226
-P_MgCl_t1	P	MgCl	t1	2.203
-P_MgCl_t1	P	MgCl	t1	2.055
-P_MgCl_t1	P	MgCl	t1	2.889
-P_MgCl_t1	P	MgCl	t1	3.253
-P_MgCl_t1	P	MgCl	t1	2.437
-P_MgCl_t1	P	MgCl	t1	2.283
-P_MgCl_t1	P	MgCl	t1	2.038
-P_MgCl_t1	P	MgCl	t1	1.572
-P_MgCl_t1	P	MgCl	t1	1.636
-P_MgCl_t1	P	MgCl	t1	2.611
-P_MgCl_t1	P	MgCl	t1	1.983
-P_MgCl_t1	P	MgCl	t1	1.808
-P_MgCl_t1	P	MgCl	t1	2.549
-P_MgCl_t1	P	MgCl	t1	1.957
-P_MgCl_t1	P	MgCl	t1	2.211
-P_MgCl_t1	P	MgCl	t1	2.885
-P_MgCl_t1	P	MgCl	t1	2.22
-P_MgCl_t1	P	MgCl	t1	2.548
-P_MgCl_t1	P	MgCl	t1	2.622
-P_MgCl_t1	P	MgCl	t1	2.202
-P_MgCl_t1	P	MgCl	t1	1.551
-P_MgCl_t1	P	MgCl	t1	2.605
-P_MgCl_t1	P	MgCl	t1	2.321
-P_MgCl_t1	P	MgCl	t1	2.45
-P_MgCl_t1	P	MgCl	t1	1.974
-noP_MgCl_t1	noP	MgCl	t1	2.759
-noP_MgCl_t1	noP	MgCl	t1	2.474
-noP_MgCl_t1	noP	MgCl	t1	1.696
-noP_MgCl_t1	noP	MgCl	t1	2.341
-noP_MgCl_t1	noP	MgCl	t1	1.834
-noP_MgCl_t1	noP	MgCl	t1	1.409
-noP_MgCl_t1	noP	MgCl	t1	2.671
-noP_MgCl_t1	noP	MgCl	t1	2.85
-noP_MgCl_t1	noP	MgCl	t1	1.684
-noP_MgCl_t1	noP	MgCl	t1	2.437
-noP_MgCl_t1	noP	MgCl	t1	1.675
-noP_MgCl_t1	noP	MgCl	t1	1.686
-noP_MgCl_t1	noP	MgCl	t1	1.87
-noP_MgCl_t1	noP	MgCl	t1	2.121
-noP_MgCl_t1	noP	MgCl	t1	2.503
-noP_MgCl_t1	noP	MgCl	t1	2.001
-noP_MgCl_t1	noP	MgCl	t1	2.352
-noP_MgCl_t1	noP	MgCl	t1	2.877
-noP_MgCl_t1	noP	MgCl	t1	1.813
-noP_MgCl_t1	noP	MgCl	t1	1.996
-noP_MgCl_t1	noP	MgCl	t1	2.619
-noP_MgCl_t1	noP	MgCl	t1	2.414
-noP_MgCl_t1	noP	MgCl	t1	1.522
-noP_MgCl_t1	noP	MgCl	t1	1.802
-noP_MgCl_t1	noP	MgCl	t1	2.442
-noP_MgCl_t1	noP	MgCl	t1	2.337
-noP_MgCl_t1	noP	MgCl	t1	1.88
-noP_MgCl_t1	noP	MgCl	t1	2.012
-noP_MgCl_t1	noP	MgCl	t1	1.808
-noP_MgCl_t1	noP	MgCl	t1	1.84
-P_350_t1	P	350	t1	3.42
-P_350_t1	P	350	t1	1.881
-P_350_t1	P	350	t1	1.802
-P_350_t1	P	350	t1	2.013
-P_350_t1	P	350	t1	2.196
-P_350_t1	P	350	t1	2.976
-P_350_t1	P	350	t1	2.617
-P_350_t1	P	350	t1	2.737
-P_350_t1	P	350	t1	2.034
-P_350_t1	P	350	t1	2.27
-P_350_t1	P	350	t1	1.611
-P_350_t1	P	350	t1	2.35
-P_350_t1	P	350	t1	2.97
-P_350_t1	P	350	t1	2.856
-P_350_t1	P	350	t1	3.054
-P_350_t1	P	350	t1	2.283
-P_350_t1	P	350	t1	2.695
-P_350_t1	P	350	t1	3.417
-P_350_t1	P	350	t1	3.006
-P_350_t1	P	350	t1	2.049
-P_350_t1	P	350	t1	2.108
-P_350_t1	P	350	t1	1.423
-P_350_t1	P	350	t1	2.223
-P_350_t1	P	350	t1	1.875
-P_350_t1	P	350	t1	2.284
-P_350_t1	P	350	t1	2.212
-P_350_t1	P	350	t1	1.86
-P_350_t1	P	350	t1	1.589
-P_350_t1	P	350	t1	1.141
-P_350_t1	P	350	t1	2.898
-noP_350_t1	noP	350	t1	2.116
-noP_350_t1	noP	350	t1	2.069
-noP_350_t1	noP	350	t1	2.277
-noP_350_t1	noP	350	t1	2.019
-noP_350_t1	noP	350	t1	2.397
-noP_350_t1	noP	350	t1	2.279
-noP_350_t1	noP	350	t1	2.087
-noP_350_t1	noP	350	t1	2.173
-noP_350_t1	noP	350	t1	1.44
-noP_350_t1	noP	350	t1	2.094
-noP_350_t1	noP	350	t1	1.724
-noP_350_t1	noP	350	t1	1.788
-noP_350_t1	noP	350	t1	2.176
-noP_350_t1	noP	350	t1	1.397
-noP_350_t1	noP	350	t1	1.863
-noP_350_t1	noP	350	t1	1.925
-noP_350_t1	noP	350	t1	2.726
-noP_350_t1	noP	350	t1	2.474
-noP_350_t1	noP	350	t1	1.842
-noP_350_t1	noP	350	t1	2.137
-noP_350_t1	noP	350	t1	2.253
-noP_350_t1	noP	350	t1	1.618
-noP_350_t1	noP	350	t1	
-noP_350_t1	noP	350	t1	
-noP_350_t1	noP	350	t1	
-noP_350_t1	noP	350	t1	
-noP_350_t1	noP	350	t1	
-noP_350_t1	noP	350	t1	
-noP_350_t1	noP	350	t1	
-noP_350_t1	noP	350	t1	
-P_MgCl_t2	P	MgCl	t2	3.847
-P_MgCl_t2	P	MgCl	t2	4.412
-P_MgCl_t2	P	MgCl	t2	3.116
-P_MgCl_t2	P	MgCl	t2	2.403
-P_MgCl_t2	P	MgCl	t2	2.213
-P_MgCl_t2	P	MgCl	t2	3.48
-P_MgCl_t2	P	MgCl	t2	4.014
-P_MgCl_t2	P	MgCl	t2	3.007
-P_MgCl_t2	P	MgCl	t2	3.26
-P_MgCl_t2	P	MgCl	t2	2.797
-P_MgCl_t2	P	MgCl	t2	3.64
-P_MgCl_t2	P	MgCl	t2	2.268
-P_MgCl_t2	P	MgCl	t2	3.587
-P_MgCl_t2	P	MgCl	t2	2.642
-P_MgCl_t2	P	MgCl	t2	3.277
-P_MgCl_t2	P	MgCl	t2	3.629
-P_MgCl_t2	P	MgCl	t2	4.342
-P_MgCl_t2	P	MgCl	t2	3.037
-P_MgCl_t2	P	MgCl	t2	3.218
-P_MgCl_t2	P	MgCl	t2	3.886
-P_MgCl_t2	P	MgCl	t2	4.082
-P_MgCl_t2	P	MgCl	t2	2.9
-P_MgCl_t2	P	MgCl	t2	3.861
-P_MgCl_t2	P	MgCl	t2	4.215
-P_MgCl_t2	P	MgCl	t2	4.702
-P_MgCl_t2	P	MgCl	t2	4.178
-P_MgCl_t2	P	MgCl	t2	3.433
-P_MgCl_t2	P	MgCl	t2	
-P_MgCl_t2	P	MgCl	t2	
-P_MgCl_t2	P	MgCl	t2	
-noP_MgCl_t2	noP	MgCl	t2	2.245
-noP_MgCl_t2	noP	MgCl	t2	2.917
-noP_MgCl_t2	noP	MgCl	t2	3.507
-noP_MgCl_t2	noP	MgCl	t2	2.357
-noP_MgCl_t2	noP	MgCl	t2	3.784
-noP_MgCl_t2	noP	MgCl	t2	2.015
-noP_MgCl_t2	noP	MgCl	t2	2.432
-noP_MgCl_t2	noP	MgCl	t2	3.629
-noP_MgCl_t2	noP	MgCl	t2	3.804
-noP_MgCl_t2	noP	MgCl	t2	2.243
-noP_MgCl_t2	noP	MgCl	t2	3.877
-noP_MgCl_t2	noP	MgCl	t2	4.061
-noP_MgCl_t2	noP	MgCl	t2	4.216
-noP_MgCl_t2	noP	MgCl	t2	4.394
-noP_MgCl_t2	noP	MgCl	t2	3.958
-noP_MgCl_t2	noP	MgCl	t2	3.958
-noP_MgCl_t2	noP	MgCl	t2	3.704
-noP_MgCl_t2	noP	MgCl	t2	3.414
-noP_MgCl_t2	noP	MgCl	t2	3.452
-noP_MgCl_t2	noP	MgCl	t2	3.634
-noP_MgCl_t2	noP	MgCl	t2	3.437
-noP_MgCl_t2	noP	MgCl	t2	2.952
-noP_MgCl_t2	noP	MgCl	t2	3.186
-noP_MgCl_t2	noP	MgCl	t2	2.347
-noP_MgCl_t2	noP	MgCl	t2	4.029
-noP_MgCl_t2	noP	MgCl	t2	4.285
-noP_MgCl_t2	noP	MgCl	t2	3.604
-noP_MgCl_t2	noP	MgCl	t2	3.694
-noP_MgCl_t2	noP	MgCl	t2	3.588
-noP_MgCl_t2	noP	MgCl	t2	2.461
-P_350_t2	P	350	t2	3.315
-P_350_t2	P	350	t2	4.109
-P_350_t2	P	350	t2	4.485
-P_350_t2	P	350	t2	2.718
-P_350_t2	P	350	t2	3.96
-P_350_t2	P	350	t2	4.569
-P_350_t2	P	350	t2	4.73
-P_350_t2	P	350	t2	4.423
-P_350_t2	P	350	t2	3.781
-P_350_t2	P	350	t2	3.141
-P_350_t2	P	350	t2	3.044
-P_350_t2	P	350	t2	3.51
-P_350_t2	P	350	t2	4.317
-P_350_t2	P	350	t2	3.315
-P_350_t2	P	350	t2	4.804
-P_350_t2	P	350	t2	3.112
-P_350_t2	P	350	t2	4.236
-P_350_t2	P	350	t2	2.62
-P_350_t2	P	350	t2	3.02
-P_350_t2	P	350	t2	4.574
-P_350_t2	P	350	t2	5.429
-P_350_t2	P	350	t2	5.429
-P_350_t2	P	350	t2	3.921
-P_350_t2	P	350	t2	3.268
-P_350_t2	P	350	t2	3.409
-P_350_t2	P	350	t2	3.771
-P_350_t2	P	350	t2	3.942
-P_350_t2	P	350	t2	2.5
-P_350_t2	P	350	t2	4.243
-P_350_t2	P	350	t2	
-noP_350_t2	noP	350	t2	2.782
-noP_350_t2	noP	350	t2	3.398
-noP_350_t2	noP	350	t2	2.227
-noP_350_t2	noP	350	t2	3.454
-noP_350_t2	noP	350	t2	2.305
-noP_350_t2	noP	350	t2	2.631
-noP_350_t2	noP	350	t2	3.08
-noP_350_t2	noP	350	t2	2.979
-noP_350_t2	noP	350	t2	4.051
-noP_350_t2	noP	350	t2	2.612
-noP_350_t2	noP	350	t2	3.232
-noP_350_t2	noP	350	t2	3.695
-noP_350_t2	noP	350	t2	4.08
-noP_350_t2	noP	350	t2	2.653
-noP_350_t2	noP	350	t2	3.695
-noP_350_t2	noP	350	t2	3.718
-noP_350_t2	noP	350	t2	2.042
-noP_350_t2	noP	350	t2	4.527
-noP_350_t2	noP	350	t2	4.242
-noP_350_t2	noP	350	t2	3.427
-noP_350_t2	noP	350	t2	2.43
-noP_350_t2	noP	350	t2	3.517
-noP_350_t2	noP	350	t2	2.995
-noP_350_t2	noP	350	t2	3.868
-noP_350_t2	noP	350	t2	2.892
-noP_350_t2	noP	350	t2	4.28
-noP_350_t2	noP	350	t2	4.352
-noP_350_t2	noP	350	t2	2.295
-noP_350_t2	noP	350	t2	3.263
-noP_350_t2	noP	350	t2	
-P_MgCl_t3	P	MgCl	t3	5.126
-P_MgCl_t3	P	MgCl	t3	4.331
-P_MgCl_t3	P	MgCl	t3	5.302
-P_MgCl_t3	P	MgCl	t3	6.897
-P_MgCl_t3	P	MgCl	t3	6.372
-P_MgCl_t3	P	MgCl	t3	5.875
-P_MgCl_t3	P	MgCl	t3	7.155
-P_MgCl_t3	P	MgCl	t3	6.974
-P_MgCl_t3	P	MgCl	t3	5.914
-P_MgCl_t3	P	MgCl	t3	6.464
-P_MgCl_t3	P	MgCl	t3	5.608
-P_MgCl_t3	P	MgCl	t3	6.232
-P_MgCl_t3	P	MgCl	t3	3.467
-P_MgCl_t3	P	MgCl	t3	
-P_MgCl_t3	P	MgCl	t3	
-P_MgCl_t3	P	MgCl	t3	
-P_MgCl_t3	P	MgCl	t3	
-P_MgCl_t3	P	MgCl	t3	
-P_MgCl_t3	P	MgCl	t3	
-P_MgCl_t3	P	MgCl	t3	
-P_MgCl_t3	P	MgCl	t3	
-P_MgCl_t3	P	MgCl	t3	
-P_MgCl_t3	P	MgCl	t3	
-P_MgCl_t3	P	MgCl	t3	
-P_MgCl_t3	P	MgCl	t3	
-P_MgCl_t3	P	MgCl	t3	
-P_MgCl_t3	P	MgCl	t3	
-P_MgCl_t3	P	MgCl	t3	
-P_MgCl_t3	P	MgCl	t3	
-P_MgCl_t3	P	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	3.485
-noP_MgCl_t3	noP	MgCl	t3	3.235
-noP_MgCl_t3	noP	MgCl	t3	4.622
-noP_MgCl_t3	noP	MgCl	t3	2.487
-noP_MgCl_t3	noP	MgCl	t3	4.42
-noP_MgCl_t3	noP	MgCl	t3	4.48
-noP_MgCl_t3	noP	MgCl	t3	2.832
-noP_MgCl_t3	noP	MgCl	t3	4.318
-noP_MgCl_t3	noP	MgCl	t3	4.651
-noP_MgCl_t3	noP	MgCl	t3	3.46
-noP_MgCl_t3	noP	MgCl	t3	5.41
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-noP_MgCl_t3	noP	MgCl	t3	
-P_350_t3	P	350	t3	3.705
-P_350_t3	P	350	t3	3.466
-P_350_t3	P	350	t3	6.598
-P_350_t3	P	350	t3	6.16
-P_350_t3	P	350	t3	6
-P_350_t3	P	350	t3	6.092
-P_350_t3	P	350	t3	6.057
-P_350_t3	P	350	t3	7.018
-P_350_t3	P	350	t3	6.48
-P_350_t3	P	350	t3	6.369
-P_350_t3	P	350	t3	6.119
-P_350_t3	P	350	t3	5.733
-P_350_t3	P	350	t3	6.213
-P_350_t3	P	350	t3	5.65
-P_350_t3	P	350	t3	6.322
-P_350_t3	P	350	t3	6.57
-P_350_t3	P	350	t3	4.98
-P_350_t3	P	350	t3	3.664
-P_350_t3	P	350	t3	4.473
-P_350_t3	P	350	t3	5.995
-P_350_t3	P	350	t3	6.055
-P_350_t3	P	350	t3	5.717
-P_350_t3	P	350	t3	6.073
-P_350_t3	P	350	t3	
-P_350_t3	P	350	t3	
-P_350_t3	P	350	t3	
-P_350_t3	P	350	t3	
-P_350_t3	P	350	t3	
-P_350_t3	P	350	t3	
-P_350_t3	P	350	t3	
-noP_350_t3	noP	350	t3	5.488
-noP_350_t3	noP	350	t3	3.907
-noP_350_t3	noP	350	t3	5.026
-noP_350_t3	noP	350	t3	5.076
-noP_350_t3	noP	350	t3	5.12
-noP_350_t3	noP	350	t3	4.48
-noP_350_t3	noP	350	t3	4.463
-noP_350_t3	noP	350	t3	4.983
-noP_350_t3	noP	350	t3	3.026
-noP_350_t3	noP	350	t3	5.438
-noP_350_t3	noP	350	t3	2.939
-noP_350_t3	noP	350	t3	4.854
-noP_350_t3	noP	350	t3	6.406
-noP_350_t3	noP	350	t3	5.11
-noP_350_t3	noP	350	t3	5.39
-noP_350_t3	noP	350	t3	4.487
-noP_350_t3	noP	350	t3	4.832
-noP_350_t3	noP	350	t3	5.88
-noP_350_t3	noP	350	t3	6.833
-noP_350_t3	noP	350	t3	6.986
-noP_350_t3	noP	350	t3	5.81
-noP_350_t3	noP	350	t3	5.927
-noP_350_t3	noP	350	t3	5.332
-noP_350_t3	noP	350	t3	5.086
-noP_350_t3	noP	350	t3	
-noP_350_t3	noP	350	t3	
-noP_350_t3	noP	350	t3	
-noP_350_t3	noP	350	t3	
-noP_350_t3	noP	350	t3	
-noP_350_t3	noP	350	t3	
-P_MgCl_t4	P	MgCl	t4	6.799
-P_MgCl_t4	P	MgCl	t4	8.322
-P_MgCl_t4	P	MgCl	t4	5.396
-P_MgCl_t4	P	MgCl	t4	7.245
-P_MgCl_t4	P	MgCl	t4	8.419
-P_MgCl_t4	P	MgCl	t4	7.742
-P_MgCl_t4	P	MgCl	t4	6.163
-P_MgCl_t4	P	MgCl	t4	9.466
-P_MgCl_t4	P	MgCl	t4	8.769
-P_MgCl_t4	P	MgCl	t4	8.61
-P_MgCl_t4	P	MgCl	t4	7.154
-P_MgCl_t4	P	MgCl	t4	
-P_MgCl_t4	P	MgCl	t4	
-P_MgCl_t4	P	MgCl	t4	
-P_MgCl_t4	P	MgCl	t4	
-P_MgCl_t4	P	MgCl	t4	
-P_MgCl_t4	P	MgCl	t4	
-P_MgCl_t4	P	MgCl	t4	
-P_MgCl_t4	P	MgCl	t4	
-P_MgCl_t4	P	MgCl	t4	
-noP_MgCl_t4	noP	MgCl	t4	4.769
-noP_MgCl_t4	noP	MgCl	t4	4.566
-noP_MgCl_t4	noP	MgCl	t4	7.044
-noP_MgCl_t4	noP	MgCl	t4	4.988
-noP_MgCl_t4	noP	MgCl	t4	5.266
-noP_MgCl_t4	noP	MgCl	t4	5.437
-noP_MgCl_t4	noP	MgCl	t4	5.649
-noP_MgCl_t4	noP	MgCl	t4	6.099
-noP_MgCl_t4	noP	MgCl	t4	6.333
-noP_MgCl_t4	noP	MgCl	t4	6.368
-noP_MgCl_t4	noP	MgCl	t4	3.765
-noP_MgCl_t4	noP	MgCl	t4	7.648
-noP_MgCl_t4	noP	MgCl	t4	6.798
-noP_MgCl_t4	noP	MgCl	t4	5.994
-noP_MgCl_t4	noP	MgCl	t4	
-noP_MgCl_t4	noP	MgCl	t4	
-noP_MgCl_t4	noP	MgCl	t4	
-noP_MgCl_t4	noP	MgCl	t4	
-noP_MgCl_t4	noP	MgCl	t4	
-noP_MgCl_t4	noP	MgCl	t4	
-P_350_t4	P	350	t4	8.499
-P_350_t4	P	350	t4	7.294
-P_350_t4	P	350	t4	9.705
-P_350_t4	P	350	t4	9.997
-P_350_t4	P	350	t4	9.159
-P_350_t4	P	350	t4	6.917
-P_350_t4	P	350	t4	9.852
-P_350_t4	P	350	t4	10.88
-P_350_t4	P	350	t4	9.201
-P_350_t4	P	350	t4	9.574
-P_350_t4	P	350	t4	10.867
-P_350_t4	P	350	t4	10.708
-P_350_t4	P	350	t4	
-P_350_t4	P	350	t4	
-P_350_t4	P	350	t4	
-P_350_t4	P	350	t4	
-P_350_t4	P	350	t4	
-P_350_t4	P	350	t4	
-P_350_t4	P	350	t4	
-P_350_t4	P	350	t4	
-noP_350_t4	noP	350	t4	5.734
-noP_350_t4	noP	350	t4	6.164
-noP_350_t4	noP	350	t4	7.92
-noP_350_t4	noP	350	t4	6.541
-noP_350_t4	noP	350	t4	6.441
-noP_350_t4	noP	350	t4	7.513
-noP_350_t4	noP	350	t4	5.896
-noP_350_t4	noP	350	t4	7.696
-noP_350_t4	noP	350	t4	5.58
-noP_350_t4	noP	350	t4	
-noP_350_t4	noP	350	t4	
-noP_350_t4	noP	350	t4	
-noP_350_t4	noP	350	t4	
-noP_350_t4	noP	350	t4	
-noP_350_t4	noP	350	t4	
-noP_350_t4	noP	350	t4	
-noP_350_t4	noP	350	t4	
-noP_350_t4	noP	350	t4	
-noP_350_t4	noP	350	t4	
-noP_350_t4	noP	350	t4	
-noP_350_t5	noP	350	t5	9.334902439
-noP_350_t5	noP	350	t5	8.703707317
-noP_350_t5	noP	350	t5	8.838373984
-noP_350_t5	noP	350	t5	6.43895935
-noP_350_t5	noP	350	t5	7.885772358
-noP_350_t5	noP	350	t5	9.436785714
-noP_350_t5	noP	350	t5	8.792293651
-noP_350_t5	noP	350	t5	9.088357143
-noP_350_t5	noP	350	t5	6.271626984
-noP_350_t5	noP	350	t5	7.211944444
-noP_350_t5	noP	350	t5	8.781166667
-noP_350_t5	noP	350	t5	9.326468254
-noP_350_t5	noP	350	t5	6.65765873
-noP_350_t5	noP	350	t5	
-noP_350_t5	noP	350	t5	
-noP_350_t5	noP	350	t5	9.507481481
-noP_350_t5	noP	350	t5	9.208348148
-noP_350_t5	noP	350	t5	8.223933333
-noP_350_t5	noP	350	t5	8.221288889
-noP_350_t5	noP	350	t5	8.699911111
-noP_350_t5	noP	350	t5	8.758094203
-noP_350_t5	noP	350	t5	8.081108696
-noP_350_t5	noP	350	t5	9.556550725
-noP_350_t5	noP	350	t5	9.313152174
-noP_350_t5	noP	350	t5	10.56273913
-noP_350_t5	noP	350	t5	8.230782609
-noP_350_t5	noP	350	t5	9.103695652
-noP_350_t5	noP	350	t5	8.941405797
-noP_350_t5	noP	350	t5	7.435217391
-noP_350_t5	noP	350	t5	8.311550725
-noP_350_t5	noP	350	t5	6.883388889
-noP_350_t5	noP	350	t5	7.881674603
-noP_350_t5	noP	350	t5	8.711857143
-noP_350_t5	noP	350	t5	10.12571429
-noP_350_t5	noP	350	t5	7.495912698
-noP_350_t5	noP	350	t5	9.391428571
-noP_350_t5	noP	350	t5	10.88053968
-noP_350_t5	noP	350	t5	11.42775397
-noP_350_t5	noP	350	t5	10.69786508
-noP_350_t5	noP	350	t5	12.09337302
-noP_350_t5	noP	350	t5	7.006089431
-noP_350_t5	noP	350	t5	7.338276423
-noP_350_t5	noP	350	t5	10.63202439
-noP_350_t5	noP	350	t5	9.245317073
-noP_350_t5	noP	350	t5	
-P_MgCl_t5	P	MgCl	t5	6.788
-P_MgCl_t5	P	MgCl	t5	8.228
-P_MgCl_t5	P	MgCl	t5	7.676
-P_MgCl_t5	P	MgCl	t5	7.407
-P_MgCl_t5	P	MgCl	t5	5.774
-P_MgCl_t5	P	MgCl	t5	7.784
-P_MgCl_t5	P	MgCl	t5	7.556
-P_MgCl_t5	P	MgCl	t5	8.971
-P_MgCl_t5	P	MgCl	t5	7.68
-P_MgCl_t5	P	MgCl	t5	7.204
-P_MgCl_t5	P	MgCl	t5	8.169
-P_350_t5	P	350	t5	10.393
-P_350_t5	P	350	t5	10.827
-P_350_t5	P	350	t5	11.337
-P_350_t5	P	350	t5	8.674
-P_350_t5	P	350	t5	12.021
-P_350_t5	P	350	t5	11.14
-P_350_t5	P	350	t5	12.088
-P_350_t5	P	350	t5	11.576
-P_350_t5	P	350	t5	12.136
-P_350_t5	P	350	t5	11.948
-P_350_t5	P	350	t5	11.301
+Nutrient	Condition	Timepoint	Rootlength
+high_P	mock	0	15.42
+high_P	mock	0	18.49
+high_P	mock	0	12.09
+high_P	mock	0	18.34
+high_P	mock	0	15.86
+high_P	mock	0	16.83
+high_P	mock	0	16.08
+high_P	mock	0	18
+high_P	mock	0	16.3
+high_P	mock	0	11.25
+high_P	mock	0	18.65
+high_P	mock	0	16.33
+high_P	mock	0	16.24
+high_P	mock	0	14.91
+high_P	mock	0	13.15
+high_P	mock	0	18.72
+high_P	mock	0	13.19
+high_P	mock	0	24.96
+high_P	mock	0	13.28
+high_P	mock	0	14.59
+high_P	mock	0	11.84
+high_P	mock	0	17.58
+high_P	mock	0	19.51
+high_P	mock	0	17.65
+high_P	mock	0	15.69
+high_P	mock	0	16.79
+high_P	mock	0	17.45
+high_P	mock	0	12.56
+low_P	mock	0	14.48
+low_P	mock	0	13.99
+low_P	mock	0	16.7
+low_P	mock	0	14.2
+low_P	mock	0	11.2
+low_P	mock	0	13.12
+low_P	mock	0	15.86
+low_P	mock	0	14.85
+low_P	mock	0	13.67
+low_P	mock	0	16.27
+low_P	mock	0	15.73
+low_P	mock	0	15.55
+low_P	mock	0	15.35
+low_P	mock	0	17.2
+low_P	mock	0	16.09
+low_P	mock	0	14.39
+low_P	mock	0	16.79
+low_P	mock	0	13.33
+low_P	mock	0	17.7
+low_P	mock	0	17.4
+low_P	mock	0	18.34
+low_P	mock	0	16.63
+low_P	mock	0	18.3
+low_P	mock	0	19.25
+low_P	mock	0	17.35
+low_P	mock	0	14.22
+low_P	mock	0	18.62
+low_P	mock	0	18.45
+low_P	mock	0	17.11
+low_P	mock	0	14.69
+high_P	129E	0	11.24
+high_P	129E	0	16.06
+high_P	129E	0	15.19
+high_P	129E	0	12.53
+high_P	129E	0	11.9
+high_P	129E	0	20.53
+high_P	129E	0	16.77
+high_P	129E	0	15.05
+high_P	129E	0	11.78
+high_P	129E	0	18.73
+high_P	129E	0	14.53
+high_P	129E	0	15.23
+high_P	129E	0	18.03
+high_P	129E	0	14.65
+high_P	129E	0	15.9
+high_P	129E	0	14.71
+high_P	129E	0	16.14
+high_P	129E	0	17.27
+high_P	129E	0	14.7
+high_P	129E	0	17.08
+high_P	129E	0	17.09
+high_P	129E	0	13.87
+high_P	129E	0	16.39
+high_P	129E	0	18.25
+high_P	129E	0	12.77
+high_P	129E	0	10.54
+high_P	129E	0	18.76
+high_P	129E	0	12.46
+high_P	129E	0	16.17
+high_P	129E	0	12.14
+low_P	129E	0	17.54
+low_P	129E	0	19.97
+low_P	129E	0	16.78
+low_P	129E	0	14.12
+low_P	129E	0	11.5
+low_P	129E	0	12.57
+low_P	129E	0	15.17
+low_P	129E	0	14.91
+low_P	129E	0	12.99
+low_P	129E	0	15.12
+low_P	129E	0	17.52
+low_P	129E	0	13.76
+low_P	129E	0	21.07
+low_P	129E	0	14.92
+low_P	129E	0	15.82
+low_P	129E	0	15.52
+low_P	129E	0	15.79
+low_P	129E	0	13.66
+low_P	129E	0	18.07
+low_P	129E	0	14.97
+low_P	129E	0	13.48
+low_P	129E	0	14.38
+low_P	129E	0	14.53
+low_P	129E	0	14.2
+low_P	129E	0	11.41
+low_P	129E	0	17.19
+low_P	129E	0	17.51
+low_P	129E	0	11.19
+low_P	129E	0	17.77
+low_P	129E	0	16.51
+high_P	mock	4	25.2
+high_P	mock	4	28.92
+high_P	mock	4	24.57
+high_P	mock	4	24.26
+high_P	mock	4	22.26
+high_P	mock	4	22.03
+high_P	mock	4	20.55
+high_P	mock	4	28.89
+high_P	mock	4	32.53
+high_P	mock	4	24.37
+high_P	mock	4	22.83
+high_P	mock	4	20.38
+high_P	mock	4	15.72
+high_P	mock	4	16.36
+high_P	mock	4	26.11
+high_P	mock	4	19.83
+high_P	mock	4	18.08
+high_P	mock	4	25.49
+high_P	mock	4	19.57
+high_P	mock	4	22.11
+high_P	mock	4	28.85
+high_P	mock	4	22.2
+high_P	mock	4	25.48
+high_P	mock	4	26.22
+high_P	mock	4	22.02
+high_P	mock	4	15.51
+high_P	mock	4	26.05
+high_P	mock	4	23.21
+high_P	mock	4	24.5
+high_P	mock	4	19.74
+low_P	mock	4	27.59
+low_P	mock	4	24.74
+low_P	mock	4	16.96
+low_P	mock	4	23.41
+low_P	mock	4	18.34
+low_P	mock	4	14.09
+low_P	mock	4	26.71
+low_P	mock	4	28.5
+low_P	mock	4	16.84
+low_P	mock	4	24.37
+low_P	mock	4	16.75
+low_P	mock	4	16.86
+low_P	mock	4	18.7
+low_P	mock	4	21.21
+low_P	mock	4	25.03
+low_P	mock	4	20.01
+low_P	mock	4	23.52
+low_P	mock	4	28.77
+low_P	mock	4	18.13
+low_P	mock	4	19.96
+low_P	mock	4	26.19
+low_P	mock	4	24.14
+low_P	mock	4	15.22
+low_P	mock	4	18.02
+low_P	mock	4	24.42
+low_P	mock	4	23.37
+low_P	mock	4	18.8
+low_P	mock	4	20.12
+low_P	mock	4	18.08
+low_P	mock	4	18.4
+high_P	129E	4	34.2
+high_P	129E	4	18.81
+high_P	129E	4	18.02
+high_P	129E	4	20.13
+high_P	129E	4	21.96
+high_P	129E	4	29.76
+high_P	129E	4	26.17
+high_P	129E	4	27.37
+high_P	129E	4	20.34
+high_P	129E	4	22.7
+high_P	129E	4	16.11
+high_P	129E	4	23.5
+high_P	129E	4	29.7
+high_P	129E	4	28.56
+high_P	129E	4	30.54
+high_P	129E	4	22.83
+high_P	129E	4	26.95
+high_P	129E	4	34.17
+high_P	129E	4	30.06
+high_P	129E	4	20.49
+high_P	129E	4	21.08
+high_P	129E	4	14.23
+high_P	129E	4	22.23
+high_P	129E	4	18.75
+high_P	129E	4	22.84
+high_P	129E	4	22.12
+high_P	129E	4	18.6
+high_P	129E	4	15.89
+high_P	129E	4	11.41
+high_P	129E	4	28.98
+low_P	129E	4	21.16
+low_P	129E	4	20.69
+low_P	129E	4	22.77
+low_P	129E	4	20.19
+low_P	129E	4	23.97
+low_P	129E	4	22.79
+low_P	129E	4	20.87
+low_P	129E	4	21.73
+low_P	129E	4	14.4
+low_P	129E	4	20.94
+low_P	129E	4	17.24
+low_P	129E	4	17.88
+low_P	129E	4	21.76
+low_P	129E	4	13.97
+low_P	129E	4	18.63
+low_P	129E	4	19.25
+low_P	129E	4	27.26
+low_P	129E	4	24.74
+low_P	129E	4	18.42
+low_P	129E	4	21.37
+low_P	129E	4	22.53
+low_P	129E	4	16.18
+high_P	mock	8	38.47
+high_P	mock	8	44.12
+high_P	mock	8	31.16
+high_P	mock	8	24.03
+high_P	mock	8	22.13
+high_P	mock	8	34.8
+high_P	mock	8	40.14
+high_P	mock	8	30.07
+high_P	mock	8	32.6
+high_P	mock	8	27.97
+high_P	mock	8	36.4
+high_P	mock	8	22.68
+high_P	mock	8	35.87
+high_P	mock	8	26.42
+high_P	mock	8	32.77
+high_P	mock	8	36.29
+high_P	mock	8	43.42
+high_P	mock	8	30.37
+high_P	mock	8	32.18
+high_P	mock	8	38.86
+high_P	mock	8	40.82
+high_P	mock	8	29
+high_P	mock	8	38.61
+high_P	mock	8	42.15
+high_P	mock	8	47.02
+high_P	mock	8	41.78
+high_P	mock	8	34.33
+low_P	mock	8	22.45
+low_P	mock	8	29.17
+low_P	mock	8	35.07
+low_P	mock	8	23.57
+low_P	mock	8	37.84
+low_P	mock	8	20.15
+low_P	mock	8	24.32
+low_P	mock	8	36.29
+low_P	mock	8	38.04
+low_P	mock	8	22.43
+low_P	mock	8	38.77
+low_P	mock	8	40.61
+low_P	mock	8	42.16
+low_P	mock	8	43.94
+low_P	mock	8	39.58
+low_P	mock	8	39.58
+low_P	mock	8	37.04
+low_P	mock	8	34.14
+low_P	mock	8	34.52
+low_P	mock	8	36.34
+low_P	mock	8	34.37
+low_P	mock	8	29.52
+low_P	mock	8	31.86
+low_P	mock	8	23.47
+low_P	mock	8	40.29
+low_P	mock	8	42.85
+low_P	mock	8	36.04
+low_P	mock	8	36.94
+low_P	mock	8	35.88
+low_P	mock	8	24.61
+high_P	129E	8	33.15
+high_P	129E	8	41.09
+high_P	129E	8	44.85
+high_P	129E	8	27.18
+high_P	129E	8	39.6
+high_P	129E	8	45.69
+high_P	129E	8	47.3
+high_P	129E	8	44.23
+high_P	129E	8	37.81
+high_P	129E	8	31.41
+high_P	129E	8	30.44
+high_P	129E	8	35.1
+high_P	129E	8	43.17
+high_P	129E	8	33.15
+high_P	129E	8	48.04
+high_P	129E	8	31.12
+high_P	129E	8	42.36
+high_P	129E	8	26.2
+high_P	129E	8	30.2
+high_P	129E	8	45.74
+high_P	129E	8	54.29
+high_P	129E	8	54.29
+high_P	129E	8	39.21
+high_P	129E	8	32.68
+high_P	129E	8	34.09
+high_P	129E	8	37.71
+high_P	129E	8	39.42
+high_P	129E	8	25
+high_P	129E	8	42.43
+low_P	129E	8	27.82
+low_P	129E	8	33.98
+low_P	129E	8	22.27
+low_P	129E	8	34.54
+low_P	129E	8	23.05
+low_P	129E	8	26.31
+low_P	129E	8	30.8
+low_P	129E	8	29.79
+low_P	129E	8	40.51
+low_P	129E	8	26.12
+low_P	129E	8	32.32
+low_P	129E	8	36.95
+low_P	129E	8	40.8
+low_P	129E	8	26.53
+low_P	129E	8	36.95
+low_P	129E	8	37.18
+low_P	129E	8	20.42
+low_P	129E	8	45.27
+low_P	129E	8	42.42
+low_P	129E	8	34.27
+low_P	129E	8	24.3
+low_P	129E	8	35.17
+low_P	129E	8	29.95
+low_P	129E	8	38.68
+low_P	129E	8	28.92
+low_P	129E	8	42.8
+low_P	129E	8	43.52
+low_P	129E	8	22.95
+low_P	129E	8	32.63
+high_P	mock	12	51.26
+high_P	mock	12	43.31
+high_P	mock	12	53.02
+high_P	mock	12	68.97
+high_P	mock	12	63.72
+high_P	mock	12	58.75
+high_P	mock	12	71.55
+high_P	mock	12	69.74
+high_P	mock	12	59.14
+high_P	mock	12	64.64
+high_P	mock	12	56.08
+high_P	mock	12	62.32
+high_P	mock	12	34.67
+low_P	mock	12	34.85
+low_P	mock	12	32.35
+low_P	mock	12	46.22
+low_P	mock	12	24.87
+low_P	mock	12	44.2
+low_P	mock	12	44.8
+low_P	mock	12	28.32
+low_P	mock	12	43.18
+low_P	mock	12	46.51
+low_P	mock	12	34.6
+low_P	mock	12	54.1
+high_P	129E	12	37.05
+high_P	129E	12	34.66
+high_P	129E	12	65.98
+high_P	129E	12	61.6
+high_P	129E	12	60
+high_P	129E	12	60.92
+high_P	129E	12	60.57
+high_P	129E	12	70.18
+high_P	129E	12	64.8
+high_P	129E	12	63.69
+high_P	129E	12	61.19
+high_P	129E	12	57.33
+high_P	129E	12	62.13
+high_P	129E	12	56.5
+high_P	129E	12	63.22
+high_P	129E	12	65.7
+high_P	129E	12	49.8
+high_P	129E	12	36.64
+high_P	129E	12	44.73
+high_P	129E	12	59.95
+high_P	129E	12	60.55
+high_P	129E	12	57.17
+high_P	129E	12	60.73
+low_P	129E	12	54.88
+low_P	129E	12	39.07
+low_P	129E	12	50.26
+low_P	129E	12	50.76
+low_P	129E	12	51.2
+low_P	129E	12	44.8
+low_P	129E	12	44.63
+low_P	129E	12	49.83
+low_P	129E	12	30.26
+low_P	129E	12	54.38
+low_P	129E	12	29.39
+low_P	129E	12	48.54
+low_P	129E	12	64.06
+low_P	129E	12	51.1
+low_P	129E	12	53.9
+low_P	129E	12	44.87
+low_P	129E	12	48.32
+low_P	129E	12	58.8
+low_P	129E	12	68.33
+low_P	129E	12	69.86
+low_P	129E	12	58.1
+low_P	129E	12	59.27
+low_P	129E	12	53.32
+low_P	129E	12	50.86
+high_P	mock	16	67.99
+high_P	mock	16	83.22
+high_P	mock	16	53.96
+high_P	mock	16	72.45
+high_P	mock	16	84.19
+high_P	mock	16	77.42
+high_P	mock	16	61.63
+high_P	mock	16	94.66
+high_P	mock	16	87.69
+high_P	mock	16	86.1
+high_P	mock	16	71.54
+low_P	mock	16	47.69
+low_P	mock	16	45.66
+low_P	mock	16	70.44
+low_P	mock	16	49.88
+low_P	mock	16	52.66
+low_P	mock	16	54.37
+low_P	mock	16	56.49
+low_P	mock	16	60.99
+low_P	mock	16	63.33
+low_P	mock	16	63.68
+low_P	mock	16	37.65
+low_P	mock	16	76.48
+low_P	mock	16	67.98
+low_P	mock	16	59.94
+high_P	129E	16	84.99
+high_P	129E	16	72.94
+high_P	129E	16	97.05
+high_P	129E	16	99.97
+high_P	129E	16	91.59
+high_P	129E	16	69.17
+high_P	129E	16	98.52
+high_P	129E	16	108.8
+high_P	129E	16	92.01
+high_P	129E	16	95.74
+high_P	129E	16	108.67
+high_P	129E	16	107.08
+low_P	129E	16	57.34
+low_P	129E	16	61.64
+low_P	129E	16	79.2
+low_P	129E	16	65.41
+low_P	129E	16	64.41
+low_P	129E	16	75.13
+low_P	129E	16	58.96
+low_P	129E	16	76.96
+low_P	129E	16	55.8
+low_P	129E	18	93.35
+low_P	129E	18	87.04
+low_P	129E	18	88.38
+low_P	129E	18	64.39
+low_P	129E	18	78.86
+low_P	129E	18	94.37
+low_P	129E	18	87.92
+low_P	129E	18	90.88
+low_P	129E	18	62.72
+low_P	129E	18	72.12
+low_P	129E	18	87.81
+low_P	129E	18	93.26
+low_P	129E	18	66.58
+low_P	129E	18	95.07
+low_P	129E	18	92.08
+low_P	129E	18	82.24
+low_P	129E	18	82.21
+low_P	129E	18	87
+low_P	129E	18	87.58
+low_P	129E	18	80.81
+low_P	129E	18	95.57
+low_P	129E	18	93.13
+low_P	129E	18	105.63
+low_P	129E	18	82.31
+low_P	129E	18	91.04
+low_P	129E	18	89.41
+low_P	129E	18	74.35
+low_P	129E	18	83.12
+low_P	129E	18	68.83
+low_P	129E	18	78.82
+low_P	129E	18	87.12
+low_P	129E	18	101.26
+low_P	129E	18	74.96
+low_P	129E	18	93.91
+low_P	129E	18	108.81
+low_P	129E	18	114.28
+low_P	129E	18	106.98
+low_P	129E	18	120.93
+low_P	129E	18	70.06
+low_P	129E	18	73.38
+low_P	129E	18	106.32
+low_P	129E	18	92.45
+low_P	mock	18	61.37
+low_P	mock	18	41.03
+low_P	mock	18	36.76
+low_P	mock	18	52.53
+low_P	mock	18	53.18
+low_P	mock	18	48.52
+low_P	mock	18	60.49
+low_P	mock	18	55.28
+low_P	mock	18	44.82
+low_P	mock	18	47.38
+low_P	mock	18	48.25
+low_P	mock	18	49.44
+low_P	mock	18	50.53
+low_P	mock	18	54.7
+low_P	mock	18	38.24
+low_P	mock	18	51.91
+low_P	mock	18	67.32
+low_P	mock	18	63.36
+low_P	mock	18	58.08
+low_P	mock	18	64.13
+low_P	mock	18	62.22
+low_P	mock	18	58.6
+low_P	mock	18	78.49
+low_P	mock	18	36.04
+low_P	mock	18	47.4
+low_P	mock	18	43.84
+low_P	mock	18	70.31
+low_P	mock	18	64.12
+low_P	mock	18	49.92
+low_P	mock	18	49.01
+low_P	mock	18	61.87
+low_P	mock	18	53.43
+low_P	mock	18	57.8
+low_P	mock	18	66.49
+low_P	mock	18	61.44
+low_P	mock	18	58.78
+low_P	mock	18	57.58
+low_P	mock	18	62.7
+high_P	129E	18	135.15
+high_P	129E	18	132.42
+high_P	129E	18	100.17
+high_P	129E	18	124.62
+high_P	129E	18	118.49
+high_P	129E	18	110.41
+high_P	129E	18	109.54
+high_P	129E	18	102.25
+high_P	129E	18	135.19
+high_P	129E	18	129.63
+high_P	129E	18	118.1
+high_P	129E	18	123.6
+high_P	129E	18	125.33
+high_P	129E	18	121.84
+high_P	129E	18	128.49
+high_P	129E	18	125.83
+high_P	129E	18	120.1
+high_P	129E	18	127.84
+high_P	129E	18	96.68
+high_P	129E	18	110.57
+high_P	129E	18	113.63
+high_P	129E	18	114.87
+high_P	129E	18	124.56
+high_P	129E	18	105.11
+high_P	129E	18	104.46
+high_P	129E	18	97.88
+high_P	129E	18	110.61
+high_P	129E	18	114.27
+high_P	129E	18	120.7
+high_P	129E	18	132.93
+high_P	129E	18	141.57
+high_P	129E	18	114.6
+high_P	129E	18	128.05
+high_P	129E	18	96.8
+high_P	129E	18	111.61
+high_P	129E	18	95.96
+high_P	129E	18	101.94
+high_P	129E	18	98.44
+high_P	mock	18	91.63
+high_P	mock	18	88.85
+high_P	mock	18	107.02
+high_P	mock	18	98.2
+high_P	mock	18	95.65
+high_P	mock	18	100.42
+high_P	mock	18	98.56
+high_P	mock	18	97.81
+high_P	mock	18	103.91
+high_P	mock	18	84.25
+high_P	mock	18	116.04
+high_P	mock	18	107.59
+high_P	mock	18	110.47
+high_P	mock	18	125.19
+high_P	mock	18	73.75
+high_P	mock	18	83.49
+high_P	mock	18	87.67
+high_P	mock	18	95.46
+high_P	mock	18	90.44
+high_P	mock	18	104.12
+high_P	mock	18	69.48
+high_P	mock	18	71.39
+high_P	mock	18	111.8
+high_P	mock	18	108.27
+high_P	mock	18	88.97
+high_P	mock	18	98.3
+high_P	mock	18	103.65
+high_P	mock	18	108.86
+high_P	mock	18	98.12
+high_P	mock	18	117.7
+high_P	mock	18	115.98
+high_P	mock	18	101.32
+high_P	mock	18	107.72
+high_P	mock	18	118.57
+high_P	mock	18	98.9
+high_P	mock	18	117.51
+high_P	mock	18	110.45
+high_P	mock	18	116.12
+high_P	mock	18	116.1
+high_P	mock	18	117.87
+high_P	mock	0	12.03
+high_P	mock	0	13.12
+high_P	mock	0	12.96
+high_P	mock	0	9.81
+high_P	mock	0	13.38
+high_P	mock	0	13.43
+high_P	mock	0	12.94
+high_P	mock	0	12.94
+high_P	mock	0	12.15
+high_P	mock	0	10.44
+high_P	mock	0	15.8
+high_P	mock	0	12.52
+high_P	mock	0	16.24
+high_P	mock	0	11.09
+high_P	mock	0	15.45
+high_P	mock	0	13.7
+high_P	mock	0	11.41
+high_P	mock	0	18.2
+high_P	mock	0	13.36
+high_P	mock	0	10.81
+high_P	mock	0	14.99
+high_P	mock	0	13.74
+high_P	mock	0	10.78
+high_P	mock	0	11.79
+high_P	mock	0	12.2
+high_P	mock	0	13.48
+high_P	mock	0	9.33
+high_P	mock	0	13.74
+high_P	mock	0	10.89
+low_P	mock	0	13.01
+low_P	mock	0	10.09
+low_P	mock	0	14.31
+low_P	mock	0	11.19
+low_P	mock	0	12.51
+low_P	mock	0	16.66
+low_P	mock	0	14.7
+low_P	mock	0	16.61
+low_P	mock	0	14.95
+low_P	mock	0	9.33
+low_P	mock	0	12.37
+low_P	mock	0	14.22
+low_P	mock	0	16.26
+low_P	mock	0	12.73
+low_P	mock	0	12.94
+low_P	mock	0	12.13
+low_P	mock	0	13.58
+low_P	mock	0	16.87
+low_P	mock	0	12.67
+low_P	mock	0	11.73
+low_P	mock	0	13.23
+low_P	mock	0	12.24
+low_P	mock	0	14.02
+low_P	mock	0	8.49
+low_P	mock	0	10.94
+low_P	mock	0	13.2
+low_P	mock	0	13.3
+low_P	mock	0	10.94
+low_P	mock	0	14.97
+high_P	129E	0	12.97
+high_P	129E	0	15.26
+high_P	129E	0	11.97
+high_P	129E	0	15.01
+high_P	129E	0	14.34
+high_P	129E	0	15.64
+high_P	129E	0	13.61
+high_P	129E	0	14.44
+high_P	129E	0	13.92
+high_P	129E	0	14.45
+high_P	129E	0	18.61
+high_P	129E	0	14.55
+high_P	129E	0	10.05
+high_P	129E	0	13.87
+high_P	129E	0	18.38
+high_P	129E	0	10.65
+high_P	129E	0	11.88
+high_P	129E	0	19.89
+high_P	129E	0	15.5
+high_P	129E	0	13.04
+high_P	129E	0	12.45
+high_P	129E	0	10.68
+high_P	129E	0	9.9
+high_P	129E	0	12.92
+high_P	129E	0	13.8
+high_P	129E	0	13.34
+high_P	129E	0	10.83
+high_P	129E	0	12.79
+high_P	129E	0	12.88
+high_P	129E	0	15.09
+low_P	129E	0	17.03
+low_P	129E	0	17.26
+low_P	129E	0	16.48
+low_P	129E	0	14.33
+low_P	129E	0	11.18
+low_P	129E	0	12.46
+low_P	129E	0	14
+low_P	129E	0	13.71
+low_P	129E	0	14.76
+low_P	129E	0	14.59
+low_P	129E	0	13.04
+low_P	129E	0	12.24
+low_P	129E	0	16.69
+low_P	129E	0	14.97
+low_P	129E	0	14.73
+low_P	129E	0	13.86
+low_P	129E	0	15.33
+low_P	129E	0	11.6
+low_P	129E	0	13.62
+low_P	129E	0	15.84
+low_P	129E	0	14.88
+low_P	129E	0	14.78
+low_P	129E	0	15.95
+low_P	129E	0	16.54
+low_P	129E	0	13.21
+low_P	129E	0	15.13
+low_P	129E	0	18.48
+low_P	129E	0	14.53
+low_P	129E	0	17.36
+high_P	mock	4	23.36
+high_P	mock	4	21.8
+high_P	mock	4	22.25
+high_P	mock	4	23.24
+high_P	mock	4	27.12
+high_P	mock	4	22.95
+high_P	mock	4	24.54
+high_P	mock	4	18.82
+high_P	mock	4	16.17
+high_P	mock	4	27.6
+high_P	mock	4	19.04
+high_P	mock	4	24.36
+high_P	mock	4	17.06
+high_P	mock	4	26.11
+high_P	mock	4	23.67
+high_P	mock	4	18.02
+high_P	mock	4	27.86
+high_P	mock	4	18.87
+high_P	mock	4	22.97
+high_P	mock	4	28.02
+high_P	mock	4	23.42
+high_P	mock	4	20.55
+high_P	mock	4	26.89
+high_P	mock	4	18.51
+high_P	mock	4	19.91
+high_P	mock	4	20.61
+high_P	mock	4	22.71
+high_P	mock	4	17.74
+high_P	mock	4	22.09
+high_P	mock	4	26.77
+low_P	mock	4	17.9
+low_P	mock	4	24.09
+low_P	mock	4	19.07
+low_P	mock	4	24.83
+low_P	mock	4	20.25
+low_P	mock	4	20.63
+low_P	mock	4	18.15
+low_P	mock	4	24.94
+low_P	mock	4	18.89
+low_P	mock	4	18.91
+low_P	mock	4	17.97
+low_P	mock	4	21.16
+low_P	mock	4	24.46
+low_P	mock	4	22.33
+low_P	mock	4	24.38
+low_P	mock	4	23.94
+low_P	mock	4	16.27
+low_P	mock	4	23.33
+low_P	mock	4	30.57
+low_P	mock	4	18.67
+low_P	mock	4	24.27
+low_P	mock	4	26.32
+low_P	mock	4	18.32
+low_P	mock	4	20.3
+low_P	mock	4	14.91
+low_P	mock	4	17.85
+low_P	mock	4	16.88
+low_P	mock	4	17.01
+low_P	mock	4	23.29
+high_P	129E	4	21.44
+high_P	129E	4	23
+high_P	129E	4	21.9
+high_P	129E	4	16.5
+high_P	129E	4	16.58
+high_P	129E	4	24.14
+high_P	129E	4	24.4
+high_P	129E	4	20.91
+high_P	129E	4	18.94
+high_P	129E	4	20.01
+high_P	129E	4	18.98
+high_P	129E	4	21.32
+high_P	129E	4	21.39
+high_P	129E	4	23
+high_P	129E	4	19.64
+high_P	129E	4	29.72
+high_P	129E	4	20.83
+high_P	129E	4	24.01
+high_P	129E	4	17.18
+high_P	129E	4	16.32
+high_P	129E	4	23.65
+high_P	129E	4	29.21
+high_P	129E	4	13.48
+high_P	129E	4	21.62
+high_P	129E	4	19.74
+high_P	129E	4	24.39
+high_P	129E	4	21.05
+high_P	129E	4	22.6
+high_P	129E	4	24.31
+high_P	129E	4	16.49
+low_P	129E	4	18.31
+low_P	129E	4	14.19
+low_P	129E	4	17.64
+low_P	129E	4	21.39
+low_P	129E	4	22.47
+low_P	129E	4	21.18
+low_P	129E	4	17.84
+low_P	129E	4	25.78
+low_P	129E	4	22.71
+low_P	129E	4	21.66
+low_P	129E	4	17.36
+low_P	129E	4	29.91
+low_P	129E	4	22.58
+low_P	129E	4	21.42
+low_P	129E	4	19.15
+low_P	129E	4	27.72
+low_P	129E	4	25.08
+low_P	129E	4	26.06
+low_P	129E	4	21.72
+low_P	129E	4	19.46
+low_P	129E	4	23.05
+low_P	129E	4	23.51
+low_P	129E	4	20.21
+low_P	129E	4	21.41
+low_P	129E	4	19.11
+low_P	129E	4	26.67
+low_P	129E	4	19.01
+low_P	129E	4	20.57
+low_P	129E	4	19.2
+low_P	129E	4	23.58
+high_P	mock	8	43.14
+high_P	mock	8	47.05
+high_P	mock	8	52.23
+high_P	mock	8	45.54
+high_P	mock	8	36.71
+high_P	mock	8	50.1
+high_P	mock	8	49.63
+high_P	mock	8	51.29
+high_P	mock	8	49.57
+high_P	mock	8	49.31
+high_P	mock	8	49.54
+high_P	mock	8	49.56
+high_P	mock	8	45.14
+high_P	mock	8	46.84
+high_P	mock	8	41.65
+high_P	mock	8	54.02
+high_P	mock	8	36.35
+high_P	mock	8	47.92
+high_P	mock	8	49.19
+high_P	mock	8	52.68
+high_P	mock	8	49.96
+high_P	mock	8	45.84
+high_P	mock	8	43.65
+high_P	mock	8	41.14
+high_P	mock	8	46.75
+high_P	mock	8	44.95
+high_P	mock	8	52.03
+high_P	mock	8	48.72
+high_P	mock	8	51.57
+high_P	mock	8	44.49
+low_P	mock	8	43.13
+low_P	mock	8	41.79
+low_P	mock	8	39.82
+low_P	mock	8	27.83
+low_P	mock	8	42.62
+low_P	mock	8	33.73
+low_P	mock	8	37.63
+low_P	mock	8	39.62
+low_P	mock	8	37.44
+low_P	mock	8	42.48
+low_P	mock	8	41.63
+low_P	mock	8	46.49
+low_P	mock	8	42.06
+low_P	mock	8	40.18
+low_P	mock	8	43.42
+low_P	mock	8	34.97
+low_P	mock	8	36.28
+low_P	mock	8	40.27
+low_P	mock	8	35.22
+low_P	mock	8	40.04
+low_P	mock	8	41.85
+low_P	mock	8	43.63
+low_P	mock	8	39.05
+low_P	mock	8	41.02
+low_P	mock	8	43.52
+low_P	mock	8	35.49
+low_P	mock	8	43.51
+low_P	mock	8	39.47
+high_P	129E	8	46.59
+high_P	129E	8	39.66
+high_P	129E	8	39.43
+high_P	129E	8	38.88
+high_P	129E	8	41.65
+high_P	129E	8	34.19
+high_P	129E	8	44.86
+high_P	129E	8	38.95
+high_P	129E	8	48.51
+high_P	129E	8	37.09
+high_P	129E	8	43.93
+high_P	129E	8	41.06
+high_P	129E	8	45.71
+high_P	129E	8	50.72
+high_P	129E	8	41.06
+high_P	129E	8	44.66
+high_P	129E	8	39.33
+high_P	129E	8	41.77
+high_P	129E	8	53.3
+high_P	129E	8	41.95
+high_P	129E	8	43.25
+high_P	129E	8	33.72
+high_P	129E	8	48.24
+high_P	129E	8	50.08
+high_P	129E	8	53.55
+high_P	129E	8	55.48
+high_P	129E	8	48.28
+high_P	129E	8	43.34
+high_P	129E	8	45.59
+low_P	129E	8	23.55
+low_P	129E	8	43.08
+low_P	129E	8	39.31
+low_P	129E	8	38.98
+low_P	129E	8	37.59
+low_P	129E	8	39.25
+low_P	129E	8	44.79
+low_P	129E	8	44.5
+low_P	129E	8	39.87
+low_P	129E	8	38.35
+low_P	129E	8	49.67
+low_P	129E	8	49.38
+low_P	129E	8	44.9
+low_P	129E	8	29.59
+low_P	129E	8	35.74
+low_P	129E	8	46.65
+low_P	129E	8	41.65
+low_P	129E	8	42.02
+low_P	129E	8	41.01
+low_P	129E	8	40.67
+low_P	129E	8	27.68
+low_P	129E	8	33.97
+low_P	129E	8	42.77
+low_P	129E	8	31.05
+low_P	129E	8	42.31
+low_P	129E	8	48
+low_P	129E	8	43.87
+low_P	129E	8	44.65
+low_P	129E	8	36.14
+low_P	129E	8	37.23
+high_P	mock	12	46.64
+high_P	mock	12	61.81
+high_P	mock	12	44.72
+high_P	mock	12	72.63
+high_P	mock	12	68.7
+high_P	mock	12	34.56
+high_P	mock	12	35.81
+high_P	mock	12	67.73
+high_P	mock	12	59.86
+high_P	mock	12	60.79
+high_P	mock	12	66.83
+high_P	mock	12	70.23
+high_P	mock	12	68.18
+high_P	mock	12	65.21
+high_P	mock	12	57.85
+high_P	mock	12	58.06
+high_P	mock	12	65.94
+high_P	mock	12	51.72
+high_P	mock	12	61.7
+high_P	mock	12	45.33
+high_P	mock	12	72.19
+high_P	mock	12	67.64
+high_P	mock	12	67.35
+high_P	mock	12	58.46
+high_P	mock	12	71.08
+low_P	mock	12	50.12
+low_P	mock	12	52.81
+low_P	mock	12	49.27
+low_P	mock	12	36.44
+low_P	mock	12	47.99
+low_P	mock	12	32.14
+low_P	mock	12	45.24
+low_P	mock	12	59.42
+low_P	mock	12	55.64
+low_P	mock	12	45.55
+low_P	mock	12	52.22
+low_P	mock	12	47.71
+low_P	mock	12	41.11
+low_P	mock	12	51.15
+low_P	mock	12	49.3
+low_P	mock	12	46.81
+low_P	mock	12	50.88
+low_P	mock	12	50.16
+low_P	mock	12	52.21
+low_P	mock	12	43.47
+high_P	129E	12	33.5
+high_P	129E	12	64.49
+high_P	129E	12	64.31
+high_P	129E	12	75.54
+high_P	129E	12	60.48
+high_P	129E	12	56.02
+high_P	129E	12	71.54
+high_P	129E	12	56.76
+high_P	129E	12	61.28
+high_P	129E	12	60.31
+high_P	129E	12	62.9
+high_P	129E	12	69.18
+high_P	129E	12	71.57
+high_P	129E	12	77.61
+high_P	129E	12	78.88
+high_P	129E	12	64.83
+high_P	129E	12	60.5
+high_P	129E	12	64.75
+high_P	129E	12	77.9
+low_P	129E	12	67.53
+low_P	129E	12	62.96
+low_P	129E	12	61.54
+low_P	129E	12	51.42
+low_P	129E	12	39.03
+low_P	129E	12	55.13
+low_P	129E	12	43.73
+low_P	129E	12	46.88
+low_P	129E	12	55.78
+low_P	129E	12	62.38
+low_P	129E	12	57.34
+low_P	129E	12	69.69
+low_P	129E	12	60.52
+low_P	129E	12	44.35
+low_P	129E	12	54.54
+low_P	129E	12	47.3
+low_P	129E	12	62.29
+low_P	129E	12	57.7
+low_P	129E	12	61.4
+low_P	129E	12	53.24
+low_P	129E	12	46.82
+low_P	129E	12	49.62
+high_P	mock	16	80.37
+high_P	mock	16	75.98
+high_P	mock	16	93.56
+high_P	mock	16	72.75
+high_P	mock	16	88.57
+high_P	mock	16	86.2
+high_P	mock	16	65.58
+high_P	mock	16	89.56
+high_P	mock	16	74.25
+high_P	mock	16	82.4
+high_P	mock	16	82.32
+high_P	mock	16	88.45
+high_P	129E	16	106.66
+high_P	129E	16	97.3
+high_P	129E	16	98.88
+high_P	129E	16	95.6
+high_P	129E	16	68.55
+high_P	129E	16	95.12
+high_P	129E	16	102.3
+high_P	129E	16	118.21
+high_P	129E	16	88
+high_P	129E	16	102.25
+high_P	129E	16	88.53
+high_P	129E	16	108.16
+high_P	129E	16	107.75
+low_P	mock	16	60.42
+low_P	mock	16	34.34
+low_P	mock	16	59.91
+low_P	mock	16	52.31
+low_P	mock	16	42.41
+low_P	mock	16	50.6
+low_P	mock	16	61.69
+low_P	mock	16	45.45
+low_P	mock	16	44.76
+low_P	mock	16	50.71
+low_P	mock	16	50.39
+low_P	mock	16	61.26
+low_P	mock	16	61.57
+low_P	mock	16	65.35
+low_P	mock	16	65.55
+low_P	mock	16	54.28
+low_P	mock	16	60.9
+low_P	129E	16	75.96
+low_P	129E	16	78.02
+low_P	129E	16	89.93
+low_P	129E	16	61.45
+low_P	129E	16	84.56
+low_P	129E	16	75.56
+low_P	129E	16	81.63
+low_P	129E	16	72.86
+low_P	129E	16	78.46
+low_P	129E	16	98.94
+low_P	129E	16	80.13
+low_P	129E	16	60.32
+low_P	129E	16	64.34
+low_P	129E	16	88.76
+low_P	129E	16	78.2
+low_P	129E	16	65.47
+high_P	mock	18	101.15
+high_P	mock	18	105.02
+high_P	mock	18	89.43
+high_P	mock	18	80.82
+high_P	mock	18	80.03
+high_P	mock	18	76.58
+high_P	mock	18	91.56
+high_P	mock	18	92.32
+high_P	mock	18	98.05
+high_P	mock	18	88.55
+high_P	129E	18	114.67
+high_P	129E	18	117.68
+high_P	129E	18	122.52
+high_P	129E	18	100.73
+high_P	129E	18	118.64
+high_P	129E	18	116.89
+high_P	129E	18	120.54
+high_P	129E	18	114.44
+low_P	129E	18	92.22
+low_P	129E	18	89.06
+low_P	129E	18	83.67
+low_P	129E	18	60.62
+low_P	129E	18	91.12
+low_P	129E	18	83.56
+low_P	129E	18	84.82
+low_P	129E	18	71.94
+low_P	129E	18	78.4
+low_P	mock	18	59.7
+low_P	mock	18	67.95
+low_P	mock	18	60.02
+low_P	mock	18	61.84
+low_P	mock	18	53.56
+low_P	mock	18	58
+low_P	mock	18	42.42
+low_P	mock	18	37.51
+low_P	mock	18	42.71
+low_P	mock	18	52.4
+low_P	mock	18	46.37
+high_P	mock	0	11.31
+high_P	mock	0	11.97
+high_P	mock	0	9.19
+high_P	mock	0	10.2
+high_P	mock	0	11.23
+high_P	mock	0	10.6
+high_P	mock	0	12.5
+high_P	mock	0	12.92
+high_P	mock	0	12.76
+high_P	mock	0	13.64
+high_P	mock	0	14.09
+high_P	mock	0	12.58
+high_P	mock	0	10.23
+high_P	mock	0	11.19
+high_P	mock	0	10.86
+high_P	mock	0	16
+high_P	mock	0	11.29
+high_P	mock	0	7
+high_P	mock	0	15.08
+high_P	mock	0	9.43
+high_P	mock	0	7.87
+high_P	mock	0	12.9
+high_P	mock	0	14.09
+high_P	mock	0	9.49
+high_P	mock	0	15.02
+high_P	mock	0	12.17
+high_P	mock	0	10.02
+high_P	mock	0	14.5
+high_P	mock	0	11.51
+high_P	mock	0	12.22
+low_P	mock	0	11.69
+low_P	mock	0	16.12
+low_P	mock	0	15.76
+low_P	mock	0	14.23
+low_P	mock	0	11.97
+low_P	mock	0	11.81
+low_P	mock	0	12.65
+low_P	mock	0	12.44
+low_P	mock	0	11.89
+low_P	mock	0	14.77
+low_P	mock	0	8.86
+low_P	mock	0	13.62
+low_P	mock	0	10.99
+low_P	mock	0	11.92
+low_P	mock	0	10.12
+low_P	mock	0	14.18
+low_P	mock	0	13.89
+low_P	mock	0	11.69
+low_P	mock	0	12.43
+low_P	mock	0	12.65
+low_P	mock	0	15.04
+low_P	mock	0	13.76
+low_P	mock	0	16.27
+low_P	mock	0	12.17
+low_P	mock	0	13.35
+low_P	mock	0	9.69
+low_P	mock	0	8.86
+low_P	mock	0	12.3
+low_P	mock	0	10.99
+low_P	mock	0	14.44
+high_P	129E	0	13.77
+high_P	129E	0	11.23
+high_P	129E	0	10.79
+high_P	129E	0	14.33
+high_P	129E	0	12.29
+high_P	129E	0	12.87
+high_P	129E	0	12.2
+high_P	129E	0	11.23
+high_P	129E	0	13.48
+high_P	129E	0	15.8
+high_P	129E	0	14.83
+high_P	129E	0	11.13
+high_P	129E	0	13.14
+high_P	129E	0	11.99
+high_P	129E	0	15.56
+high_P	129E	0	12.44
+high_P	129E	0	12.37
+high_P	129E	0	13.53
+high_P	129E	0	14.48
+high_P	129E	0	13.74
+high_P	129E	0	11.97
+high_P	129E	0	10.48
+high_P	129E	0	13.53
+high_P	129E	0	13.57
+high_P	129E	0	10.51
+high_P	129E	0	10.98
+high_P	129E	0	12.58
+high_P	129E	0	9.44
+high_P	129E	0	11.65
+high_P	129E	0	13.35
+low_P	129E	0	12.56
+low_P	129E	0	11.75
+low_P	129E	0	13.84
+low_P	129E	0	11.02
+low_P	129E	0	10.41
+low_P	129E	0	11.8
+low_P	129E	0	13.15
+low_P	129E	0	13.54
+low_P	129E	0	11.08
+low_P	129E	0	12.69
+low_P	129E	0	13.06
+low_P	129E	0	12.94
+low_P	129E	0	14.48
+low_P	129E	0	13.89
+low_P	129E	0	11.1
+low_P	129E	0	13.78
+low_P	129E	0	12.25
+low_P	129E	0	12.49
+low_P	129E	0	10.66
+low_P	129E	0	11.43
+low_P	129E	0	13.39
+low_P	129E	0	9.61
+low_P	129E	0	12.93
+low_P	129E	0	12.42
+low_P	129E	0	12
+low_P	129E	0	13.6
+low_P	129E	0	13.62
+high_P	mock	4	21.55
+high_P	mock	4	25.2
+high_P	mock	4	22.07
+high_P	mock	4	31.61
+high_P	mock	4	20.76
+high_P	mock	4	24.97
+high_P	mock	4	28.48
+high_P	mock	4	22.03
+high_P	mock	4	23.84
+high_P	mock	4	22.82
+high_P	mock	4	28.37
+high_P	mock	4	22.39
+high_P	mock	4	19.41
+high_P	mock	4	25.7
+high_P	mock	4	21.45
+high_P	mock	4	17.73
+high_P	mock	4	28.21
+high_P	mock	4	19.51
+high_P	mock	4	14.69
+high_P	mock	4	19.91
+high_P	mock	4	22.46
+high_P	mock	4	23.31
+high_P	mock	4	19
+high_P	mock	4	26.85
+high_P	mock	4	15.64
+high_P	mock	4	21.32
+high_P	mock	4	27.38
+high_P	mock	4	27.59
+high_P	mock	4	20.66
+high_P	mock	4	21.46
+low_P	mock	4	23.15
+low_P	mock	4	14.3
+low_P	mock	4	21.22
+low_P	mock	4	20.08
+low_P	mock	4	21.78
+low_P	mock	4	20.14
+low_P	mock	4	24.12
+low_P	mock	4	27.45
+low_P	mock	4	23.28
+low_P	mock	4	18.05
+low_P	mock	4	14.91
+low_P	mock	4	16.53
+low_P	mock	4	22.01
+low_P	mock	4	24.58
+low_P	mock	4	20.9
+low_P	mock	4	19.91
+low_P	mock	4	26.41
+low_P	mock	4	28.09
+low_P	mock	4	23.18
+low_P	mock	4	26.1
+low_P	mock	4	19.31
+low_P	mock	4	19.7
+low_P	mock	4	26.37
+low_P	mock	4	26.38
+low_P	mock	4	24.08
+low_P	mock	4	23.76
+low_P	mock	4	19.37
+low_P	mock	4	26.75
+low_P	mock	4	28.71
+low_P	mock	4	19.32
+high_P	129E	4	16.62
+high_P	129E	4	19.14
+high_P	129E	4	18.44
+high_P	129E	4	27.21
+high_P	129E	4	22.47
+high_P	129E	4	27.5
+high_P	129E	4	17.12
+high_P	129E	4	23.09
+high_P	129E	4	18.39
+high_P	129E	4	20.41
+high_P	129E	4	14.95
+high_P	129E	4	17.35
+high_P	129E	4	22.89
+high_P	129E	4	24.74
+high_P	129E	4	28.98
+high_P	129E	4	26
+high_P	129E	4	23.6
+high_P	129E	4	25.59
+high_P	129E	4	25.95
+high_P	129E	4	24.47
+high_P	129E	4	19.6
+high_P	129E	4	29.26
+high_P	129E	4	25.8
+high_P	129E	4	25.24
+high_P	129E	4	19.78
+high_P	129E	4	14.61
+high_P	129E	4	22.3
+high_P	129E	4	17.55
+high_P	129E	4	23.16
+high_P	129E	4	18.89
+low_P	129E	4	18.02
+low_P	129E	4	26.65
+low_P	129E	4	25.2
+low_P	129E	4	22.68
+low_P	129E	4	11.12
+low_P	129E	4	23.51
+low_P	129E	4	18.57
+low_P	129E	4	22.88
+low_P	129E	4	20.86
+low_P	129E	4	25.13
+low_P	129E	4	14.92
+low_P	129E	4	20.21
+low_P	129E	4	23.71
+low_P	129E	4	27.51
+low_P	129E	4	18.06
+low_P	129E	4	24.14
+low_P	129E	4	25.6
+low_P	129E	4	21.71
+low_P	129E	4	17.98
+low_P	129E	4	19.95
+low_P	129E	4	22.25
+low_P	129E	4	19.43
+low_P	129E	4	17.23
+low_P	129E	4	18.71
+low_P	129E	4	20.85
+low_P	129E	4	22.26
+low_P	129E	4	21.83
+low_P	129E	4	22.05
+low_P	129E	4	20.23
+low_P	129E	4	18.25
+high_P	mock	8	33.37
+high_P	mock	8	38.36
+high_P	mock	8	43.89
+high_P	mock	8	43.29
+high_P	mock	8	42.85
+high_P	mock	8	44
+high_P	mock	8	45.87
+high_P	mock	8	42.71
+high_P	mock	8	31.03
+high_P	mock	8	44.79
+high_P	mock	8	34.28
+high_P	mock	8	29.83
+high_P	mock	8	40.25
+high_P	mock	8	28.42
+high_P	mock	8	27.37
+high_P	mock	8	38.81
+high_P	mock	8	40.19
+high_P	mock	8	36.77
+high_P	mock	8	32.85
+high_P	mock	8	33.14
+high_P	mock	8	43.47
+high_P	mock	8	43.51
+high_P	mock	8	37.62
+high_P	mock	8	31.88
+high_P	mock	8	42.15
+high_P	mock	8	37.67
+high_P	mock	8	39.91
+high_P	mock	8	42.15
+high_P	mock	8	34.39
+high_P	mock	8	48.86
+low_P	mock	8	28.24
+low_P	mock	8	31.24
+low_P	mock	8	34.89
+low_P	mock	8	26.92
+low_P	mock	8	39.82
+low_P	mock	8	43.29
+low_P	mock	8	34.57
+low_P	mock	8	32.13
+low_P	mock	8	34.92
+low_P	mock	8	40.35
+low_P	mock	8	37.89
+low_P	mock	8	38.06
+low_P	mock	8	35.78
+low_P	mock	8	39.51
+low_P	mock	8	37.32
+low_P	mock	8	42.2
+low_P	mock	8	39.56
+low_P	mock	8	38.7
+low_P	mock	8	35.72
+low_P	mock	8	26
+low_P	mock	8	39.33
+low_P	mock	8	39.94
+low_P	mock	8	41.93
+low_P	mock	8	41.93
+low_P	mock	8	33.28
+low_P	mock	8	40.02
+low_P	mock	8	38.12
+low_P	mock	8	40.31
+low_P	mock	8	41.83
+low_P	mock	8	34.68
+high_P	129E	8	26.6
+high_P	129E	8	33.63
+high_P	129E	8	33.87
+high_P	129E	8	35.46
+high_P	129E	8	32.61
+high_P	129E	8	27.73
+high_P	129E	8	31.74
+high_P	129E	8	30.6
+high_P	129E	8	31.38
+high_P	129E	8	34.06
+high_P	129E	8	49.83
+high_P	129E	8	44.05
+high_P	129E	8	45.11
+high_P	129E	8	48.02
+high_P	129E	8	35.88
+high_P	129E	8	44.19
+high_P	129E	8	48.52
+high_P	129E	8	56.24
+high_P	129E	8	48.98
+high_P	129E	8	37.77
+high_P	129E	8	40.14
+high_P	129E	8	30.39
+high_P	129E	8	33.03
+high_P	129E	8	43.93
+high_P	129E	8	38.46
+high_P	129E	8	38.63
+high_P	129E	8	27.32
+high_P	129E	8	48.93
+high_P	129E	8	29.32
+high_P	129E	8	49.33
+low_P	129E	8	42.52
+low_P	129E	8	36.14
+low_P	129E	8	43.11
+low_P	129E	8	41.06
+low_P	129E	8	38.13
+low_P	129E	8	34.98
+low_P	129E	8	31.09
+low_P	129E	8	46.49
+low_P	129E	8	34.59
+low_P	129E	8	43.95
+low_P	129E	8	37.85
+low_P	129E	8	28.25
+low_P	129E	8	36.11
+low_P	129E	8	35.34
+low_P	129E	8	31.94
+low_P	129E	8	29.87
+low_P	129E	8	43.16
+low_P	129E	8	25.02
+low_P	129E	8	39.32
+low_P	129E	8	34.38
+low_P	129E	8	34.89
+low_P	129E	8	32
+low_P	129E	8	41.81
+low_P	129E	8	36.5
+low_P	129E	8	32.86
+low_P	129E	8	34.28
+low_P	129E	8	38.58
+low_P	129E	8	39.52
+low_P	129E	8	29
+low_P	129E	8	39.48
+high_P	mock	12	59.17
+high_P	mock	12	62.88
+high_P	mock	12	62.86
+high_P	mock	12	59.49
+high_P	mock	12	60.1
+high_P	mock	12	52.82
+high_P	mock	12	57.55
+high_P	mock	12	56.75
+high_P	mock	12	59.98
+high_P	mock	12	59.9
+high_P	mock	12	58.35
+high_P	mock	12	52.94
+high_P	mock	12	57.49
+high_P	mock	12	45.02
+high_P	mock	12	53
+high_P	mock	12	60.74
+high_P	mock	12	68.63
+high_P	mock	12	55.32
+high_P	mock	12	60.71
+high_P	mock	12	54.76
+high_P	mock	12	55.31
+high_P	mock	12	61.51
+high_P	mock	12	57.24
+high_P	mock	12	43.2
+high_P	mock	12	59.43
+high_P	mock	12	57.02
+low_P	mock	12	45.07
+low_P	mock	12	37.56
+low_P	mock	12	52.39
+low_P	mock	12	42.08
+low_P	mock	12	43.41
+low_P	mock	12	33.33
+low_P	mock	12	37.76
+low_P	mock	12	38.47
+low_P	mock	12	37.02
+low_P	mock	12	44.89
+low_P	mock	12	43.28
+low_P	mock	12	47.51
+low_P	mock	12	45.19
+low_P	mock	12	48.85
+low_P	mock	12	46.94
+low_P	mock	12	46.7
+low_P	mock	12	44.58
+low_P	mock	12	54.77
+low_P	mock	12	32.85
+low_P	mock	12	49.2
+low_P	mock	12	46.94
+low_P	mock	12	50.04
+high_P	129E	12	66.56
+high_P	129E	12	72.68
+high_P	129E	12	54.92
+high_P	129E	12	54.69
+high_P	129E	12	63.37
+high_P	129E	12	65.31
+high_P	129E	12	65.34
+high_P	129E	12	68.31
+high_P	129E	12	46.43
+high_P	129E	12	46.21
+high_P	129E	12	47.45
+high_P	129E	12	32.44
+high_P	129E	12	50.64
+high_P	129E	12	60.47
+high_P	129E	12	52.35
+high_P	129E	12	42.19
+high_P	129E	12	50.62
+high_P	129E	12	37.88
+high_P	129E	12	53.37
+high_P	129E	12	52.25
+high_P	129E	12	52.75
+high_P	129E	12	60.55
+high_P	129E	12	44.32
+high_P	129E	12	59.87
+high_P	129E	12	43.56
+low_P	129E	12	61.17
+low_P	129E	12	51.8
+low_P	129E	12	55.53
+low_P	129E	12	58.1
+low_P	129E	12	52.04
+low_P	129E	12	37.47
+low_P	129E	12	42.65
+low_P	129E	12	50.9
+low_P	129E	12	50.9
+low_P	129E	12	52.01
+low_P	129E	12	51.26
+low_P	129E	12	53.57
+low_P	129E	12	51.44
+low_P	129E	12	54.31
+low_P	129E	12	48.92
+low_P	129E	12	41.65
+low_P	129E	12	61.3
+low_P	129E	12	54.57
+low_P	129E	12	49.35
+low_P	129E	12	57.8
+low_P	129E	12	61.56
+low_P	129E	12	47.51
+low_P	129E	12	49.25
+low_P	129E	12	65.59
+low_P	129E	12	55.25
+low_P	129E	12	55.27
+low_P	129E	12	48.28
+low_P	129E	12	54.27
+low_P	129E	12	54.09
+high_P	mock	16	77.58
+high_P	mock	16	65.72
+high_P	mock	16	83.06
+high_P	mock	16	84.12
+high_P	mock	16	73.44
+high_P	mock	16	70.55
+high_P	mock	16	80.71
+high_P	mock	16	65.58
+high_P	mock	16	67.96
+high_P	mock	16	85.05
+high_P	mock	16	81.42
+high_P	mock	16	85.07
+high_P	mock	16	76.36
+high_P	mock	16	79.93
+high_P	mock	16	85.37
+high_P	mock	16	82.31
+high_P	mock	16	81.93
+high_P	mock	16	82.7
+high_P	129E	16	95.99
+high_P	129E	16	85.67
+high_P	129E	16	94.9
+high_P	129E	16	105.01
+high_P	129E	16	89.53
+high_P	129E	16	88.47
+high_P	129E	16	93.28
+high_P	129E	16	94.95
+high_P	129E	16	91.55
+high_P	129E	16	93.3
+high_P	129E	16	83.55
+high_P	129E	16	96.67
+high_P	129E	16	107.04
+high_P	129E	16	106.66
+low_P	mock	16	56.47
+low_P	mock	16	60.15
+low_P	mock	16	56.52
+low_P	mock	16	51.18
+low_P	mock	16	53.51
+low_P	mock	16	37.36
+low_P	mock	16	65.73
+low_P	mock	16	57.26
+low_P	mock	16	53.85
+low_P	mock	16	50.96
+low_P	mock	16	50.35
+low_P	mock	16	40.99
+low_P	mock	16	47.87
+low_P	mock	16	51.36
+low_P	mock	16	49.94
+low_P	mock	16	64.32
+low_P	mock	16	59.68
+low_P	129E	16	76.92
+low_P	129E	16	75.04
+low_P	129E	16	71.04
+low_P	129E	16	70.7
+low_P	129E	16	58.95
+low_P	129E	16	74.26
+low_P	129E	16	59.74
+low_P	129E	16	79.72
+low_P	129E	16	69.35
+low_P	129E	16	56.45
+low_P	129E	16	80.97
+low_P	129E	16	65.66
+low_P	129E	16	59.29
+low_P	129E	16	62.79
+low_P	129E	16	65.36
+low_P	129E	16	60.43
+high_P	mock	18	67.88
+high_P	mock	18	82.28
+high_P	mock	18	76.76
+high_P	mock	18	74.07
+high_P	mock	18	57.74
+high_P	mock	18	77.84
+high_P	mock	18	75.56
+high_P	mock	18	89.71
+high_P	mock	18	76.8
+high_P	mock	18	72.04
+high_P	mock	18	81.69
+high_P	129E	18	103.93
+high_P	129E	18	108.27
+high_P	129E	18	113.37
+high_P	129E	18	86.74
+high_P	129E	18	120.21
+high_P	129E	18	111.4
+high_P	129E	18	120.88
+high_P	129E	18	115.76
+high_P	129E	18	121.36
+high_P	129E	18	119.48
+high_P	129E	18	113.01
+low_P	129E	18	74.08
+low_P	129E	18	70.52
+low_P	129E	18	79.78
+low_P	129E	18	85.81
+low_P	129E	18	78.33
+low_P	129E	18	53.6
+low_P	129E	18	62.71
+low_P	129E	18	53.44
+low_P	129E	18	57.16
+low_P	129E	18	81.05
+low_P	129E	18	61.27
+low_P	129E	18	76.61
+low_P	129E	18	81.26
+low_P	mock	18	53.79
+low_P	mock	18	56.97
+low_P	mock	18	59.12
+low_P	mock	18	50.12
+low_P	mock	18	68.4
+low_P	mock	18	49.26
+low_P	mock	18	55.93
+low_P	mock	18	56.89
+low_P	mock	18	53.23
+low_P	mock	18	52.42
+low_P	mock	18	63.15
+low_P	mock	18	62.97
+low_P	mock	18	58.26
+high_P	mock	0	16.82
+high_P	mock	0	15.33
+high_P	mock	0	12.8
+high_P	mock	0	14.15
+high_P	mock	0	13.55
+high_P	mock	0	12.61
+high_P	mock	0	14.57
+high_P	mock	0	17.28
+high_P	mock	0	12.87
+high_P	mock	0	18.84
+high_P	mock	0	14.12
+high_P	mock	0	12.75
+high_P	mock	0	12.18
+high_P	mock	0	11.18
+high_P	mock	0	15.13
+high_P	mock	0	14.14
+high_P	mock	0	13.53
+high_P	mock	0	16.61
+high_P	mock	0	12.15
+high_P	mock	0	15.31
+high_P	mock	0	12.7
+high_P	mock	0	13.47
+high_P	mock	0	14.98
+high_P	mock	0	13.12
+high_P	mock	0	12.91
+high_P	mock	0	11.6
+high_P	mock	0	19.15
+high_P	mock	0	15.36
+high_P	mock	0	15.81
+high_P	mock	0	19.65
+low_P	mock	0	13.78
+low_P	mock	0	15.69
+low_P	mock	0	13.93
+low_P	mock	0	17.78
+low_P	mock	0	15.76
+low_P	mock	0	15.19
+low_P	mock	0	13.96
+low_P	mock	0	14.52
+low_P	mock	0	18.76
+low_P	mock	0	16.68
+low_P	mock	0	14.91
+low_P	mock	0	14.73
+low_P	mock	0	17.86
+low_P	mock	0	12.87
+low_P	mock	0	14.7
+low_P	mock	0	12.56
+low_P	mock	0	15.45
+low_P	mock	0	13.83
+low_P	mock	0	14.38
+low_P	mock	0	15.1
+low_P	mock	0	16.07
+low_P	mock	0	17.19
+low_P	mock	0	14.71
+low_P	mock	0	14.17
+low_P	mock	0	14.33
+low_P	mock	0	15.45
+low_P	mock	0	16.65
+low_P	mock	0	12.94
+low_P	mock	0	12.56
+low_P	mock	0	13.73
+high_P	129E	0	13.54
+high_P	129E	0	18.03
+high_P	129E	0	16.1
+high_P	129E	0	20.45
+high_P	129E	0	15.06
+high_P	129E	0	13.51
+high_P	129E	0	19.22
+high_P	129E	0	16.48
+high_P	129E	0	18.63
+high_P	129E	0	15.63
+high_P	129E	0	17.32
+high_P	129E	0	15.28
+high_P	129E	0	11.84
+high_P	129E	0	14.09
+high_P	129E	0	17.12
+high_P	129E	0	14.9
+high_P	129E	0	14.57
+high_P	129E	0	20.11
+high_P	129E	0	16.62
+high_P	129E	0	18.35
+high_P	129E	0	11.91
+high_P	129E	0	18.82
+high_P	129E	0	14.51
+high_P	129E	0	18.86
+high_P	129E	0	16.63
+high_P	129E	0	17.47
+high_P	129E	0	17.06
+high_P	129E	0	13.75
+high_P	129E	0	18.4
+high_P	129E	0	17.29
+low_P	129E	0	11.58
+low_P	129E	0	16.61
+low_P	129E	0	15.97
+low_P	129E	0	16.56
+low_P	129E	0	15.79
+low_P	129E	0	14.23
+low_P	129E	0	16.17
+low_P	129E	0	15.13
+low_P	129E	0	17
+low_P	129E	0	16.79
+low_P	129E	0	14.32
+low_P	129E	0	15.62
+low_P	129E	0	14.4
+low_P	129E	0	13.43
+low_P	129E	0	14.12
+low_P	129E	0	16.51
+low_P	129E	0	20.81
+low_P	129E	0	17.19
+low_P	129E	0	15.49
+low_P	129E	0	17.06
+low_P	129E	0	12.02
+low_P	129E	0	13.67
+low_P	129E	0	16.13
+low_P	129E	0	18.12
+low_P	129E	0	19.08
+low_P	129E	0	13.19
+low_P	129E	0	16.33
+low_P	129E	0	15.55
+low_P	129E	0	18.45
+low_P	129E	0	17.25
+high_P	mock	4	31.67
+high_P	mock	4	20.63
+high_P	mock	4	26.28
+high_P	mock	4	25.83
+high_P	mock	4	23.93
+high_P	mock	4	28.76
+high_P	mock	4	33.92
+high_P	mock	4	32.89
+high_P	mock	4	25.88
+high_P	mock	4	28.2
+high_P	mock	4	29.05
+high_P	mock	4	25.09
+high_P	mock	4	24.91
+high_P	mock	4	23.83
+high_P	mock	4	23.24
+high_P	mock	4	22.84
+high_P	mock	4	32.69
+high_P	mock	4	22.32
+high_P	mock	4	24.75
+high_P	mock	4	29.45
+high_P	mock	4	22.66
+high_P	mock	4	25.12
+high_P	mock	4	22.08
+high_P	mock	4	27.18
+high_P	mock	4	26.58
+high_P	mock	4	25.65
+high_P	mock	4	24.75
+high_P	mock	4	21.7
+high_P	mock	4	25.61
+high_P	mock	4	28.78
+low_P	mock	4	21.87
+low_P	mock	4	22.98
+low_P	mock	4	19.12
+low_P	mock	4	22.72
+low_P	mock	4	22.17
+low_P	mock	4	24.36
+low_P	mock	4	24.02
+low_P	mock	4	22.96
+low_P	mock	4	26.19
+low_P	mock	4	29.74
+low_P	mock	4	24.13
+low_P	mock	4	26.75
+low_P	mock	4	22.48
+low_P	mock	4	22.11
+low_P	mock	4	24.9
+low_P	mock	4	24.32
+low_P	mock	4	20.73
+low_P	mock	4	22.91
+low_P	mock	4	23.8
+low_P	mock	4	21.76
+low_P	mock	4	25.23
+low_P	mock	4	28.79
+low_P	mock	4	24.7
+low_P	mock	4	24.53
+low_P	mock	4	22.49
+low_P	mock	4	22.64
+low_P	mock	4	28.18
+low_P	mock	4	19.85
+low_P	mock	4	23.09
+low_P	mock	4	20.1
+high_P	129E	4	25.79
+high_P	129E	4	22.12
+high_P	129E	4	28.83
+high_P	129E	4	24.87
+high_P	129E	4	21.04
+high_P	129E	4	26.7
+high_P	129E	4	28.96
+high_P	129E	4	22.68
+high_P	129E	4	32.38
+high_P	129E	4	16.86
+high_P	129E	4	27.18
+high_P	129E	4	20.17
+high_P	129E	4	22.56
+high_P	129E	4	21.8
+high_P	129E	4	23.3
+high_P	129E	4	23.69
+high_P	129E	4	29.07
+high_P	129E	4	28.34
+high_P	129E	4	21.16
+high_P	129E	4	18.82
+high_P	129E	4	22.88
+high_P	129E	4	21.15
+high_P	129E	4	25.89
+high_P	129E	4	25.49
+high_P	129E	4	25.72
+high_P	129E	4	28.44
+high_P	129E	4	26.67
+high_P	129E	4	24.32
+high_P	129E	4	25.95
+high_P	129E	4	27.59
+low_P	129E	4	21.05
+low_P	129E	4	22.71
+low_P	129E	4	22.51
+low_P	129E	4	20.75
+low_P	129E	4	21.83
+low_P	129E	4	28.34
+low_P	129E	4	26.34
+low_P	129E	4	26
+low_P	129E	4	26.02
+low_P	129E	4	23.93
+low_P	129E	4	23.46
+low_P	129E	4	21.31
+low_P	129E	4	24.6
+low_P	129E	4	24.86
+low_P	129E	4	24.8
+low_P	129E	4	22.96
+low_P	129E	4	28.64
+low_P	129E	4	25.63
+low_P	129E	4	24.15
+low_P	129E	4	29.1
+low_P	129E	4	19.67
+low_P	129E	4	23.61
+low_P	129E	4	26.74
+low_P	129E	4	22.18
+low_P	129E	4	26.18
+low_P	129E	4	17.08
+low_P	129E	4	23.48
+low_P	129E	4	23.78
+low_P	129E	4	23.66
+low_P	129E	4	22.67
+high_P	mock	8	46.62
+high_P	mock	8	51.69
+high_P	mock	8	52.6
+high_P	mock	8	49.05
+high_P	mock	8	45.39
+high_P	mock	8	54.54
+high_P	mock	8	44.61
+high_P	mock	8	52.53
+high_P	mock	8	54.19
+high_P	mock	8	40.6
+high_P	mock	8	41.59
+high_P	mock	8	39.23
+high_P	mock	8	42.09
+high_P	mock	8	43.57
+high_P	mock	8	50.25
+high_P	mock	8	36.79
+high_P	mock	8	36.47
+high_P	mock	8	36.82
+high_P	mock	8	42.73
+high_P	mock	8	46.71
+high_P	mock	8	51.03
+high_P	mock	8	46.89
+high_P	mock	8	47.88
+high_P	mock	8	44.38
+high_P	mock	8	45.26
+high_P	mock	8	46.38
+high_P	mock	8	49.68
+high_P	mock	8	45.61
+high_P	mock	8	41.63
+high_P	mock	8	47.69
+low_P	mock	8	43.91
+low_P	mock	8	37.26
+low_P	mock	8	41.63
+low_P	mock	8	40.65
+low_P	mock	8	43.09
+low_P	mock	8	39.19
+low_P	mock	8	36.81
+low_P	mock	8	38.43
+low_P	mock	8	40.62
+low_P	mock	8	45.22
+low_P	mock	8	37.84
+low_P	mock	8	40.95
+low_P	mock	8	40.54
+low_P	mock	8	45.79
+low_P	mock	8	51.85
+low_P	mock	8	44.07
+low_P	mock	8	38.53
+low_P	mock	8	48.13
+low_P	mock	8	37.78
+low_P	mock	8	43.37
+low_P	mock	8	41.06
+low_P	mock	8	41.26
+low_P	mock	8	39.9
+low_P	mock	8	43.73
+low_P	mock	8	38.71
+low_P	mock	8	37.38
+low_P	mock	8	38.33
+low_P	mock	8	39
+low_P	mock	8	34.82
+low_P	mock	8	41.04
+high_P	129E	8	53.53
+high_P	129E	8	37.32
+high_P	129E	8	38.42
+high_P	129E	8	31.43
+high_P	129E	8	37.95
+high_P	129E	8	47.5
+high_P	129E	8	41.85
+high_P	129E	8	35.18
+high_P	129E	8	35.07
+high_P	129E	8	45.62
+high_P	129E	8	49.51
+high_P	129E	8	46.69
+high_P	129E	8	53.1
+high_P	129E	8	39.13
+high_P	129E	8	48.29
+high_P	129E	8	48.78
+high_P	129E	8	48.12
+high_P	129E	8	48.84
+high_P	129E	8	46.92
+high_P	129E	8	47.15
+high_P	129E	8	45.47
+high_P	129E	8	42.03
+high_P	129E	8	37.71
+high_P	129E	8	30.53
+high_P	129E	8	38.81
+high_P	129E	8	41.31
+high_P	129E	8	46.17
+high_P	129E	8	56.39
+high_P	129E	8	55.84
+high_P	129E	8	51.08
+low_P	129E	8	44.81
+low_P	129E	8	36.76
+low_P	129E	8	44.9
+low_P	129E	8	39.65
+low_P	129E	8	39.87
+low_P	129E	8	39.54
+low_P	129E	8	35.83
+low_P	129E	8	38.24
+low_P	129E	8	36.5
+low_P	129E	8	39.16
+low_P	129E	8	43.12
+low_P	129E	8	35.26
+low_P	129E	8	43.31
+low_P	129E	8	43.49
+low_P	129E	8	47.46
+low_P	129E	8	40.6
+low_P	129E	8	39.28
+low_P	129E	8	36.66
+low_P	129E	8	39.94
+low_P	129E	8	35.37
+low_P	129E	8	35.36
+low_P	129E	8	36.64
+low_P	129E	8	39.04
+low_P	129E	8	38.52
+low_P	129E	8	41.54
+low_P	129E	8	43.65
+low_P	129E	8	42.39
+low_P	129E	8	36.16
+low_P	129E	8	30.14
+low_P	129E	8	38.94
+high_P	mock	12	58.92
+high_P	mock	12	74.35
+high_P	mock	12	67.12
+high_P	mock	12	57.76
+high_P	mock	12	73.06
+high_P	mock	12	70.94
+high_P	mock	12	74.34
+high_P	mock	12	63.57
+high_P	mock	12	59.57
+high_P	mock	12	58.84
+high_P	mock	12	72.15
+high_P	mock	12	72.32
+high_P	mock	12	80.26
+high_P	mock	12	68.16
+high_P	mock	12	61.98
+high_P	mock	12	70.47
+high_P	mock	12	63.62
+high_P	mock	12	72.67
+high_P	mock	12	64.09
+high_P	mock	12	76.64
+high_P	mock	12	70.6
+high_P	mock	12	71.75
+high_P	mock	12	72.05
+high_P	mock	12	71.42
+high_P	mock	12	75.59
+high_P	mock	12	70.24
+high_P	mock	12	69.88
+high_P	mock	12	61.42
+low_P	mock	12	46.14
+low_P	mock	12	47
+low_P	mock	12	34.28
+low_P	mock	12	52.91
+low_P	mock	12	41.2
+low_P	mock	12	51.04
+low_P	mock	12	47.56
+low_P	mock	12	51.86
+low_P	mock	12	53.2
+low_P	mock	12	44.28
+low_P	mock	12	55.45
+low_P	mock	12	58.47
+low_P	mock	12	62.06
+low_P	mock	12	53.68
+low_P	mock	12	52.45
+low_P	mock	12	52.99
+low_P	mock	12	55.18
+low_P	mock	12	49.3
+low_P	mock	12	50.82
+low_P	mock	12	54.27
+low_P	mock	12	59.09
+low_P	mock	12	46.15
+low_P	mock	12	54.35
+low_P	mock	12	51.67
+low_P	mock	12	46.85
+low_P	mock	12	51.34
+low_P	mock	12	59.01
+low_P	mock	12	57.4
+low_P	mock	12	52.31
+high_P	129E	12	63.89
+high_P	129E	12	51.4
+high_P	129E	12	55.91
+high_P	129E	12	87.88
+high_P	129E	12	91.73
+high_P	129E	12	71.06
+high_P	129E	12	76.56
+high_P	129E	12	61.22
+high_P	129E	12	65.92
+high_P	129E	12	76.75
+high_P	129E	12	70.57
+high_P	129E	12	73.6
+high_P	129E	12	77.35
+high_P	129E	12	83.83
+high_P	129E	12	73.4
+high_P	129E	12	56.66
+high_P	129E	12	66.07
+high_P	129E	12	73.82
+high_P	129E	12	68.25
+high_P	129E	12	79.87
+high_P	129E	12	70.47
+high_P	129E	12	66.87
+high_P	129E	12	75.09
+high_P	129E	12	70.52
+high_P	129E	12	72.53
+high_P	129E	12	47.85
+high_P	129E	12	66.14
+high_P	129E	12	66.49
+low_P	129E	12	55.87
+low_P	129E	12	58.14
+low_P	129E	12	63.69
+low_P	129E	12	51.34
+low_P	129E	12	66.58
+low_P	129E	12	60.05
+low_P	129E	12	55.98
+low_P	129E	12	52.87
+low_P	129E	12	59.15
+low_P	129E	12	62.46
+low_P	129E	12	52.01
+low_P	129E	12	53.25
+low_P	129E	12	56.01
+low_P	129E	12	52.84
+low_P	129E	12	57.11
+low_P	129E	12	54.66
+low_P	129E	12	59.91
+low_P	129E	12	54.45
+low_P	129E	12	57.45
+low_P	129E	12	54.18
+low_P	129E	12	62.19
+low_P	129E	12	52.46
+low_P	129E	12	60.71
+low_P	129E	12	59.99
+low_P	129E	12	58.01
+low_P	129E	12	53.97
+low_P	129E	12	55.8
+low_P	129E	12	58.92
+high_P	mock	16	86.83
+high_P	mock	16	87.58
+high_P	mock	16	98.97
+high_P	mock	16	88.05
+high_P	mock	16	97.06
+high_P	mock	16	81.41
+high_P	mock	16	90.49
+high_P	mock	16	86.44
+high_P	mock	16	87.96
+high_P	mock	16	80.57
+high_P	mock	16	82.66
+high_P	mock	16	91.66
+high_P	mock	16	90.63
+high_P	mock	16	87.85
+high_P	mock	16	76.83
+high_P	mock	16	89.86
+high_P	129E	16	104.7
+high_P	129E	16	106.19
+high_P	129E	16	103.97
+high_P	129E	16	109.28
+high_P	129E	16	114.43
+high_P	129E	16	103.03
+high_P	129E	16	105.68
+high_P	129E	16	102.36
+high_P	129E	16	90.29
+high_P	129E	16	91.75
+high_P	129E	16	92.13
+high_P	129E	16	99.95
+high_P	129E	16	88.79
+high_P	129E	16	107.49
+high_P	129E	16	113.2
+high_P	129E	16	121.92
+high_P	129E	16	112.09
+high_P	129E	16	115.49
+low_P	mock	16	49.47
+low_P	mock	16	51.91
+low_P	mock	16	52.71
+low_P	mock	16	48.45
+low_P	mock	16	43.36
+low_P	mock	16	52.36
+low_P	mock	16	55.55
+low_P	mock	16	52.93
+low_P	mock	16	57.23
+low_P	mock	16	55.21
+low_P	mock	16	49
+low_P	mock	16	51.74
+low_P	mock	16	38.39
+low_P	mock	16	49.63
+low_P	mock	16	44.87
+low_P	129E	16	81.23
+low_P	129E	16	58.44
+low_P	129E	16	68.99
+low_P	129E	16	72.48
+low_P	129E	16	66.72
+low_P	129E	16	66.48
+low_P	129E	16	68.97
+low_P	129E	16	82.95
+low_P	129E	16	76.37
+low_P	129E	16	71.76
+low_P	129E	16	70.81
+low_P	129E	16	70.6
+low_P	129E	16	77.08
+low_P	129E	16	76.44
+low_P	129E	16	80.93
+low_P	129E	16	70.43
+low_P	129E	16	72.63
+low_P	129E	16	59.86
+high_P	mock	18	82.64
+high_P	mock	18	95.44
+high_P	mock	18	97.78
+high_P	mock	18	83.48
+high_P	mock	18	89.87
+high_P	mock	18	62.57
+high_P	mock	18	70.78
+high_P	mock	18	83.91
+high_P	mock	18	86.48
+high_P	mock	18	84.39
+high_P	mock	18	86.96
+high_P	mock	18	100.53
+high_P	mock	18	77.92
+high_P	mock	18	99.78
+high_P	mock	18	80.75
+high_P	129E	18	102.97
+high_P	129E	18	104.3
+high_P	129E	18	81.22
+high_P	129E	18	98.57
+high_P	129E	18	87.1
+high_P	129E	18	88.55
+high_P	129E	18	119.27
+high_P	129E	18	110.74
+high_P	129E	18	113.04
+high_P	129E	18	105.44
+high_P	129E	18	95.42
+high_P	129E	18	99.07
+high_P	129E	18	111.18
+low_P	129E	18	86.33
+low_P	129E	18	88.59
+low_P	129E	18	84.44
+low_P	129E	18	75.49
+low_P	129E	18	80.15
+low_P	129E	18	82.76
+low_P	129E	18	79.63
+low_P	129E	18	77.73
+low_P	129E	18	93.8
+low_P	129E	18	90.27
+low_P	129E	18	75.6
+low_P	129E	18	62.62
+low_P	129E	18	86.2
+low_P	129E	18	78.01
+low_P	mock	18	67.19
+low_P	mock	18	61.04
+low_P	mock	18	53.14
+low_P	mock	18	57.32
+low_P	mock	18	68.33
+low_P	mock	18	66
+low_P	mock	18	72.56
+low_P	mock	18	63.06
+low_P	mock	18	58.73
+low_P	mock	18	57.14
+low_P	mock	18	61.11
+low_P	mock	18	60.22
+low_P	mock	18	57.55
+low_P	mock	18	51.05

@@ -18,11 +18,8 @@ library(knitr)
 library(kableExtra)
 
 #read in data
-timecourse <- read.table("data/Timecourse.txt", sep="\t", header=T,  quote = "")
-growth_data <- read.table("data/Growth_Data.txt", sep="\t", header=T,  quote = "")
-
-#remove NAs
-timecourse_noNA <- timecourse[!is.na(timecourse$Rootlength), ]
+timecourse <- read.table("data/Timecourse.txt", sep = "\t", header = TRUE, quote = "")
+growth_data <- read.table("data/Growth_Data.txt", sep = "\t", header = TRUE, quote = "")
 ```
 
 
@@ -134,34 +131,41 @@ This of course is a very simplistic example. But if-else statements can be usefu
 Specifically, we want to:
 
 - Create a new column, with the name `category`
-- If a value in our Root length column is equal to or smaller than 10, we want to say this category is small.
+- If a value in our Root length column is equal to or smaller than 75 mm (about the median), we want to say this category is small.
 - If that is not the case, we want to say it is large
 
 
 ```{r}
 #apply ifelse
-growth_data$category <- ifelse(growth_data$Rootlength<=10.0, "small", "large")
+growth_data$category <- ifelse(growth_data$Rootlength <= 75, "small", "large")
 
-#check the structure of our data
-kable(growth_data) %>%
-  kable_styling() %>%
-  scroll_box(width = "700px", height = "400px")
+#check the first rows of our data
+head(growth_data)
 ```
 
 So the function works like this:
 
 **ifelse(our_test, value_to_return_if_test_is_true, value_to_return_if_test_is_false)**
 
-We can also combine different statements with the & (AND) or | (OR) symbol. 
-I.e. we only send things in the big category if the roots are longer than 10cm AND the shoot weight is larger than 15mg
+If the root length is missing (`NA`), the test can't be answered, and `ifelse()` returns `NA` as well.
+
+We can also combine different statements with the & (AND) or | (OR) symbol.
+I.e. we only send things in the large category if the roots are longer than 75 mm AND the shoot weight is larger than 15 mg
 
 ```{r}
 #apply ifelse
-growth_data$category <- ifelse(growth_data$Rootlength>10 & growth_data$FW_shoot_mg>15, "large", "small")
+growth_data$category <- ifelse(growth_data$Rootlength > 75 & growth_data$FW_shoot_mg > 15, "large", "small")
 
-#check the structure of our data
-kable(growth_data) %>%
-  kable_styling() %>%
-  scroll_box(width = "700px", height = "400px")
+#check the first rows of our data
+head(growth_data)
 ```
+
+What happens with the plants where the shoot weight is missing? Let's look at them:
+
+```{r}
+#show the rows where the shoot weight is missing
+growth_data[is.na(growth_data$FW_shoot_mg), ]
+```
+
+Some of them are `small` and some are `NA`. Why? For the plants with roots shorter than 75 mm, the first test is already FALSE. With AND, both tests must be TRUE, so the result is FALSE, whatever the shoot weight is. R only returns `NA` if the answer really depends on the missing value: when the roots are longer than 75 mm, the result depends on the shoot weight, and that is unknown.
 

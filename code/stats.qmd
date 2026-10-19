@@ -8,6 +8,12 @@ df-print: paged
 
 # Statistics in R
 
+::: {.callout-warning}
+## Work in progress
+
+This chapter was recently updated to new example datasets. The code runs, but the explanations of the results are drafts that are still being checked. Please read the interpretations with care.
+:::
+
 
 A lot of helpful information that that was used here was inspired by a more detailed site that can be found [here](http://www.learnbymarketing.com/tutorials/linear-regression-in-r/)
 
@@ -23,25 +29,29 @@ library(knitr)
 library(kableExtra)
 
 #read in data
-timecourse <- read.table("data/Timecourse.txt", sep="\t", header=T,  quote = "")
-growth_data <- read.table("data/Growth_Data.txt", sep="\t", header=T,  quote = "")
-
-#remove NAs
-timecourse_noNA <- timecourse[!is.na(timecourse$Rootlength), ]
+timecourse <- read.table("data/Timecourse.txt", sep = "\t", header = TRUE, quote = "")
+growth_data <- read.table("data/Growth_Data.txt", sep = "\t", header = TRUE, quote = "")
 ```
 
 
 
 ## Summary stats
 
-To do some basic stats we use the nutrient growth data set, which you find in the R_exercises folder. 
+To do some basic stats we use the growth data set.
 
-- ``means()`` = print the mean of a certain column
+- ``mean()`` = print the mean of a certain column
 - ``summary()``= print the mean, median, max, min, ... of a certain column.
 
 ```{r}
-#get the menas of our root length
+#get the mean of our root length
 mean(growth_data$Rootlength)
+```
+
+The result is `NA`. Our root length column contains missing values, and the mean of a list of numbers that contains a missing value is unknown. With the argument `na.rm = TRUE` ("NA remove"), `mean()` ignores the missing values. Many other functions, such as `sd()`, `median()` or `sum()`, have the same argument.
+
+```{r}
+#get the mean of our root length, ignoring missing values
+mean(growth_data$Rootlength, na.rm = TRUE)
 ```
 
 ```{r}
@@ -64,19 +74,26 @@ We can also run ``summary()`` on our complete dataframe.
 summary(growth_data)
 ```
 
-This way we do not only get summary stats for our values, but also we get some counts on how many measurements we have for different conditions.
+For number columns, `summary()` also tells us how many values are missing (`NA's`). For text columns, it only tells us how many values there are.
 
 
 ## The table command
 
-The function table builds a contingency table of the counts at each factor level, or combinations of factor levels. This is quite useful to count the number of data points with certain metadata associated. So for example for our genome data we can ask how many measurements we made for each condition.
+The function table builds a contingency table of the counts at each factor level, or combinations of factor levels. This is quite useful to count the number of data points with certain metadata associated. So for example for our growth data we can ask how many measurements we made for each condition.
 
 ```{r}
-#summarize how many measurements we have for each treatment
-table(growth_data$SampleID)
+#summarize how many measurements we have for each condition
+table(growth_data$Condition)
 ```
 
-Here, we see that we have a slightly different number of measurements for each condition and timepoint. 
+If we give `table()` two columns, we get the counts for each combination:
+
+```{r}
+#summarize how many measurements we have for each combination of nutrient and condition
+table(growth_data$Nutrient, growth_data$Condition)
+```
+
+Here, we see that we have a slightly different number of measurements for each combination of nutrient and condition.
 For this tutorial we can ignore them, but this might be relevant if we have huge differences for some statistical analyses.
 This approach allows you to for larger datasets to easily check for samples that might be outliers in terms of measurements per sample.
 
@@ -93,7 +110,7 @@ I.e. we do not want to have the mean for all root lengths but we want to see if 
 library(plyr)
 
 #calculate the mean root length across our Sample IDs
-growth_data_summarized <- ddply(growth_data, .(Nutrient), summarize, Mean_RootLength = mean(Rootlength))
+growth_data_summarized <- ddply(growth_data, .(Nutrient), summarize, Mean_RootLength = mean(Rootlength, na.rm = TRUE))
 
 #view data
 head(growth_data_summarized)
@@ -107,7 +124,7 @@ We can also summarize the data combining different conditions (i.e. nutrient and
 
 ```{r}
 #Summarize our data across Nutrients and Conditions
-growth_data_summarized <- ddply(growth_data, .(Nutrient, Condition), summarize, Mean_RootLength = mean(Rootlength))
+growth_data_summarized <- ddply(growth_data, .(Nutrient, Condition), summarize, Mean_RootLength = mean(Rootlength, na.rm = TRUE))
 
 #view data
 head(growth_data_summarized)
@@ -117,7 +134,8 @@ We can also calculate the mean, sd and se in one line of code
 
 ```{r}
 #and we can use even fancier functions (i.e. get the se and sd), check the plyr package for more details
-growth_data_summarized <- ddply(growth_data, .(Nutrient, Condition), summarize, RootLength = mean(Rootlength), sd = sd (Rootlength), se = sd(Rootlength) / sqrt((length(Rootlength))))
+#for the se we need the number of measurements; sum(!is.na(Rootlength)) counts only the values that are not missing
+growth_data_summarized <- ddply(growth_data, .(Nutrient, Condition), summarize, RootLength = mean(Rootlength, na.rm = TRUE), sd = sd(Rootlength, na.rm = TRUE), se = sd(Rootlength, na.rm = TRUE) / sqrt(sum(!is.na(Rootlength))))
 
 #view data
 head(growth_data_summarized)
@@ -137,7 +155,7 @@ In the following example, the a subset of the growth_data data (only 3 columns, 
 
 New functions:
 
-- ``count()`` = A function of the dplyr package. Here, we count the unique protein IDs grouped by BinID and gene (i.e. roughly equivalent to the columns we want to keep)
+- ``count()`` = A function of the dplyr package. Here, we count the number of rows for each condition (or each combination of the columns we give it)
 - ``summarize()`` creates new data frame into one (or more) rows for each combination of grouping variables; if there are no grouping variables, the output will have a single row summarising all observations in the input. It will contain one column for each grouping variable and one column for each of the summary statistics that you have specified.
 - ``mean()`` = calculate the  arithmetic mean.
 
@@ -191,7 +209,7 @@ growth_data %>%
     summarise(
           count = n(),
           mean_root = mean(Rootlength, na.rm = TRUE),
-          sd_root = sd(Rootlength),.groups = 'drop')
+          sd_root = sd(Rootlength, na.rm = TRUE),.groups = 'drop')
 ```
 
 Other useful summary functions:
@@ -249,7 +267,7 @@ In this case lets work with the data were we do not have to deal with the differ
 
 ```{r}
 #read in data were we have several measurements
-growth_data <- read.table("data/Growth_Data.txt", sep="\t", header=T, fill=TRUE, quote = "")
+growth_data <- read.table("data/Growth_Data.txt", sep = "\t", header = TRUE, quote = "")
 
 #is there a correlation between freshweight and root length?
 linearmodel <- lm(Rootlength ~ FW_shoot_mg, data = growth_data)
@@ -265,7 +283,10 @@ Here one of the values is the model p-Value (bottom last line) and the p-Value o
 
 * Residuals: The section summarizes the residuals, the error between the prediction of the model and the actual results.  Smaller residuals are better.
 * Coefficients: For each variable and the intercept, a weight is produced and that weight has other attributes like the standard error, a t-test value and significance.
-* Estimate: This is the weight given to the variable.  In the simple regression case (one variable plus the intercept), for every increase in root length, the model predicts an increase of 0.24.
+* Estimate: This is the weight given to the variable.  In the simple regression case (one variable plus the intercept), it tells you by how much the root length changes, according to the model, for every increase of the shoot fresh weight by 1 mg. In our data, the estimate is 1.78: for every additional mg of shoot fresh weight, the model predicts a root that is 1.78 mm longer.
+<!-- TODO Nina: check this interpretation (drafted from the output) -->
+
+`lm()` automatically leaves out all plants with a missing root length or a missing shoot weight. You can see how many it removed in the line "observations deleted due to missingness" of the summary.
 * Std. Error: Tells you how precisely was the estimate measured.  It’s really only useful for calculating the t-value.
 * t-value and Pr(>[t]): The t-value is calculated by taking the coefficient divided by the Std. Error.  It is then used to test whether or not the coefficient is significantly different from zero.  If it isn’t significant, then the coefficient really isn’t adding anything to the model and could be dropped or investigated further.  Pr(>|t|) is the significance level.
 
@@ -295,7 +316,13 @@ with(growth_data, plot(Rootlength ~ FW_shoot_mg, col = 2))
 abline(linearmodel)
 ```
 
-If we look at the stats and the p value we see a nice correlation but also that we have two distinct clusters as well as more spread in the cluster that is more to the right. These clusters likely are the two different nutrient conditions and sometimes it might make sense to separate data to get a clearer picture. Something else to consider is to ask whether the data is normally distributed and based on that what statistical test to choose.
+If we look at the stats and the p value we see a decent correlation. However, since we tested different nutrient conditions it also can be useful to separate data to get a clearer picture. Something else to consider is to ask whether the data is normally distributed and based on that what statistical test to choose.
+
+```{r}
+#color the points by nutrient condition to check this
+with(growth_data, plot(Rootlength ~ FW_shoot_mg, col = factor(Nutrient)))
+legend("topleft", legend = levels(factor(growth_data$Nutrient)), col = 1:2, pch = 1)
+```
 
 
 ### Analysing residuals
@@ -309,19 +336,19 @@ There are four things we are looking for when analyzing residuals.
 - All of the errors are independent.
 - Variance of errors is constant (Homoscedastic)
 
-In R, you pull out the residuals by referencing the model and then the resid variable inside the model.  Using the simple linear regression model (simple.fit) we’ll plot a few graphs to help illustrate any problems with the model.
+In R, you pull out the residuals with `resid()` and the values the model predicts (the fitted values) with `fitted()`.  Using the simple linear regression model (simple.fit) we’ll plot a few graphs to help illustrate any problems with the model.
 
 Below some examples:
 
 ```{r}
 simple.fit <- linearmodel
 
-layout(matrix(c(1,1,2,3),2,2,byrow=T))
+layout(matrix(c(1,1,2,3),2,2,byrow=TRUE))
 
-#Rootlength x Residuals Plot
-plot(simple.fit$resid~growth_data$Rootlength[order(growth_data$Rootlength)],
- main="Rootlength x Residuals\nfor Simple Regression",
- xlab="Marketing Rootlength", ylab="Residuals")
+#Fitted values x Residuals Plot
+plot(resid(simple.fit) ~ fitted(simple.fit),
+ main="Fitted values x Residuals\nfor Simple Regression",
+ xlab="Fitted root length", ylab="Residuals")
 abline(h=0,lty=2)
 
 #Histogram of Residuals
@@ -340,203 +367,323 @@ The histogram and QQ-plot are the ways to visually evaluate if the residual fit 
 - If the QQ-plot has the vast majority of points on or very near the line, the residuals may be normally distributed.
 
 
-## Normal distribution
+## A new dataset for statistical tests
 
+For the statistical tests in the rest of this chapter, we use a smaller and cleaner dataset from the same study [@garridooter2018]. Plants of three *Arabidopsis* genotypes were grown with or without the strain 129E, and the authors counted the number of cells in the meristem of the root tip, the zone where new root cells are made. The genotypes are:
 
-### Visualize our data via density plots
+- `Col-0`: the wild type, i.e. the standard *Arabidopsis* line most labs use
+- `ahk3-3` and `arr1_arr12`: two mutant lines
 
-There are different ways to visualize this, one example is ggdensity of the ggpubr package.
+<!-- TODO Nina: add one or two sentences on what ahk3-3 and arr1 arr12 are (which genes are mutated, and why they are interesting here) -->
+
+We use this dataset because the groups are small, similar in size and well-behaved, which makes it easier to see how the tests work. A second file with the root length of the same genotypes is used in the exercise at the end of this chapter.
+
+Download the two files in the same way as in the [first steps](first_steps.qmd) chapter:
 
 ```{r}
-library("ggpubr")
+#| eval: false
 
-#is the data for my different variables normally distributed
-ggdensity(growth_data$Rootlength)
+# download the meristem data, but only if we don't have it yet
+if (!file.exists("data/Genotype_Meristem.txt")) {
+  download.file(url = "https://raw.githubusercontent.com/ndombrowski/R_cookbook/main/data/Genotype_Meristem.txt",
+                destfile = "data/Genotype_Meristem.txt",
+                mode = "wb")
+}
+
+# download the root length data of the same genotypes, but only if we don't have it yet
+if (!file.exists("data/Genotype_Rootlength.txt")) {
+  download.file(url = "https://raw.githubusercontent.com/ndombrowski/R_cookbook/main/data/Genotype_Rootlength.txt",
+                destfile = "data/Genotype_Rootlength.txt",
+                mode = "wb")
+}
 ```
 
-We see nicely that we have two tails that likely represent the two nutrient conditions. To test this, we can simply subset the data as we have done before.
-
 ```{r}
-ggdensity(growth_data, x = "Rootlength",
-   add = "mean", rug = TRUE,
-   color = "Nutrient", palette = c("#00AFBB", "#E7B800"))
-```
+# read in the meristem data
+meristem <- read.table("data/Genotype_Meristem.txt", sep = "\t", header = TRUE, quote = "")
 
-No we see that indeed the tool tails we see are seem to be due to our two nutrient conditions.
+# check the data
+head(meristem)
+dim(meristem)
 
-
-### Visualize our data via Q-Q plots
-
-Another way to represent data is in  a Q-Q plot: Q-Q plot (or quantile-quantile plot) draws the correlation between a given sample and the normal distribution. A 45-degree reference line is also plotted.
-
-```{r}
-#plot all data
-ggqqplot(growth_data$Rootlength)
-```
-
-
-```{r}
-#plot by group
-ggqqplot(growth_data, x = "Rootlength",
-         color = "Nutrient",  palette = c("#00AFBB", "#E7B800"))
-```
-
-Again, here we see that our data for the indivdual growth conditions fit quite nicely into normal distribution.
-
-
-### Test for normality
-
-```{r}
-#for all data
-shapiro.test(growth_data$Rootlength)
+# how many plants do we have per genotype and condition?
+table(meristem$Genotype, meristem$Condition)
 ```
 
 
-```{r}
-#separate nutrient conditions
-noP_data <- growth_data[growth_data$Nutrient == "noP", ]
+## Comparing two groups: the t-test
 
-#test for noP only
-shapiro.test(noP_data$Rootlength)
+Let's start with the simplest question: does 129E change the number of meristem cells in the wild type? For this, we only need the `Col-0` plants:
+
+```{r}
+# keep only the wild type
+col0 <- meristem[meristem$Genotype == "Col-0", ]
+
+# look at the data
+boxplot(Meristem_cells ~ Condition, data = col0, ylab = "Number of meristem cells")
 ```
 
-We can use ddplyr and the dlookr package for doing a group-wise comparison
+A **t-test** compares the means of two groups. It asks: if there was really no difference between the groups, how likely is a difference between the means as large as the one we see? This likelihood is the **p-value**. If it is smaller than 0.05, we usually call the difference **statistically significant**.
 
+The t-test assumes that the values in each group come from a normal distribution. We will look at this in more detail below, but for now we check it with the Shapiro-Wilk test, once per group:
 
 ```{r}
+# test for normality in each group
+shapiro.test(col0$Meristem_cells[col0$Condition == "mock"])
+shapiro.test(col0$Meristem_cells[col0$Condition == "129E"])
+```
+
+The Shapiro-Wilk test works the other way round: here, a p-value **above** 0.05 is what we want, because it means that there is no evidence against a normal distribution.
+
+Now the t-test itself. The `~` reads as "depends on": we test whether the number of meristem cells depends on the condition.
+
+```{r}
+# compare mock and 129E in the wild type
+t.test(Meristem_cells ~ Condition, data = col0)
+```
+
+The most important lines of the output are:
+
+- `t` and `p-value`: the test statistic and the p-value.
+- `95 percent confidence interval`: the range in which the true difference between the two means probably lies.
+- `mean in group ...`: the mean of each group.
+
+By default, R runs the **Welch** version of the t-test, which does not assume that both groups have the same variance. That is why the title says "Welch Two Sample t-test".
+
+In our data, wild-type plants treated with 129E have on average 38.2 meristem cells, and mock plants 30.7. The difference is significant (p = 0.0025), and the confidence interval tells us that 129E adds roughly 3 to 12 cells. Both Shapiro-Wilk tests above gave p-values well above 0.05 (0.82 and 0.37), so we can use a t-test here.
+<!-- TODO Nina: check this interpretation (drafted from the output) -->
+
+If your data is clearly not normally distributed, you can use the **Wilcoxon rank sum test** (also called Mann-Whitney U test) instead. It does not compare the means, but uses the ranks of the values, so it does not need a normal distribution:
+
+```{r}
+# a test that does not assume a normal distribution
+wilcox.test(Meristem_cells ~ Condition, data = col0)
+```
+
+You may see a warning that R "cannot compute exact p-value with ties". Ties are values that occur more than once, which is common for counts such as our cell numbers. R then calculates an approximate p-value instead, which is fine here. The Wilcoxon test comes to the same conclusion as the t-test (p = 0.003).
+<!-- TODO Nina: check this interpretation (drafted from the output) -->
+
+
+## Checking for a normal distribution
+
+Many statistical tests, such as the t-test and the ANOVA below, assume that the values in each group come from a normal distribution. It is important to check this **per group**: if you put all plants together, you mix groups with different means, and the combined data will not look normal even if every group is.
+
+### Density plots
+
+A density plot is a smoothed version of a histogram. The `ggdensity()` function of the ggpubr package draws one curve per group. With `facet.by` we get one panel per genotype:
+
+```{r}
+#| warning: false
+
+library(ggpubr)
+
+ggdensity(meristem, x = "Meristem_cells",
+          add = "mean", rug = TRUE,
+          color = "Condition", palette = c("#2A6FDB", "#8C8C8C"),
+          facet.by = "Genotype")
+```
+
+In all three genotypes, the curve of the 129E plants lies to the right of the mock curve, so treated plants tend to have more meristem cells. The shift is largest in `arr1_arr12`. Some curves have small bumps, for example `Col-0` with 129E, but with only 11 to 15 plants per group, a density curve is never perfectly smooth.
+<!-- TODO Nina: check this interpretation (drafted from the plot) -->
+
+### Q-Q plots
+
+A Q-Q plot (quantile-quantile plot) compares the values in a group with the values you would expect from a normal distribution. If the data is normally distributed, the points lie close to the diagonal line. The grey band shows the range in which we would expect the points.
+
+```{r}
+ggqqplot(meristem, x = "Meristem_cells",
+         color = "Condition", palette = c("#2A6FDB", "#8C8C8C"),
+         facet.by = "Genotype")
+```
+
+In all six groups, the points lie close to the line and inside the grey band, so there is no sign of a strong deviation from a normal distribution.
+<!-- TODO Nina: check this interpretation (drafted from the plot) -->
+
+### Shapiro-Wilk test for each group
+
+Instead of running `shapiro.test()` six times, we can use the `normality()` function of the dlookr package together with `group_by()`. It runs one test for each combination of genotype and condition:
+
+```{r}
+#| warning: false
+
 library(dplyr)
 library(dlookr)
 
-growth_data %>%
-  group_by(Nutrient) %>%
+meristem %>%
+  group_by(Genotype, Condition) %>%
   normality()
 ```
 
+The Shapiro-Wilk test checks the null hypothesis that the values come from a normal distribution. If the p-value is smaller than 0.05, we reject this hypothesis and should not assume a normal distribution.
 
-The shapiro.test tests the NULL hypothesis that the samples came from a Normal distribution. This means that if your p-value <= 0.05, then you would reject the NULL hypothesis that the samples came from a normal distribution.
+In our data, all six p-values are between 0.37 and 0.87. None of the groups deviates significantly from a normal distribution, which fits what we saw in the plots.
+<!-- TODO Nina: check this interpretation (drafted from the output) -->
 
-From the output, the p-value < 0.05 for our complete dataset implies that the distribution of the data is significantly different from normal distribution. In other words, we can not assume the normality. However, we expect quite some differences dependent on the growth pattern and once we only look at our low P data we see that our indeed is normally distributed.
+Keep in mind that the result of the test depends on the number of values. With small groups like ours (11 to 15 plants), the test can easily miss a deviation from the normal distribution. With very large groups, it flags even tiny deviations that don't matter in practice. So always look at the plots as well, not only at the p-value.
 
-Notice: Shapiro works only for sample sizes between 3-5000 numbers since when you feed it more data, the chances of the null hypothesis being rejected becomes larger. An alternative is the Anderson-Darling test that however has a similar problem with the Shapiro Wilk test. For large samples, you are most likely to reject the null hypothesis, so be aware of this.
-
-```{r}
-library(nortest)
-ad.test(noP_data$Rootlength)
-```
-
-
+<!-- TODO Nina: general statement about the power of the Shapiro-Wilk test, not checked against a source for this book -->
 
 
 ## ANOVA
 
-When we visualize the data, we see that there is a difference between the nutrient conditions but we want to know whether it is significant and more importantly, whether there is also a difference based on our treatments with different strains of microbes.
+With a t-test we can compare two groups. Our data has six groups: three genotypes, each with and without 129E. To compare more than two groups, we use an **analysis of variance (ANOVA)**.
+
+Let's first look at the data:
 
 ```{r}
-#lets visually compare our data with ggpubr again
-library("ggpubr")
-
-ggboxplot(growth_data, x = "Condition", y = "Rootlength", color = "Nutrient",
-          palette = c("#00AFBB", "#E7B800"))
+ggboxplot(meristem, x = "Genotype", y = "Meristem_cells", color = "Condition",
+          palette = c("#2A6FDB", "#8C8C8C"))
 ```
+
+In every genotype, plants treated with 129E have more meristem cells than mock plants. The `arr1_arr12` plants with 129E stand out, with clearly more cells than all other groups.
+<!-- TODO Nina: check this interpretation (drafted from the plot) -->
+
+We start with an ANOVA that tests whether the number of meristem cells depends on the genotype and on the condition:
 
 ```{r}
-# We want to know whether root length depends on nutrient treatment
-aov <- aov(Rootlength ~ Nutrient, data = growth_data)
-summary(aov)
+# two-way ANOVA, additive model
+aov_add <- aov(Meristem_cells ~ Genotype + Condition, data = meristem)
+summary(aov_add)
 ```
 
-Here, we see that there are significant differences based on our nutrient treatments. Now lets see how we can look at both the nutrient treatment and growth conditions.
+The output has one row per factor. `Pr(>F)` is the p-value, and the stars at the end of the row show how small it is (see the `Signif. codes` line).
 
-```{r}
-# We want to know if root length depends on condition and nutrient
-aov <- aov(Rootlength ~ Nutrient + Condition, data = growth_data)
-summary(aov)
-```
+Both the genotype and the condition have a significant effect on the number of meristem cells (both p < 0.001).
+<!-- TODO Nina: check this interpretation (drafted from the output) -->
 
-From the ANOVA table we can conclude that both nutrient condition and treatment are statistically significant. Nutrient treatment is the most significant factor variable. 
-
-Not the above fitted model is called additive model. It makes an assumption that the two factor variables are independent. If you think that these two variables might interact to create an synergistic effect, replace the plus symbol (+) by an asterisk (*), as follows.
-
+The model above is called an **additive model**. It assumes that the effect of 129E is the same in every genotype. But maybe 129E has a larger effect in one genotype than in another. This is called an **interaction** between the two factors. To include it, we replace the `+` by a `*`:
 
 ```{r}
 # Two-way ANOVA with interaction effect
 
 # These two calls are equivalent
-aov <- aov(Rootlength ~ Nutrient * Condition, data = growth_data)
-aov <- aov(Rootlength ~ Nutrient + Condition + Nutrient:Condition, data = growth_data)
+aov_int <- aov(Meristem_cells ~ Genotype * Condition, data = meristem)
+aov_int <- aov(Meristem_cells ~ Genotype + Condition + Genotype:Condition, data = meristem)
 
-#summarize the aov
-summary(aov)
+# summarize the ANOVA
+summary(aov_int)
 ```
 
-It can be seen that the two main effects (Nutrient and Condition) are statistically significant, as well as their interaction.
+The new row `Genotype:Condition` tests the interaction. It is significant (p = 2e-05): the effect of 129E on the number of meristem cells depends on the genotype.
+<!-- TODO Nina: check this interpretation (drafted from the output) -->
 
-**Note that, in the situation where the interaction is not significant you should use the additive model.**
+**If the interaction is not significant, use the additive model.** If it is significant, as here, keep the interaction in the model, and be careful with statements about the main effects alone: "129E increases the number of meristem cells" is then only part of the story, because the size of the effect depends on the genotype.
 
-
-
-## TUKEY
-
-In ANOVA test, a significant p-value indicates that some of the group means are different, but we don’t know which pairs of groups are different. It’s possible to perform multiple pairwise-comparison, to determine if the mean difference between specific pairs of group are statistically significant.
-
-As the ANOVA test is significant, we can compute Tukey HSD (Tukey Honest Significant Differences). Tukey test is a single-step multiple comparison procedure and statistical test. It is a post-hoc analysis, what means that it is used in conjunction with an ANOVA.
+An **interaction plot** shows this well. Each line is one condition, and the points are the group means. If there is no interaction, the lines are roughly parallel:
 
 ```{r}
-#test with anova
-aov <- aov(Rootlength ~ Nutrient * Condition, data = growth_data)
-
-#run tukey
-TukeyHSD(aov)
+interaction.plot(x.factor = meristem$Genotype, trace.factor = meristem$Condition,
+                 response = meristem$Meristem_cells,
+                 xlab = "Genotype", ylab = "Mean number of meristem cells", trace.label = "Condition")
 ```
 
+Here the lines are clearly not parallel. In `arr1_arr12`, 129E adds about 20 cells on average, in `ahk3-3` and `Col-0` only about 7.
+<!-- TODO Nina: check this interpretation (drafted from the plot and the group means) -->
 
 
-We can see that most differences are significant, with the exception of Strain28, which in most cases does not show an effect.
+## Which groups differ? Tukey's test
 
-For some representations it is useful to plot significant letters. We can do this using some extra packages as follows:
+A significant ANOVA tells us that some group means differ, but not which ones. To find out, we compare all pairs of groups. Because we make many comparisons at the same time, the chance that at least one of them is significant just by chance becomes large. **Tukey's HSD** (Honest Significant Differences) test corrects for this. It is a **post-hoc** test, which means that it is used after an ANOVA.
 
 ```{r}
-#load library
+# compare all pairs of groups
+TukeyHSD(aov_int)
+```
+
+The output has one block per factor. The last block, `$Genotype:Condition`, compares all six groups with each other. For each pair, `diff` is the difference between the means, `lwr` and `upr` give the 95% confidence interval of this difference, and `p adj` is the p-value, adjusted for the number of comparisons.
+
+The comparisons we are most interested in are mock against 129E within the same genotype. All three are significant: `ahk3-3` (p adj = 0.018), `arr1_arr12` (p adj < 0.001) and `Col-0` (p adj = 0.018). Without 129E, `arr1_arr12` has slightly more cells than the other two genotypes (p adj = 0.036 against `ahk3-3` and 0.005 against `Col-0`), while `ahk3-3` and `Col-0` do not differ (p adj = 0.96).
+<!-- TODO Nina: check this interpretation (drafted from the output) -->
+
+With six groups, this table is long. In figures, the result is often shown with **letters** instead: groups that share a letter are not significantly different. The `HSD.test()` function of the agricolae package does this. It needs one factor, so we first make a column that combines genotype and condition:
+
+```{r}
+#| warning: false
+
 library(agricolae)
 
-#separate nutrient conditions
-noP_data <- growth_data[growth_data$Nutrient == "noP", ]
+# one column with the six groups
+meristem$Group <- paste(meristem$Genotype, meristem$Condition, sep = "_")
 
-#run an anova
-aov_noP <- aov(Rootlength ~ Condition, data = noP_data)
+# ANOVA with the six groups as one factor
+aov_group <- aov(Meristem_cells ~ Group, data = meristem)
 
-#run test
-HSD.test(aov_noP,"Condition", group=TRUE,console=TRUE)
+# Tukey test with letters
+HSD.test(aov_group, "Group", group = TRUE, console = TRUE)
 ```
 
+`arr1_arr12` with 129E gets its own letter (`a`), so it differs from all other groups. Within each genotype, the mock and the 129E group share no letter, which matches the Tukey table above: 129E changes the number of meristem cells in all three genotypes.
+<!-- TODO Nina: check this interpretation (drafted from the output) -->
 
 
-## Check the homogeneity of variances
+## Checking the assumptions of the ANOVA
 
-The residuals versus fits plot is used to check the homogeneity of variances. In the plot below, there is no evident relationships between residuals and fitted values (the mean of each groups), which is good. So, we can assume the homogeneity of variances. Only a few points (41, 58 and 77 are detected as outliers, which can severely  normality and homogeneity of variance. It can be useful to remove outliers to meet the test assumptions.)
+Besides a normal distribution, the ANOVA assumes that all groups have a similar variance (**homogeneity of variances**). We can check both assumptions on the **residuals** of the model, i.e. the differences between each value and the mean of its group.
+
+### Homogeneity of variances
+
+The residuals versus fitted values plot shows the residuals of each group (the fitted values are the group means). The spread of the points should be similar in all groups:
 
 ```{r}
-#check for homogeneity
-plot(aov, 1)
+plot(aov_int, 1)
+```
 
-#Use the Levene’s test to check the homogeneity of variances. 
+R labels the three most extreme values with their row numbers. In our data, the spread is similar in all six groups, and the red line stays close to 0. Plants 39, 48 and 51 are marked as the most extreme values, but they are not far away from the rest.
+<!-- TODO Nina: check this interpretation (drafted from the plot) -->
+
+We can also test this with **Levene's test** from the car package. Its null hypothesis is that all groups have the same variance, so here again a p-value **above** 0.05 is what we want:
+
+```{r}
+#| warning: false
+
 library(car)
-leveneTest(Rootlength ~ Nutrient * Condition, data = growth_data)
+leveneTest(Meristem_cells ~ Genotype * Condition, data = meristem)
 ```
 
-From the output above we can see that the p-value is not less than the significance level of 0.05. This means that there is no evidence to suggest that the variance across groups is statistically significantly different. Therefore, we can assume the homogeneity of variances in the different treatment groups.
+With p = 0.30 there is no evidence that the variances differ between the groups.
+<!-- TODO Nina: check this interpretation (drafted from the output) -->
 
+### Normality of the residuals
 
-## Check for normality v2
-
-Normality plot of the residuals. In the plot below, the quantiles of the residuals are plotted against the quantiles of the normal distribution. A 45-degree reference line is also plotted. The normal probability plot of residuals is used to verify the assumption that the residuals are normally distributed.
-
-The normal probability plot of the residuals should approximately follow a straight line. which we can see below. Again, we see the points marked as potential outliers.
+The Q-Q plot of the residuals should roughly follow the straight line:
 
 ```{r}
-## plot
-plot(aov, 2)
+plot(aov_int, 2)
 ```
 
+The points follow the line closely, with a small deviation at the upper end (plants 39 and 48). Together with Levene's test, this means that the assumptions of the ANOVA are met for this dataset.
+<!-- TODO Nina: check this interpretation (drafted from the plot) -->
 
 
+## Exercise
+
+The file `Genotype_Rootlength.txt` contains the root length (in mm) of plants from the same genotypes, with and without 129E.
+
+1. Read the file and check how many plants you have per genotype and condition.
+2. Does 129E change the root length of the wild type (`Col-0`)? Use a t-test.
+3. Run a two-way ANOVA with an interaction. Is the interaction significant?
+4. Check the assumptions with Levene's test. What do you notice?
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+# 1. read the data and count the plants
+genotype_root <- read.table("data/Genotype_Rootlength.txt", sep = "\t", header = TRUE, quote = "")
+table(genotype_root$Genotype, genotype_root$Condition)
+
+# 2. t-test for the wild type
+col0_root <- genotype_root[genotype_root$Genotype == "Col-0", ]
+t.test(Rootlength ~ Condition, data = col0_root)
+
+# 3. two-way ANOVA with interaction
+aov_root <- aov(Rootlength ~ Genotype * Condition, data = genotype_root)
+summary(aov_root)
+
+# 4. Levene's test
+leveneTest(Rootlength ~ Genotype * Condition, data = genotype_root)
+```
+
+As for the meristem cells, 129E has a significant effect on the root length of the wild type (p = 0.028), and the interaction between genotype and condition is significant (p = 3e-05). But this time, Levene's test is significant too (p = 0.008): the variances are not the same in all groups, so one assumption of the ANOVA is not met. With groups of similar size, the ANOVA is usually still fairly reliable, but you should mention this when you report the result. An alternative is a test that does not assume equal variances, for example Welch's ANOVA with `oneway.test()`.
+<!-- TODO Nina: check this interpretation (drafted from the output); the robustness statement and the oneway.test() suggestion are general knowledge, not checked against a source for this book -->
+:::
