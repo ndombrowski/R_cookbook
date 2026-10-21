@@ -13,13 +13,11 @@ Control structures in R allow you to control the flow of execution of a series o
 #| echo: false
 #| warning: false
  
-#load libs
-library(knitr)
-library(kableExtra)
+#load the tidyverse
+library(tidyverse)
 
 #read in data
-timecourse <- read.table("data/Timecourse.txt", sep = "\t", header = TRUE, quote = "")
-growth_data <- read.table("data/Growth_Data.txt", sep = "\t", header = TRUE, quote = "")
+growth_data <- read_tsv("data/Growth_Data.txt", show_col_types = FALSE)
 ```
 
 
@@ -168,4 +166,29 @@ growth_data[is.na(growth_data$FW_shoot_mg), ]
 ```
 
 Some of them are `small` and some are `NA`. Why? For the plants with roots shorter than 75 mm, the first test is already FALSE. With AND, both tests must be TRUE, so the result is FALSE, whatever the shoot weight is. R only returns `NA` if the answer really depends on the missing value: when the roots are longer than 75 mm, the result depends on the shoot weight, and that is unknown.
+
+### `if_else()` inside `mutate()`
+
+In the chapter "Working with the tidyverse", you added new columns with `mutate()`. The tidyverse also has its own version of `ifelse()`: `if_else()`, with an underscore. Together they make the first example above. Remember to load the tidyverse with `library(tidyverse)` first:
+
+```{r}
+growth_data |>
+  mutate(category = if_else(Rootlength <= 75, "small", "large")) |>
+  select(Nutrient, Condition, Rootlength, category)
+```
+
+`if_else()` works like `ifelse()`, with two extras:
+
+- It is stricter: the values for TRUE and for FALSE must have the same data type. If you mix them, for example text and a number, you get an error instead of a silent conversion.
+- With the argument `missing`, you can say what to return when the test gives `NA`.
+
+Because the result is a normal column, you can use it in the next step of the pipe right away. For example, to count the plants in each category:
+
+```{r}
+growth_data |>
+  mutate(category = if_else(Rootlength <= 75, "small", "large", missing = "not measured")) |>
+  count(Condition, category)
+```
+
+If you need more than two categories, have a look at `case_when()`. It works like the `if`, `else if` and `else` example at the start of this section.
 
