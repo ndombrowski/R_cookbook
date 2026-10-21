@@ -180,8 +180,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/data_transformations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data transformations</span></span></a>
+  <a href="../code/tidyverse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Working with the tidyverse</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -224,10 +224,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#search-and-replace-in-markdown" id="toc-search-and-replace-in-markdown" class="nav-link active" data-scroll-target="#search-and-replace-in-markdown"><span class="header-section-number">10.1</span> Search and replace in markdown</a></li>
-  <li><a href="#print-the-session-info" id="toc-print-the-session-info" class="nav-link" data-scroll-target="#print-the-session-info"><span class="header-section-number">10.2</span> Print the session info:</a>
+  <li><a href="#search-for-patterns-with-grep-and-grepl" id="toc-search-for-patterns-with-grep-and-grepl" class="nav-link active" data-scroll-target="#search-for-patterns-with-grep-and-grepl"><span class="header-section-number">10.1</span> Search for patterns with grep and grepl</a>
   <ul class="collapse">
-  <li><a href="#clean-up-the-working-environment" id="toc-clean-up-the-working-environment" class="nav-link" data-scroll-target="#clean-up-the-working-environment"><span class="header-section-number">10.2.1</span> Clean-up the working environment</a></li>
+  <li><a href="#filter-using-grep" id="toc-filter-using-grep" class="nav-link" data-scroll-target="#filter-using-grep"><span class="header-section-number">10.1.1</span> Filter using grep</a></li>
+  <li><a href="#filter-using-grepl" id="toc-filter-using-grepl" class="nav-link" data-scroll-target="#filter-using-grepl"><span class="header-section-number">10.1.2</span> Filter using grepl</a></li>
+  <li><a href="#discard-matching-rows" id="toc-discard-matching-rows" class="nav-link" data-scroll-target="#discard-matching-rows"><span class="header-section-number">10.1.3</span> Discard matching rows</a></li>
+  <li><a href="#using-regular-expressions" id="toc-using-regular-expressions" class="nav-link" data-scroll-target="#using-regular-expressions"><span class="header-section-number">10.1.4</span> Using regular expressions</a></li>
+  </ul></li>
+  <li><a href="#search-and-replace-in-markdown" id="toc-search-and-replace-in-markdown" class="nav-link" data-scroll-target="#search-and-replace-in-markdown"><span class="header-section-number">10.2</span> Search and replace in markdown</a></li>
+  <li><a href="#print-the-session-info" id="toc-print-the-session-info" class="nav-link" data-scroll-target="#print-the-session-info"><span class="header-section-number">10.3</span> Print the session info:</a>
+  <ul class="collapse">
+  <li><a href="#clean-up-the-working-environment" id="toc-clean-up-the-working-environment" class="nav-link" data-scroll-target="#clean-up-the-working-environment"><span class="header-section-number">10.3.1</span> Clean-up the working environment</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -254,24 +261,176 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="search-and-replace-in-markdown" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="search-and-replace-in-markdown"><span class="header-section-number">10.1</span> Search and replace in markdown</h2>
+<!-- TODO: moved here from data_transformations.qmd on 2026-10-21, mostly unchanged. Rework for the growth data and the tidyverse chapter later (see to_do.md). -->
+<section id="search-for-patterns-with-grep-and-grepl" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="search-for-patterns-with-grep-and-grepl"><span class="header-section-number">10.1</span> Search for patterns with grep and grepl</h2>
+<p>Oftentimes you may need to filter a data set based on a partial character string that is beyond the scope of comparison operators.</p>
+<p>R provides such functions (grep and grepl) that match character patterns in specified vector. While both of these functions find patterns, they return different output types based on those patterns.</p>
+<ul>
+<li>grep returns numeric values that correspond to the indexed locations of the patterns</li>
+<li>grepl returns a logical vector in which ‘TRUE’ represents a pattern match.</li>
+</ul>
+<p>In our growth data, we only want to print measurements of our controls (i.e.&nbsp;the mock treatments). Our table has many rows, so we only look at the first few results with <code>head()</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#find the row index values with mock treatments using grep</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">grep</span>(<span class="st">"mock"</span>, growth_data<span class="sc">$</span>Condition))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 4 5 6</code></pre>
+</div>
+</div>
+<p>To see how <code>grepl</code> works, let’s first try it on a short vector with our three conditions. Both strains (129E and 13C) contain a 1, the mock treatment does not:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#use grepl to search for conditions that contain a 1, returning FALSE/TRUE statements for each element</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#with "TRUE" representing matched patterns</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grepl</span>(<span class="st">"1"</span>, <span class="fu">c</span>(<span class="st">"mock"</span>, <span class="st">"129E"</span>, <span class="st">"13C"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE  TRUE  TRUE</code></pre>
+</div>
+</div>
+<p>On our dataframe, <code>grepl</code> gives one TRUE or FALSE for each of the 594 rows. Instead of printing them all, we can count the TRUE values with <code>sum()</code>, i.e.&nbsp;the number of plants treated with a strain:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#count the rows where the condition contains a 1</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">grepl</span>(<span class="st">"1"</span>, growth_data<span class="sc">$</span>Condition))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 385</code></pre>
+</div>
+</div>
+<p>Now lets use this to actually filter our data table for a pattern.</p>
+<section id="filter-using-grep" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="filter-using-grep"><span class="header-section-number">10.1.1</span> Filter using grep</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#use grep</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>filter_for_value <span class="ot">&lt;-</span> timecourse[<span class="fu">grep</span>(<span class="st">"mock"</span>, timecourse<span class="sc">$</span>Condition),]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#check the first rows of our data</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(filter_for_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Timepoint"],"name":[3],"type":["int"],"align":["right"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"high_P","2":"mock","3":"0","4":"15.42","_rn_":"1"},{"1":"high_P","2":"mock","3":"0","4":"18.49","_rn_":"2"},{"1":"high_P","2":"mock","3":"0","4":"12.09","_rn_":"3"},{"1":"high_P","2":"mock","3":"0","4":"18.34","_rn_":"4"},{"1":"high_P","2":"mock","3":"0","4":"15.86","_rn_":"5"},{"1":"high_P","2":"mock","3":"0","4":"16.83","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of the original dataframe</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2323    4</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of our new dataframe</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(filter_for_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1156    4</code></pre>
+</div>
+</div>
+</section>
+<section id="filter-using-grepl" class="level3" data-number="10.1.2">
+<h3 data-number="10.1.2" class="anchored" data-anchor-id="filter-using-grepl"><span class="header-section-number">10.1.2</span> Filter using grepl</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>filter_for_value <span class="ot">&lt;-</span> timecourse[<span class="fu">grepl</span>(<span class="st">"moc"</span>, timecourse<span class="sc">$</span>Condition),]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#check the first rows of our data</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(filter_for_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Timepoint"],"name":[3],"type":["int"],"align":["right"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"high_P","2":"mock","3":"0","4":"15.42","_rn_":"1"},{"1":"high_P","2":"mock","3":"0","4":"18.49","_rn_":"2"},{"1":"high_P","2":"mock","3":"0","4":"12.09","_rn_":"3"},{"1":"high_P","2":"mock","3":"0","4":"18.34","_rn_":"4"},{"1":"high_P","2":"mock","3":"0","4":"15.86","_rn_":"5"},{"1":"high_P","2":"mock","3":"0","4":"16.83","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of the original dataframe</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2323    4</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of our new dataframe</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(filter_for_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1156    4</code></pre>
+</div>
+</div>
+</section>
+<section id="discard-matching-rows" class="level3" data-number="10.1.3">
+<h3 data-number="10.1.3" class="anchored" data-anchor-id="discard-matching-rows"><span class="header-section-number">10.1.3</span> Discard matching rows</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#filter data set based on values that do not match the specified pattern (by using the ! symbol)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>filter_for_not_a_value <span class="ot">&lt;-</span> timecourse[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">"mock"</span>, timecourse<span class="sc">$</span>Condition),]</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#view dataframe</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(filter_for_not_a_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Timepoint"],"name":[3],"type":["int"],"align":["right"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"high_P","2":"129E","3":"0","4":"11.24","_rn_":"59"},{"1":"high_P","2":"129E","3":"0","4":"16.06","_rn_":"60"},{"1":"high_P","2":"129E","3":"0","4":"15.19","_rn_":"61"},{"1":"high_P","2":"129E","3":"0","4":"12.53","_rn_":"62"},{"1":"high_P","2":"129E","3":"0","4":"11.90","_rn_":"63"},{"1":"high_P","2":"129E","3":"0","4":"20.53","_rn_":"64"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of the original dataframe</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2323    4</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of our new dataframe</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(filter_for_not_a_value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1167    4</code></pre>
+</div>
+</div>
+<p>Other comments:</p>
+<ul>
+<li>Using regular expressions (programming symbol pattern) will increase their functionality</li>
+<li>Specified patterns are case sensitive (‘t’ does not equal ‘T’)</li>
+<li>Any matching pattern will be returned despite the context in which that pattern is located (i.e., grep(‘the’, data) with return matches for ‘the’, ‘theme’, ‘heather’, ‘breathe’, and so on. This is where regular expressions are useful for specifying where in a string the pattern should appear.</li>
+</ul>
+</section>
+<section id="using-regular-expressions" class="level3" data-number="10.1.4">
+<h3 data-number="10.1.4" class="anchored" data-anchor-id="using-regular-expressions"><span class="header-section-number">10.1.4</span> Using regular expressions</h3>
+<p>A regular expression (regex or regexp for short) is a special text string for describing a search pattern. You can think of regular expressions as wildcards on steroids. You are probably familiar with wildcard notations such as *.txt to find all text files in a file manager.</p>
+<p>As an example, let’s grep the strains that have a number with 3 digits.</p>
+<p>If you want to know more, see this <a href="https://www3.ntu.edu.sg/home/ehchua/programming/howto/Regexe.html">cheat sheet here</a></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>filter_3digits <span class="ot">&lt;-</span> growth_data[<span class="fu">grepl</span>(<span class="st">"[0-9]{3}"</span>, growth_data<span class="sc">$</span>Condition),]</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#check the structure of our data</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(filter_3digits)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Nutrient"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Experiment"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Rootlength"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["FW_shoot_mg"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"low_P","2":"129E","3":"ex61","4":"86.1","5":"5.5","_rn_":"385"},{"1":"low_P","2":"129E","3":"ex61","4":"58.4","5":"7.5","_rn_":"386"},{"1":"low_P","2":"129E","3":"ex61","4":"NA","5":"9.1","_rn_":"387"},{"1":"low_P","2":"129E","3":"ex61","4":"86.7","5":"9.6","_rn_":"388"},{"1":"low_P","2":"129E","3":"ex61","4":"67.0","5":"9.9","_rn_":"389"},{"1":"low_P","2":"129E","3":"ex61","4":"36.3","5":"10.9","_rn_":"390"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of the original dataframe</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 594   5</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check the dimensions of our new dataframe</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(filter_3digits)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 210   5</code></pre>
+</div>
+</div>
+<p>Here, <code>[0-9]</code> searches for every number from 0-9 and with <code>{3}</code> we look for three numbers in a row. <code>129E</code> matches, but <code>13C</code> does not, because it only has two numbers.</p>
+</section>
+</section>
+<section id="search-and-replace-in-markdown" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="search-and-replace-in-markdown"><span class="header-section-number">10.2</span> Search and replace in markdown</h2>
 <p>If we want to search for the end of the line to, for example, add two spaces (and thus create a linebreak), we can:</p>
 <ul>
 <li>find `<code>(.)$</code> with Regex selected</li>
 <li>and replace with <code>\1your_string</code></li>
 </ul>
 </section>
-<section id="print-the-session-info" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="print-the-session-info"><span class="header-section-number">10.2</span> Print the session info:</h2>
+<section id="print-the-session-info" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="print-the-session-info"><span class="header-section-number">10.3</span> Print the session info:</h2>
 <p>This prints our session info (used R version, packages, etc) and is very important to store to reproduce our code for others</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|eval: false</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|eval: false</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.4.2 (2024-10-31 ucrt)
 Platform: x86_64-w64-mingw32/x64
-Running under: Windows 11 x64 (build 26100)
+Running under: Windows 11 x64 (build 26200)
 
 Matrix products: default
 
@@ -289,16 +448,16 @@ attached base packages:
 
 loaded via a namespace (and not attached):
  [1] htmlwidgets_1.6.4 compiler_4.4.2    fastmap_1.2.0     cli_3.6.5        
- [5] tools_4.4.2       htmltools_0.5.8.1 rmarkdown_2.29    knitr_1.50       
- [9] jsonlite_1.9.0    xfun_0.52         digest_0.6.37     rlang_1.1.6      
-[13] evaluate_1.0.3   </code></pre>
+ [5] tools_4.4.2       htmltools_0.5.8.1 yaml_2.3.11       vctrs_0.6.5      
+ [9] rmarkdown_2.30    knitr_1.50        jsonlite_1.9.0    xfun_0.54        
+[13] digest_0.6.39     rlang_1.1.6       evaluate_1.0.5   </code></pre>
 </div>
 </div>
-<section id="clean-up-the-working-environment" class="level3" data-number="10.2.1">
-<h3 data-number="10.2.1" class="anchored" data-anchor-id="clean-up-the-working-environment"><span class="header-section-number">10.2.1</span> Clean-up the working environment</h3>
+<section id="clean-up-the-working-environment" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="clean-up-the-working-environment"><span class="header-section-number">10.3.1</span> Clean-up the working environment</h3>
 <p>Notice: At the moment, we do not want to clean up the working directory, therefore, in our documentation we put a <code>#</code> in front of it. If you want to run the code just remove the <code>#</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#rm(list = ls()) </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#rm(list = ls()) </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 

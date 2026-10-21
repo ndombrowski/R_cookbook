@@ -36,7 +36,7 @@ We might also want to plot the data to compare the presence absence levels of di
 ## Load essential packages
 
 ```{r test}
-# | warning: false
+#| warning: false
 
 library("ggplot2")
 library("plyr")

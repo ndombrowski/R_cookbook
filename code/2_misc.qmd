@@ -1,4 +1,133 @@
+---
+execute:
+    eval: true
+
+df-print: paged
+---
+
 # Miscellaneous
+
+```{r}
+#| echo: false
+#| warning: false
+
+#read in data
+timecourse <- read.table("data/Timecourse.txt", sep = "\t", header = TRUE, quote = "")
+growth_data <- read.table("data/Growth_Data.txt", sep = "\t", header = TRUE, quote = "")
+```
+
+<!-- TODO: moved here from data_transformations.qmd on 2026-10-21, mostly unchanged. Rework for the growth data and the tidyverse chapter later (see to_do.md). -->
+
+## Search for patterns with grep and grepl
+
+Oftentimes you may need to filter a data set based on a partial character string that is beyond the scope of comparison operators.
+
+R provides such functions (grep and grepl) that match character patterns in specified vector.  While both of these functions find patterns, they return different output types based on those patterns.
+
+- grep returns numeric values that correspond to the indexed locations of the patterns
+- grepl returns a logical vector in which 'TRUE' represents a pattern match.
+
+In our growth data, we only want to print measurements of our controls (i.e. the mock treatments). Our table has many rows, so we only look at the first few results with `head()`.
+
+```{r}
+#find the row index values with mock treatments using grep
+head(grep("mock", growth_data$Condition))
+```
+
+To see how `grepl` works, let's first try it on a short vector with our three conditions. Both strains (129E and 13C) contain a 1, the mock treatment does not:
+
+```{r}
+#use grepl to search for conditions that contain a 1, returning FALSE/TRUE statements for each element
+#with "TRUE" representing matched patterns
+grepl("1", c("mock", "129E", "13C"))
+```
+
+On our dataframe, `grepl` gives one TRUE or FALSE for each of the 594 rows. Instead of printing them all, we can count the TRUE values with `sum()`, i.e. the number of plants treated with a strain:
+
+```{r}
+#count the rows where the condition contains a 1
+sum(grepl("1", growth_data$Condition))
+```
+
+Now lets use this to actually filter our data table for a pattern.
+
+### Filter using grep
+
+```{r}
+#use grep
+filter_for_value <- timecourse[grep("mock", timecourse$Condition),]
+
+#check the first rows of our data
+head(filter_for_value)
+
+#check the dimensions of the original dataframe
+dim(timecourse)
+
+#check the dimensions of our new dataframe
+dim(filter_for_value)
+```
+
+
+### Filter using grepl
+
+```{r}
+filter_for_value <- timecourse[grepl("moc", timecourse$Condition),]
+
+#check the first rows of our data
+head(filter_for_value)
+
+#check the dimensions of the original dataframe
+dim(timecourse)
+
+#check the dimensions of our new dataframe
+dim(filter_for_value)
+```
+
+### Discard matching rows
+
+```{r}
+#filter data set based on values that do not match the specified pattern (by using the ! symbol)
+filter_for_not_a_value <- timecourse[!grepl("mock", timecourse$Condition),]
+
+#view dataframe
+head(filter_for_not_a_value)
+
+#check the dimensions of the original dataframe
+dim(timecourse)
+
+#check the dimensions of our new dataframe
+dim(filter_for_not_a_value)
+```
+
+Other comments:
+
+- Using regular expressions (programming symbol pattern) will increase their functionality
+- Specified patterns are case sensitive ('t' does not equal 'T')
+- Any matching pattern will be returned despite the context in which that pattern is located (i.e., grep('the', data) with return matches for 'the', 'theme', 'heather', 'breathe', and so on. This is where regular expressions are useful for specifying where in a string the pattern should appear.
+
+
+### Using regular expressions
+
+A regular expression (regex or regexp for short) is a special text string for describing a search pattern. You can think of regular expressions as wildcards on steroids. You are probably familiar with wildcard notations such as *.txt to find all text files in a file manager.
+
+As an example, let's grep the strains that have a number with 3 digits.
+
+If you want to know more, see this [cheat sheet here](https://www3.ntu.edu.sg/home/ehchua/programming/howto/Regexe.html)
+
+```{r}
+filter_3digits <- growth_data[grepl("[0-9]{3}", growth_data$Condition),]
+
+#check the structure of our data
+head(filter_3digits)
+
+#check the dimensions of the original dataframe
+dim(growth_data)
+
+#check the dimensions of our new dataframe
+dim(filter_3digits)
+```
+
+Here, ``[0-9]`` searches for every number from 0-9 and with `{3}` we look for three numbers in a row. `129E` matches, but `13C` does not, because it only has two numbers.
 
 ## Search and replace in markdown
 

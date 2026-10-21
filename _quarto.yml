@@ -14,7 +14,7 @@ book:
     - code/first_steps.qmd
     - code/documenting_code.qmd
     - code/data_types.qmd
-    - code/data_transformations.qmd
+    - code/tidyverse.qmd
     - code/control_structures.qmd
     - code/stats.qmd
     - code/plotting_basics.qmd

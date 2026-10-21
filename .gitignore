@@ -20,3 +20,6 @@ CLAUDE.md
 to_do.md
 
 **/*.quarto_ipynb
+
+# test scripts and dummy data (checked and cleaned by hand)
+_tests/
