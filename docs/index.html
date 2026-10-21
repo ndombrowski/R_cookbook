@@ -21,7 +21,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -128,14 +148,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./code/first_steps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First steps in R</span></span></a>
+  <a href="./code/documenting_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Documenting your code</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./code/documenting_code.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Documenting your code</span></span></a>
+  <a href="./code/first_steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">First steps in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -158,14 +178,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./code/stats.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
+  <a href="./code/plotting_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Plotting your data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./code/plotting_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic plotting</span></span></a>
+  <a href="./code/stats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -190,7 +210,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <ul class="collapse">
+  <li><a href="#what-you-will-learn" id="toc-what-you-will-learn" class="nav-link" data-scroll-target="#what-you-will-learn">What you will learn</a></li>
+  <li><a href="#base-r-and-the-tidyverse" id="toc-base-r-and-the-tidyverse" class="nav-link" data-scroll-target="#base-r-and-the-tidyverse">Base R and the tidyverse</a></li>
+  <li><a href="#the-example-data" id="toc-the-example-data" class="nav-link" data-scroll-target="#the-example-data">The example data</a></li>
+  <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to use this book</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further reading</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -224,9 +251,55 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="preface" class="level1 unnumbered">
 <h1 class="unnumbered">Preface</h1>
-<p>This is a cookbook for key R commands.</p>
+<p>This book is an introduction to R for biologists. You don’t need any coding experience to follow it.</p>
+<section id="what-you-will-learn" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-will-learn">What you will learn</h2>
+<p>We start at the very beginning, with installing R and RStudio, and work our way up to analysing and plotting real data:</p>
+<ul>
+<li><a href="./code/1_intro.html">Getting started</a>: install R and RStudio, find your way around RStudio, and set up a project folder for your work.</li>
+<li><a href="./code/documenting_code.html">Documenting your code</a>: write comments and notes, so that you (and others) still understand your analysis months later.</li>
+<li><a href="./code/first_steps.html">First steps in R</a>: store values, use functions, install packages, download the example data and read it into R.</li>
+<li><a href="./code/data_types.html">Data objects</a>: the building blocks of R, such as vectors, data frames and factors.</li>
+<li><a href="./code/tidyverse.html">Working with the tidyverse</a>: filter, sort, change and summarize tables, step by step.</li>
+<li><a href="./code/control_structures.html">Control structures</a>: repeat tasks with loops and make decisions with if-else.</li>
+<li><a href="./code/plotting_basics.html">Plotting your data</a>: quick plots in base R, and figures for reports and papers with ggplot2.</li>
+<li><a href="./code/stats.html">Statistics in R</a>: summary statistics, linear models, t-tests and ANOVAs, and how to check their assumptions. Note: This chapter is still work in progress</li>
+<li><a href="./code/parsing_output_from_annotations.html">Working with annotation data</a>: handle a large table from a genome annotation and turn it into a heatmap. Note: This chapter is still work in progress</li>
+</ul>
+<p>The first chapters build on each other, so work through them in order. Later on, you can also come back to single chapters and use them as a reference.</p>
+</section>
+<section id="base-r-and-the-tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="base-r-and-the-tidyverse">Base R and the tidyverse</h2>
+<p>There are two common styles of writing R code. <strong>Base R</strong> uses the functions that come with R itself. The <strong>tidyverse</strong> is a collection of packages that lets you build an analysis from small steps that each do one job. In the first chapters you learn base R, because you will meet it everywhere: in older scripts, in other people’s code and in help pages. From the chapter “Working with the tidyverse” on, we switch to the tidyverse, because it is easier to read and to change. That chapter also explains the difference in more detail.</p>
+</section>
+<section id="the-example-data" class="level2">
+<h2 class="anchored" data-anchor-id="the-example-data">The example data</h2>
+<p>Most chapters use data from a real plant experiment <span class="citation" data-cites="garridooter2018">(<a href="#ref-garridooter2018" role="doc-biblioref">Garrido-Oter et al. 2018</a>)</span>. <em>Arabidopsis thaliana</em> plants were grown with little or plenty of phosphate, an important plant nutrient, and with or without root bacteria. We then measured how long their roots grew and how heavy their shoots got. Working with real data means that you will also meet the things that make real data messy, such as missing values and groups of different sizes. In the chapter “First steps in R” you learn how to download the data.</p>
+</section>
+<section id="how-to-use-this-book" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-this-book">How to use this book</h2>
+<ul>
+<li><strong>Type the code yourself.</strong> Copying and pasting works, but typing helps you remember, and your typos teach you how to read error messages.</li>
+<li><strong>Work in a Quarto document.</strong> From the first chapter on, you write your code in a Quarto document in RStudio. Between the code, write down what you did, what you see in the results and which questions you have. These notes become your own reference.</li>
+<li><strong>Do the exercises.</strong> Most chapters have short exercises. The solutions are hidden: try it yourself first, and only then click on “Solution”.</li>
+<li><strong>Don’t worry about errors.</strong> Everyone gets them, all the time. Read the message, check your spelling and brackets, and try again.</li>
+</ul>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further reading</h2>
+<p>Two separate tutorials go deeper into topics of this book. They use a different data set, measurements of penguins, which is good practice for using the same functions on new data:</p>
+<ul>
+<li><a href="https://ndombrowski.github.io/Tidyverse_tutorial/">An introduction into the tidyverse</a></li>
+<li><a href="https://ndombrowski.github.io/Ggplot_tutorial/">An introduction into ggplot</a></li>
+</ul>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-garridooter2018" class="csl-entry" role="listitem">
+Garrido-Oter, Ruben, Ryohei Thomas Nakano, Nina Dombrowski, Ka-Wai Ma, Alice C. McHardy, and Paul Schulze-Lefert. 2018. <span>“Modular Traits of the Rhizobiales Root Microbiota and Their Evolutionary Relationship with Symbiotic Rhizobia.”</span> <em>Cell Host &amp; Microbe</em> 24 (1): 155–167.e5. <a href="https://doi.org/10.1016/j.chom.2018.06.006">https://doi.org/10.1016/j.chom.2018.06.006</a>.
+</div>
+</div>
+</section>
 </section>
 
 </main> <!-- /main -->

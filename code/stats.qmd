@@ -109,6 +109,39 @@ growth_summary
 
 The **standard deviation** describes how much the root length varies between the plants of a group. The **standard error of the mean** is the standard deviation divided by the square root of the number of plants. It describes how precisely we know the mean of the group: the more plants we measure, the smaller it gets. Error bars in figures often show one of the two, so always say which one you use.
 
+To see how different the two can be, let's plot the same bar graph as in the plotting chapter twice: once with the sd and once with the se as error bars. We first make the bars without error bars and store them, and then add the two kinds of error bars. `coord_cartesian(ylim = c(0, 120))` gives both plots the same y-axis, so that we can compare them:
+
+```{r}
+#| warning: false
+library(ggpubr)
+
+# the bars without error bars, with the same y-axis for both plots
+bars <- ggplot(growth_summary, aes(x = Condition, y = mean_root, fill = Nutrient)) +
+  geom_col(position = position_dodge()) +
+  coord_cartesian(ylim = c(0, 120)) +
+  labs(y = "Root length (mm)")
+
+# error bars with the standard deviation
+sd_plot <- bars +
+  geom_errorbar(aes(ymin = mean_root - sd_root, ymax = mean_root + sd_root),
+                position = position_dodge(width = 0.9), width = 0.2) +
+  labs(title = "mean ± sd")
+
+# error bars with the standard error
+se_plot <- bars +
+  geom_errorbar(aes(ymin = mean_root - se_root, ymax = mean_root + se_root),
+                position = position_dodge(width = 0.9), width = 0.2) +
+  labs(title = "mean ± se")
+
+ggarrange(sd_plot, se_plot, ncol = 2, common.legend = TRUE, legend = "bottom")
+```
+
+It is exactly the same data, but the se bars are about ten times shorter than the sd bars. The reason is the number of plants: with 85 to 105 plants per group, the standard deviation is divided by about 10 (the square root of 100). The plants within a group still vary a lot in root length (the sd is between 11 and 17 mm), but we know the mean of each group quite precisely (the se is below 2 mm).
+
+So what small error bars tell you depends on what they show. Small sd bars mean that the plants within a group are similar. Small se bars only mean that the mean is known precisely, and that can come from similar plants, from many plants, or from both. This is why a figure legend must always say which one is shown.
+
+Which one should you use? It depends on what your reader should see. If you want to show how variable your plants are, use the sd. If you want to compare groups, for example a treatment with the control, the se or a 95% confidence interval is usually more appropriate, because they show how precisely you know each mean [@cumming2007]. Don't choose the se only because the bars look smaller. And don't read se bars that do not overlap as a significant difference: that is a common mistake [@krzywinski2013]. Whatever you use, write it in the figure legend together with the number of plants per group, and with small groups, show the individual data points instead.
+
 Note that inside `summarize()`, you can use the columns you made earlier in the same `summarize()`: `se_root` uses `sd_root` and `n_plants`.
 
 Other useful functions inside `summarize()`:
@@ -345,24 +378,24 @@ Many statistical tests, such as the t-test and the ANOVA below, assume that the 
 
 ### Density plots
 
-A density plot is a smoothed version of a histogram. The `ggdensity()` function of the ggpubr package draws one curve per group. With `facet.by` we get one panel per genotype:
+A density plot is a smoothed version of a histogram. In ggplot2, `geom_density()` draws one curve per condition, and `facet_wrap()` makes one panel per genotype, as in the plotting chapter. `geom_rug()` adds a small tick at the bottom for each plant, so you can see where the actual values are:
 
 ```{r}
-#| warning: false
-
-library(ggpubr)
-
-ggdensity(meristem, x = "Meristem_cells",
-          add = "mean", rug = TRUE,
-          color = "Condition", palette = c("#2A6FDB", "#8C8C8C"),
-          facet.by = "Genotype")
+ggplot(meristem, aes(x = Meristem_cells, color = Condition)) +
+  geom_density() +
+  geom_rug() +
+  facet_wrap(~ Genotype) +
+  scale_color_manual(values = c("129E" = "#2A6FDB", mock = "#8C8C8C")) +
+  labs(x = "Number of meristem cells")
 ```
 
 In all three genotypes, the curve of the 129E plants lies to the right of the mock curve, so treated plants tend to have more meristem cells. The shift is largest in `arr1_arr12`. Some curves have small bumps, for example `Col-0` with 129E, but with only 11 to 15 plants per group, a density curve is never perfectly smooth.
 
 ### Q-Q plots
 
-A Q-Q plot (quantile-quantile plot) compares the values in a group with the values you would expect from a normal distribution. If the data is normally distributed, the points lie close to the diagonal line. The grey band shows the range in which we would expect the points.
+A Q-Q plot (quantile-quantile plot) compares the values in a group with the values you would expect from a normal distribution. If the data is normally distributed, the points lie close to the diagonal line.
+
+ggplot2 can draw Q-Q plots too, but here we use `ggqqplot()` from the ggpubr package, which we loaded above. ggpubr builds on ggplot2 and makes some common plots quicker to draw. Its Q-Q plot also adds a shaded band in the color of each group, which shows the range in which we would expect the points if the data was normally distributed. Note that ggpubr functions take the column names in quotes, and use `facet.by` instead of `facet_wrap()`:
 
 ```{r}
 ggqqplot(meristem, x = "Meristem_cells",
@@ -370,7 +403,7 @@ ggqqplot(meristem, x = "Meristem_cells",
          facet.by = "Genotype")
 ```
 
-In all six groups, the points lie close to the line and inside the grey band, so there is no sign of a strong deviation from a normal distribution.
+In all six groups, the points lie close to the line and inside the shaded band, so there is no sign of a strong deviation from a normal distribution.
 
 ### Shapiro-Wilk test for each group
 
@@ -398,8 +431,10 @@ With a t-test we can compare two groups. Our data has six groups: three genotype
 Let's first look at the data:
 
 ```{r}
-ggboxplot(meristem, x = "Genotype", y = "Meristem_cells", color = "Condition",
-          palette = c("#2A6FDB", "#8C8C8C"))
+ggplot(meristem, aes(x = Genotype, y = Meristem_cells, color = Condition)) +
+  geom_boxplot() +
+  scale_color_manual(values = c("129E" = "#2A6FDB", mock = "#8C8C8C")) +
+  labs(y = "Number of meristem cells")
 ```
 
 In every genotype, plants treated with 129E have more meristem cells than mock plants. The `arr1_arr12` plants with 129E stand out, with clearly more cells than all other groups.

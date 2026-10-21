@@ -163,14 +163,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/first_steps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First steps in R</span></span></a>
+  <a href="../code/documenting_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Documenting your code</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/documenting_code.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Documenting your code</span></span></a>
+  <a href="../code/first_steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">First steps in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -193,14 +193,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/stats.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
+  <a href="../code/plotting_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Plotting your data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/plotting_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic plotting</span></span></a>
+  <a href="../code/stats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -369,7 +369,7 @@ Figure&nbsp;5.1: The steps of a typical data analysis. Source: Wickham and Grole
 </figcaption>
 </figure>
 </div>
-<p>You install all tidyverse packages at once. Type this into the Console, because you only need to do it once:</p>
+<p>You installed the tidyverse in the chapter <a href="../code/first_steps.html">First steps in R</a>. If you skipped that, type this into the Console:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -395,7 +395,7 @@ dbl (2): Rootlength, FW_shoot_mg
 </div>
 <p><code>read_tsv()</code> tells you which data type it picked for each column: <code>chr</code> (character) for <code>Nutrient</code>, <code>Condition</code> and <code>Experiment</code>, and <code>dbl</code> (double, a number) for the two measurements. Check this message every time you read data. If a column of numbers is read as <code>chr</code>, there is probably some text in it, for example a typo or a comment.</p>
 <p>Compared with <code>read.table()</code>, you need fewer arguments: <code>read_tsv()</code> knows that the columns are separated by tabs and that the first line holds the column names. It also reads empty cells as missing values (<code>NA</code>).</p>
-<p><code>read_tsv()</code> gives you a <strong>tibble</strong>, like <code>read_excel()</code> in the chapter “First steps in R”. When you print a tibble, you only see the first 10 rows, and the first line tells you how many rows and columns the table has:</p>
+<p><code>read_tsv()</code> gives you a <strong>tibble</strong>, like <code>read_excel()</code> in the chapter “First steps in R”. When you print a tibble, you only see the first 10 rows, and R tells you how many rows the table has:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>growth_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -406,6 +406,7 @@ dbl (2): Rootlength, FW_shoot_mg
 </div>
 </div>
 </div>
+<p>In this book and in your Quarto document, the tibble is shown as a table with pages. The number of rows is below the table, for example “1-10 of 594 rows”, and you can click through the pages. The data type of each column is shown under its name. In the Console, the first line tells you the number of rows and columns instead, for example <code># A tibble: 594 × 5</code>.</p>
 <p>This is very handy in this chapter. After each step, you see how many rows are left, without printing hundreds of rows.</p>
 </section>
 <section id="pipes-and-shortcuts" class="level2" data-number="5.3">
@@ -539,7 +540,7 @@ Figure&nbsp;5.2: <code>filter()</code> keeps the rows that meet a condition. Sou
 </tr>
 </tbody>
 </table>
-<p>For example, <code>!=</code> removes all mock plants, so we keep only the plants with bacteria:</p>
+<p>For example, by using <code>!= "mock"</code> we can remove all mock plants, so we keep only the plants with bacteria:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>growth_data <span class="sc">|&gt;</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Condition <span class="sc">!=</span> <span class="st">"mock"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -551,7 +552,7 @@ Figure&nbsp;5.2: <code>filter()</code> keeps the rows that meet a condition. Sou
 </div>
 </div>
 </div>
-<p>And <code>&gt;</code> works on numbers. We could for example ask how many plants have roots longer than 100 mm?</p>
+<p>And <code>&gt;</code> works on numbers. We could for example only list plants that have roots longer than 100 mm:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>growth_data <span class="sc">|&gt;</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Rootlength <span class="sc">&gt;</span> <span class="dv">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -824,7 +825,7 @@ Figure&nbsp;5.3: <code>arrange()</code> sorts the rows by the values in a column
 <p>The three plants with the longest roots were all grown with high phosphate and with one of the two strains.</p>
 <section id="exercise-3" class="level3" data-number="5.9.1">
 <h3 data-number="5.9.1" class="anchored" data-anchor-id="exercise-3"><span class="header-section-number">5.9.1</span> Exercise</h3>
-<p>Which plant has the heaviest shoot? In which nutrient, condition and experiment was it grown?</p>
+<p>Which plant has the highest shoot weight? In which nutrient, condition and experiment was it grown?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">

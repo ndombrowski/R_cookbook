@@ -77,7 +77,7 @@ The tidyverse contains several packages, each for one kind of task:
 
 ![The steps of a typical data analysis. Source: Wickham and Grolemund, *R for Data Science*.](../images/tidyverse_workflow.png){#fig-workflow width="75%"}
 
-You install all tidyverse packages at once. Type this into the Console, because you only need to do it once:
+You installed the tidyverse in the chapter [First steps in R](first_steps.qmd). If you skipped that, type this into the Console:
 
 ```{r}
 #| eval: false
@@ -104,11 +104,13 @@ growth_data <- read_tsv("data/Growth_Data.txt")
 
 Compared with `read.table()`, you need fewer arguments: `read_tsv()` knows that the columns are separated by tabs and that the first line holds the column names. It also reads empty cells as missing values (`NA`).
 
-`read_tsv()` gives you a **tibble**, like `read_excel()` in the chapter "First steps in R". When you print a tibble, you only see the first 10 rows, and the first line tells you how many rows and columns the table has:
+`read_tsv()` gives you a **tibble**, like `read_excel()` in the chapter "First steps in R". When you print a tibble, you only see the first 10 rows, and R tells you how many rows the table has:
 
 ```{r}
 growth_data
 ```
+
+In this book and in your Quarto document, the tibble is shown as a table with pages. The number of rows is below the table, for example "1-10 of 594 rows", and you can click through the pages. The data type of each column is shown under its name. In the Console, the first line tells you the number of rows and columns instead, for example `# A tibble: 594 × 5`.
 
 This is very handy in this chapter. After each step, you see how many rows are left, without printing hundreds of rows.
 
@@ -190,14 +192,14 @@ These are the **comparison operators** you can use in `filter()`:
 | `&` | and |
 | `|` | or |
 
-For example, `!=` removes all mock plants, so we keep only the plants with bacteria:
+For example, by using `!= "mock"` we can remove all mock plants, so we keep only the plants with bacteria:
 
 ```{r}
 growth_data |>
   filter(Condition != "mock")
 ```
 
-And `>` works on numbers. We could for example ask how many plants have roots longer than 100 mm?
+And `>` works on numbers. We could for example only list plants that have roots longer than 100 mm:
 
 ```{r}
 growth_data |>
@@ -364,7 +366,7 @@ The three plants with the longest roots were all grown with high phosphate and w
 
 ### Exercise
 
-Which plant has the heaviest shoot? In which nutrient, condition and experiment was it grown?
+Which plant has the highest shoot weight? In which nutrient, condition and experiment was it grown?
 
 ::: {.callout-tip collapse="true"}
 ## Solution

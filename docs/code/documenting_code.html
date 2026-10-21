@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Documenting your code – R  cookbook</title>
+<title>2&nbsp; Documenting your code – R  cookbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../code/data_types.html" rel="next">
-<link href="../code/first_steps.html" rel="prev">
+<link href="../code/first_steps.html" rel="next">
+<link href="../code/1_intro.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -122,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/documenting_code.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Documenting your code</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/documenting_code.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Documenting your code</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -163,14 +163,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/first_steps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First steps in R</span></span></a>
+  <a href="../code/documenting_code.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Documenting your code</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/documenting_code.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Documenting your code</span></span></a>
+  <a href="../code/first_steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">First steps in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -193,14 +193,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/stats.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
+  <a href="../code/plotting_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Plotting your data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/plotting_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic plotting</span></span></a>
+  <a href="../code/stats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -225,17 +225,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#markdown" id="toc-markdown" class="nav-link active" data-scroll-target="#markdown"><span class="header-section-number">3.1</span> Markdown</a></li>
-  <li><a href="#what-to-write-between-your-chunks" id="toc-what-to-write-between-your-chunks" class="nav-link" data-scroll-target="#what-to-write-between-your-chunks"><span class="header-section-number">3.2</span> What to write between your chunks</a></li>
-  <li><a href="#comments-in-your-code" id="toc-comments-in-your-code" class="nav-link" data-scroll-target="#comments-in-your-code"><span class="header-section-number">3.3</span> Comments in your code</a></li>
-  <li><a href="#turn-your-document-into-a-report" id="toc-turn-your-document-into-a-report" class="nav-link" data-scroll-target="#turn-your-document-into-a-report"><span class="header-section-number">3.4</span> Turn your document into a report</a>
+  <li><a href="#markdown" id="toc-markdown" class="nav-link active" data-scroll-target="#markdown"><span class="header-section-number">2.1</span> Markdown</a></li>
+  <li><a href="#what-to-write-between-your-chunks" id="toc-what-to-write-between-your-chunks" class="nav-link" data-scroll-target="#what-to-write-between-your-chunks"><span class="header-section-number">2.2</span> What to write between your chunks</a></li>
+  <li><a href="#comments-in-your-code" id="toc-comments-in-your-code" class="nav-link" data-scroll-target="#comments-in-your-code"><span class="header-section-number">2.3</span> Comments in your code</a></li>
+  <li><a href="#turn-your-document-into-a-report" id="toc-turn-your-document-into-a-report" class="nav-link" data-scroll-target="#turn-your-document-into-a-report"><span class="header-section-number">2.4</span> Turn your document into a report</a>
   <ul class="collapse">
-  <li><a href="#the-header" id="toc-the-header" class="nav-link" data-scroll-target="#the-header"><span class="header-section-number">3.4.1</span> The header</a></li>
-  <li><a href="#render-your-document" id="toc-render-your-document" class="nav-link" data-scroll-target="#render-your-document"><span class="header-section-number">3.4.2</span> Render your document</a></li>
-  <li><a href="#chunk-options" id="toc-chunk-options" class="nav-link" data-scroll-target="#chunk-options"><span class="header-section-number">3.4.3</span> Chunk options</a></li>
-  <li><a href="#optional-using-languages-other-than-r" id="toc-optional-using-languages-other-than-r" class="nav-link" data-scroll-target="#optional-using-languages-other-than-r"><span class="header-section-number">3.4.4</span> Optional: using languages other than R</a></li>
+  <li><a href="#the-header" id="toc-the-header" class="nav-link" data-scroll-target="#the-header"><span class="header-section-number">2.4.1</span> The header</a></li>
+  <li><a href="#render-your-document" id="toc-render-your-document" class="nav-link" data-scroll-target="#render-your-document"><span class="header-section-number">2.4.2</span> Render your document</a></li>
+  <li><a href="#chunk-options" id="toc-chunk-options" class="nav-link" data-scroll-target="#chunk-options"><span class="header-section-number">2.4.3</span> Chunk options</a></li>
+  <li><a href="#optional-using-languages-other-than-r" id="toc-optional-using-languages-other-than-r" class="nav-link" data-scroll-target="#optional-using-languages-other-than-r"><span class="header-section-number">2.4.4</span> Optional: using languages other than R</a></li>
   </ul></li>
-  <li><a href="#good-practices" id="toc-good-practices" class="nav-link" data-scroll-target="#good-practices"><span class="header-section-number">3.5</span> Good practices</a></li>
+  <li><a href="#good-practices" id="toc-good-practices" class="nav-link" data-scroll-target="#good-practices"><span class="header-section-number">2.5</span> Good practices</a></li>
   </ul>
 </nav>
     </div>
@@ -244,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Documenting your code</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Documenting your code</span></h1>
 </div>
 
 
@@ -262,7 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Code that works today can be a mystery in six months, even to the person who wrote it. Good documentation means that you, your supervisor or a colleague can later understand what you did, why you did it, and run it again to get the same result.</p>
-<p>Since the <a href="../code/1_intro.html">first chapter</a>, you have been working in a Quarto document, with your code in chunks and your notes in between. This chapter shows how to get the most out of it:</p>
+<p>In the chapter <a href="../code/1_intro.html">Getting started</a>, you wrote your first Quarto document, with your code in chunks and your notes in between. Before you write more code, this chapter shows how to get the most out of it:</p>
 <ul>
 <li>how to format your notes with Markdown</li>
 <li>what to write between your chunks</li>
@@ -270,8 +270,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>how to turn your document into a report</li>
 <li>a set of good practices that make your analysis easier to repeat</li>
 </ul>
-<section id="markdown" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="markdown"><span class="header-section-number">3.1</span> Markdown</h2>
+<section id="markdown" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="markdown"><span class="header-section-number">2.1</span> Markdown</h2>
 <p>The text in a Quarto document is written in <strong>Markdown</strong>. Markdown is a simple way to format plain text. You type a few special characters, and a program turns them into formatted text. Some examples:</p>
 <table class="caption-top table">
 <thead>
@@ -327,16 +327,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">A cheatsheet</a></li>
 </ul>
 </section>
-<section id="what-to-write-between-your-chunks" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="what-to-write-between-your-chunks"><span class="header-section-number">3.2</span> What to write between your chunks</h2>
+<section id="what-to-write-between-your-chunks" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="what-to-write-between-your-chunks"><span class="header-section-number">2.2</span> What to write between your chunks</h2>
 <p>The text between your chunks is where your analysis becomes understandable. A few questions can help you decide what to write:</p>
 <ul>
 <li><strong>What do I do here, and why?</strong> For example: “I remove the plants without a root length measurement, because they cannot be used for the comparison.”</li>
-<li><strong>What do I see?</strong> Describe the result in your own words, even if it seems obvious. For example: “The table has 594 rows, one per plant.”</li>
+<li><strong>What do I see?</strong> Describe the result in your own words, even if it seems obvious. It might not be so obvious anymore after a few months. For example: “The table has 594 rows, one per plant.”</li>
 <li><strong>What surprises me?</strong> Unexpected values, odd groups, numbers that are much larger or smaller than you thought.</li>
 <li><strong>What questions do I have?</strong> Things you want to check later, or ask your supervisor. Writing them down while you work means you don’t forget them.</li>
 </ul>
-<p>Here is an example of how this can look:</p>
+<p>Here is an example of how this can look. It uses the growth data that you will download and read in the chapter <a href="../code/first_steps.html">First steps in R</a>, so don’t worry if you don’t understand the code yet. Look at the text around it:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Read the growth data</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>We read in the measurements of the plant experiment.</span>
@@ -347,31 +347,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(growth_data)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>The table has one row per plant and 594 plants in total. The columns are</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>the phosphate level, the bacterial treatment, the experiment, the root</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>length and the shoot weight.</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>Questions:</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Some values are <span class="in">`NA`</span>. How many are there, and are they in one group?</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Why are there three experiments? Were they done at different times?</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>The table has one row per plant and 594 plants in total. The columns are the phosphate level, the bacterial treatment, the experiment, the root</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>length and the shoot weight.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Questions:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Some values are <span class="in">`NA`</span>. How many are there, and are they in one group?</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Why are there three experiments? Were they done at different times?</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Your notes don’t need to be polished. They are mainly for you and the people you work with. Short, honest notes are much more useful than none.</p>
 </section>
-<section id="comments-in-your-code" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="comments-in-your-code"><span class="header-section-number">3.3</span> Comments in your code</h2>
+<section id="comments-in-your-code" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="comments-in-your-code"><span class="header-section-number">2.3</span> Comments in your code</h2>
 <p>Inside a chunk, you can write <strong>comments</strong>. Everything on a line after a <code>#</code> is a comment. R ignores it, so you can write anything you like there:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this whole line is a comment</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># a comment can also follow some code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="co"># a comment can also follow some code</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
 </div>
 <p>Use the text between chunks for longer notes, and comments for short notes about a single line of code. Good comments explain <strong>why</strong> you do something, not only <strong>what</strong> the code does. The code already shows what happens; the reason is often the part you forget.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not very helpful: says the same as the code</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>growth_data <span class="ot">&lt;-</span> growth_data[growth_data<span class="sc">$</span>Rootlength <span class="sc">&gt;</span> <span class="dv">0</span>, ]</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># more helpful: explains why</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># remove plants with root length 0, these seeds did not germinate</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>growth_data <span class="ot">&lt;-</span> growth_data[growth_data<span class="sc">$</span>Rootlength <span class="sc">&gt;</span> <span class="dv">0</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># not very helpful: says the same as the code</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># divide 15.2 by 1000</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fl">15.2</span> <span class="sc">/</span> <span class="dv">1000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0152</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># more helpful: explains why</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># convert the shoot weight of 15.2 mg to g, because the other study reports g</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fl">15.2</span> <span class="sc">/</span> <span class="dv">1000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0152</code></pre>
+</div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -398,31 +406,31 @@ Note
 <div class="callout-body-container callout-body">
 <p>In an R script (a <code>.R</code> file), comments are the only place for notes. There, it helps to start the script with a few comment lines that say who wrote it, when, and what it is for:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analysis of root length in the growth experiment</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Author: your name</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Date: 2026-10-19</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Purpose: test whether the bacterial strains change root length under low phosphorus</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analysis of root length in the growth experiment</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Author: your name</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Date: 2026-10-19</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Purpose: test whether the bacterial strains change root length under low phosphorus</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In a Quarto document, the header at the top does this job (see below).</p>
 </div>
 </div>
 </section>
-<section id="turn-your-document-into-a-report" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="turn-your-document-into-a-report"><span class="header-section-number">3.4</span> Turn your document into a report</h2>
+<section id="turn-your-document-into-a-report" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="turn-your-document-into-a-report"><span class="header-section-number">2.4</span> Turn your document into a report</h2>
 <p>You already know the three parts of a Quarto document from the <a href="../code/1_intro.html">first chapter</a>: the header, the text and the code chunks. Here we look at the header in more detail and at how to make a report from your document.</p>
-<section id="the-header" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="the-header"><span class="header-section-number">3.4.1</span> The header</h3>
+<section id="the-header" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="the-header"><span class="header-section-number">2.4.1</span> The header</h3>
 <p>The header at the top of the document, between the two lines of <code>---</code>, holds the settings of your document. It is a good place to say who wrote the document, when, and what it is about:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Root length in the growth experiment"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Your name"</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-10-19"</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Root length in the growth experiment"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Your name"</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2026-10-19"</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>format: html</code> tells Quarto to make an HTML page, which you can open in any web browser. Other formats are possible, for example <code>pdf</code> or <code>docx</code> (a Word file), but they may need extra software.</p>
 </section>
-<section id="render-your-document" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="render-your-document"><span class="header-section-number">3.4.2</span> Render your document</h3>
+<section id="render-your-document" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="render-your-document"><span class="header-section-number">2.4.2</span> Render your document</h3>
 <p>To create a report, click the <strong>Render</strong> button at the top of the document. Quarto then runs all code from top to bottom in a fresh R session and puts the text, the code and its results (tables, plots) together. The report is saved next to your <code>.qmd</code> file, here as an HTML file with the same name. RStudio usually also opens it for you.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -439,15 +447,15 @@ Tip
 </div>
 <p>If rendering fails, Quarto prints an error message in the Background Jobs tab next to the Console. It tells you in which chunk the problem is. <!-- TODO Nina: check tab name ("Background Jobs") in current RStudio --> Fix the chunk, run it on its own to check, and render again.</p>
 </section>
-<section id="chunk-options" class="level3" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="chunk-options"><span class="header-section-number">3.4.3</span> Chunk options</h3>
+<section id="chunk-options" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="chunk-options"><span class="header-section-number">2.4.3</span> Chunk options</h3>
 <p>You can control what a chunk does and what appears in the report with <strong>chunk options</strong>. In Quarto, you write them at the top of the chunk, on lines starting with <code>#|</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Some useful options:</p>
 <ul>
 <li><code>echo: false</code> hides the code, but shows its results in the report. Useful for plots.</li>
@@ -459,8 +467,8 @@ Tip
 </ul>
 <p>You find all options on the <a href="https://quarto.org/docs/computations/execution-options.html">Quarto website</a>.</p>
 </section>
-<section id="optional-using-languages-other-than-r" class="level3" data-number="3.4.4">
-<h3 data-number="3.4.4" class="anchored" data-anchor-id="optional-using-languages-other-than-r"><span class="header-section-number">3.4.4</span> Optional: using languages other than R</h3>
+<section id="optional-using-languages-other-than-r" class="level3" data-number="2.4.4">
+<h3 data-number="2.4.4" class="anchored" data-anchor-id="optional-using-languages-other-than-r"><span class="header-section-number">2.4.4</span> Optional: using languages other than R</h3>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -478,15 +486,15 @@ Tip
 <p>This is useful if part of your analysis runs on the command line, for example on a computer cluster, and another part in R. You can document both steps in the same file.</p>
 <p>Some examples with bash:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print something to the screen</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'hello world'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print something to the screen</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'hello world'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>hello world</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list the files in our data folder</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list the files in our data folder</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Genes_of_interest.txt
 Genotype_Meristem.txt
@@ -502,14 +510,15 @@ mmc5.xlsx</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the first lines of the growth data</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 3 data/Growth_Data.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the first lines of the growth data</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 3 data/Growth_Data.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Nutrient    Condition   Experiment  Rootlength  FW_shoot_mg
 low_P   mock    ex61    40.4    6.6
 low_P   mock    ex61    38  6.8</code></pre>
 </div>
 </div>
+<p>The last two examples use the <code>data</code> folder and the growth data, which you download in the chapter <a href="../code/first_steps.html">First steps in R</a>.</p>
 <p>To run bash chunks, bash must be installed on your computer. On Mac and Linux it already is. On Windows, it is available for example through Git for Windows or WSL. If you don’t have bash, these chunks give an error, but this does not affect your R chunks.</p>
 <p>A general introduction into bash and awk is provided in a separate tutorial on <a href="https://github.com/ndombrowski/AWK_tutorial">GitHub</a>.</p>
 </div>
@@ -517,9 +526,9 @@ low_P   mock    ex61    38  6.8</code></pre>
 </div>
 </section>
 </section>
-<section id="good-practices" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="good-practices"><span class="header-section-number">3.5</span> Good practices</h2>
-<p>These practices are useful in any programming language. You don’t need to follow all of them from day one, but the earlier they become habits, the easier your life will be.</p>
+<section id="good-practices" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="good-practices"><span class="header-section-number">2.5</span> Good practices</h2>
+<p>These practices are useful in any programming language. You don’t need to follow all of them from day one, but the earlier they become habits, the easier your life will be. Some of them mention things that you only learn in the next chapters, such as packages or saving tables. Use this list as a checklist and come back to it later.</p>
 <ul>
 <li><strong>Keep each project in its own folder</strong>, with subfolders for input data and output files, and use an RStudio project (see <a href="../code/1_intro.html">Getting started</a>).</li>
 <li><strong>Fill in the header of your document</strong>: who wrote it, when, and what it is about.</li>
@@ -535,7 +544,7 @@ low_P   mock    ex61    38  6.8</code></pre>
 <li><strong>Record the software versions</strong> you used. Packages change over time, and the same code can give different results or errors with another version. The function <code>sessionInfo()</code> prints your R version and all loaded packages with their versions. Run it at the end of your document:</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R version 4.4.2 (2024-10-31 ucrt)
 Platform: x86_64-w64-mingw32/x64
@@ -969,13 +978,13 @@ loaded via a namespace (and not attached):
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../code/first_steps.html" class="pagination-link" aria-label="First steps in R">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First steps in R</span></span>
+      <a href="../code/1_intro.html" class="pagination-link" aria-label="Getting started">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../code/data_types.html" class="pagination-link" aria-label="Data objects">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data objects</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../code/first_steps.html" class="pagination-link" aria-label="First steps in R">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">First steps in R</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

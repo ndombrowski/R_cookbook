@@ -9,7 +9,7 @@ df-print: paged
 
 Code that works today can be a mystery in six months, even to the person who wrote it. Good documentation means that you, your supervisor or a colleague can later understand what you did, why you did it, and run it again to get the same result.
 
-Since the [first chapter](1_intro.qmd), you have been working in a Quarto document, with your code in chunks and your notes in between. This chapter shows how to get the most out of it:
+In the chapter [Getting started](1_intro.qmd), you wrote your first Quarto document, with your code in chunks and your notes in between. Before you write more code, this chapter shows how to get the most out of it:
 
 - how to format your notes with Markdown
 - what to write between your chunks
@@ -51,11 +51,11 @@ This tutorial does not cover Markdown in detail, but there is good material onli
 The text between your chunks is where your analysis becomes understandable. A few questions can help you decide what to write:
 
 - **What do I do here, and why?** For example: "I remove the plants without a root length measurement, because they cannot be used for the comparison."
-- **What do I see?** Describe the result in your own words, even if it seems obvious. For example: "The table has 594 rows, one per plant."
+- **What do I see?** Describe the result in your own words, even if it seems obvious. It might not be so obvious anymore after a few months. For example: "The table has 594 rows, one per plant."
 - **What surprises me?** Unexpected values, odd groups, numbers that are much larger or smaller than you thought.
 - **What questions do I have?** Things you want to check later, or ask your supervisor. Writing them down while you work means you don't forget them.
 
-Here is an example of how this can look:
+Here is an example of how this can look. It uses the growth data that you will download and read in the chapter [First steps in R](first_steps.qmd), so don't worry if you don't understand the code yet. Look at the text around it:
 
 ````markdown
 ## Read the growth data
@@ -68,8 +68,7 @@ head(growth_data)
 dim(growth_data)
 ```
 
-The table has one row per plant and 594 plants in total. The columns are
-the phosphate level, the bacterial treatment, the experiment, the root
+The table has one row per plant and 594 plants in total. The columns are the phosphate level, the bacterial treatment, the experiment, the root
 length and the shoot weight.
 
 Questions:
@@ -87,20 +86,19 @@ Inside a chunk, you can write **comments**. Everything on a line after a `#` is 
 
 ```{r}
 # this whole line is a comment
-x <- 5 # a comment can also follow some code
+1 + 1 # a comment can also follow some code
 ```
 
 Use the text between chunks for longer notes, and comments for short notes about a single line of code. Good comments explain **why** you do something, not only **what** the code does. The code already shows what happens; the reason is often the part you forget.
 
 ```{r}
-#| eval: false
-
 # not very helpful: says the same as the code
-growth_data <- growth_data[growth_data$Rootlength > 0, ]
+# divide 15.2 by 1000
+15.2 / 1000
 
 # more helpful: explains why
-# remove plants with root length 0, these seeds did not germinate
-growth_data <- growth_data[growth_data$Rootlength > 0, ]
+# convert the shoot weight of 15.2 mg to g, because the other study reports g
+15.2 / 1000
 ```
 
 ::: {.callout-tip}
@@ -204,6 +202,8 @@ ls data
 head -n 3 data/Growth_Data.txt
 ```
 
+The last two examples use the `data` folder and the growth data, which you download in the chapter [First steps in R](first_steps.qmd).
+
 To run bash chunks, bash must be installed on your computer. On Mac and Linux it already is. On Windows, it is available for example through Git for Windows or WSL. If you don't have bash, these chunks give an error, but this does not affect your R chunks.
 
 A general introduction into bash and awk is provided in a separate tutorial on [GitHub](https://github.com/ndombrowski/AWK_tutorial).
@@ -212,7 +212,7 @@ A general introduction into bash and awk is provided in a separate tutorial on [
 
 ## Good practices
 
-These practices are useful in any programming language. You don't need to follow all of them from day one, but the earlier they become habits, the easier your life will be.
+These practices are useful in any programming language. You don't need to follow all of them from day one, but the earlier they become habits, the easier your life will be. Some of them mention things that you only learn in the next chapters, such as packages or saving tables. Use this list as a checklist and come back to it later.
 
 * **Keep each project in its own folder**, with subfolders for input data and output files, and use an RStudio project (see [Getting started](1_intro.qmd)).
 * **Fill in the header of your document**: who wrote it, when, and what it is about.

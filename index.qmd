@@ -1,6 +1,44 @@
 # Preface {.unnumbered}
 
-This is a cookbook for key R commands. 
+This book is an introduction to R for biologists. You don't need any coding experience to follow it. 
+
+## What you will learn
+
+We start at the very beginning, with installing R and RStudio, and work our way up to analysing and plotting real data:
+
+- [Getting started](code/1_intro.qmd): install R and RStudio, find your way around RStudio, and set up a project folder for your work.
+- [Documenting your code](code/documenting_code.qmd): write comments and notes, so that you (and others) still understand your analysis months later.
+- [First steps in R](code/first_steps.qmd): store values, use functions, install packages, download the example data and read it into R.
+- [Data objects](code/data_types.qmd): the building blocks of R, such as vectors, data frames and factors.
+- [Working with the tidyverse](code/tidyverse.qmd): filter, sort, change and summarize tables, step by step.
+- [Control structures](code/control_structures.qmd): repeat tasks with loops and make decisions with if-else.
+- [Plotting your data](code/plotting_basics.qmd): quick plots in base R, and figures for reports and papers with ggplot2.
+- [Statistics in R](code/stats.qmd): summary statistics, linear models, t-tests and ANOVAs, and how to check their assumptions. Note: This chapter is still work in progress
+- [Working with annotation data](code/parsing_output_from_annotations.qmd): handle a large table from a genome annotation and turn it into a heatmap. Note: This chapter is still work in progress
+
+The first chapters build on each other, so work through them in order. Later on, you can also come back to single chapters and use them as a reference.
+
+## Base R and the tidyverse
+
+There are two common styles of writing R code. **Base R** uses the functions that come with R itself. The **tidyverse** is a collection of packages that lets you build an analysis from small steps that each do one job. In the first chapters you learn base R, because you will meet it everywhere: in older scripts, in other people's code and in help pages. From the chapter "Working with the tidyverse" on, we switch to the tidyverse, because it is easier to read and to change. That chapter also explains the difference in more detail.
+
+## The example data
+
+Most chapters use data from a real plant experiment [@garridooter2018]. *Arabidopsis thaliana* plants were grown with little or plenty of phosphate, an important plant nutrient, and with or without root bacteria. We then measured how long their roots grew and how heavy their shoots got. Working with real data means that you will also meet the things that make real data messy, such as missing values and groups of different sizes. In the chapter "First steps in R" you learn how to download the data.
+
+## How to use this book
+
+- **Type the code yourself.** Copying and pasting works, but typing helps you remember, and your typos teach you how to read error messages.
+- **Work in a Quarto document.** From the first chapter on, you write your code in a Quarto document in RStudio. Between the code, write down what you did, what you see in the results and which questions you have. These notes become your own reference.
+- **Do the exercises.** Most chapters have short exercises. The solutions are hidden: try it yourself first, and only then click on "Solution".
+- **Don't worry about errors.** Everyone gets them, all the time. Read the message, check your spelling and brackets, and try again.
+
+## Further reading
+
+Two separate tutorials go deeper into topics of this book. They use a different data set, measurements of penguins, which is good practice for using the same functions on new data:
+
+- [An introduction into the tidyverse](https://ndombrowski.github.io/Tidyverse_tutorial/)
+- [An introduction into ggplot](https://ndombrowski.github.io/Ggplot_tutorial/)
 
 ```{r, global_options, include=FALSE}
 #control soft wrap

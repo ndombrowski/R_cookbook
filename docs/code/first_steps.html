@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; First steps in R – R  cookbook</title>
+<title>3&nbsp; First steps in R – R  cookbook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -85,8 +85,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../code/documenting_code.html" rel="next">
-<link href="../code/1_intro.html" rel="prev">
+<link href="../code/data_types.html" rel="next">
+<link href="../code/documenting_code.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -142,7 +142,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/first_steps.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First steps in R</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../code/first_steps.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">First steps in R</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -183,14 +183,14 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/first_steps.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First steps in R</span></span></a>
+  <a href="../code/documenting_code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Documenting your code</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/documenting_code.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Documenting your code</span></span></a>
+  <a href="../code/first_steps.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">First steps in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -213,14 +213,14 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/stats.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
+  <a href="../code/plotting_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Plotting your data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../code/plotting_basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Basic plotting</span></span></a>
+  <a href="../code/stats.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistics in R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -245,36 +245,36 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-assignment-operator--" id="toc-the-assignment-operator--" class="nav-link active" data-scroll-target="#the-assignment-operator--"><span class="header-section-number">2.1</span> The assignment operator <code>&lt;-</code></a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">2.2</span> Functions</a>
+  <li><a href="#the-assignment-operator--" id="toc-the-assignment-operator--" class="nav-link active" data-scroll-target="#the-assignment-operator--"><span class="header-section-number">3.1</span> The assignment operator <code>&lt;-</code></a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">3.2</span> Functions</a>
   <ul class="collapse">
-  <li><a href="#how-to-write-arguments" id="toc-how-to-write-arguments" class="nav-link" data-scroll-target="#how-to-write-arguments"><span class="header-section-number">2.2.1</span> How to write arguments</a></li>
-  <li><a href="#find-out-what-a-function-does" id="toc-find-out-what-a-function-does" class="nav-link" data-scroll-target="#find-out-what-a-function-does"><span class="header-section-number">2.2.2</span> Find out what a function does</a></li>
+  <li><a href="#how-to-write-arguments" id="toc-how-to-write-arguments" class="nav-link" data-scroll-target="#how-to-write-arguments"><span class="header-section-number">3.2.1</span> How to write arguments</a></li>
+  <li><a href="#find-out-what-a-function-does" id="toc-find-out-what-a-function-does" class="nav-link" data-scroll-target="#find-out-what-a-function-does"><span class="header-section-number">3.2.2</span> Find out what a function does</a></li>
   </ul></li>
-  <li><a href="#look-at-and-clean-up-your-workspace" id="toc-look-at-and-clean-up-your-workspace" class="nav-link" data-scroll-target="#look-at-and-clean-up-your-workspace"><span class="header-section-number">2.3</span> Look at and clean up your workspace</a></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">2.4</span> Packages</a>
+  <li><a href="#look-at-and-clean-up-your-workspace" id="toc-look-at-and-clean-up-your-workspace" class="nav-link" data-scroll-target="#look-at-and-clean-up-your-workspace"><span class="header-section-number">3.3</span> Look at and clean up your workspace</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">3.4</span> Packages</a>
   <ul class="collapse">
-  <li><a href="#updating-packages" id="toc-updating-packages" class="nav-link" data-scroll-target="#updating-packages"><span class="header-section-number">2.4.1</span> Updating packages</a></li>
+  <li><a href="#updating-packages" id="toc-updating-packages" class="nav-link" data-scroll-target="#updating-packages"><span class="header-section-number">3.4.1</span> Updating packages</a></li>
   </ul></li>
-  <li><a href="#get-the-data" id="toc-get-the-data" class="nav-link" data-scroll-target="#get-the-data"><span class="header-section-number">2.5</span> Get the data</a>
+  <li><a href="#get-the-data" id="toc-get-the-data" class="nav-link" data-scroll-target="#get-the-data"><span class="header-section-number">3.5</span> Get the data</a>
   <ul class="collapse">
-  <li><a href="#the-example-data" id="toc-the-example-data" class="nav-link" data-scroll-target="#the-example-data"><span class="header-section-number">2.5.1</span> The example data</a></li>
-  <li><a href="#download-the-files" id="toc-download-the-files" class="nav-link" data-scroll-target="#download-the-files"><span class="header-section-number">2.5.2</span> Download the files</a></li>
+  <li><a href="#the-example-data" id="toc-the-example-data" class="nav-link" data-scroll-target="#the-example-data"><span class="header-section-number">3.5.1</span> The example data</a></li>
+  <li><a href="#download-the-files" id="toc-download-the-files" class="nav-link" data-scroll-target="#download-the-files"><span class="header-section-number">3.5.2</span> Download the files</a></li>
   </ul></li>
-  <li><a href="#read-data-into-r" id="toc-read-data-into-r" class="nav-link" data-scroll-target="#read-data-into-r"><span class="header-section-number">2.6</span> Read data into R</a></li>
-  <li><a href="#read-an-excel-file" id="toc-read-an-excel-file" class="nav-link" data-scroll-target="#read-an-excel-file"><span class="header-section-number">2.7</span> Read an Excel file</a></li>
-  <li><a href="#three-things-you-need-for-the-next-sections" id="toc-three-things-you-need-for-the-next-sections" class="nav-link" data-scroll-target="#three-things-you-need-for-the-next-sections"><span class="header-section-number">2.8</span> Three things you need for the next sections</a>
+  <li><a href="#read-data-into-r" id="toc-read-data-into-r" class="nav-link" data-scroll-target="#read-data-into-r"><span class="header-section-number">3.6</span> Read data into R</a></li>
+  <li><a href="#read-an-excel-file" id="toc-read-an-excel-file" class="nav-link" data-scroll-target="#read-an-excel-file"><span class="header-section-number">3.7</span> Read an Excel file</a></li>
+  <li><a href="#three-things-you-need-for-the-next-sections" id="toc-three-things-you-need-for-the-next-sections" class="nav-link" data-scroll-target="#three-things-you-need-for-the-next-sections"><span class="header-section-number">3.8</span> Three things you need for the next sections</a>
   <ul class="collapse">
-  <li><a href="#c-combines-values" id="toc-c-combines-values" class="nav-link" data-scroll-target="#c-combines-values"><span class="header-section-number">2.8.1</span> <code>c()</code> combines values</a></li>
-  <li><a href="#rows-columns-selects-part-of-a-table" id="toc-rows-columns-selects-part-of-a-table" class="nav-link" data-scroll-target="#rows-columns-selects-part-of-a-table"><span class="header-section-number">2.8.2</span> <code>[rows, columns]</code> selects part of a table</a></li>
-  <li><a href="#takes-one-column" id="toc-takes-one-column" class="nav-link" data-scroll-target="#takes-one-column"><span class="header-section-number">2.8.3</span> <code>$</code> takes one column</a></li>
+  <li><a href="#c-combines-values" id="toc-c-combines-values" class="nav-link" data-scroll-target="#c-combines-values"><span class="header-section-number">3.8.1</span> <code>c()</code> combines values</a></li>
+  <li><a href="#rows-columns-selects-part-of-a-table" id="toc-rows-columns-selects-part-of-a-table" class="nav-link" data-scroll-target="#rows-columns-selects-part-of-a-table"><span class="header-section-number">3.8.2</span> <code>[rows, columns]</code> selects part of a table</a></li>
+  <li><a href="#takes-one-column" id="toc-takes-one-column" class="nav-link" data-scroll-target="#takes-one-column"><span class="header-section-number">3.8.3</span> <code>$</code> takes one column</a></li>
   </ul></li>
-  <li><a href="#find-the-unique-combinations-with-unique" id="toc-find-the-unique-combinations-with-unique" class="nav-link" data-scroll-target="#find-the-unique-combinations-with-unique"><span class="header-section-number">2.9</span> Find the unique combinations with <code>unique()</code></a></li>
-  <li><a href="#combine-two-tables-with-merge" id="toc-combine-two-tables-with-merge" class="nav-link" data-scroll-target="#combine-two-tables-with-merge"><span class="header-section-number">2.10</span> Combine two tables with <code>merge()</code></a></li>
-  <li><a href="#write-data-into-a-text-file" id="toc-write-data-into-a-text-file" class="nav-link" data-scroll-target="#write-data-into-a-text-file"><span class="header-section-number">2.11</span> Write data into a text file</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">2.12</span> Summary</a>
+  <li><a href="#find-the-unique-combinations-with-unique" id="toc-find-the-unique-combinations-with-unique" class="nav-link" data-scroll-target="#find-the-unique-combinations-with-unique"><span class="header-section-number">3.9</span> Find the unique combinations with <code>unique()</code></a></li>
+  <li><a href="#combine-two-tables-with-merge" id="toc-combine-two-tables-with-merge" class="nav-link" data-scroll-target="#combine-two-tables-with-merge"><span class="header-section-number">3.10</span> Combine two tables with <code>merge()</code></a></li>
+  <li><a href="#write-data-into-a-text-file" id="toc-write-data-into-a-text-file" class="nav-link" data-scroll-target="#write-data-into-a-text-file"><span class="header-section-number">3.11</span> Write data into a text file</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">3.12</span> Summary</a>
   <ul class="collapse">
-  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">2.12.1</span> Exercise</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">3.12.1</span> Exercise</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -284,7 +284,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">First steps in R</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">First steps in R</span></h1>
 </div>
 
 
@@ -302,9 +302,9 @@ div.csl-indent {
 
 
 <p>In this chapter you write your first R code. We start with the basics: how to store a value, how to use a function and how to add extra functions with packages. Then we download the example data, read it into R, change it a little and save the result in a new file.</p>
-<p>Before you start, open the RStudio project you made in the previous chapter and create a new Quarto document for this chapter, for example <code>first_steps.qmd</code>. Save it directly in your project folder. Type the code of this chapter into chunks in that document and run it from there. Between the chunks, write down what you did, what you see in the results and which questions you have. You will learn more about how to do this in the chapter on <a href="../code/documenting_code.html">documenting your code</a>.</p>
-<section id="the-assignment-operator--" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="the-assignment-operator--"><span class="header-section-number">2.1</span> The assignment operator <code>&lt;-</code></h2>
+<p>Before you start, open the RStudio project you made in the chapter <a href="../code/1_intro.html">Getting started</a> and create a new Quarto document for this chapter, for example <code>first_steps.qmd</code>. Save it directly in your project folder. Type the code of this chapter into chunks in that document and run it from there. Between the chunks, write down what you did, what you see in the results and which questions you have, as described in the chapter <a href="../code/documenting_code.html">Documenting your code</a>.</p>
+<section id="the-assignment-operator--" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="the-assignment-operator--"><span class="header-section-number">3.1</span> The assignment operator <code>&lt;-</code></h2>
 <p>The <code>&lt;-</code> symbol stores a value under a name. The name and the value together are called an <strong>object</strong> (some people also say <strong>variable</strong>). Once a value is stored, you can use the name instead of the value:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># store some numbers</span></span>
@@ -327,8 +327,8 @@ div.csl-indent {
 </ul>
 <p>Every object you create appears in the <strong>Environment</strong> pane (top right in RStudio).</p>
 </section>
-<section id="functions" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="functions"><span class="header-section-number">2.2</span> Functions</h2>
+<section id="functions" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="functions"><span class="header-section-number">3.2</span> Functions</h2>
 <p>A <strong>function</strong> is a piece of code that does one specific job, for example calculating a mean or reading a table. R comes with many functions already built in, and packages (see below) add many more.</p>
 <p>You use a function by writing its name followed by round brackets. Inside the brackets you put the input for the function:</p>
 <div class="cell">
@@ -343,8 +343,8 @@ div.csl-indent {
 <pre><code>[1] 2.302585</code></pre>
 </div>
 </div>
-<section id="how-to-write-arguments" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="how-to-write-arguments"><span class="header-section-number">2.2.1</span> How to write arguments</h3>
+<section id="how-to-write-arguments" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="how-to-write-arguments"><span class="header-section-number">3.2.1</span> How to write arguments</h3>
 <p>The values inside the brackets are called <strong>arguments</strong>. They tell the function what to work on and how exactly to behave. Arguments are separated by commas, and you write them as <code>name = value</code>. For example, <code>round()</code> rounds a number, and its argument <code>digits</code> says how many decimals you want to keep:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># round to 2 decimals</span></span>
@@ -370,8 +370,8 @@ div.csl-indent {
 </div>
 <p>Writing out the names makes your code easier to read, especially for functions with many arguments. You will see this a lot below, for example in <code>read.table("data/Growth_Data.txt", sep = "\t", header = TRUE)</code>.</p>
 </section>
-<section id="find-out-what-a-function-does" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="find-out-what-a-function-does"><span class="header-section-number">2.2.2</span> Find out what a function does</h3>
+<section id="find-out-what-a-function-does" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="find-out-what-a-function-does"><span class="header-section-number">3.2.2</span> Find out what a function does</h3>
 <p>How do you know which arguments a function has, and what their defaults are? The help page tells you. Type <code>?</code> followed by the function name:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>?round</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -386,8 +386,8 @@ div.csl-indent {
 <p>Help pages are written for people who already know some R, so they can be hard to read at first. It is fine to only look at Usage and Examples in the beginning.</p>
 </section>
 </section>
-<section id="look-at-and-clean-up-your-workspace" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="look-at-and-clean-up-your-workspace"><span class="header-section-number">2.3</span> Look at and clean up your workspace</h2>
+<section id="look-at-and-clean-up-your-workspace" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="look-at-and-clean-up-your-workspace"><span class="header-section-number">3.3</span> Look at and clean up your workspace</h2>
 <p>Everything you have stored during your current R session is called your <strong>workspace</strong>. You see it in the Environment pane, but you can also list it with <code>ls()</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># list the objects in the current workspace</span></span>
@@ -422,22 +422,23 @@ Tip
 </div>
 </div>
 </section>
-<section id="packages" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="packages"><span class="header-section-number">2.4</span> Packages</h2>
+<section id="packages" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="packages"><span class="header-section-number">3.4</span> Packages</h2>
 <p>A <strong>package</strong> is a collection of extra functions (and sometimes data) that someone wrote and shared. Base R can already do a lot, but for many tasks, such as nicer plots or specific statistical tests, you will use packages. Most packages are stored on CRAN, the same website where you downloaded R.</p>
 <p>Working with a package takes two steps:</p>
 <ol type="1">
 <li><strong>Install</strong> the package. This downloads it to your computer. You only do this <strong>once</strong> (and again when you want to update it).</li>
 <li><strong>Load</strong> the package with <code>library()</code>. This makes its functions available in your current R session. R forgets loaded packages when you close it, so you do this <strong>every time</strong> you start R. That is why <code>library()</code> calls belong at the top of your document.</li>
 </ol>
-<p>As an example, here is how to install and load <code>ggplot2</code>, a package for making plots that we use later in this book. You do not need it for this chapter.</p>
+<p>As an example, let’s install the <code>tidyverse</code>. The tidyverse is a collection of packages that we use a lot from the chapter <a href="../code/tidyverse.html">Working with the tidyverse</a> on, for example for changing tables and making plots. Installing it installs all of these packages at once, so it can take a few minutes.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install the package (only once, type this in the Console)</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load the package (every session, put this at the top of your document)</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>When you load the tidyverse, R prints a message with the packages it loaded, and a list of “conflicts”. The conflicts tell you that some tidyverse functions have the same name as functions in base R, for example <code>filter()</code>. From now on, R uses the tidyverse version. This is expected and nothing to worry about.</p>
 <p>Note the quotes: <code>install.packages()</code> needs the name as text in quotes, while <code>library()</code> works without them.</p>
 <p>Instead of typing <code>install.packages()</code>, you can also install packages in RStudio with the <strong>Packages</strong> tab (bottom right) and the <strong>Install</strong> button.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -453,8 +454,8 @@ Note
 <p>Put <code>install.packages()</code> in the Console, not in your document. Otherwise R downloads the package again every time you run the document.</p>
 </div>
 </div>
-<section id="updating-packages" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="updating-packages"><span class="header-section-number">2.4.1</span> Updating packages</h3>
+<section id="updating-packages" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="updating-packages"><span class="header-section-number">3.4.1</span> Updating packages</h3>
 <p>Packages are updated regularly. To update them:</p>
 <ul>
 <li><code>old.packages()</code> lists the installed packages for which a newer version exists.</li>
@@ -464,18 +465,18 @@ Note
 <p>Updates are usually a good idea, but sometimes a new version of a package works differently and older code no longer runs. This is one reason to record which package versions you used (see the chapter on <a href="../code/documenting_code.html">documenting your code</a>).</p>
 </section>
 </section>
-<section id="get-the-data" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="get-the-data"><span class="header-section-number">2.5</span> Get the data</h2>
-<section id="the-example-data" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="the-example-data"><span class="header-section-number">2.5.1</span> The example data</h3>
+<section id="get-the-data" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="get-the-data"><span class="header-section-number">3.5</span> Get the data</h2>
+<section id="the-example-data" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="the-example-data"><span class="header-section-number">3.5.1</span> The example data</h3>
 <p>In the next chapters we work with data from a real plant experiment, published in <span class="citation" data-cites="garridooter2018">Garrido-Oter et al. (<a href="#ref-garridooter2018" role="doc-biblioref">2018</a>)</span>. We grew <em>Arabidopsis thaliana</em> plants with or without root bacteria and wanted to know whether the bacteria help the plant grow when it does not get enough phosphate, an important plant nutrient. The plants were grown with either a low (50 µM) or a high (625 µM) amount of phosphate. They were either inoculated with one of two <em>Rhizobium</em> strains (<code>129E</code> or <code>13C</code>) or were mock-treated, i.e.&nbsp;treated in the same way but without bacteria (<code>mock</code>). The mock plants are our control.</p>
 <p>There are two data files:</p>
 <p><strong>Growth_Data.txt</strong> contains the root length (<code>Rootlength</code>, in mm) and the shoot fresh weight (<code>FW_shoot_mg</code>, in mg) of each plant. The column <code>Nutrient</code> says whether the plant got low (<code>low_P</code>) or high (<code>high_P</code>) phosphate, and <code>Condition</code> says whether it was treated with a strain or was a mock control. The column <code>Experiment</code> tells you in which of the 3 repeats of the experiment (<code>ex61</code>, <code>ex64</code>, <code>ex65</code>) the plant was measured. The published data contains more experiments, but we only use the three in which all treatments were measured. For a few plants, the root length or the shoot weight could not be measured, so this file has some empty cells.</p>
 <p><strong>Timecourse.txt</strong> follows up on this. Strain 129E helped the plants grow, so we wanted to know how long it takes until the effect appears. We measured the root length of plants with and without 129E at 6 time points: 0, 4, 8, 12, 16 and 18 days after transfer to the treatment (<code>Timepoint</code>).</p>
 <p>Both files were made from the raw data table that was published with the paper. This table is an Excel file with one sheet per figure (<code>mmc5.xlsx</code>). We download it as well, to practise reading Excel files.</p>
 </section>
-<section id="download-the-files" class="level3" data-number="2.5.2">
-<h3 data-number="2.5.2" class="anchored" data-anchor-id="download-the-files"><span class="header-section-number">2.5.2</span> Download the files</h3>
+<section id="download-the-files" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="download-the-files"><span class="header-section-number">3.5.2</span> Download the files</h3>
 <p>The example data for this tutorial is stored on GitHub, a website for sharing code and files. You can download it directly with R, so you do not need a GitHub account.</p>
 <p>Make sure you have your project open and run the code below. It uses a few new functions:</p>
 <ol type="1">
@@ -568,8 +569,8 @@ Tip
 <p>If you see <code>FALSE</code>, look at the Files pane. Is there a <code>data</code> folder in your project, and is it spelled exactly like this? R is case sensitive, so <code>Data</code> and <code>data</code> are two different folders.</p>
 </section>
 </section>
-<section id="read-data-into-r" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="read-data-into-r"><span class="header-section-number">2.6</span> Read data into R</h2>
+<section id="read-data-into-r" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="read-data-into-r"><span class="header-section-number">3.6</span> Read data into R</h2>
 <p>To work with data, we first need to read it into R.</p>
 <p>When R reads a table, it stores it as a <strong>data frame</strong>. A data frame is R’s name for a table: each row is one measurement (here: one plant) and each column is one variable (for example the nutrient condition or the root length). Empty cells in a table become <code>NA</code> in R, which means “not available”, i.e.&nbsp;a missing value.</p>
 <p>For tables, there are some things to be aware of:</p>
@@ -674,20 +675,16 @@ Tip
 </div>
 </div>
 </section>
-<section id="read-an-excel-file" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="read-an-excel-file"><span class="header-section-number">2.7</span> Read an Excel file</h2>
-<p>A lot of data is stored in Excel files. You could save each sheet as a text file in Excel first, but R can also read Excel files directly. For this, we use the package <code>readxl</code>. If you have not installed it yet, type this in the Console:</p>
+<section id="read-an-excel-file" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="read-an-excel-file"><span class="header-section-number">3.7</span> Read an Excel file</h2>
+<p>A lot of data is stored in Excel files. You could save each sheet as a text file in Excel first, but R can also read Excel files directly. For this, we use the package <code>readxl</code>. It was installed together with the tidyverse above, but <code>library(tidyverse)</code> only loads the main tidyverse packages, and readxl is not one of them. So we load it ourselves:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Then load the package in your document:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>An Excel file can have several sheets. <code>excel_sheets()</code> lists their names:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># which sheets are in the file?</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">excel_sheets</span>(<span class="st">"data/mmc5.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># which sheets are in the file?</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">excel_sheets</span>(<span class="st">"data/mmc5.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "metadata"      "Fig 3A"        "Fig 3B"        "Fig 4B PRL"   
  [5] "Fig 4B #CELLS" "Fig 5A"        "Fig 6A"        "Fig 6B"       
@@ -698,8 +695,8 @@ Tip
 </div>
 <p>The growth data comes from the sheet <code>Fig S5A,B</code>. Let’s read it with <code>read_excel()</code>. The argument <code>sheet</code> says which sheet we want:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read one sheet</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>growth_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/mmc5.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Fig S5A,B"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read one sheet</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>growth_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/mmc5.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Fig S5A,B"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>New names:
 • `` -&gt; `...2`
@@ -708,7 +705,7 @@ Tip
 • `` -&gt; `...5`
 • `` -&gt; `...6`</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_excel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_excel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -720,10 +717,10 @@ Tip
 <p>This does not look right. The column names are <code># Raw data for Fig S5A,B</code>, <code>...2</code>, <code>...3</code> and so on, and the real column names are in the first row. If you open the file in Excel you see why: the first line of the sheet is a comment, and the table only starts in the second line. <code>read_excel()</code> always uses the first line as column names.</p>
 <p>We can tell <code>read_excel()</code> to skip the first line with <code>skip = 1</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># skip the comment line</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>growth_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/mmc5.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Fig S5A,B"</span>, <span class="at">skip =</span> <span class="dv">1</span>)</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_excel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># skip the comment line</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>growth_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/mmc5.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Fig S5A,B"</span>, <span class="at">skip =</span> <span class="dv">1</span>)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_excel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -734,10 +731,10 @@ Tip
 </div>
 <p>Better. But there is one more problem, which is easy to miss. Underneath each column name, R shows what kind of values the column contains: <code>&lt;chr&gt;</code> means text (character) and <code>&lt;dbl&gt;</code> means numbers. The columns <code>Primary Root Length (mm)</code> and <code>Shoot Fresh Weight (mg)</code> should contain numbers, but they are <code>&lt;chr&gt;</code>. The reason is that in this sheet, missing values are written as the text <code>NA</code>. R does not know this is a missing value, so it reads the whole column as text, and you can’t calculate with it. With the argument <code>na</code> we tell R which cells mean “missing value”:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># treat empty cells and the text "NA" as missing values</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>growth_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/mmc5.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Fig S5A,B"</span>, <span class="at">skip =</span> <span class="dv">1</span>, <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>))</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_excel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># treat empty cells and the text "NA" as missing values</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>growth_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/mmc5.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Fig S5A,B"</span>, <span class="at">skip =</span> <span class="dv">1</span>, <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>))</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_excel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -774,31 +771,31 @@ Tip
 </div>
 </div>
 </section>
-<section id="three-things-you-need-for-the-next-sections" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="three-things-you-need-for-the-next-sections"><span class="header-section-number">2.8</span> Three things you need for the next sections</h2>
+<section id="three-things-you-need-for-the-next-sections" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="three-things-you-need-for-the-next-sections"><span class="header-section-number">3.8</span> Three things you need for the next sections</h2>
 <p>The next sections use three pieces of R syntax that we have not seen yet. Here is a short introduction. You will learn more about them in the chapters on <a href="../code/data_types.html">data objects</a> and <a href="data_transformations.qmd">data transformations</a>.</p>
-<section id="c-combines-values" class="level3" data-number="2.8.1">
-<h3 data-number="2.8.1" class="anchored" data-anchor-id="c-combines-values"><span class="header-section-number">2.8.1</span> <code>c()</code> combines values</h3>
+<section id="c-combines-values" class="level3" data-number="3.8.1">
+<h3 data-number="3.8.1" class="anchored" data-anchor-id="c-combines-values"><span class="header-section-number">3.8.1</span> <code>c()</code> combines values</h3>
 <p><code>c()</code> stands for “combine”. It puts several values together into a <strong>vector</strong>, which is a list of values of the same kind (for example only numbers, or only text):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a vector with three numbers</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a vector with three numbers</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1  5 10</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a vector with two column names</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"Condition"</span>, <span class="st">"Rootlength"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a vector with two column names</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"Condition"</span>, <span class="st">"Rootlength"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Condition"  "Rootlength"</code></pre>
 </div>
 </div>
 </section>
-<section id="rows-columns-selects-part-of-a-table" class="level3" data-number="2.8.2">
-<h3 data-number="2.8.2" class="anchored" data-anchor-id="rows-columns-selects-part-of-a-table"><span class="header-section-number">2.8.2</span> <code>[rows, columns]</code> selects part of a table</h3>
+<section id="rows-columns-selects-part-of-a-table" class="level3" data-number="3.8.2">
+<h3 data-number="3.8.2" class="anchored" data-anchor-id="rows-columns-selects-part-of-a-table"><span class="header-section-number">3.8.2</span> <code>[rows, columns]</code> selects part of a table</h3>
 <p>With square brackets you can select rows and columns from a data frame. The part before the comma selects rows, the part after the comma selects columns. If you leave one side empty, R takes all of them.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rows 1 to 3, and only the columns Condition and Rootlength</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>growth_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">c</span>(<span class="st">"Condition"</span>, <span class="st">"Rootlength"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rows 1 to 3, and only the columns Condition and Rootlength</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>growth_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="fu">c</span>(<span class="st">"Condition"</span>, <span class="st">"Rootlength"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -809,12 +806,12 @@ Tip
 </div>
 <p>Here <code>1:3</code> means “the numbers 1 to 3”, so rows 1, 2 and 3. If we write <code>growth_data[, c("Condition", "Rootlength")]</code> instead, with nothing before the comma, we get these two columns for all 594 rows.</p>
 </section>
-<section id="takes-one-column" class="level3" data-number="2.8.3">
-<h3 data-number="2.8.3" class="anchored" data-anchor-id="takes-one-column"><span class="header-section-number">2.8.3</span> <code>$</code> takes one column</h3>
+<section id="takes-one-column" class="level3" data-number="3.8.3">
+<h3 data-number="3.8.3" class="anchored" data-anchor-id="takes-one-column"><span class="header-section-number">3.8.3</span> <code>$</code> takes one column</h3>
 <p>With <code>$</code> you can take a single column from a data frame by its name:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the first few values of the column Rootlength</span></span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data<span class="sc">$</span>Rootlength)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the first few values of the column Rootlength</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(growth_data<span class="sc">$</span>Rootlength)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 40.4 38.0 74.7 34.4 31.9 66.5</code></pre>
 </div>
@@ -822,16 +819,16 @@ Tip
 <p>You can also use <code>$</code> together with <code>&lt;-</code> to add a new column. If you give a single value, R copies it into every row. We will do this in the merge section below.</p>
 </section>
 </section>
-<section id="find-the-unique-combinations-with-unique" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="find-the-unique-combinations-with-unique"><span class="header-section-number">2.9</span> Find the unique combinations with <code>unique()</code></h2>
+<section id="find-the-unique-combinations-with-unique" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="find-the-unique-combinations-with-unique"><span class="header-section-number">3.9</span> Find the unique combinations with <code>unique()</code></h2>
 <p><code>unique()</code> removes duplicates and keeps each value, or each combination of values, only once.</p>
 <p>In our growth data, each plant got one combination of nutrient and condition, for example <code>low_P</code> and <code>129E</code>. Many plants share the same combination. If we take the columns <code>Nutrient</code> and <code>Condition</code> and remove the duplicates, we get a short overview of all treatments in our experiment:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a table that lists each combination of nutrient and condition only once</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>mapping_file <span class="ot">&lt;-</span> <span class="fu">unique</span>(growth_data[, <span class="fu">c</span>(<span class="st">"Nutrient"</span>, <span class="st">"Condition"</span>)])</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># view the data</span></span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>mapping_file</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a table that lists each combination of nutrient and condition only once</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>mapping_file <span class="ot">&lt;-</span> <span class="fu">unique</span>(growth_data[, <span class="fu">c</span>(<span class="st">"Nutrient"</span>, <span class="st">"Condition"</span>)])</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co"># view the data</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>mapping_file</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -843,16 +840,16 @@ Tip
 <p>Instead of 594 rows we now have 6: 2 nutrient levels times 3 conditions. A table like this, which describes each sample or treatment, is often called a <strong>mapping file</strong> or <strong>metadata</strong>.</p>
 <p>The numbers on the left are the row names. <code>unique()</code> keeps the row names of the first row in which each combination appears.</p>
 </section>
-<section id="combine-two-tables-with-merge" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="combine-two-tables-with-merge"><span class="header-section-number">2.10</span> Combine two tables with <code>merge()</code></h2>
+<section id="combine-two-tables-with-merge" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="combine-two-tables-with-merge"><span class="header-section-number">3.10</span> Combine two tables with <code>merge()</code></h2>
 <p>Often we have extra information about our samples in a separate table and want to add it to our data. The function <code>merge()</code> combines two tables based on columns they have in common. Each row in the first table gets the information from the matching row in the second table.</p>
 <p>Let’s add a column <code>Source</code> to our mapping file that says from which figure of the paper the data comes. This is useful if you later combine data from several figures or experiments:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a new column that says where the data comes from</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>mapping_file<span class="sc">$</span>Source <span class="ot">&lt;-</span> <span class="st">"Fig S5A,B"</span></span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co"># view the data</span></span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>mapping_file</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add a new column that says where the data comes from</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>mapping_file<span class="sc">$</span>Source <span class="ot">&lt;-</span> <span class="st">"Fig S5A,B"</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="co"># view the data</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>mapping_file</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -863,11 +860,11 @@ Tip
 </div>
 <p>Now we merge the mapping file with our growth data:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge our growth data with the mapping file</span></span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>new_data_frame <span class="ot">&lt;-</span> <span class="fu">merge</span>(growth_data, mapping_file, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Nutrient"</span>, <span class="st">"Condition"</span>))</span>
-<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co"># view the data</span></span>
-<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(new_data_frame)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge our growth data with the mapping file</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>new_data_frame <span class="ot">&lt;-</span> <span class="fu">merge</span>(growth_data, mapping_file, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Nutrient"</span>, <span class="st">"Condition"</span>))</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co"># view the data</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(new_data_frame)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -879,12 +876,12 @@ Tip
 <p>The argument <code>by</code> says which columns to use for matching the rows. Here we need two: a row in <code>growth_data</code> matches a row in <code>mapping_file</code> only if <strong>both</strong> the nutrient and the condition are the same. Note that <code>merge()</code> sorts the result by the <code>by</code> columns, so the rows are now in a different order than in <code>growth_data</code>.</p>
 <p>After a merge, always check that you have the number of rows you expected. We still want 594 rows (one per plant) and one extra column:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the dimensions before and after merging</span></span>
-<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare the dimensions before and after merging</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(growth_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 594   5</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(new_data_frame)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(new_data_frame)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 594   6</code></pre>
 </div>
@@ -901,14 +898,14 @@ Tip
 <div class="callout-body-container callout-body">
 <p>What happens if we only match on <code>Condition</code>? In <code>mapping_file</code>, each condition appears twice, once for <code>low_P</code> and once for <code>high_P</code>. So every plant now matches two rows, and R makes a copy of the plant for each match:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge on Condition only (this is wrong!)</span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>wrong_merge <span class="ot">&lt;-</span> <span class="fu">merge</span>(growth_data, mapping_file, <span class="at">by =</span> <span class="st">"Condition"</span>)</span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(wrong_merge)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge on Condition only (this is wrong!)</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>wrong_merge <span class="ot">&lt;-</span> <span class="fu">merge</span>(growth_data, mapping_file, <span class="at">by =</span> <span class="st">"Condition"</span>)</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(wrong_merge)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1188    7</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wrong_merge)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wrong_merge)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -936,11 +933,11 @@ Note
 </div>
 </div>
 </section>
-<section id="write-data-into-a-text-file" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="write-data-into-a-text-file"><span class="header-section-number">2.11</span> Write data into a text file</h2>
+<section id="write-data-into-a-text-file" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="write-data-into-a-text-file"><span class="header-section-number">3.11</span> Write data into a text file</h2>
 <p>We changed our table, so let’s save the result in a new file. We use <code>write.table()</code> and save the file in the folder <code>output_examples</code>. As for reading, the path starts from our project folder.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(new_data_frame, <span class="st">"output_examples/growth_data_changed.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>, <span class="at">na =</span> <span class="st">""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(new_data_frame, <span class="st">"output_examples/growth_data_changed.txt"</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">quote =</span> <span class="cn">FALSE</span>, <span class="at">na =</span> <span class="st">""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The arguments:</p>
 <ul>
@@ -951,8 +948,8 @@ Note
 </ul>
 <p>You can now open <code>growth_data_changed.txt</code> in the Files pane or in a text editor to look at it.</p>
 </section>
-<section id="summary" class="level2" data-number="2.12">
-<h2 data-number="2.12" class="anchored" data-anchor-id="summary"><span class="header-section-number">2.12</span> Summary</h2>
+<section id="summary" class="level2" data-number="3.12">
+<h2 data-number="3.12" class="anchored" data-anchor-id="summary"><span class="header-section-number">3.12</span> Summary</h2>
 <p>In this chapter you learned how to:</p>
 <ul>
 <li>store values in objects with <code>&lt;-</code></li>
@@ -966,8 +963,8 @@ Note
 <li>remove duplicates with <code>unique()</code> and combine tables with <code>merge()</code></li>
 <li>save a table with <code>write.table()</code></li>
 </ul>
-<section id="exercise" class="level3" data-number="2.12.1">
-<h3 data-number="2.12.1" class="anchored" data-anchor-id="exercise"><span class="header-section-number">2.12.1</span> Exercise</h3>
+<section id="exercise" class="level3" data-number="3.12.1">
+<h3 data-number="3.12.1" class="anchored" data-anchor-id="exercise"><span class="header-section-number">3.12.1</span> Exercise</h3>
 <p>Use the <code>timecourse</code> data frame for these questions:</p>
 <ol type="1">
 <li>How many rows and columns does it have?</li>
@@ -987,19 +984,19 @@ Note
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. rows and columns</span></span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. rows and columns</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2323    4</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. the time points</span></span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(timecourse<span class="sc">$</span>Timepoint)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. the time points</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(timecourse<span class="sc">$</span>Timepoint)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  0  4  8 12 16 18</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. each combination only once</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>timecourse_treatments <span class="ot">&lt;-</span> <span class="fu">unique</span>(timecourse[, <span class="fu">c</span>(<span class="st">"Nutrient"</span>, <span class="st">"Condition"</span>, <span class="st">"Timepoint"</span>)])</span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse_treatments)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. each combination only once</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>timecourse_treatments <span class="ot">&lt;-</span> <span class="fu">unique</span>(timecourse[, <span class="fu">c</span>(<span class="st">"Nutrient"</span>, <span class="st">"Condition"</span>, <span class="st">"Timepoint"</span>)])</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(timecourse_treatments)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 24  3</code></pre>
 </div>
@@ -1420,13 +1417,13 @@ Garrido-Oter, Ruben, Ryohei Thomas Nakano, Nina Dombrowski, Ka-Wai Ma, Alice C. 
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../code/1_intro.html" class="pagination-link" aria-label="Getting started">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Getting started</span></span>
+      <a href="../code/documenting_code.html" class="pagination-link" aria-label="Documenting your code">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Documenting your code</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../code/documenting_code.html" class="pagination-link" aria-label="Documenting your code">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Documenting your code</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../code/data_types.html" class="pagination-link" aria-label="Data objects">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Data objects</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

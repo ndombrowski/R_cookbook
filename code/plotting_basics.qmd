@@ -5,550 +5,460 @@ execute:
 df-print: paged
 ---
 
-# Basic plotting
+# Plotting your data
+
+In this chapter you learn how to plot your data. We start with a few quick plots in base R, and then spend most of the chapter on **ggplot2**, the plotting package of the tidyverse.
+
+As always, load the tidyverse and read the data first. This time we need both the growth data and the timecourse data:
 
 ```{r}
-#| echo: false
+#| message: false
 #| warning: false
 
-#load libs
-library(knitr)
-library(kableExtra)
-library(plyr)
+# load the tidyverse
+library(tidyverse)
 
-#read in data
-timecourse <- read.table("data/Timecourse.txt", sep = "\t", header = TRUE, quote = "")
-growth_data <- read.table("data/Growth_Data.txt", sep = "\t", header = TRUE, quote = "")
+# read in the data
+growth_data <- read_tsv("data/Growth_Data.txt", show_col_types = FALSE)
+timecourse <- read_tsv("data/Timecourse.txt", show_col_types = FALSE)
 ```
 
-## Using base R
+## Why plot your data?
 
-### Scatter plots
+Plots are not only for papers and presentations. They are one of the best ways to check your data before you run any statistics. Summary numbers can hide a lot. @fig-anscombe shows a famous example: four small data sets with almost the same mean, variance and regression line, but with very different patterns. Only the first one is described well by a straight line. Without plotting, you would never notice.
 
-The examples below are part of base R, i.e. we can plot without using any packages.
-However, there are some nice packages that let you control a lot of parameters, which are good to learn for more sophisticates plots.
+![Anscombe's quartet: four data sets with almost identical summary statistics and the same regression line (blue). Source: Wikipedia, *Anscombe's quartet*.](../images/anscombe_quartet.png){#fig-anscombe width="70%"}
 
-Plotting in base R is simple, we just need to define, what we plot against the x- and y-axis.
+So make it a habit to plot your data first, and look at it.
+
+## Quick plots in base R
+
+Base R has its own plotting functions. They are not as flexible as ggplot2, but for a quick look at your data they are often faster to type. You will also see them a lot in other people's code, and we use some of them in the statistics chapter.
+
+`plot()` draws a scatter plot. Like `lm()` and `t.test()`, it takes a formula: `y ~ x`, read as "y depends on x", and the data frame with `data`:
 
 ```{r}
-# lets plot our root length against our shoot weight
-x <- growth_data$FW_shoot_mg
-y <- growth_data$Rootlength
-
-plot(x, y)
+# root length against shoot weight
+plot(Rootlength ~ FW_shoot_mg, data = growth_data)
 ```
 
-Plants with a missing root length or shoot weight are simply left out of the plot.
+Plants with a missing root length or shoot weight are simply left out.
 
-Now, lets add some more axis labels to make it more informative and lets start the plot at 0:
+`hist()` draws a histogram. It takes a single column, which we get with `$`:
 
 ```{r}
-# lets plot our root length against our shoot weight
-x <- growth_data$FW_shoot_mg
-y <- growth_data$Rootlength
-
-plot(x, y, xlab = "Shoot_weight_mg", ylab = "Rootlength_mm", ylim = c(0, 160), xlim = c(0, 50))
+# distribution of the root length
+hist(growth_data$Rootlength)
 ```
 
-A useful thing to know is that you can add plots together, i.e. we can add a regression line:
+`boxplot()` draws a boxplot per group:
 
 ```{r}
-#lets do the stats running a linear model (lm)
-lm(growth_data$Rootlength ~ growth_data$FW_shoot_mg)
+# root length per nutrient level
+boxplot(Rootlength ~ Nutrient, data = growth_data)
 ```
 
-Here, the intercept is 45.471 and the slope is 1.782.
+A boxplot summarizes the values of each group:
+
+- the thick line in the box is the median: half of the values are above it, half below
+- the box goes from the first to the third quartile, so it holds the middle 50% of the values
+- the whiskers (the thin lines) go to the most extreme values that are no further than 1.5 times the height of the box away from the box
+- values further away are drawn as single points. They are often called outliers, but that does not mean that they are wrong
+
+All three functions take arguments for labels, for example `xlab`, `ylab` and `main` (the title):
 
 ```{r}
-# lets plot our root length against our shoot weight
-x <- growth_data$FW_shoot_mg
-y <- growth_data$Rootlength
-
-#plot
-plot(x, y, xlab = "Shoot_weight_mg", ylab = "Rootlength_mm", ylim = c(0, 160), xlim = c(0, 50))
-
-#add the info from ln (both lines of code do the same thing)
-abline(lm(growth_data$Rootlength ~ growth_data$FW_shoot_mg))
+boxplot(Rootlength ~ Nutrient, data = growth_data,
+        xlab = "Phosphate level", ylab = "Root length (mm)", main = "Root length")
 ```
 
-We can even add the stats, but therefore we need to prepare the stats a bit better:
+For quick checks, this is all you need. For plots with colors, groups and several panels, base R code quickly gets long and hard to read. This is where ggplot2 is much easier.
+
+## Your first ggplot
+
+Every ggplot is built from the same parts:
+
+1. `ggplot()` starts the plot. You give it the data frame, and in `aes()` (short for **aesthetics**) you say which column goes on which axis.
+2. A **geom** says how to draw the data, for example as points (`geom_point()`), boxes (`geom_boxplot()`) or lines (`geom_line()`).
+3. The parts are added to each other with `+`. Each part is a **layer** of the plot.
+
+Let's make the same scatter plot as above:
 
 ```{r}
-#to stats
-modl = lm(growth_data$Rootlength ~ growth_data$FW_shoot_mg)
-
-#get summary
-modsum = summary(modl)
-
-#get R2
-r2 = modsum$adj.r.squared
-
-#look at the coefficients
-modsum$coefficients
-
-#get the p-value (its in the coefficient table, in the 2nd row and 4th column)
-my.p = modsum$coefficients[2,4]
+ggplot(growth_data, aes(x = FW_shoot_mg, y = Rootlength)) +
+  geom_point()
 ```
 
-Now we can plot this:
+Notice the warning that starts with "Removed 23 rows containing missing values". ggplot2 leaves out the plants with a missing root length (15) or a missing shoot weight (8), just like base R. But unlike base R, it tells you about it. This is not an error: the plot is still made. Now that we know what the warning means, we hide it in the rest of this chapter with `#| warning: false` at the top of the chunks.
+
+Always put the `+` at the end of a line, not at the start of the next one. Otherwise R thinks the plot is finished after the first line.
+
+### Exercise
+
+Plot the root length (y-axis) against the condition (x-axis). What is different from the plot above?
+
+::: {.callout-tip collapse="true"}
+## Solution
 
 ```{r}
-#add a label, in which we store the text we want to add
-mylabel = bquote(italic(R)^2 == .(format(r2, digits = 3)))
-
-#plot
-plot(x, y, xlab = "Shoot_weight_mg", ylab = "Rootlength_mm", ylim = c(0, 160), xlim = c(0, 50))
-
-#add the info from ln (both lines of code do the same thing)
-abline(lm(growth_data$Rootlength ~ growth_data$FW_shoot_mg))
-
-#add the text
-text(x = 45, y = 150, labels = mylabel)
+#| warning: false
+ggplot(growth_data, aes(x = Condition, y = Rootlength)) +
+  geom_point()
 ```
 
-If we want to add the other value, it gets a bit more complicated esp. if we want to have first the R2 and then, in a new line, the p-value.
+Because `Condition` is text and not a number, ggplot2 makes one column of points per condition. Many points lie on top of each other, so it is hard to see how many plants there are. We fix this later with boxplots and `geom_jitter()`.
+:::
 
-For this, lets first prepare a new label
+## Store and save your plots
+
+You can store a plot in an object, like any other result in R. To see the plot, type the name of the object:
 
 ```{r}
-#make an empty vecotr
-rp = vector('expression',2)
-rp
+#| warning: false
+root_shoot_plot <- ggplot(growth_data, aes(x = FW_shoot_mg, y = Rootlength)) +
+  geom_point()
 
-#add our two values into the vector
-rp[1] = substitute(expression(italic(R)^2 == MYVALUE),
-		list(MYVALUE = format(r2,dig=3)))[2]
-
-rp[2] = substitute(expression(italic(p) == MYOTHERVALUE),
-		list(MYOTHERVALUE = format(my.p, digits = 2)))[2]
-
-rp
+root_shoot_plot
 ```
 
-Lets plot this:
+`ggsave()` saves a plot to a file. The file type comes from the file name, for example `.pdf`, `.png` or `.svg`. With `width`, `height` and `units` you set the size:
 
 ```{r}
-#plot
-plot(x, y, xlab = "Shoot_weight_mg", ylab = "Rootlength_mm", ylim = c(0, 160), xlim = c(0, 50))
-
-#add the info from ln (both lines of code do the same thing)
-abline(lm(growth_data$Rootlength ~ growth_data$FW_shoot_mg))
-
-#add the text as a legend and remove the border with bty
-legend("topright", legend = rp, bty = 'n')
+#| warning: false
+ggsave("output_examples/Plot_root_length.pdf", plot = root_shoot_plot,
+       width = 12, height = 10, units = "cm")
 ```
 
+For figures in a paper or a poster, save your plots as **vector** files, such as pdf or svg. A vector file stores lines and points as shapes, so you can zoom in without losing quality, and you can still change details in programs like Inkscape or Illustrator. Raster files, such as png or jpg, store pixels. They are fine for slides and websites.
 
-### Lineplots
+You can also save the plot that you see in the Plots pane with the **Export** button above the plot.
 
-Now, lets work with our time course data to draw some line plots. I.e. lineplots are ideal if we have measurements over time.
+## Aesthetics: colors, shapes and more
 
-Lets first summarize our time course data to make it easier to plot.
+So far, we put columns on the x- and y-axis. In `aes()`, you can also link columns to other properties of the plot, for example:
+
+- `color`: the color of points and lines
+- `fill`: the color inside boxes and bars
+- `shape`: the shape of points
+- `linetype`: solid, dashed or dotted lines
+
+Let's color the points by nutrient level:
 
 ```{r}
-library(dplyr)
-
-#first filter to only keep the low_P data, then summarize the data by condition and timepoint and calculate the mean
-timecourse_summary <- timecourse %>%
-    filter(Nutrient == "low_P")  %>%
-    group_by(Condition, Timepoint) %>%
-    summarise(mean_root = mean(Rootlength), .groups = 'drop')
-
-head(timecourse_summary)
-
-#split the data into our two categories
-timecourse_summary_Control <- timecourse_summary[timecourse_summary$Condition == 'mock',]
-timecourse_summary_129E <- timecourse_summary[timecourse_summary$Condition == '129E',]
+#| warning: false
+ggplot(growth_data, aes(x = FW_shoot_mg, y = Rootlength, color = Nutrient)) +
+  geom_point()
 ```
 
-Useful comments:
+ggplot2 picks the colors and adds a legend for us.
 
-* type= It controls the type (p for points, l for lines, b for both,…).
-* pch= integer [0,25]. Controls the plot symbol.
-* log= It causes the x axis x, y axis y or both xy to be logarithmic.
-* xlab=, ylab= string, labels for the x and y axis, respectively.
-* xlim=, ylim= length 2 vector, x-axis, y-axis limits.
-* main= string, title of the plot.
-* col = hexadecimal or string, colour of the points/lines.
+There is an important difference between setting a property **inside** and **outside** `aes()`:
+
+- Inside `aes()`, you link the property to a column: each nutrient level gets its own color.
+- Outside `aes()`, in the geom, you give a fixed value for all points.
+
+For example, to make all points blue and a bit transparent (with `alpha`, from 0 for invisible to 1 for solid):
 
 ```{r}
-x <- timecourse_summary_Control$Timepoint
-y <- timecourse_summary_Control$mean_root
-
-plot(x, y, type = "b", pch = 19, xlab = "Days after transfer", ylab = "Rootlength (mm)", col = "#7700BB", main = "Growth measurements")
+#| warning: false
+ggplot(growth_data, aes(x = FW_shoot_mg, y = Rootlength)) +
+  geom_point(color = "blue", alpha = 0.4)
 ```
 
-plot() always overwrites the content for the current graphics window.
+### Exercise
 
-To add elements to an existing plot, one can use points, lines, abline, text, …
-We can also add a legend to the plot.
+Make the scatter plot again. Color the points by condition, and give each nutrient level its own shape.
 
-In the previous graph eith out growth measurements let us add the root growth of our microbe treatment.
+::: {.callout-tip collapse="true"}
+## Solution
 
 ```{r}
-x <- timecourse_summary_Control$Timepoint
-y <- timecourse_summary_Control$mean_root
-z <- timecourse_summary_129E$mean_root
-
-plot(x, y, type = "b", pch = 19, xlab = "Days after transfer", ylab = "Rootlength (mm)",col = "#7700BB", ylim = c(0, 90), main = "Growth measurements")
-lines(x, z, type = "b", col = "#5555DD")
-legend("topleft", c("control", "microbe"), col = c("#7700BB", "#5555DD"),pch = c(19, 1))
-
+#| warning: false
+ggplot(growth_data, aes(x = FW_shoot_mg, y = Rootlength, color = Condition, shape = Nutrient)) +
+  geom_point()
 ```
+:::
 
-We can see nicely, that our roots grow longer past the 3rd timepoint.
+## Geoms: different types of plots
 
-## info on using par
+To change the type of plot, you change the geom. Here are the ones you will use most.
 
-To change graphical parameters globally you can use par. R allows for n × m figures in a single page, by adjusting the parameter mfrow:
-
-- mfrow = c(3, 1) --> we have 3 plots distributed across 3 rows and one column
-- par(mai = c(2, 0.82, 0.82, 0.42)) --> sets the bottom, left, top and right margins respectively of the plot region in number of lines of text. If we change the margins it is recommended to reset them to the default after plotting with ``par(mai = c(1.02, 0.82, 0.82, 0.42))``.
-
-```{r,eval=F}
-par(mfrow = c(n, m)) # n: number of figures in rows, m: ... in columns.
-plot(x1, y1)
-plot(x1, y2)
-...
-plot(xn, ym)
-
-#save a file
-png("output_examples/filename.png")
-plot(x, y)
-dev.off()
-```
-
-In the above code chunk, you first open a png file, then plot directly to that file, and finally explicitly close
-the plotting device with dev.off(). Thus, you do not see the plot on the graphics window. The Cairo
-package is supposed to be superior to these basic plotting functions, but it does not come with the base
-installation of R, therefore you will have to install it to try it out (if you are interested, or at a later time).
-
-
-### Printing our results using par
-
-Now lets generate a png file plot.png containing three plots in three different rows.
-
-- The data for our control treatment
-- The data for our microbe treatment
-- The data combined in one plot
-
-
-```{r, eval=F}
-
-x <- timecourse_summary_Control$Timepoint
-control <- timecourse_summary_Control$mean_root
-Microbe <- timecourse_summary_129E$mean_root
-
-#define what we want to print
-png("output_examples/filename2.png", width = 240, height = 480)
-
-#define how we want to order our 3 plots into rows and columns
-par(mfrow = c(3, 1))
-
-#build plot1
-plot(x, control, type = "b", pch = 19, xlab = "Days after transfer", ylab = "Rootlength (mm)",col = "#7700BB", main = "Growth measurements")
-
-#build plot2
-plot(x, Microbe, type = "b", pch = 19, xlab = "Days after transfer", ylab = "Rootlength (mm)",col = "#5555DD", main = "Growth measurements")
-
-#build plot3
-plot(x, control, type = "b", pch = 19, xlab = "Days after transfer", ylab = "Rootlength (mm)",col = "#7700BB", ylim = c(0, 90), main = "Growth measurements")
-lines(x, Microbe, type = "b", col = "#5555DD")
-legend("topleft", c("control", "microbe"), col = c("#7700BB", "#5555DD"),pch = c(19, 1))
-
-#closes the specified plot
-dev.off()
-```
-
-
-
-## Histograms
-
-A histogram shows the frequency of data values in equally sized intervals. Density plots are an alternative, but because of the
-smoothing between data points, histograms provide a more ‘natural’ look at your data. If you are interested
-in how to make a density plot, look at the help page of density.
-
-As an example, lets plot the distribution of our root length measurements across our data.
+### Boxplots
 
 ```{r}
-hist(growth_data[, "Rootlength"], cex = 0.6, main = "Data distribution", breaks = 10, density = 100, col = "lightblue", border = "darkblue", xlab = "Rootlength (mm)", labels = TRUE)
-```
-
-
-
-
-## Boxplots
-
-Boxplots represent a compact summary of a data vector in graphical form.
-
-As we’ve already seen above, the function summary returns summary statistics on the command line: the minimum, first quartile, mean,
-median, third quartile and the maximum.
-
-The boxplot displays these values graphically (except the mean) as follows:
-
-- the thick line in the middle of the box represents the median,
-- the lower bound of the box the first quartile and the upper bound the third quartile. Thus, 50% of the data are within the range of the box.
-- The whiskers (thin lines below and above the box) represent the minimum and maximum.
-- Points more extreme than the min. and max. are considered outliers and the help page describes how they are defined.
-
-We will first make a boxplot of all measurements and then check for differences between the two nutrient conditions.. Play around with the parameters and add colors and labels.
-
-
-```{r}
-# all data
-boxplot(growth_data$Rootlength, cex = 0.8,  ylab = "Root length (mm)")
-```
-
-```{r}
-# data by nutrient condition
-boxplot(growth_data$Rootlength ~ growth_data$Nutrient, las = 2, cex = 0.8, ylab = "Root length (mm)")
-```
-
-```{r}
-# data by nutrient and growth condition
-boxplot(growth_data$Rootlength ~ growth_data$Nutrient * growth_data$Condition, las = 2, cex = 0.8, ylab = "Root length (mm)")
-```
-
-
-
-
-## Ggplot2
-
-Gplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
-
-Detailed info can be found here: https://ggplot2.tidyverse.org
-
-One important difference to basic plots is that argument can be given in separate blocks that are separated by a ``+``
-
-ggplot2 also leaves out missing values, but in contrast to base R it tells you about it with a warning that starts with "Removed 15 rows containing ...". 15 is the number of plants without a root length. This is not an error: the plot is still made, R just wants you to know that some plants are not shown.
-
-#### Start with a basic bargraph
-
-```{r}
-library(ggplot2)
-
-#make a bargraph
-myplot <-
-  ggplot(growth_data, aes(x =Nutrient, y = Rootlength)) +  #here we provide the dimensions of our plot
-  geom_bar(stat="identity")                                   #here, we say what kind of plot we want
-
-myplot
-```
-
-We see that the default behavior is to sum everything, which is not what we want. Luckily switching different graph types is very quick
-
-```{r}
-#make a boxplot instead of bargrpah
-myplot <-
-  ggplot(growth_data, aes(x =Nutrient, y = Rootlength)) +
+#| warning: false
+ggplot(growth_data, aes(x = Condition, y = Rootlength)) +
   geom_boxplot()
-
-myplot
 ```
 
-```{r}
-#do a histogram
-myplot <-
-  ggplot(growth_data, aes(Rootlength)) +
-  geom_histogram()
+A boxplot hides how many plants there are. You can show them by adding the points as a second layer. `geom_jitter()` draws the points with a bit of random sideways noise, so they don't lie on top of each other. With `width` you set how far they spread:
 
-myplot
+```{r}
+#| warning: false
+ggplot(growth_data, aes(x = Condition, y = Rootlength)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width = 0.2, alpha = 0.3)
 ```
 
-The only thing we might want to watch out for is that depending on what data we plot the astethics might need to be adopted. I.e. for a histogram there is no need to provide a x and y value, but we only need to define for what data we want to plot a histogram.
+`outlier.shape = NA` hides the outlier points of the boxplot. Otherwise these plants would be drawn twice: once by the boxplot and once by `geom_jitter()`.
 
-Another useful feature is to add colors by groupings, i.e. nutrient conditions, using the fill option.
+With `fill`, we get one box per nutrient level within each condition:
 
 ```{r}
-myplot <-
-  ggplot(growth_data, aes(x =Nutrient, y = Rootlength, fill = Nutrient)) +
+#| warning: false
+ggplot(growth_data, aes(x = Condition, y = Rootlength, fill = Nutrient)) +
   geom_boxplot()
-
-myplot
 ```
 
-#### Prettify
+### Histograms
 
-By default the basic design of a ggplot2 is not ready for publication but we can control every aspects to make it look nicer. A cheat sheet for all the options can be found [here](http://zevross.com/blog/2014/08/04/beautiful-plotting-in-r-a-ggplot2-cheatsheet-3/)
+A histogram only needs the x-axis. ggplot2 counts how many plants fall into each interval (bin). With `binwidth` you set the width of the bins, here 5 mm:
 
 ```{r}
-myplot <-
-  ggplot(growth_data, aes(x =Nutrient, y = Rootlength, fill = Nutrient)) +
-  geom_boxplot()  +
-  scale_fill_manual(values=c("black", "grey")) +                                          #add some other colors
-  scale_y_continuous(expand = c(0, 0), limits = c(0, 160)) +                              #make the axis start at 0
-  theme_bw() +                                                                            #remove the grey background
-  ylab("Root length (mm)") +                                                              #change the label for the y-axis
-  xlab("") +                                                                              #remove the label for the x axis
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),           #modify the grid lines
-        panel.background = element_blank(), axis.line = element_line(colour = "black")) +
-  theme(legend.position="right",                                                          #move the legend around
-        axis.text.x=element_text(angle=45,hjust = 1, size=12))                            #control size and orientation of the axis labels
-
-myplot
-
+#| warning: false
+ggplot(growth_data, aes(x = Rootlength)) +
+  geom_histogram(binwidth = 5)
 ```
 
-#### Sort data
-
-By default most programs sort alpha in an alphabetical way. We can reorder this using vectors (which we can write ourselves or use a mapping file to create them)
+To compare the nutrient levels, we fill the bars by nutrient. `position = "identity"` draws the two histograms on top of each other instead of stacking them, and `alpha` makes them transparent, so we can see both:
 
 ```{r}
-#reorder the nutrient levels in our factors
-growth_data$Nutrient2 <-  factor(growth_data$Nutrient, levels = c("low_P", "high_P"))
+#| warning: false
+ggplot(growth_data, aes(x = Rootlength, fill = Nutrient)) +
+  geom_histogram(binwidth = 5, position = "identity", alpha = 0.5)
+```
 
-#plot in our new order
-myplot <-
-  ggplot(growth_data, aes(x =Nutrient2, y = Rootlength, fill = Nutrient)) +
+### Line plots
+
+Line plots are good for measurements over time, like our timecourse data. We don't want a line through every single plant, but through the mean of each group at each time point. So we first summarize the data with `group_by()` and `summarize()`, as in the chapter "Working with the tidyverse":
+
+```{r}
+# mean root length per nutrient, condition and time point
+timecourse_summary <- timecourse |>
+  group_by(Nutrient, Condition, Timepoint) |>
+  summarize(mean_root = mean(Rootlength)) |>
+  ungroup()
+
+timecourse_summary
+```
+
+Let's plot the plants grown with low phosphate. `color = Condition` gives us one line per condition, and we add the points on top of the lines:
+
+```{r}
+timecourse_summary |>
+  filter(Nutrient == "low_P") |>
+  ggplot(aes(x = Timepoint, y = mean_root, color = Condition)) +
+  geom_line() +
+  geom_point()
+```
+
+Notice that we can give the result of a pipe straight to `ggplot()`. After `ggplot()`, the layers are joined with `+`, not with `|>`.
+
+### Trend lines
+
+`geom_smooth()` adds a trend line to a scatter plot. With `method = "lm"` it draws the straight line of a linear model, which you will learn about in the statistics chapter. The grey band shows how uncertain the line is:
+
+```{r}
+#| warning: false
+#| message: false
+ggplot(growth_data, aes(x = FW_shoot_mg, y = Rootlength)) +
+  geom_point(alpha = 0.3) +
+  geom_smooth(method = "lm")
+```
+
+If you color by a column, you get one line per group:
+
+```{r}
+#| warning: false
+#| message: false
+ggplot(growth_data, aes(x = FW_shoot_mg, y = Rootlength, color = Nutrient)) +
+  geom_point(alpha = 0.3) +
+  geom_smooth(method = "lm")
+```
+
+### Exercise
+
+1.  Make a boxplot of the shoot weight per condition, with the plants shown as points.
+2.  Make a line plot of the timecourse for the plants grown with **high** phosphate.
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+#| warning: false
+# 1. shoot weight per condition
+ggplot(growth_data, aes(x = Condition, y = FW_shoot_mg)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width = 0.2, alpha = 0.3)
+
+# 2. timecourse with high phosphate
+timecourse_summary |>
+  filter(Nutrient == "high_P") |>
+  ggplot(aes(x = Timepoint, y = mean_root, color = Condition)) +
+  geom_line() +
+  geom_point()
+```
+:::
+
+## Bar graphs with error bars
+
+In biology, you often see bar graphs that show the mean of each group with error bars. For this, we first make a table with the mean and the standard deviation of each group. The **standard deviation** (sd) describes how much the root length varies between the plants of a group: the larger it is, the more the plants differ from each other.
+
+```{r}
+# mean and standard deviation of the root length per treatment
+root_summary <- growth_data |>
+  group_by(Nutrient, Condition) |>
+  summarize(mean_root = mean(Rootlength, na.rm = TRUE),
+            sd_root = sd(Rootlength, na.rm = TRUE)) |>
+  ungroup()
+
+root_summary
+```
+
+`geom_col()` draws bars with the height that is given in the data. `geom_errorbar()` draws the error bars, from `ymin` to `ymax`:
+
+```{r}
+ggplot(root_summary, aes(x = Condition, y = mean_root, fill = Nutrient)) +
+  geom_col(position = position_dodge()) +
+  geom_errorbar(aes(ymin = mean_root - sd_root, ymax = mean_root + sd_root),
+                position = position_dodge(width = 0.9), width = 0.2)
+```
+
+`position_dodge()` puts the bars of the two nutrient levels next to each other instead of on top of each other. The error bars need the same dodge, so that they end up on top of the right bar.
+
+::: callout-important
+## What do the error bars show?
+
+Error bars can show different things: the standard deviation, the **standard error** of the mean, or a confidence interval. These can differ a lot in size for the same data, so a reader can only interpret your error bars if you say which one you use. Always write it in the figure legend, for example "mean ± sd". The statistics chapter shows how large the difference between sd and se can be.
+:::
+
+A bar graph only shows the mean of each group and hides everything else. A boxplot with the points, as above, shows how the plants are spread and how many there are. Think about which plot tells your reader more.
+
+## Order of the groups
+
+ggplot2 sorts text columns alphabetically. That is why `129E` and `13C` come before `mock`, and `high_P` before `low_P`. Often you want another order, for example with the control first.
+
+Remember factors from the chapter "Data objects"? The order of the levels sets the order in the plot. With `mutate()` and `factor()`, we set the order ourselves:
+
+```{r}
+growth_data <- growth_data |>
+  mutate(Condition = factor(Condition, levels = c("mock", "129E", "13C")),
+         Nutrient = factor(Nutrient, levels = c("low_P", "high_P")))
+```
+
+Now the control comes first, and low phosphate before high phosphate:
+
+```{r}
+#| warning: false
+ggplot(growth_data, aes(x = Condition, y = Rootlength, fill = Nutrient)) +
   geom_boxplot()
-
-myplot
 ```
 
+## Facets: one panel per group
 
-#### Printing data
-
-With ``pdf()`` we tell R that we want to print something to our computer. Inside the function we can define the name of the pdf to generate, the size and other things. After adding the plot we want to print it is important to run ``dev.off()`` in order to tell R to stop the "printing mode" and go back to the default mode.
+Sometimes a plot gets clearer if you split it into several panels, one per group. This is called **faceting**. `facet_wrap()` makes one panel for each value of a column. The `~` reads as "by":
 
 ```{r}
-#lets first generate two plots
-myplot_root <-
-  ggplot(growth_data, aes(x =Nutrient2, y = Rootlength, fill = Nutrient)) +
-  geom_boxplot()
-
-myplot_shoot <-
-  ggplot(growth_data, aes(x =Nutrient2, y = FW_shoot_mg, fill = Nutrient)) +
-  geom_boxplot()
-
-#plot one graph
-pdf("output_examples/Plot_root_length.pdf", width=3, height=3, family  = "Times")
-myplot_root
-dev.off()
+#| warning: false
+ggplot(growth_data, aes(x = Condition, y = Rootlength)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(width = 0.2, alpha = 0.3) +
+  facet_wrap(~ Nutrient)
 ```
 
+By default, all panels have the same axes, which makes it easy to compare them. With `scales = "free_y"`, each panel gets its own y-axis. And with `ncol` or `nrow` you set how the panels are arranged.
 
-#### Combining and printing multiple plots
+### Exercise
 
-The ggpubr package is nice to combine multiple plots onto one plot.
-Some more information on this package can be found [here](https://rpkgs.datanovia.com/ggpubr/index.html)
+Plot the timecourse for both nutrient levels, with one panel per nutrient level.
 
-How it works:
-
-- First list the plots we want to print
-- the labels argument allows us to add labels
-- the ncol and nrow arguments allow us to control how many plots go into a row and a column
+::: {.callout-tip collapse="true"}
+## Solution
 
 ```{r}
-#load package
+ggplot(timecourse_summary, aes(x = Timepoint, y = mean_root, color = Condition)) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~ Nutrient)
+```
+:::
+
+## Labels, colors and themes
+
+The default plots are good for a first look. For a report or a paper, you usually want better labels, your own colors and a cleaner look.
+
+- `labs()` sets the axis titles, the legend title and a plot title.
+- `scale_fill_manual()` sets your own colors for `fill` (and `scale_color_manual()` for `color`). You can name the colors, so that each group gets the right one.
+- A **theme** sets the overall look. `theme_classic()` has no grey background and no grid lines. Other built-in themes are, for example, `theme_bw()` and `theme_minimal()`.
+- `theme()` changes single parts of the plot, for example where the legend goes.
+
+```{r}
+#| warning: false
+root_plot <- ggplot(growth_data, aes(x = Condition, y = Rootlength, fill = Nutrient)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c(low_P = "grey80", high_P = "grey30")) +
+  labs(x = "Condition", y = "Root length (mm)", fill = "Phosphate") +
+  theme_classic() +
+  theme(legend.position = "bottom")
+
+root_plot
+```
+
+Colors can be given by name, like `"grey80"`, or as a hex code, like `"#2A6FDB"`. Choose colors that people with color blindness can tell apart, and that still work when printed in grey.
+
+## Combine several plots
+
+For a figure with several panels, you can combine plots with `ggarrange()` from the ggpubr package. Install it once with `install.packages("ggpubr")` in the Console. We also use ggpubr in the statistics chapter.
+
+Let's make a second plot for the shoot weight, with the same look:
+
+```{r}
+#| warning: false
+shoot_plot <- ggplot(growth_data, aes(x = Condition, y = FW_shoot_mg, fill = Nutrient)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c(low_P = "grey80", high_P = "grey30")) +
+  labs(x = "Condition", y = "Shoot fresh weight (mg)", fill = "Phosphate") +
+  theme_classic() +
+  theme(legend.position = "bottom")
+```
+
+`ggarrange()` takes the plots, labels for the panels, and the number of columns and rows. `common.legend = TRUE` shows the legend only once:
+
+```{r}
+#| warning: false
 library(ggpubr)
 
-#view how ggarrange deals with two plots
-ggarrange(myplot_root, myplot_shoot,
-          labels = c("A", "B"),
-          ncol = 2, nrow = 1)
+combined_plot <- ggarrange(root_plot, shoot_plot,
+                           labels = c("A", "B"),
+                           ncol = 2, nrow = 1,
+                           common.legend = TRUE, legend = "bottom")
+
+combined_plot
 ```
+
+You save it with `ggsave()`, as any other plot:
 
 ```{r}
-#we can also plot two graphs and print them in one pdf
-pdf("output_examples/Two_plots.pdf", width=3, height=3, family  = "Times")
-ggarrange(myplot_root, myplot_shoot,
-          labels = c("A", "B"),
-          ncol = 2, nrow = 1)
-dev.off()
+#| warning: false
+ggsave("output_examples/Two_plots.pdf", plot = combined_plot,
+       width = 18, height = 10, units = "cm")
 ```
 
+## Summary
 
+In this chapter you learned how to:
 
-#### Sorting data v2
+-   make quick plots in base R with `plot()`, `hist()` and `boxplot()`
+-   build a ggplot from data, `aes()` and geoms, joined with `+`
+-   store plots in objects and save them with `ggsave()`
+-   link columns to colors, fills and shapes in `aes()`, or set fixed values outside `aes()`
+-   make scatter plots, boxplots, histograms, line plots, trend lines and bar graphs with error bars
+-   set the order of groups with factor levels
+-   split a plot into panels with `facet_wrap()`
+-   change labels, colors and the theme
+-   combine several plots with `ggarrange()`
 
-If we have multiple conditions, i.e. nutrient conditions and other treatments there are several ways to plot these
+## Further reading
 
-1. Plot them side by side and color by nutrient conditions.
-
-For this, we need one column that names each combination of nutrient and condition. `paste()` glues the values of two columns together, and `sep = "_"` puts an underscore between them:
-
-```{r}
-#make a column with the combination of nutrient and condition, i.e. low_P_129E
-growth_data$SampleID <- paste(growth_data$Nutrient, growth_data$Condition, sep = "_")
-head(growth_data)
-```
-
-```{r}
-#pdf("Plot_root_length.pdf", width=3, height=3, family  = "Times")
-  ggplot(growth_data, aes(x =SampleID, y = Rootlength, fill = Nutrient)) +
-  geom_boxplot()
-#dev.off()
-```
-
-2. Change the order.
-
-Now, here the order is not nice, but as mentioned we can use mapping files to sort our data. Lets try.
-
-```{r}
-#make a mapping file that lists each combination only once
-mapping_file <- unique(growth_data[, c("SampleID", "Nutrient", "Condition")])
-
-#lets check how our mapping file looks like
-mapping_file
-```
-
-We can use this simpler table to define how we want to resort our growth data. First, lets reorder the metadata first by nutrient and then by condition. `order()` gives the row numbers in the order in which the rows should be sorted, first by the first column we give it and then by the second:
-
-```{r}
-#lets sort the file first by nutrient and then by condition
-mapping_file <- mapping_file[order(mapping_file$Nutrient, mapping_file$Condition), ]
-
-#check whether we like how things are ordered
-mapping_file$SampleID
-```
-
-Now, we can use the order of this file to re-order our larger dataframe with the growth data.
-
-```{r}
-#reorder the levels of our growth data using the mapping file
-growth_data$SampleID2 <-  factor(growth_data$SampleID, levels = as.character(mapping_file$SampleID))
-head(growth_data)
-
-#plot (for now lets do this side by side)
-  ggplot(growth_data, aes(x =SampleID2, y = Rootlength, fill = Nutrient)) +
-  geom_boxplot()
-```
-
-#### Bargraphs with error bars
-
-For bargraphs we can also make them nice looking with errorbars, however, the values for the mean, sd and so one ideally should be listed in a summary table.
-
-Luckily we have learned before how we can use ddply to create such a table again and then blot it:
-
-```{r}
-#summarize
-growth_data_summarized <- ddply(growth_data, .(SampleID, Nutrient), summarize, RootLength = mean(Rootlength, na.rm = TRUE), sd = sd(Rootlength, na.rm = TRUE), se = sd(Rootlength, na.rm = TRUE) / sqrt(sum(!is.na(Rootlength))))
-
-#order levels
-growth_data_summarized$SampleID2 <-  factor(growth_data_summarized$SampleID, levels = as.character(mapping_file$SampleID))
-
-#plot
-  ggplot(growth_data_summarized, aes(x=SampleID2, y=RootLength, fill=Nutrient)) +
-  geom_bar(stat="identity", color="black",
-           position=position_dodge()) +
-  geom_errorbar(aes(ymin=RootLength-sd, ymax=RootLength+sd), width=.2,
-                 position=position_dodge(.9))
-
-```
-
-
-#### Faceting data
-
-Sometimes, we might to plot data into separate plots. This can be done in ggplot with one extra command. Facetting can do this for you.
-
-Options:
-- Scales "free" tells ggplot that the scales can be different between plots. I.e. axis height.
-- ncol = allows to control the dimensions of the plot
-
-```{r}
-#plot horizontal
-  ggplot(growth_data, aes(x =SampleID2, y = Rootlength, fill = Nutrient)) +
-  geom_boxplot() +
-  facet_wrap(. ~ Nutrient, scales = "free", ncol = 2)
-```
-
+-   [An introduction into ggplot](https://ndombrowski.github.io/Ggplot_tutorial/): a tutorial with more examples and exercises, on a different data set (penguins). It goes deeper into topics that we only touched here, such as position adjustments, scales and axes, themes, and packages that extend ggplot2.
+-   The [ggplot2 website](https://ggplot2.tidyverse.org/) lists all geoms and functions, with examples.

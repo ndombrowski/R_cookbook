@@ -9,7 +9,7 @@ df-print: paged
 
 In this chapter you write your first R code. We start with the basics: how to store a value, how to use a function and how to add extra functions with packages. Then we download the example data, read it into R, change it a little and save the result in a new file.
 
-Before you start, open the RStudio project you made in the previous chapter and create a new Quarto document for this chapter, for example `first_steps.qmd`. Save it directly in your project folder. Type the code of this chapter into chunks in that document and run it from there. Between the chunks, write down what you did, what you see in the results and which questions you have. You will learn more about how to do this in the chapter on [documenting your code](documenting_code.qmd).
+Before you start, open the RStudio project you made in the chapter [Getting started](1_intro.qmd) and create a new Quarto document for this chapter, for example `first_steps.qmd`. Save it directly in your project folder. Type the code of this chapter into chunks in that document and run it from there. Between the chunks, write down what you did, what you see in the results and which questions you have, as described in the chapter [Documenting your code](documenting_code.qmd).
 
 ## The assignment operator `<-`
 
@@ -126,17 +126,19 @@ Working with a package takes two steps:
 1.  **Install** the package. This downloads it to your computer. You only do this **once** (and again when you want to update it).
 2.  **Load** the package with `library()`. This makes its functions available in your current R session. R forgets loaded packages when you close it, so you do this **every time** you start R. That is why `library()` calls belong at the top of your document.
 
-As an example, here is how to install and load `ggplot2`, a package for making plots that we use later in this book. You do not need it for this chapter.
+As an example, let's install the `tidyverse`. The tidyverse is a collection of packages that we use a lot from the chapter [Working with the tidyverse](tidyverse.qmd) on, for example for changing tables and making plots. Installing it installs all of these packages at once, so it can take a few minutes.
 
 ```{r}
 #| eval: false
 
 # install the package (only once, type this in the Console)
-install.packages("ggplot2")
+install.packages("tidyverse")
 
 # load the package (every session, put this at the top of your document)
-library(ggplot2)
+library(tidyverse)
 ```
+
+When you load the tidyverse, R prints a message with the packages it loaded, and a list of "conflicts". The conflicts tell you that some tidyverse functions have the same name as functions in base R, for example `filter()`. From now on, R uses the tidyverse version. This is expected and nothing to worry about.
 
 Note the quotes: `install.packages()` needs the name as text in quotes, while `library()` works without them.
 
@@ -320,15 +322,7 @@ For very large tables, `read.table()` can be slow. The function `fread()` from t
 
 ## Read an Excel file
 
-A lot of data is stored in Excel files. You could save each sheet as a text file in Excel first, but R can also read Excel files directly. For this, we use the package `readxl`. If you have not installed it yet, type this in the Console:
-
-```{r}
-#| eval: false
-
-install.packages("readxl")
-```
-
-Then load the package in your document:
+A lot of data is stored in Excel files. You could save each sheet as a text file in Excel first, but R can also read Excel files directly. For this, we use the package `readxl`. It was installed together with the tidyverse above, but `library(tidyverse)` only loads the main tidyverse packages, and readxl is not one of them. So we load it ourselves:
 
 ```{r}
 #| warning: false

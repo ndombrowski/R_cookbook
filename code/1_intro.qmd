@@ -9,7 +9,7 @@ df-print: paged
 
 R is a free, open source programming language for statistics and data analysis. It is widely used in biology, for example to analyse experiments, run statistical tests and make plots.
 
-This chapter gets you set up. You will install R and RStudio, learn your way around RStudio, make a project folder for this tutorial and write your first Quarto document. In the [next chapter](first_steps.qmd) you start working with real data.
+This chapter gets you set up. You will install R and RStudio, learn your way around RStudio, make a project folder for this tutorial and write your first Quarto document. In the chapter [Documenting your code](documenting_code.qmd) you learn how to write good notes in your Quarto document, and in [First steps in R](first_steps.qmd) you start working with real data.
 
 ## Installation
 
@@ -90,7 +90,7 @@ It is a good idea to make one folder per project, with the same structure each t
 
 </p>
 
-In the example above you can see that each sub-folder has an R script and folders for the input and output files. If you plan to share your analysis with others, it is also good to add a README file that explains what the analysis is about.
+In the example above you can see that I have different sub-folders for different analyses I did for a project of mine. One sub-folder is open and you see that it contains an R script and folders for the input and output files. If you plan to share your analysis with others, it is also good to add a README file that explains what the analysis is about.
 
 ### Make an RStudio project
 
@@ -214,7 +214,7 @@ Inside R, you can open the help page of any function by typing `?` followed by t
 ?mean
 ```
 
-The help page opens in the Help pane. In the [next chapter](first_steps.qmd) you will learn how to read these pages.
+The help page opens in the Help pane. In the chapter [First steps in R](first_steps.qmd) you will learn how to read these pages.
 
 Outside of R, good places to look for help are:
 
