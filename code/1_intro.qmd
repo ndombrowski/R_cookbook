@@ -44,7 +44,7 @@ Click into the Console, type the following and press Enter:
 If R answers with `[1] 2`, everything is installed correctly. The `[1]` just means that this is the first value of the answer.
 
 ::: callout-note
-rIf you already have R and RStudio installed, check how old they are. Packages are often only built for recent R versions, so a very old R can cause errors when you install packages. To see your R version, type `R.version.string` in the Console.
+If you already have R and RStudio installed, check how old they are. Packages are often only built for recent R versions, so a very old R can cause errors when you install packages. To see your R version, type `R.version.string` in the Console.
 :::
 
 ## Find your way around RStudio

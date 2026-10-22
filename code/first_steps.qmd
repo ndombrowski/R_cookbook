@@ -7,13 +7,13 @@ df-print: paged
 
 # First steps in R
 
-In this chapter you write your first R code. We start with the basics: how to store a value, how to use a function and how to add extra functions with packages. Then we download the example data, read it into R, change it a little and save the result in a new file.
+In this chapter you write your first R code. We start with the basics: how to store a value and how to use a function. Then we download the example data, read it into R, look at it, combine it with a second table and save the result in a new file. At the end, we install our first package and use it to read an Excel file.
 
 Before you start, open the RStudio project you made in the chapter [Getting started](1_intro.qmd) and create a new Quarto document for this chapter, for example `first_steps.qmd`. Save it directly in your project folder. Type the code of this chapter into chunks in that document and run it from there. Between the chunks, write down what you did, what you see in the results and which questions you have, as described in the chapter [Documenting your code](documenting_code.qmd).
 
-## The assignment operator `<-`
+## Store values with `<-`
 
-The `<-` symbol stores a value under a name. The name and the value together are called an **object** (some people also say **variable**). Once a value is stored, you can use the name instead of the value:
+In the chapter [Getting started](1_intro.qmd), you used R as a calculator: you typed `1 + 1` and R printed `2`. But R did not keep the result. To use a result again later, for example a table you read in, you need to store it under a name. For this, R uses the `<-` symbol. The name and the value together are called an **object** (some people also say **variable**). Once a value is stored, you can use the name instead of the value:
 
 ```{r}
 # store some numbers
@@ -117,48 +117,6 @@ To remove everything at once, use `rm(list = ls())`. This combines two functions
 When you close RStudio, it may ask whether you want to save your workspace to a file called `.RData`. Answer **No**. If you say yes, all your objects are loaded again the next time you open the project, and it becomes hard to tell whether your document still works on its own. Your document is the record of your analysis, not the workspace. You can switch the question off under Tools \> Global Options \> General: untick "Restore .RData into workspace at startup" and set "Save workspace to .RData on exit" to "Never".
 :::
 
-## Packages
-
-A **package** is a collection of extra functions (and sometimes data) that someone wrote and shared. Base R can already do a lot, but for many tasks, such as nicer plots or specific statistical tests, you will use packages. Most packages are stored on CRAN, the same website where you downloaded R.
-
-Working with a package takes two steps:
-
-1.  **Install** the package. This downloads it to your computer. You only do this **once** (and again when you want to update it).
-2.  **Load** the package with `library()`. This makes its functions available in your current R session. R forgets loaded packages when you close it, so you do this **every time** you start R. That is why `library()` calls belong at the top of your document.
-
-As an example, let's install the `tidyverse`. The tidyverse is a collection of packages that we use a lot from the chapter [Working with the tidyverse](tidyverse.qmd) on, for example for changing tables and making plots. Installing it installs all of these packages at once, so it can take a few minutes.
-
-```{r}
-#| eval: false
-
-# install the package (only once, type this in the Console)
-install.packages("tidyverse")
-
-# load the package (every session, put this at the top of your document)
-library(tidyverse)
-```
-
-When you load the tidyverse, R prints a message with the packages it loaded, and a list of "conflicts". The conflicts tell you that some tidyverse functions have the same name as functions in base R, for example `filter()`. From now on, R uses the tidyverse version. This is expected and nothing to worry about.
-
-Note the quotes: `install.packages()` needs the name as text in quotes, while `library()` works without them.
-
-Instead of typing `install.packages()`, you can also install packages in RStudio with the **Packages** tab (bottom right) and the **Install** button.
-
-::: callout-note
-Put `install.packages()` in the Console, not in your document. Otherwise R downloads the package again every time you run the document.
-:::
-
-### Updating packages
-
-Packages are updated regularly. To update them:
-
--   `old.packages()` lists the installed packages for which a newer version exists.
--   `update.packages()` updates them. R asks you for each package whether you want to update it. With `update.packages(ask = FALSE)` it updates everything without asking. This can take a while if you have not done it for some time.
-
-In RStudio, you can also use the **Update** button in the Packages tab.
-
-Updates are usually a good idea, but sometimes a new version of a package works differently and older code no longer runs. This is one reason to record which package versions you used (see the chapter on [documenting your code](documenting_code.qmd)).
-
 ## Get the data
 
 ### The example data
@@ -250,27 +208,7 @@ If you see `FALSE`, look at the Files pane. Is there a `data` folder in your pro
 
 ## Read data into R
 
-To work with data, we first need to read it into R.
-
-When R reads a table, it stores it as a **data frame**. A data frame is R's name for a table: each row is one measurement (here: one plant) and each column is one variable (for example the nutrient condition or the root length). Empty cells in a table become `NA` in R, which means "not available", i.e. a missing value.
-
-For tables, there are some things to be aware of:
-
--   It matters which character separates the columns. Some programs use commas, others use tabs. Our files use tabs. By default, `read.table()` treats any whitespace (spaces and tabs) as a separator, but we can change this when we read the table.
--   Do not have any hash symbols (`#`) in your table. By default, R reads everything after a `#` as a comment and ignores it.
--   Avoid empty cells where you can, as these can mess up your data.
-
-We use the function `read.table()` and store the result under the name `growth_data`. The file is not directly in our project folder but in the subfolder `data`, so we write `data/Growth_Data.txt`.
-
-The arguments we use:
-
--   `sep` = the character that separates the columns. A tab is written as `"\t"`. If your data uses commas, write `sep = ","`.
--   `header` = whether the first row of the file contains the column names. `header = TRUE` means "yes, the first row contains the column names".
--   `quote` = which characters mark the start and end of a text. By default, R treats both `"` and `'` this way. That causes problems as soon as a cell contains a single `'`, for example in a gene name like `5' nuclease`: R then thinks a text starts there and reads the rest of the file as one long piece of text. You may end up with missing rows or even an empty table, and R only shows a warning, not an error. With `quote = ""` we tell R that no character has a special meaning, so every cell is read exactly as it is.
-
-::: callout-note
-In other people's code you will often see `T` and `F` instead of `TRUE` and `FALSE`, for example `header = T`. R understands both. In this tutorial we write `TRUE` and `FALSE` in full, because it is easier to read.
-:::
+To work with data, we first need to read it into R. We use the function `read.table()` and store the result under the name `growth_data`. The file is not directly in our project folder but in the subfolder `data`, so we write `data/Growth_Data.txt`.
 
 ```{r}
 # read in the growth data
@@ -280,9 +218,23 @@ growth_data <- read.table("data/Growth_Data.txt", sep = "\t", header = TRUE, quo
 head(growth_data)
 ```
 
+When R reads a table, it stores it as a **data frame**. A data frame is R's name for a table: each row is one measurement (here: one plant) and each column is one variable (for example the nutrient condition or the root length). Empty cells in a table become `NA` in R, which means "not available", i.e. a missing value.
+
 `head()` shows the first 6 rows of a table. Use it every time you read or change a table, to check that everything went alright.
 
-The first rows are complete, but further down the table you will find a few cells with `NA`. These are the plants for which the root length or the shoot weight is missing. We will learn how to deal with such missing values in the chapter on [data transformations](data_transformations.qmd).
+The arguments we gave to `read.table()`:
+
+-   `sep` = the character that separates the columns. Some programs use commas, others use tabs. Our files use tabs, and a tab is written as `"\t"`. If your data uses commas, write `sep = ","`. If you leave out `sep`, `read.table()` treats any whitespace (spaces and tabs) as a separator.
+-   `header` = whether the first row of the file contains the column names. `header = TRUE` means "yes, the first row contains the column names".
+-   `quote` = which characters mark the start and end of a text. By default, R treats both `"` and `'` this way. That causes problems as soon as a cell contains a single `'`, for example in a gene name like `5' nuclease`: R then thinks a text starts there and reads the rest of the file as one long piece of text. You may end up with missing rows or even an empty table, and R only shows a warning, not an error. With `quote = ""` we tell R that no character has a special meaning, so every cell is read exactly as it is.
+
+Also make sure that your table has no hash symbols (`#`) in it. By default, `read.table()` reads everything after a `#` as a comment and ignores it.
+
+::: callout-note
+In other people's code you will often see `T` and `F` instead of `TRUE` and `FALSE`, for example `header = T`. R understands both. In this tutorial we write `TRUE` and `FALSE` in full, because it is easier to read.
+:::
+
+The first rows are complete. The empty cells we mentioned in the data description are further down the table, and R shows them as `NA`. You will learn how to deal with such missing values in the chapter [Working with the tidyverse](tidyverse.qmd).
 
 A few more functions that help you check a table:
 
@@ -320,75 +272,9 @@ dim(timecourse)
 For very large tables, `read.table()` can be slow. The function `fread()` from the package `data.table` is a much faster alternative.
 :::
 
-## Read an Excel file
+## Look at parts of your table
 
-A lot of data is stored in Excel files. You could save each sheet as a text file in Excel first, but R can also read Excel files directly. For this, we use the package `readxl`. It was installed together with the tidyverse above, but `library(tidyverse)` only loads the main tidyverse packages, and readxl is not one of them. So we load it ourselves:
-
-```{r}
-#| warning: false
-
-library(readxl)
-```
-
-An Excel file can have several sheets. `excel_sheets()` lists their names:
-
-```{r}
-# which sheets are in the file?
-excel_sheets("data/mmc5.xlsx")
-```
-
-The growth data comes from the sheet `Fig S5A,B`. Let's read it with `read_excel()`. The argument `sheet` says which sheet we want:
-
-```{r}
-# read one sheet
-growth_excel <- read_excel("data/mmc5.xlsx", sheet = "Fig S5A,B")
-
-head(growth_excel)
-```
-
-This does not look right. The column names are `# Raw data for Fig S5A,B`, `...2`, `...3` and so on, and the real column names are in the first row. If you open the file in Excel you see why: the first line of the sheet is a comment, and the table only starts in the second line. `read_excel()` always uses the first line as column names.
-
-We can tell `read_excel()` to skip the first line with `skip = 1`:
-
-```{r}
-# skip the comment line
-growth_excel <- read_excel("data/mmc5.xlsx", sheet = "Fig S5A,B", skip = 1)
-
-head(growth_excel)
-```
-
-Better. But there is one more problem, which is easy to miss. Underneath each column name, R shows what kind of values the column contains: `<chr>` means text (character) and `<dbl>` means numbers. The columns `Primary Root Length (mm)` and `Shoot Fresh Weight (mg)` should contain numbers, but they are `<chr>`. The reason is that in this sheet, missing values are written as the text `NA`. R does not know this is a missing value, so it reads the whole column as text, and you can't calculate with it. With the argument `na` we tell R which cells mean "missing value":
-
-```{r}
-# treat empty cells and the text "NA" as missing values
-growth_excel <- read_excel("data/mmc5.xlsx", sheet = "Fig S5A,B", skip = 1, na = c("", "NA"))
-
-head(growth_excel)
-```
-
-Now both measurement columns are numbers (`<dbl>`).
-
-You may have noticed that the column `Nutrient` says `50 mM P`. This is a typo in the published table: the plants got 50 µM and 625 µM phosphate. Real data contains mistakes like this, and it is one more reason to always look at your data after reading it.
-
-A few more things to notice:
-
--   `read_excel()` gives you a **tibble**. A tibble is a data frame with a slightly different way of printing, for example with the column types shown under the names. Everything you learn about data frames also works on tibbles.
--   The column names contain spaces and brackets, for example `Primary Root Length (mm)`. R can handle them, but you have to put backticks around such names when you use them, for example `` growth_excel$`Primary Root Length (mm)` ``. This is one reason why short names without spaces are easier to work with.
-
-This is how we made `Growth_Data.txt`: we read the sheet as shown above, gave the columns shorter names, kept only the three experiments in which all treatments were measured and saved the table with `write.table()`. You can find the full script, [make_example_data.R](https://github.com/ndombrowski/R_cookbook/blob/main/data/make_example_data.R), on GitHub.
-
-::: callout-tip
-When you collect your own data in Excel, you make your life in R much easier if you:
-
--   start the table in the first row, without titles or comments above it
--   use short column names without spaces or special characters
--   leave cells empty when a value is missing, and don't write text such as `NA`, `-` or `missing` in number columns
--   use one sheet per table
-:::
-
-## Three things you need for the next sections
-
-The next sections use three pieces of R syntax that we have not seen yet. Here is a short introduction. You will learn more about them in the chapters on [data objects](data_types.qmd) and [data transformations](data_transformations.qmd).
+`head()` shows all columns of the first few rows. Often you only want to see some of the columns, or a single column. For this you need three pieces of R syntax. You will learn more about them in the chapter [Data objects](data_types.qmd).
 
 ### `c()` combines values
 
@@ -517,6 +403,116 @@ The arguments:
 
 You can now open `growth_data_changed.txt` in the Files pane or in a text editor to look at it.
 
+## Packages
+
+So far we only used functions that come with R. We also downloaded an Excel file, but R cannot read Excel files on its own. For this, we need a package.
+
+A **package** is a collection of extra functions (and sometimes data) that someone wrote and shared. Base R can already do a lot, but for many tasks, such as reading Excel files, nicer plots or specific statistical tests, you will use packages. Most packages are stored on CRAN, the same website where you downloaded R.
+
+Working with a package takes two steps:
+
+1.  **Install** the package. This downloads it to your computer. You only do this **once** (and again when you want to update it).
+2.  **Load** the package with `library()`. This makes its functions available in your current R session. R forgets loaded packages when you close it, so you do this **every time** you start R. That is why `library()` calls belong at the top of your document.
+
+The package for Excel files is called `readxl`. It is part of the `tidyverse`, a collection of packages that we use a lot from the chapter [Working with the tidyverse](tidyverse.qmd) on, for example for changing tables and making plots. So let's install the whole tidyverse now. This installs all of its packages at once, including readxl, so it can take a few minutes.
+
+```{r}
+#| eval: false
+
+# install the package (only once, type this in the Console)
+install.packages("tidyverse")
+
+# load the package (every session, put this at the top of your document)
+library(tidyverse)
+```
+
+When you load the tidyverse, R prints a message with the packages it loaded, and a list of "conflicts". The conflicts tell you that some tidyverse functions have the same name as functions in base R, for example `filter()`. From now on, R uses the tidyverse version. This is expected and nothing to worry about.
+
+Note the quotes: `install.packages()` needs the name as text in quotes, while `library()` works without them.
+
+Instead of typing `install.packages()`, you can also install packages in RStudio with the **Packages** tab (bottom right) and the **Install** button.
+
+::: callout-note
+Put `install.packages()` in the Console, not in your document. Otherwise R downloads the package again every time you run the document.
+:::
+
+### Updating packages
+
+Packages are updated regularly. To update them:
+
+-   `old.packages()` lists the installed packages for which a newer version exists.
+-   `update.packages()` updates them. R asks you for each package whether you want to update it. With `update.packages(ask = FALSE)` it updates everything without asking. This can take a while if you have not done it for some time.
+
+In RStudio, you can also use the **Update** button in the Packages tab.
+
+Updates are usually a good idea, but sometimes a new version of a package works differently and older code no longer runs. This is one reason to record which package versions you used (see the chapter on [documenting your code](documenting_code.qmd)).
+
+## Read an Excel file
+
+A lot of data is stored in Excel files. You could save each sheet as a text file in Excel first, but with the package `readxl` R can read Excel files directly. `library(tidyverse)` only loads the main tidyverse packages, and readxl is not one of them. So we load it ourselves:
+
+```{r}
+#| warning: false
+
+library(readxl)
+```
+
+An Excel file can have several sheets. `excel_sheets()` lists their names:
+
+```{r}
+# which sheets are in the file?
+excel_sheets("data/mmc5.xlsx")
+```
+
+The growth data comes from the sheet `Fig S5A,B`. Let's read it with `read_excel()`. The argument `sheet` says which sheet we want:
+
+```{r}
+# read one sheet
+growth_excel <- read_excel("data/mmc5.xlsx", sheet = "Fig S5A,B")
+
+head(growth_excel)
+```
+
+This does not look right. The column names are `# Raw data for Fig S5A,B`, `...2`, `...3` and so on, and the real column names are in the first row. If you open the file in Excel you see why: the first line of the sheet is a comment, and the table only starts in the second line. `read_excel()` always uses the first line as column names.
+
+We can tell `read_excel()` to skip the first line with `skip = 1`:
+
+```{r}
+# skip the comment line
+growth_excel <- read_excel("data/mmc5.xlsx", sheet = "Fig S5A,B", skip = 1)
+
+head(growth_excel)
+```
+
+Better. But there is one more problem, which is easy to miss. Underneath each column name, R shows what kind of values the column contains: `<chr>` means text (character) and `<dbl>` means numbers. The columns `Primary Root Length (mm)` and `Shoot Fresh Weight (mg)` should contain numbers, but they are `<chr>`. The reason is that in this sheet, missing values are written as the text `NA`. R does not know this is a missing value, so it reads the whole column as text, and you can't calculate with it. With the argument `na` we tell R which cells mean "missing value". We give it two options, combined with `c()`: an empty cell (`""`) and the text `"NA"`:
+
+```{r}
+# treat empty cells and the text "NA" as missing values
+growth_excel <- read_excel("data/mmc5.xlsx", sheet = "Fig S5A,B", skip = 1, na = c("", "NA"))
+
+head(growth_excel)
+```
+
+Now both measurement columns are numbers (`<dbl>`).
+
+You may have noticed that the column `Nutrient` says `50 mM P`. This is a typo in the published table: the plants got 50 µM and 625 µM phosphate. Real data contains mistakes like this, and it is one more reason to always look at your data after reading it.
+
+A few more things to notice:
+
+-   `read_excel()` gives you a **tibble**. A tibble is a data frame with a slightly different way of printing, for example with the column types shown under the names. Everything you learn about data frames also works on tibbles.
+-   The column names contain spaces and brackets, for example `Primary Root Length (mm)`. R can handle them, but you have to put backticks around such names when you use them, for example `` growth_excel$`Primary Root Length (mm)` ``. This is one reason why short names without spaces are easier to work with.
+
+This is how we made `Growth_Data.txt`: we read the sheet as shown here, gave the columns shorter names, kept only the three experiments in which all treatments were measured and saved the table with `write.table()`, just as you did above. You can find the full script, [make_example_data.R](https://github.com/ndombrowski/R_cookbook/blob/main/data/make_example_data.R), on GitHub.
+
+::: callout-tip
+When you collect your own data in Excel, you make your life in R much easier if you:
+
+-   start the table in the first row, without titles or comments above it
+-   use short column names without spaces or special characters
+-   leave cells empty when a value is missing, and don't write text such as `NA`, `-` or `missing` in number columns
+-   use one sheet per table
+:::
+
 ## Summary
 
 In this chapter you learned how to:
@@ -524,13 +520,13 @@ In this chapter you learned how to:
 -   store values in objects with `<-`
 -   use functions and set their arguments, and look up a function with `?`
 -   list and remove objects with `ls()` and `rm()`
--   install packages once with `install.packages()` and load them in every session with `library()`
 -   download files with `download.file()`
 -   read a table with `read.table()` and check it with `head()`, `dim()` and `colnames()`
--   read a sheet of an Excel file with `read_excel()`, and use `skip` and `na` to deal with untidy sheets
 -   select rows and columns with `[ , ]` and a single column with `$`
 -   remove duplicates with `unique()` and combine tables with `merge()`
 -   save a table with `write.table()`
+-   install packages once with `install.packages()` and load them in every session with `library()`
+-   read a sheet of an Excel file with `read_excel()`, and use `skip` and `na` to deal with untidy sheets
 
 ### Exercise
 

@@ -8,7 +8,7 @@ We start at the very beginning, with installing R and RStudio, and work our way 
 
 - [Getting started](code/1_intro.qmd): install R and RStudio, find your way around RStudio, and set up a project folder for your work.
 - [Documenting your code](code/documenting_code.qmd): write comments and notes, so that you (and others) still understand your analysis months later.
-- [First steps in R](code/first_steps.qmd): store values, use functions, install packages, download the example data and read it into R.
+- [First steps in R](code/first_steps.qmd): store values, use functions, download the example data, read it into R, combine tables and save the result, then install packages and read an Excel file.
 - [Data objects](code/data_types.qmd): the building blocks of R, such as vectors, data frames and factors.
 - [Working with the tidyverse](code/tidyverse.qmd): filter, sort, change and summarize tables, step by step.
 - [Control structures](code/control_structures.qmd): repeat tasks with loops and make decisions with if-else.
